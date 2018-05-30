@@ -15,6 +15,20 @@
 # include "../op.h"
 # include <fcntl.h>
 
+typedef struct		s_op
+{
+	char			*name;
+	int				nbr_args;
+	char			type_params[MAX_ARGS_NUMBER];
+	int				opcode;
+	int				cycles;
+	char			*full_name;
+	char			params_byte;
+	char			size;
+}					t_op;
+
+extern t_op op_tab[17];
+
 typedef struct		s_core
 {
 	char			*filename;

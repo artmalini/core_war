@@ -50,6 +50,11 @@ int		parse_filename(char	*arg, t_core *file)
 	return (1);
 }
 
+void	tab_builder(void)
+{
+	ft_printf("%s\n", op_tab[1].name);
+}
+
 int		main(int argc, char **argv)
 {
 	t_core	file;
@@ -59,6 +64,9 @@ int		main(int argc, char **argv)
 		init_struct(&file);
 		if (!parse_filename(argv[1], &file))
 			wrong_input(1);
+		tab_builder();
+
+
 		ft_printf("ok %d", 1);
 	}
 	else

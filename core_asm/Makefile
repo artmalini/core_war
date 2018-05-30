@@ -15,7 +15,7 @@ CC		=   gcc
 CFLAGS	= 	-Wall -Wextra -Werror
 LIBFT	=	 -L../libft -lft
 
-SRCS	=	main.c \
+SRCS	=	main.c op.c \
 
 OBJS	=   $(SRCS:.c=.o)
 
