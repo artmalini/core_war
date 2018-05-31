@@ -67,7 +67,7 @@ int		main(int argc, char **argv)
 		tab_builder();
 
 
-		ft_printf("ok %d", 1);
+		ft_printf("ok %d\n", 1);
 	}
 	else
 		wrong_input(0);

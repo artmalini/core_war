@@ -12,7 +12,7 @@
 
 NAME	=	../asm
 CC		=   gcc
-CFLAGS	= 	-Wall -Wextra -Werror
+#CFLAGS	= 	-Wall -Wextra -Werror
 LIBFT	=	 -L../libft -lft
 
 SRCS	=	main.c op.c \
