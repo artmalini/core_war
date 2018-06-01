@@ -31,7 +31,10 @@ extern t_op op_tab[17];
 
 typedef struct		s_core
 {
+	char			*name;
+	char			*comment;
 	char			*filename;
+	int				rows;
 }					t_core;
 
 #endif

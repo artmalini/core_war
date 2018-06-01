@@ -20,12 +20,27 @@ void	wrong_input(int c)
 		ft_printf("error\n");
 	else if (c == 2)
 		ft_printf("wrong file name\n");
+	else if (c == 3)
+		ft_printf("Open file error\n");
 	exit(-1);
+}
+
+void	free_struct_tcore(t_core *file)
+{
+	if (file->name)
+		ft_strdel(&file->name);
+	if (file->comment)
+		ft_strdel(&file->comment);
+	if (file->filename)
+		ft_strdel(&file->filename);
 }
 
 void	init_struct(t_core *file)
 {
+	file->name = NULL;
+	file->comment = NULL;
 	file->filename = NULL;
+	file->rows = 0;
 }
 
 int		parse_filename(char	*arg, t_core *file)
@@ -50,10 +65,44 @@ int		parse_filename(char	*arg, t_core *file)
 	return (1);
 }
 
-void	tab_builder(void)
+int		line_has_val(char *line)
 {
-	ft_printf("%s\n", op_tab[1].name);
+	while (*line)
+	{
+		if (*line != '\t' || *line != ' ')
+			return (1);
+		line++;
+	}
+	return (0);
 }
+
+void	read_line(char *line)
+{
+	ft_printf("read_line |%s|\n", line);
+}
+
+void	parse_file(char *arg, t_core *file)
+{
+	char	*line;
+	int		fd;
+
+	if (!(fd = open(arg, O_RDONLY)))
+		wrong_input(3);
+	while (get_next_line(fd, &line))
+	{
+		file->rows++;
+		if (line_has_val(line))
+			read_line(line);
+		ft_strdel(&line);
+	}
+	ft_strdel(&line);
+	close(fd);
+}
+
+// void	tab_builder(void)
+// {
+// 	ft_printf("%s\n", op_tab[1].name);
+// }
 
 int		main(int argc, char **argv)
 {
@@ -64,10 +113,14 @@ int		main(int argc, char **argv)
 		init_struct(&file);
 		if (!parse_filename(argv[1], &file))
 			wrong_input(1);
-		tab_builder();
+		parse_file(argv[1], &file);
 
 
-		ft_printf("ok %d\n", 1);
+		//tab_builder(); //not need
+		ft_printf("ok rows %d\n", file.rows);
+
+		free_struct_tcore(&file);
+		//system("leaks asm");
 	}
 	else
 		wrong_input(0);
