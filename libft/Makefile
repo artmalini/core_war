@@ -21,7 +21,7 @@ SOURCE = ft_strlen.c ft_strstr.c ft_memdel.c ft_bzero.c ft_strdup.c ft_putnbr.c 
 		ft_strcpy.c ft_strdel.c ft_strsub.c ft_minint.c ft_strchr.c ft_int_length.c ft_atoi.c ft_itoa.c get_next_line.c \
 		ft_putstr.c ft_strsplit.c ft_count_words.c ft_getword_len.c ft_strchr.c ft_isdigit.c ft_strcmp.c ft_memcpy.c\
 		ft_lstadd.c ft_lstdel.c ft_lstnew.c ft_lstdelone.c ft_strequ.c ft_isalnum.c \
-		ft_strncpy.c ft_strncat.c ft_strcat.c \
+		ft_strncpy.c ft_strncat.c ft_strcat.c ft_strncmp.c \
 		\
 		ft_printf/build_char_strchar.c ft_printf/build_float_join_str.c ft_printf/build_floats.c ft_printf/build_mantissa_with_build_float.c \
 		ft_printf/fill_flag_with_precis.c \
