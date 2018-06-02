@@ -15,7 +15,7 @@ CC		=   gcc
 #CFLAGS	= 	-Wall -Wextra -Werror
 LIBFT	=	 -L../libft -lft
 
-SRCS	=	main.c op.c \
+SRCS	=	main.c op.c error_handler.c name_and_cmt_valid.c \
 
 OBJS	=   $(SRCS:.c=.o)
 

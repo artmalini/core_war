@@ -37,4 +37,9 @@ typedef struct		s_core
 	int				rows;
 }					t_core;
 
+void	name_and_cmt(char *line, t_core *file);
+void	wrong_input(int c);
+void	free_struct_tcore(t_core *file);
+void	error_file(t_core *file);
+
 #endif
