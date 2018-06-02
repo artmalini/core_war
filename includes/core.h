@@ -29,12 +29,19 @@ typedef struct		s_op
 
 extern t_op op_tab[17];
 
+typedef struct		s_inst
+{
+	char			*label;
+	struct s_inst	*next;
+}					t_inst;
+
 typedef struct		s_core
 {
 	char			*name;
 	char			*comment;
 	char			*filename;
 	int				rows;
+	t_inst			*inst;
 }					t_core;
 
 void	name_and_cmt(char *line, t_core *file);

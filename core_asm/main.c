@@ -18,6 +18,7 @@ void	init_struct(t_core *file)
 	file->comment = NULL;
 	file->filename = NULL;
 	file->rows = 0;
+	file->inst = NULL;
 }
 
 int		parse_filename(char	*arg, t_core *file)
@@ -50,10 +51,78 @@ int		line_has_val(char *line)
 			return (1);
 		line++;
 	}
-	return (0);
+	return (0);	
 }
 
 
+
+
+t_inst		*add_label(char *str)
+{
+	t_inst	*lst;
+
+	lst = NULL;
+	lst = (t_inst *)malloc(sizeof(t_inst));
+	if (lst)
+	{
+		lst->label = str ? ft_strdup(str) : NULL;
+		lst->next = NULL;
+	}
+	return (lst);
+}
+
+void	push_laybel(char *str, t_inst **lst)
+{
+	t_inst	*tmp;
+
+	tmp = *lst;
+	if (tmp)
+	{
+		while (tmp->next != NULL)
+		{
+			ft_printf("OK\n");
+			tmp = tmp->next;
+		}
+		tmp->next = add_label(str);
+	}
+	else
+	{
+		*lst = add_label(str);
+	}
+}
+
+void	line_handler(char *line, t_core *file)
+{
+	int		i;
+	int		flag;
+	char	*str;
+	char	*lowstr;
+
+	i = 0;
+	flag = 0;
+	str = line;
+	lowstr = NULL;
+	while (*str && (*str == ' ' || *str == '\t'))
+		str++;
+	while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != ':'))
+	{
+		if (!ft_strchr(LABEL_CHARS, str[i]))
+			error_file(file);
+		i++;
+	}
+	if (str[i] == ':')
+	{
+		lowstr = ft_strsub(str, 0, i);
+		push_laybel(lowstr, &file->inst);
+		ft_printf("@@@@ (|%s|)\n", lowstr);
+	}
+	if (lowstr)
+		ft_strdel(&lowstr);
+	//ft_printf("@@@@ |%s| %d\n", str + i, i);
+	str += i;
+	ft_printf("line_handler |%s| str |%s|\n", line, str);
+	return ;
+}
 
 void	read_line(char *line, t_core *file)
 {
@@ -61,6 +130,13 @@ void	read_line(char *line, t_core *file)
 	{
 		name_and_cmt(line, file);
 	}
+	else if (line[0] == COMMENT_CHAR || ft_strchr(line, COMMENT_CHAR))
+	{
+		ft_strdel(&line);
+		return ;
+	}
+	else
+		line_handler(line, file);
 	ft_printf("read_line |%s|\n", line);
 	ft_strdel(&line);
 }
@@ -101,6 +177,15 @@ int		main(int argc, char **argv)
 		parse_file(argv[1], &file);
 
 
+
+
+		t_inst	*inst;
+		inst = file.inst;
+		while (inst)
+		{
+			ft_printf("^^ %s\n", inst->label);
+			inst = inst->next;
+		}
 		//tab_builder(); //not need
 		ft_printf("ok rows %d\n", file.rows);
 

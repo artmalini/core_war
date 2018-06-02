@@ -12,11 +12,33 @@
 
 #include "../includes/core.h"
 
+void	len_check(int len, int nb, t_core *file)
+{
+	if (nb == 1)
+	{
+		if (len > PROG_NAME_LENGTH)
+		{
+			ft_printf("Name to long\n");
+			error_file(file);
+		}
+	}
+	if (nb == 2)
+	{
+		if (len > COMMENT_LENGTH)
+		{
+			ft_printf("Comment length to long\n");
+			error_file(file);
+		}
+	}
+}
+
 void	name_and_cmt_valid(char *line, int nb, t_core *file)
 {
 	int		count;
+	int		len;
 
 	count = 0;
+	len = 0;
 	//line += nb == 1 ? 6 : 9;
 	while (*line && *line != '\"')
 		line++;
@@ -27,11 +49,13 @@ void	name_and_cmt_valid(char *line, int nb, t_core *file)
 	}
 	while (*line && *line != '\"')
 	{
+		len++;
 		if (!ft_strchr(HEADER_CHARS, *line))
 		{
 			ft_printf("### |%c|", *line);
 			error_file(file);
 		}
+		len_check(len, nb, file);
 		line++;
 	}
 	if (*line == '\"')
