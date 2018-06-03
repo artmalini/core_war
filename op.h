@@ -1,7 +1,5 @@
 
-# include "libft/libft.h"
-# include "includes/get_next_line.h"
-# include "libft/ft_printf/ft_printf.h"
+
 
 #define IND_SIZE 2
 #define REG_SIZE 4

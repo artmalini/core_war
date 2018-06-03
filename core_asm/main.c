@@ -79,10 +79,7 @@ void	push_laybel(char *str, t_inst **lst)
 	if (tmp)
 	{
 		while (tmp->next != NULL)
-		{
-			ft_printf("OK\n");
 			tmp = tmp->next;
-		}
 		tmp->next = add_label(str);
 	}
 	else
@@ -114,10 +111,11 @@ void	line_handler(char *line, t_core *file)
 	{
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst);
+
 		ft_printf("@@@@ (|%s|)\n", lowstr);
-	}
-	if (lowstr)
 		ft_strdel(&lowstr);
+	}
+
 	//ft_printf("@@@@ |%s| %d\n", str + i, i);
 	str += i;
 	ft_printf("line_handler |%s| str |%s|\n", line, str);
@@ -160,10 +158,21 @@ void	parse_file(char *arg, t_core *file)
 	close(fd);
 }
 
-// void	tab_builder(void)
-// {
-// 	ft_printf("%s\n", op_tab[1].name);
-// }
+
+
+
+
+void	label_debug(t_core *file)
+{
+		t_inst	*inst;
+
+		inst = file->inst;
+		while (inst)
+		{
+			ft_printf("^^ %s\n", inst->label);
+			inst = inst->next;
+		}
+}
 
 int		main(int argc, char **argv)
 {
@@ -179,14 +188,7 @@ int		main(int argc, char **argv)
 
 
 
-		t_inst	*inst;
-		inst = file.inst;
-		while (inst)
-		{
-			ft_printf("^^ %s\n", inst->label);
-			inst = inst->next;
-		}
-		//tab_builder(); //not need
+		label_debug(&file);
 		ft_printf("ok rows %d\n", file.rows);
 
 		free_struct_tcore(&file);

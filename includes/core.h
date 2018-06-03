@@ -12,6 +12,9 @@
 
 #ifndef CORE_H
 # define CORE_H
+# include "../libft/lib_include/libft.h"
+# include "../libft/lib_include/get_next_line.h"
+# include "../libft/lib_include/ft_printf.h"
 # include "../op.h"
 # include <fcntl.h>
 

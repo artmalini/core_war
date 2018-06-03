@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 static t_mem	*readbuff(t_mem *lst, const int fd)
 {

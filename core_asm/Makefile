@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	=	../asm
-CC		=   gcc
+CC		=   gcc -g
 #CFLAGS	= 	-Wall -Wextra -Werror
 LIBFT	=	 -L../libft -lft
 
