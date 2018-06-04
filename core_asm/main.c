@@ -88,6 +88,12 @@ void	push_laybel(char *str, t_inst **lst)
 	}
 }
 
+int		is_command(char	*lowstr)
+{
+	ft_printf("is_command is_command |%s|\n", lowstr);
+	return (0);
+}
+
 void	line_handler(char *line, t_core *file)
 {
 	int		i;
@@ -99,43 +105,76 @@ void	line_handler(char *line, t_core *file)
 	flag = 0;
 	str = line;
 	lowstr = NULL;
-	while (*str && (*str == ' ' || *str == '\t'))
-		str++;
-	while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != ':'))
-	{
-		if (!ft_strchr(LABEL_CHARS, str[i]))
-			error_file(file);
+	//while (*str && (*str == ' ' || *str == '\t'))
+	//	str++;
+	while (str[i] && str[i] != ':' && ft_strchr(LABEL_CHARS, str[i]))
+	{		
 		i++;
 	}
-	if (str[i] == ':')
+	if (str[i] == ':')//label exist, if i == 0 should be error!
 	{
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst);
 
-		ft_printf("@@@@ (|%s|)\n", lowstr);
+		ft_printf("line_handler (|%s|)\n", lowstr);
 		ft_strdel(&lowstr);
+		flag = 1;
+	}
+	//if (!ft_strchr(LABEL_CHARS, str[i]))
+	//		error_file(file);	
+	if (flag) //label exist  l2:
+	{
+		while (*str && ft_strchr(LABEL_CHARS, *str) && *str != ':')
+			str++;
+		while (*str && (*str == ' ' || *str == '\t' || *str == ':'))
+			str++;
+		i = 0;
+		ft_printf("	STR|%s|\n", str);
+		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
+		{
+			if (!ft_strchr(LABEL_CHARS, str[i]))
+				error_file(file);
+			i++;
+		}		
+		lowstr = ft_strsub(str, 0, i);
+	}
+	else
+	{
+		lowstr = ft_strsub(str, 0, i);
+	}
+	if (is_command(lowstr))
+	{
+		ft_printf("line_handler is_command |%s|\n", lowstr);
 	}
 
+
+	ft_strdel(&lowstr);
 	//ft_printf("@@@@ |%s| %d\n", str + i, i);
 	str += i;
-	ft_printf("line_handler |%s| str |%s|\n", line, str);
+	ft_printf("line_handler|%s| 		str|%s|\n", line, str);
 	return ;
 }
 
 void	read_line(char *line, t_core *file)
 {
-	if (line[0] == '.')
+	char	*str;
+
+	str = line;
+	while (*str && (*str == ' ' || *str == '\t'))
+	 	str++;
+	if (str[0] == '.')
 	{
-		name_and_cmt(line, file);
+		name_and_cmt(str, file);
 	}
-	else if (line[0] == COMMENT_CHAR || ft_strchr(line, COMMENT_CHAR))
+	else if (str[0] == COMMENT_CHAR
+		|| str[0] == COMMENT_CHAR2)
 	{
 		ft_strdel(&line);
 		return ;
 	}
 	else
-		line_handler(line, file);
-	ft_printf("read_line |%s|\n", line);
+		line_handler(str, file);
+	//ft_printf("read_line |%s|\n", str);
 	ft_strdel(&line);
 }
 
@@ -169,7 +208,7 @@ void	label_debug(t_core *file)
 		inst = file->inst;
 		while (inst)
 		{
-			ft_printf("^^ %s\n", inst->label);
+			ft_printf("label_debug |%s|\n", inst->label);
 			inst = inst->next;
 		}
 }
