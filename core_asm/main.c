@@ -18,6 +18,7 @@ void	init_struct(t_core *file)
 	file->comment = NULL;
 	file->filename = NULL;
 	file->rows = 0;
+	file->inst_pos = 0;
 	file->inst = NULL;
 }
 
@@ -88,24 +89,25 @@ void	push_laybel(char *str, t_inst **lst)
 	}
 }
 
-int		is_command(char	*lowstr)
+
+
+int		check_command(char	*lowstr, file)
 {
 	int		i;
 
 	i = -1;
-	//ft_printf("93 is_command is_command |%s|\n", lowstr);
+	//ft_printf("93 check_command check_command |%s|\n", lowstr);
 	while (++i < 16)
 	{
 		if (!ft_strcmp(op_tab[i].name, lowstr))
 		{
-			ft_printf("is_command %d\n", i);
+			file->inst_pos = i;
+			ft_printf("check_command %d\n", i);
 			return (1);
 		}
 	}
 	return (0);
 }
-
-
 
 
 void	line_handler(char *line, t_core *file)
@@ -160,9 +162,14 @@ void	line_handler(char *line, t_core *file)
 	{
 		lowstr = ft_strsub(str, 0, i);
 	}
-	if (is_command(lowstr))
+	if (check_command(lowstr, file))
 	{
-		ft_printf("154 line_handler is_command |%s|	|%s|\n", lowstr, str + ft_strlen(lowstr));
+		ft_printf("165 line_handler check_command |%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
+	}
+	else
+	{//wrong command
+		ft_printf("169 line_handler ERROR\n");
+		error_file(file);
 	}
 
 

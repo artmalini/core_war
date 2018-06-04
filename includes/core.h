@@ -44,6 +44,7 @@ typedef struct		s_core
 	char			*comment;
 	char			*filename;
 	int				rows;
+	int				inst_pos;
 	t_inst			*inst;
 }					t_core;
 
