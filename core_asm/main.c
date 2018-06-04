@@ -90,9 +90,23 @@ void	push_laybel(char *str, t_inst **lst)
 
 int		is_command(char	*lowstr)
 {
-	ft_printf("is_command is_command |%s|\n", lowstr);
+	int		i;
+
+	i = -1;
+	//ft_printf("93 is_command is_command |%s|\n", lowstr);
+	while (++i < 16)
+	{
+		if (!ft_strcmp(op_tab[i].name, lowstr))
+		{
+			ft_printf("is_command %d\n", i);
+			return (1);
+		}
+	}
 	return (0);
 }
+
+
+
 
 void	line_handler(char *line, t_core *file)
 {
@@ -116,7 +130,7 @@ void	line_handler(char *line, t_core *file)
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst);
 
-		ft_printf("line_handler (|%s|)\n", lowstr);
+		ft_printf("122 line_handler (|%s|)\n", lowstr);
 		ft_strdel(&lowstr);
 		flag = 1;
 	}
@@ -126,16 +140,20 @@ void	line_handler(char *line, t_core *file)
 	{
 		while (*str && ft_strchr(LABEL_CHARS, *str) && *str != ':')
 			str++;
-		while (*str && (*str == ' ' || *str == '\t' || *str == ':'))
+		str++;//!!!!!for :
+		while (*str && (*str == ' ' || *str == '\t'))
 			str++;
 		i = 0;
-		ft_printf("	STR|%s|\n", str);
+		ft_printf("	147 STR|%s|\n", str);
 		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 		{
 			if (!ft_strchr(LABEL_CHARS, str[i]))
+			{
+				ft_printf("152 line_handler ERROR\n");
 				error_file(file);
+			}
 			i++;
-		}		
+		}
 		lowstr = ft_strsub(str, 0, i);
 	}
 	else
@@ -144,15 +162,14 @@ void	line_handler(char *line, t_core *file)
 	}
 	if (is_command(lowstr))
 	{
-		ft_printf("line_handler is_command |%s|\n", lowstr);
+		ft_printf("154 line_handler is_command |%s|	|%s|\n", lowstr, str + ft_strlen(lowstr));
 	}
 
 
 	ft_strdel(&lowstr);
 	//ft_printf("@@@@ |%s| %d\n", str + i, i);
-	str += i;
-	ft_printf("line_handler|%s| 		str|%s|\n", line, str);
-	return ;
+	//str += i;
+	//ft_printf("line_handler|%s| 		str|%s|\n", line, str);	
 }
 
 void	read_line(char *line, t_core *file)
@@ -226,7 +243,7 @@ int		main(int argc, char **argv)
 
 
 
-
+		ft_printf("\n\n");
 		label_debug(&file);
 		ft_printf("ok rows %d\n", file.rows);
 
