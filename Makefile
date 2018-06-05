@@ -12,10 +12,8 @@
 
 NAME = compiling
 
-#INC = -I ./libft
-#FLAGS = -Wall -Wextra -Werror -O2 -I.
 LIB_DIR = ./libft
-ASM_DIR = ./core_asm
+ASM_DIR = ./assembler
 
 RED		= \033[31m
 GREEN	= \033[32m
@@ -27,18 +25,19 @@ all: $(NAME)
 $(NAME): 
 	@make -C $(LIB_DIR)
 	@make -C $(ASM_DIR)
-	#@echo " $(CYAN)$(NAME) $(GREY)generated \xF0\x9F\x98\xBA"
 
 clean:
 	@make -C $(LIB_DIR) clean
 	@make -C $(ASM_DIR) clean
-	#@echo " $(RED)All objects has been deleteted!"
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean
 	@make -C $(ASM_DIR) fclean
-	#@echo " $(RED)$(NAME)$(GREY) has been deleteted!"
-
+	
 re: fclean all
 
 .PHONY:		all clean fclean re
+
+	#@echo " $(CYAN)$(NAME) $(GREY)generated \xF0\x9F\x98\xBA"
+	#@echo " $(RED)All objects has been deleteted!"
+	#@echo " $(RED)$(NAME)$(GREY) has been deleteted!"

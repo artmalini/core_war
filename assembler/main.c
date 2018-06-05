@@ -94,6 +94,7 @@ void	push_laybel(char *str, t_inst **lst)
 
 t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 {
+	(void)args;
 	t_cmd	*lst;
 
 	lst = NULL;
@@ -164,7 +165,7 @@ void	line_handler(char *line, t_core *file)
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst);
 
-		ft_printf("167 line_handler (|%s|)\n", lowstr);
+		ft_printf("135 line_handler (|%s|)\n", lowstr);
 		ft_strdel(&lowstr);
 		flag = 1;
 	}
@@ -178,12 +179,12 @@ void	line_handler(char *line, t_core *file)
 		while (*str && (*str == ' ' || *str == '\t'))
 			str++;
 		i = 0;
-		ft_printf("	181 STR|%s|\n", str);
+		ft_printf("	149 STR|%s|\n", str);
 		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 		{
 			if (!ft_strchr(LABEL_CHARS, str[i]))
 			{
-				ft_printf("186 line_handler ERROR\n");
+				ft_printf("154 line_handler ERROR\n");
 				error_file(file);
 			}
 			i++;
@@ -196,14 +197,14 @@ void	line_handler(char *line, t_core *file)
 	}
 	if (check_command(lowstr, file))
 	{
-		ft_printf("199 line_handler check_command |%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
+		ft_printf("167 line_handler check_command |%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
 		if (!file->inst)//!!!!!!!!!  IF LABEL DOES NOT EXIST
 			push_laybel(NULL, &file->inst);
 		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
 	}
 	else
 	{//wrong command
-		ft_printf("206 line_handler ERROR\n");
+		ft_printf("171 line_handler ERROR\n");
 		error_file(file);
 	}
 
@@ -267,7 +268,7 @@ void	label_debug(t_core *file)
 		inst = file->inst;
 		while (inst)
 		{
-			ft_printf("270 label_debug |%s|\n", inst->label);
+			ft_printf("268 label_debug |%s|\n", inst->label);
 			inst = inst->next;
 		}
 }
@@ -278,11 +279,11 @@ void	cmd_debug(t_inst *inst)
 
 	while (inst)
 	{
-		ft_printf("281 cmd_debug label|%s|\n", inst->label);
+		ft_printf("279 cmd_debug label|%s|\n", inst->label);
 		comm = inst->cmd;
 		while (comm)
 		{
-			ft_printf("285 md_debug 	command|%s| opcode|%d|\n", comm->command, comm->opcode);
+			ft_printf("283 md_debug 	command|%s| opcode|%d|\n", comm->command, comm->opcode);
 			comm = comm->next;
 		}
 		inst = inst->next;

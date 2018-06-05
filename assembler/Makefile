@@ -10,27 +10,52 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	../asm
-CC		=   gcc -g
-#CFLAGS	= 	-Wall -Wextra -Werror
-LIBFT	=	 -L../libft -lft
+NAME		= ../asm
+FLAGS		= -Wall -Wextra -Werror
+CC			= gcc
 
-SRCS	=	main.c op.c error_handler.c name_and_cmt_valid.c \
+HEADERS		= ../includes
+HEADERS_L	= ../libft/includes
+LIBFT		= -L ../libft -lft
+LIBFT_PATH	= ../libft
 
-OBJS	=   $(SRCS:.c=.o)
+SRCS_ASM	=	main.c \
+				op.c \
+				error_handler.c \
+				name_and_cmt_valid.c \
 
+OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 
-all:	$(NAME)
+RED			= \033[31m
+GREEN		= \033[32m
+CYAN		= \033[36m
+GREY		= \033[37m
 
-$(NAME):$(OBJS)
-	@$(CC) $(CFLAG) $(SRCS) $(LIBFT) -o $(NAME)
+all: $(NAME)
+
+$(NAME): $(OBJS_ASM)
+	@$(CC) $(OBJS_ASM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
+	@echo "\033[0;32m ----> Created (Core_ASM)"
+
+$(OBJS_ASM): %.o: %.c
+	@$(CC) -c $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $< -o $@
+	@echo "\033[0;36m ----> Created object files (Core_ASM)"
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS_ASM)
+	@echo "\033[0;31m ----> Delete object files [Core_ASM]"
 
 fclean:	clean
 	@rm -f $(NAME)
+	@echo "\033[0;31m ----> Delete [asm] " 
 
-re:		fclean all
+norme: clean
+	@norminette $(SRCS_ASM) $(HEADERS) $(LIBFT_PATH)
 
-.PHONY:		all clean fclean re
+re: fclean all
+
+.PHONY:	all clean fclean re
+
+
+# $(NAME):$(OBJS)
+# 	@$(CC) $(CFLAG) $(SRCS) $(LIBFT) -o $(NAME)

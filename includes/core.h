@@ -12,10 +12,10 @@
 
 #ifndef CORE_H
 # define CORE_H
-# include "../libft/lib_include/libft.h"
-# include "../libft/lib_include/get_next_line.h"
-# include "../libft/lib_include/ft_printf.h"
-# include "../op.h"
+# include "libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
+# include "op.h"
 # include <fcntl.h>
 
 typedef struct		s_op
@@ -35,7 +35,7 @@ extern t_op op_tab[17];
 typedef struct		s_cmd
 {
 	char			*command;
-	int				opcode;
+	int				opcode;	
 	struct s_cmd	*next;
 }					t_cmd;
 
