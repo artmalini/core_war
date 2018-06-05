@@ -32,9 +32,17 @@ typedef struct		s_op
 
 extern t_op op_tab[17];
 
+typedef struct		s_cmd
+{
+	char			*command;
+	int				opcode;	
+	struct s_cmd	*next;
+}					t_cmd;
+
 typedef struct		s_inst
 {
 	char			*label;
+	t_cmd			*cmd;
 	struct s_inst	*next;
 }					t_inst;
 

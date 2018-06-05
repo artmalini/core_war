@@ -67,6 +67,7 @@ t_inst		*add_label(char *str)
 	if (lst)
 	{
 		lst->label = str ? ft_strdup(str) : NULL;
+		lst->cmd = NULL;
 		lst->next = NULL;
 	}
 	return (lst);
@@ -91,7 +92,39 @@ void	push_laybel(char *str, t_inst **lst)
 
 
 
-int		check_command(char	*lowstr, file)
+t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
+{
+	t_cmd	*lst;
+
+	lst = NULL;
+	lst = (t_cmd *)malloc(sizeof(t_cmd));
+	if (lst)
+	{
+		lst->command = cmd ? ft_strdup(cmd) : NULL;
+		lst->opcode = op_tab[file->inst_pos].opcode;
+		lst->next = NULL;
+	}
+	//ft_printf("ARGS %s\n", args);
+	return (lst);
+}
+
+void	push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst)
+{
+	t_cmd	*tmp;
+
+	tmp = *lst;
+	if (tmp)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;		
+		tmp->next = add_cmd(cmd, args, file);
+	}
+	else
+		*lst = add_cmd(cmd, args, file);
+}
+
+
+int		check_command(char	*lowstr, t_core *file)
 {
 	int		i;
 
@@ -102,7 +135,6 @@ int		check_command(char	*lowstr, file)
 		if (!ft_strcmp(op_tab[i].name, lowstr))
 		{
 			file->inst_pos = i;
-			ft_printf("check_command %d\n", i);
 			return (1);
 		}
 	}
@@ -132,7 +164,7 @@ void	line_handler(char *line, t_core *file)
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst);
 
-		ft_printf("122 line_handler (|%s|)\n", lowstr);
+		ft_printf("135 line_handler (|%s|)\n", lowstr);
 		ft_strdel(&lowstr);
 		flag = 1;
 	}
@@ -146,12 +178,12 @@ void	line_handler(char *line, t_core *file)
 		while (*str && (*str == ' ' || *str == '\t'))
 			str++;
 		i = 0;
-		ft_printf("	147 STR|%s|\n", str);
+		ft_printf("	149 STR|%s|\n", str);
 		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 		{
 			if (!ft_strchr(LABEL_CHARS, str[i]))
 			{
-				ft_printf("152 line_handler ERROR\n");
+				ft_printf("154 line_handler ERROR\n");
 				error_file(file);
 			}
 			i++;
@@ -164,11 +196,14 @@ void	line_handler(char *line, t_core *file)
 	}
 	if (check_command(lowstr, file))
 	{
-		ft_printf("165 line_handler check_command |%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
+		ft_printf("167 line_handler check_command |%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
+		if (!file->inst)//!!!!!!!!!  IF LABEL DOES NOT EXIST
+			push_laybel(NULL, &file->inst);
+		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
 	}
 	else
 	{//wrong command
-		ft_printf("169 line_handler ERROR\n");
+		ft_printf("171 line_handler ERROR\n");
 		error_file(file);
 	}
 
@@ -232,9 +267,26 @@ void	label_debug(t_core *file)
 		inst = file->inst;
 		while (inst)
 		{
-			ft_printf("label_debug |%s|\n", inst->label);
+			ft_printf("268 label_debug |%s|\n", inst->label);
 			inst = inst->next;
 		}
+}
+
+void	cmd_debug(t_inst *inst)
+{
+	t_cmd	*comm;
+
+	while (inst)
+	{
+		ft_printf("279 cmd_debug label|%s|\n", inst->label);
+		comm = inst->cmd;
+		while (comm)
+		{
+			ft_printf("283 md_debug 	command|%s| opcode|%d|\n", comm->command, comm->opcode);
+			comm = comm->next;
+		}
+		inst = inst->next;
+	}
 }
 
 int		main(int argc, char **argv)
@@ -251,7 +303,10 @@ int		main(int argc, char **argv)
 
 
 		ft_printf("\n\n");
-		label_debug(&file);
+		label_debug(&file);//LABEL DEBUG
+		ft_printf("\n");
+		cmd_debug(file.inst);///COMMAND debug		
+		ft_printf("\n");
 		ft_printf("ok rows %d\n", file.rows);
 
 		free_struct_tcore(&file);
