@@ -35,7 +35,7 @@ extern t_op op_tab[17];
 typedef struct		s_cmd
 {
 	char			*command;
-	int				opcode;	
+	int				opcode;
 	struct s_cmd	*next;
 }					t_cmd;
 
