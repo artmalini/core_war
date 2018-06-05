@@ -23,6 +23,13 @@ SRCS_ASM	=	main.c \
 				op.c \
 				error_handler.c \
 				name_and_cmt_valid.c \
+				inter_main.c \
+				debug_asm.c \
+				read_asm.c \
+				parse.c \
+				label_asm.c \
+				cmd_asm.c \
+
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 
@@ -35,15 +42,15 @@ all: $(NAME)
 
 $(NAME): $(OBJS_ASM)
 	@$(CC) $(OBJS_ASM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
-	@echo "\033[0;32m ----> Created (Core_ASM)"
+	@echo "\033[0;32m ----> Created (assembler)"
 
 $(OBJS_ASM): %.o: %.c
 	@$(CC) -c $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $< -o $@
-	@echo "\033[0;36m ----> Created object files (Core_ASM)"
+	@echo "\033[0;36m ----> Created object files (assembler)"
 
 clean:
 	@rm -f $(OBJS_ASM)
-	@echo "\033[0;31m ----> Delete object files [Core_ASM]"
+	@echo "\033[0;31m ----> Delete object files [assembler]"
 
 fclean:	clean
 	@rm -f $(NAME)

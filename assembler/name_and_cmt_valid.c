@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/core.h"
+#include "asm.h"
 
 void	len_check(int len, int nb, t_core *file)
 {
