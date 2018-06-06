@@ -13,6 +13,7 @@
 NAME		= ../corewar
 FLAGS		= -Wall -Wextra -Werror
 CC			= gcc
+LD			= -lncurses
 
 HEADERS		= ../includes
 HEADERS_L	= ../libft/includes
@@ -31,7 +32,7 @@ GREY		= \033[37m
 all: $(NAME)
 
 $(NAME): $(OBJS_VM)
-	@$(CC) $(OBJS_VM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
+	@$(CC) $(LD) $(OBJS_VM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
 	@echo "\033[0;32m ----> Created (corewar)"
 
 $(OBJS_VM): %.o: %.c
