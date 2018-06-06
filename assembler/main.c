@@ -60,7 +60,7 @@ void	line_handler(char *line, t_core *file)
 	if (str[i] == ':')//label exist, if i == 0 should be error!
 	{
 		lowstr = ft_strsub(str, 0, i);
-		push_laybel(lowstr, &file->inst);
+		push_laybel(lowstr, &file->inst, file);
 
 		ft_printf("Line[65]: line_handler	(|%s|)\n", lowstr);
 		ft_strdel(&lowstr);
@@ -96,7 +96,7 @@ void	line_handler(char *line, t_core *file)
 	{
 		ft_printf("Line[97]: line_handler check_command	|%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
 		if (!file->inst)//!!!!!!!!!  IF LABEL DOES NOT EXIST
-			push_laybel(NULL, &file->inst);
+			push_laybel(NULL, &file->inst, file);
 		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
 	}
 	else

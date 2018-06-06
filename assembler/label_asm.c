@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-t_inst		*add_label(char *str)
+t_inst		*add_label(char *str, t_core *file)
 {
 	t_inst	*lst;
 
@@ -22,12 +22,13 @@ t_inst		*add_label(char *str)
 	{
 		lst->label = str ? ft_strdup(str) : NULL;
 		lst->cmd = NULL;
+		lst->label_pos = file->size + file->count_size;
 		lst->next = NULL;
 	}
 	return (lst);
 }
 
-void		push_laybel(char *str, t_inst **lst)
+void		push_laybel(char *str, t_inst **lst, t_core *file)
 {
 	t_inst	*tmp;
 
@@ -36,10 +37,10 @@ void		push_laybel(char *str, t_inst **lst)
 	{
 		while (tmp->next != NULL)
 			tmp = tmp->next;
-		tmp->next = add_label(str);
+		tmp->next = add_label(str, file);
 	}
 	else
 	{
-		*lst = add_label(str);
+		*lst = add_label(str, file);
 	}
 }
