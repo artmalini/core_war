@@ -64,7 +64,7 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		file->count_size += lst->cmd_size;
 		lst->next = NULL;
 	}
-	ft_printf("ARGS %s\n", args);
+	ft_printf("---> Finded ARGS:  [%s]\n\n", args);
 	return (lst);
 }
 

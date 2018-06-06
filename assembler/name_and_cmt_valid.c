@@ -18,7 +18,7 @@ void	len_check(int len, int nb, t_core *file)
 	{
 		if (len > PROG_NAME_LENGTH)
 		{
-			ft_printf("Name to long\n");
+			ft_printf("ERROR: Name to long\n");
 			error_file(file);
 		}
 	}
@@ -26,7 +26,7 @@ void	len_check(int len, int nb, t_core *file)
 	{
 		if (len > COMMENT_LENGTH)
 		{
-			ft_printf("Comment length to long\n");
+			ft_printf("ERROR: Comment length to long\n");
 			error_file(file);
 		}
 	}
@@ -73,7 +73,7 @@ void	name_and_cmt(char *line, t_core *file)
 	else
 	{
 		free_struct_tcore(file);
-		ft_printf("error, after decimal symbol at line %d\n", file->rows);
+		ft_printf("ERROR: After decimal symbol at line %d\n", file->rows);
 		exit (-1);
 	}
 }

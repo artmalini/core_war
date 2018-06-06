@@ -62,7 +62,7 @@ void	line_handler(char *line, t_core *file)
 		lowstr = ft_strsub(str, 0, i);
 		push_laybel(lowstr, &file->inst, file);
 
-		ft_printf("Line[65]: line_handler	(|%s|)\n", lowstr);
+		ft_printf("\n---> Finded LABEL: [%s]\n", lowstr);
 		ft_strdel(&lowstr);
 		flag = 1;
 	}
@@ -76,12 +76,12 @@ void	line_handler(char *line, t_core *file)
 		while (*str && (*str == ' ' || *str == '\t'))
 			str++;
 		i = 0;
-		ft_printf("\nLine[79]: STR	|%s|\n", str);
+		ft_printf("** Analyze String: [%s]\n", str);
 		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 		{
 			if (!ft_strchr(LABEL_CHARS, str[i]))
 			{
-				ft_printf("Line[84]: line_handler	ERROR\n");
+				ft_printf("!! Line_handler:	ERROR\n");
 				error_file(file);
 			}
 			i++;
@@ -94,14 +94,14 @@ void	line_handler(char *line, t_core *file)
 	}
 	if (check_command(lowstr, file))
 	{
-		ft_printf("Line[97]: line_handler check_command	|%s|	|%s|\n", lowstr, str + (ft_strlen(lowstr) + 1));
+		ft_printf("** Check_commands: [%s]\n", lowstr, str + (ft_strlen(lowstr) + 1));
 		if (!file->inst)//!!!!!!!!!  IF LABEL DOES NOT EXIST
 			push_laybel(NULL, &file->inst, file);
 		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
 	}
 	else
 	{//wrong command
-		ft_printf("Line[104]: line_handler	ERROR\n");
+		ft_printf("!! Line_handler:	ERROR\n");
 		error_file(file);
 	}
 
@@ -130,7 +130,7 @@ int		main(int argc, char **argv)
 		ft_printf("\n");
 		cmd_debug(file.inst);///COMMAND debug		
 		ft_printf("\n");
-		ft_printf("ok rows: [%d]\n", file.rows);
+		ft_printf("OK Rows: [%d]\n", file.rows);
 
 		free_struct_tcore(&file);
 		//system("leaks asm");
