@@ -112,6 +112,142 @@ void	line_handler(char *line, t_core *file)
 	//ft_printf("line_handler|%s| 		str|%s|\n", line, str);	
 }
 
+
+
+
+
+
+
+
+int		get_binary_code(char c)
+{
+	//ft_printf("get_binary_code %c\n", c);
+	if (c == 'r')
+		return (1);
+	else if (c == '%')
+		return (10);
+	else
+		return (11);
+}
+
+int		result_opcode(char c, int code, int get_bin)
+{
+	int		res;
+	int		binary;
+
+	res = 0;
+	binary = get_binary_code(c);
+	res = get_bin + (binary / 10 * code) + (binary % 10 * code / 2);
+	//ft_printf("RES %d\n", res);
+	return (res);
+}
+
+int		count_opcode(char *str)//should be better validation for *str
+{
+	int		get_bin;
+	int		code;
+	//int		l_size;
+
+	get_bin = 0;
+	//l_size = 0;
+	code = 128;
+	while (*str)
+	{
+		if (*str == 'r')
+		{
+			get_bin = result_opcode(*str, code, get_bin);
+			while (*str && (*str != ' '))
+				str++;
+			code /= 4;
+			//ft_printf("%s\n", str);
+		}
+		if (*str == '%')
+		{
+			get_bin = result_opcode(*str, code, get_bin);
+			while (*str && (*str != ' '))
+				str++;
+			code /= 4;
+			//ft_printf("%s\n", str);
+		}
+		if (*str)
+			str++;			
+	}
+	return (get_bin);
+}
+
+
+void	write_bytes(t_core *file, t_inst *inst)
+{
+	t_cmd	*comm;
+	int		opcode;
+	int		i;
+	int		j;
+	char	*str;
+
+	opcode = 0;
+	i = 0;
+	j = 0;
+	//ft_printf("file count_size %d\n", file->count_size);
+	while (inst)
+	{
+		//ft_printf("Label (Name/Positions): [%s]/[%d]\n", inst->label, inst->label_pos);
+		comm = inst->cmd;
+		while (comm)
+		{
+			ft_printf("opcode %d\n", comm->opcode);
+			check_command(comm->command, file);
+			//ft_printf("comm->command %d\n", file->inst_pos);
+			if (op_tab[file->inst_pos].codage)
+			{
+				//ft_printf("codage %d\n", op_tab[file->inst_pos].codage);
+				opcode = count_opcode(comm->str);
+				ft_printf("COUNT_CODAGE %d\n", opcode);
+			}
+			str = comm->str;
+			while (str[j])//split should be better
+			{
+				if (str[j] == 'r')
+				{
+					j++;
+					i++;
+					ft_printf("	#|%s|\n", comm->str + i);
+					while (str[j] && (str[j] != ' '))
+					{
+						i++;
+						j++;
+					}
+				}
+				else if (str[j] == '%' && str[j + 1] == ':')
+				{
+					j++;
+					i++;
+					ft_printf("	#|%s|\n", comm->str + i);
+					while (str[j] && (str[j] != ' '))
+					{
+						i++;
+						j++;
+					}
+				}
+				else 
+				{
+					j++;
+					i++;
+					ft_printf("	#|%s| %d\n", comm->str + i, i);
+					while (str[j] && (str[j] != ' '))
+					{
+						i++;
+						j++;
+					}
+				}
+				if (str[j])
+					j++;
+			}
+			comm = comm->next;
+		}
+		inst = inst->next;
+	}	
+}
+
 int		main(int argc, char **argv)
 {
 	t_core	file;
@@ -123,6 +259,7 @@ int		main(int argc, char **argv)
 			wrong_input(1);
 		parse_file(argv[1], &file);
 
+		write_bytes(&file, file.inst);
 		inter_main();//NEW FUNCTIONS (VOID);
 
 		ft_printf("\n\n");

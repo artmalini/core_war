@@ -42,6 +42,16 @@ void	name_and_cmt_valid(char *line, int nb, t_core *file)
 	//line += nb == 1 ? 6 : 9;
 	while (*line && *line != '\"')
 		line++;
+	if (nb == 1)
+	{
+		file->name = ft_strdup(line);
+		ft_printf("name_and_cmt_valid name	|%s|\n", line);
+	}
+	if (nb == 2)
+	{
+		file->comment = ft_strdup(line);
+		ft_printf("name_and_cmt_valid comment	|%s|\n", line);
+	}	
 	if (*line == '\"')
 	{
 		count++;

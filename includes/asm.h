@@ -85,6 +85,7 @@ typedef struct		s_op
 typedef struct		s_cmd
 {
 	char			*command;
+	char			*str;
 	int				opcode;
 	int				cmd_size;
 	struct s_cmd	*next;

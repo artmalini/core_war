@@ -17,7 +17,7 @@ void	label_debug(t_core *file)
 		t_inst	*inst;
 
 		inst = file->inst;
-		ft_printf("File Count Size:	[%d]\n", file->count_size);
+		ft_printf("File Count Size:	[%d] %s\n", file->count_size, file->name);
 		while (inst)
 		{
 			ft_printf("Label (Name/Positions):	[%s]/[%d]\n", inst->label, inst->label_pos);
@@ -39,5 +39,5 @@ void	cmd_debug(t_inst *inst)
 			comm = comm->next;
 		}
 		inst = inst->next;
-	}	
+	}
 }

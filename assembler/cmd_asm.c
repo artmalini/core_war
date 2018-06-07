@@ -17,11 +17,47 @@
 // 	if (op_tab[file->inst_pos].nbr_args == 1)
 // }
 
+char	*insert_cmd_string(char *args)
+{
+	int		i;
+	int		j;
+	//int		flag;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	//flag = 0;
+	if (!(str = (char *)malloc(sizeof(str) * (ft_strlen(args) + 1))))
+		return (NULL);
+	while (args[i])
+	{
+		while (args[i] && (args[i] != ' ' && args[i] != '\t' && args[i] != ','))
+		{
+			str[j++] = args[i++];
+		}
+		while (args[i] && (args[i] == ' ' || args[i] == '\t' || args[i] == ','))
+		{
+			i++;
+		}
+		if ((args[i] != '\n' && args[i]))
+		{
+			ft_printf("ok |%c|\n", args[i]);
+			str[j++] = ' ';
+		}
+		//if (args[i])
+		//	i++;
+	}
+	str[j] = '\0';
+	ft_printf("INSERT STR|%s|\n", str);
+	return (str);
+}
+
 int		count_cmd_size(char *args, t_core *file)
 {
 	int		l_size;
 	int		len;
 
+	ft_printf("ARGS count_cmd_size|%s|\n", args);
 	len = 1;
 	l_size = 0;
 	if (op_tab[file->inst_pos].size == 0)
@@ -45,7 +81,6 @@ int		count_cmd_size(char *args, t_core *file)
 
 t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 {
-	(void)args;
 	t_cmd	*lst;
 
 	lst = NULL;
@@ -59,12 +94,14 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		//save this fresh string in to lst
 		lst->command = cmd ? ft_strdup(cmd) : NULL;
 		lst->opcode = op_tab[file->inst_pos].opcode;
-		//insert to count_cmd_size this fresh string
+		//insert to count_cmd_size this fresh string 	done
+		//insert_cmd_string(args); 						done
+		lst->str = args ? insert_cmd_string(args) : NULL;
 		lst->cmd_size = count_cmd_size(args, file);
 		file->count_size += lst->cmd_size;
 		lst->next = NULL;
 	}
-	ft_printf("---> Finded ARGS:  [%s]\n\n", args);
+	ft_printf("---> Finded lst->str:  [%s]\n\n", lst->str);
 	return (lst);
 }
 
