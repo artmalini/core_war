@@ -18,6 +18,8 @@
 # include "ft_printf.h"
 # include <fcntl.h>
 
+# define ERROR -1
+
 # define T_REG 1
 # define T_DIR 2
 # define T_IND 4
@@ -120,7 +122,6 @@ char	*inter_main(void);
 void	wrong_input(int c);
 t_inst	*add_label(char *str, t_core *file);
 int		line_has_val(char *line);
-void	error_file(t_core *file);
 void	free_struct_tcore(t_core *file);
 void	read_line(char *line, t_core *file);
 void	parse_file(char *arg, t_core *file);
@@ -133,6 +134,8 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file);
 void	push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
 void	create_cor(t_core *file);
 int		count_opcode(char *str);
+
+void	error_file(t_core *file, int nbr_char);
 
 void	cmd_debug(t_inst *inst);
 void	label_debug(t_core *file);
