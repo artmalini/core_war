@@ -26,7 +26,7 @@ SRCS_ASM	=	main.c \
 				inter_main.c \
 				debug_asm.c \
 				read_asm.c \
-				parse.c \
+				parse_asm.c \
 				label_asm.c \
 				cmd_asm.c \
 
@@ -62,7 +62,3 @@ norme: clean
 re: fclean all
 
 .PHONY:	all clean fclean re
-
-
-# $(NAME):$(OBJS)
-# 	@$(CC) $(CFLAG) $(SRCS) $(LIBFT) -o $(NAME)

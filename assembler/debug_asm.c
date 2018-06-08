@@ -17,9 +17,10 @@ void	label_debug(t_core *file)
 		t_inst	*inst;
 
 		inst = file->inst;
+		ft_printf("File Count Size:	[%d] %s\n", file->count_size, file->name);
 		while (inst)
 		{
-			ft_printf("Line[22]: label_debug	|%s|\n", inst->label);
+			ft_printf("Label (Name/Positions):	[%s]/[%d]\n", inst->label, inst->label_pos);
 			inst = inst->next;
 		}
 }
@@ -30,11 +31,11 @@ void	cmd_debug(t_inst *inst)
 
 	while (inst)
 	{
-		ft_printf("Line[33]: cmd_debug label	|%s|\n", inst->label);
+		ft_printf("Label (Name/Positions): [%s]/[%d]\n", inst->label, inst->label_pos);
 		comm = inst->cmd;
 		while (comm)
 		{
-			ft_printf("Line[37]: md_debug command	|%s| opcode|%d|\n", comm->command, comm->opcode);
+			ft_printf("CMD:	[%s]\nOpcode:	[%d]\nSize:	[%d]\n\n", comm->command, comm->opcode, comm->cmd_size);
 			comm = comm->next;
 		}
 		inst = inst->next;

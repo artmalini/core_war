@@ -78,14 +78,16 @@ typedef struct		s_op
 	int				opcode;
 	int				cycles;
 	char			*full_name;
-	char			params_byte;
-	char			size;
+	int				codage;
+	int				size;
 }					t_op;
 
 typedef struct		s_cmd
 {
 	char			*command;
-	int				opcode;	
+	char			*str;
+	int				opcode;
+	int				cmd_size;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -93,6 +95,7 @@ typedef struct		s_inst
 {
 	char			*label;
 	t_cmd			*cmd;
+	int				label_pos;
 	struct s_inst	*next;
 }					t_inst;
 
@@ -104,19 +107,21 @@ typedef struct		s_core
 	int				rows;
 	int				inst_pos;
 	t_inst			*inst;
+	int				size;
+	int				count_size;
 }					t_core;
 
 extern t_op op_tab[17];
 
 char	*inter_main(void);
 void	wrong_input(int c);
-t_inst	*add_label(char *str);
+t_inst	*add_label(char *str, t_core *file);
 int		line_has_val(char *line);
 void	error_file(t_core *file);
 void	free_struct_tcore(t_core *file);
 void	read_line(char *line, t_core *file);
 void	parse_file(char *arg, t_core *file);
-void	push_laybel(char *str, t_inst **lst);
+void	push_laybel(char *str, t_inst **lst, t_core *file);
 void	name_and_cmt(char *line, t_core *file);
 void	line_handler(char *line, t_core *file);
 int		parse_filename(char	*arg, t_core *file);
