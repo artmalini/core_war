@@ -259,8 +259,9 @@ int		main(int argc, char **argv)
 			wrong_input(1);
 		parse_file(argv[1], &file);
 
-		write_bytes(&file, file.inst);
-		inter_main();//NEW FUNCTIONS (VOID);
+		//write_bytes(&file, file.inst);
+		create_cor(&file);
+		inter_main();//NEW FUNCTIONS (VOID);		
 
 		ft_printf("\n\n");
 		label_debug(&file);//LABEL DEBUG

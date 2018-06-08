@@ -29,6 +29,7 @@ SRCS_ASM	=	main.c \
 				parse_asm.c \
 				label_asm.c \
 				cmd_asm.c \
+				create_cor.c \
 
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)

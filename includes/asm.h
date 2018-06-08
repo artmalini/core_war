@@ -86,6 +86,9 @@ typedef struct		s_cmd
 {
 	char			*command;
 	char			*str;
+	char			*arg1;
+	char			*arg2;
+	char			*arg3;
 	int				opcode;
 	int				cmd_size;
 	struct s_cmd	*next;
@@ -128,6 +131,7 @@ int		parse_filename(char	*arg, t_core *file);
 int		check_command(char	*lowstr, t_core *file);
 t_cmd	*add_cmd(char *cmd, char *args, t_core *file);
 void	push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
+void	create_cor(t_core *file);
 
 void	cmd_debug(t_inst *inst);
 void	label_debug(t_core *file);

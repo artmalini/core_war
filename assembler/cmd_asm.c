@@ -17,6 +17,16 @@
 // 	if (op_tab[file->inst_pos].nbr_args == 1)
 // }
 
+void	free_mas(char **mas)
+{
+	int i;
+
+	i = -1;
+	while (mas[++i] != NULL)
+		free(mas[i]);
+	free(mas);
+}
+
 char	*insert_cmd_string(char *args)
 {
 	int		i;
@@ -82,9 +92,11 @@ int		count_cmd_size(char *args, t_core *file)
 t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 {
 	t_cmd	*lst;
+	char	**mas;
 
 	lst = NULL;
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
+	mas = NULL;
 	if (lst)
 	{
 		//should be validation here for args
@@ -97,11 +109,16 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		//insert to count_cmd_size this fresh string 	done
 		//insert_cmd_string(args); 						done
 		lst->str = args ? insert_cmd_string(args) : NULL;
+		mas = ft_strsplit(lst->str, ' ');
+		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? mas[0] : NULL;
+		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? mas[1] : NULL;
+		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? mas[2] : NULL;
 		lst->cmd_size = count_cmd_size(args, file);
 		file->count_size += lst->cmd_size;
 		lst->next = NULL;
 	}
-	ft_printf("---> Finded lst->str:  [%s]\n\n", lst->str);
+	ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3);
+	free_mas(mas);
 	return (lst);
 }
 
