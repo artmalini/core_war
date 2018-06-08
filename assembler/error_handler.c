@@ -77,9 +77,9 @@ void	free_struct_tcore(t_core *file)
 	}
 }
 
-void	error_file(t_core *file)
+void	error_file(t_core *file, int nbr_char)
 {
-	ft_printf("error at line %d\n", file->rows);
+	ft_printf("ERROR: At [line]/[Byte_nbr] - [%d]/[%d]\n", file->rows, nbr_char);
 	free_struct_tcore(file);
-	exit(-1);
+	exit(ERROR);
 }

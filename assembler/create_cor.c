@@ -161,11 +161,11 @@ void	create_cor(t_core *file)
 	int		fd;
 
 	if (!(fd = open(file->filename, O_RDWR | O_CREAT, 0777)))
-		error_file(file);
+		error_file(file, 0);
 	set_cor_magic(fd);
 	set_cor_name(fd, file);
 	set_cor_nbr_comment(fd, file);
 	set_instruction(fd, file->inst, file);
 	if(close(fd) == -1)
-		error_file(file);
+		error_file(file, 0);
 }

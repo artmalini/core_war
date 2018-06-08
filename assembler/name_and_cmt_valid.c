@@ -19,7 +19,7 @@ void	len_check(int len, int nb, t_core *file)
 		if (len > PROG_NAME_LENGTH)
 		{
 			ft_printf("ERROR: Name to long\n");
-			error_file(file);
+			error_file(file, len);
 		}
 	}
 	if (nb == 2)
@@ -27,7 +27,7 @@ void	len_check(int len, int nb, t_core *file)
 		if (len > COMMENT_LENGTH)
 		{
 			ft_printf("ERROR: Comment length to long\n");
-			error_file(file);
+			error_file(file, len);
 		}
 	}
 }
@@ -40,28 +40,28 @@ void	name_and_cmt_valid(char *line, int nb, t_core *file)
 	count = 0;
 	len = 0;
 	//line += nb == 1 ? 6 : 9;
-	while (*line && *line != '\"')
+	while (line && *line && *line != '\"')
 		line++;	
-	if (*line == '\"')
+	if (line && *line == '\"')
 	{
 		count++;
 		line++;
 	}
-	while (*line && *line != '\"')
+	while (line && *line != '\0' && *line != '\"')
 	{
 		len++;
-		if (!ft_strchr(HEADER_CHARS, *line))
+		if (ft_strchr("\"", *line))
 		{
-			ft_printf("### |%c|", *line);
-			error_file(file);
+			ft_printf("ERROR: Chars |%c|/|%d|\n", *line, count);
+			error_file(file, len);
 		}
 		len_check(len, nb, file);
 		line++;
 	}
-	if (*line == '\"')
+	if (line && *line == '\"')
 		count++;
 	if (count != 2)
-		error_file(file);
+		error_file(file, len);
 }
 
 void	write_name_or_cmt(char *line, int nb, t_core *file)
@@ -102,6 +102,6 @@ void	name_and_cmt(char *line, t_core *file)
 	{
 		free_struct_tcore(file);
 		ft_printf("ERROR: After decimal symbol at line %d\n", file->rows);
-		exit (-1);
+		exit (ERROR);
 	}
 }

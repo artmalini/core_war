@@ -59,7 +59,6 @@
 # define COMMENT_LENGTH (2048)
 # define COREWAR_EXEC_MAGIC 0xea83f3
 
-# define HEADER_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789! '()-+*&<>=/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
 
 typedef char 		t_arg_type;

@@ -82,7 +82,7 @@ void	line_handler(char *line, t_core *file)
 			if (!ft_strchr(LABEL_CHARS, str[i]))
 			{
 				ft_printf("!! Line_handler:	ERROR\n");
-				error_file(file);
+				error_file(file, 0);
 			}
 			i++;
 		}
@@ -102,7 +102,7 @@ void	line_handler(char *line, t_core *file)
 	else
 	{//wrong command
 		ft_printf("!! Line_handler:	ERROR\n");
-		error_file(file);
+		error_file(file, 0);
 	}
 
 
