@@ -12,11 +12,6 @@
 
 #include "asm.h"
 
-// void		valid_args(char *args, t_core *file)
-// {
-// 	if (op_tab[file->inst_pos].nbr_args == 1)
-// }
-
 void	free_mas(char **mas)
 {
 	int i;
@@ -101,7 +96,7 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 	{
 		//should be validation here for args
 		//error_file(file)
-		//valid_args(args, file);
+		valid_args(args, file);
 		//adn return fresh args string 	
 		//save this fresh string in to lst
 		lst->command = cmd ? ft_strdup(cmd) : NULL;

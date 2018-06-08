@@ -23,13 +23,13 @@ SRCS_ASM	=	main.c \
 				op.c \
 				error_handler.c \
 				name_and_cmt_valid.c \
-				inter_main.c \
 				debug_asm.c \
 				read_asm.c \
 				parse_asm.c \
 				label_asm.c \
 				cmd_asm.c \
 				create_cor.c \
+				valid_main.c \
 
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)

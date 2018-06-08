@@ -18,12 +18,13 @@
 # include "ft_printf.h"
 # include <fcntl.h>
 
-# define ERROR -1
+# define OK		1
+# define ERROR	-1
 
-# define T_REG 1
-# define T_DIR 2
-# define T_IND 4
-# define T_LAB 8
+# define T_REG	1
+# define T_DIR	2
+# define T_IND	4
+# define T_LAB	8
 
 # define IND_SIZE 2
 # define REG_SIZE 4
@@ -59,7 +60,8 @@
 # define COMMENT_LENGTH (2048)
 # define COREWAR_EXEC_MAGIC 0xea83f3
 
-# define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define SPACES_CHARS	"\t \v"
+# define LABEL_CHARS	"abcdefghijklmnopqrstuvwxyz_0123456789"
 
 typedef char 		t_arg_type;
 
@@ -115,28 +117,36 @@ typedef struct		s_core
 	int				count_size;
 }					t_core;
 
-extern t_op op_tab[17];
+extern t_op	op_tab[17];
 
-char	*inter_main(void);
-void	wrong_input(int c);
-t_inst	*add_label(char *str, t_core *file);
-int		line_has_val(char *line);
-void	free_struct_tcore(t_core *file);
-void	read_line(char *line, t_core *file);
-void	parse_file(char *arg, t_core *file);
-void	push_laybel(char *str, t_inst **lst, t_core *file);
-void	name_and_cmt(char *line, t_core *file);
-void	line_handler(char *line, t_core *file);
-int		parse_filename(char	*arg, t_core *file);
-int		check_command(char	*lowstr, t_core *file);
-t_cmd	*add_cmd(char *cmd, char *args, t_core *file);
-void	push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
-void	create_cor(t_core *file);
-int		count_opcode(char *str);
 
-void	error_file(t_core *file, int nbr_char);
+t_inst		*add_label(char *str, t_core *file);
+int			line_has_val(char *line);
+void		free_struct_tcore(t_core *file);
+void		read_line(char *line, t_core *file);
+void		parse_file(char *arg, t_core *file);
+void		push_laybel(char *str, t_inst **lst, t_core *file);
+void		name_and_cmt(char *line, t_core *file);
+void		line_handler(char *line, t_core *file);
+int			parse_filename(char	*arg, t_core *file);
+int			check_command(char	*lowstr, t_core *file);
+t_cmd		*add_cmd(char *cmd, char *args, t_core *file);
+void		push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
+void		create_cor(t_core *file);
+int			count_opcode(char *str);
 
-void	cmd_debug(t_inst *inst);
-void	label_debug(t_core *file);
+//			[ERROR MANAGER]
+void		wrong_input(int c);
+void		error_file(t_core *file, int nbr_char);
+
+//			[VALADATIONS]
+void		valid_args(char *str, t_core *file);
+int			check_arg_reg(char *arg, t_core *file);
+int			check_arg_dir(char *arg, t_core *file);
+int			check_arg_ind(int arg, t_core *file);
+
+//			[DEBUG FUNCTIONS]
+void		cmd_debug(t_inst *inst);
+void		label_debug(t_core *file);
 
 #endif
