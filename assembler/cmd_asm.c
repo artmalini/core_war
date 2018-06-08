@@ -110,9 +110,9 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		//insert_cmd_string(args); 						done
 		lst->str = args ? insert_cmd_string(args) : NULL;
 		mas = ft_strsplit(lst->str, ' ');
-		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? mas[0] : NULL;
-		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? mas[1] : NULL;
-		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? mas[2] : NULL;
+		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
+		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
+		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
 		lst->cmd_size = count_cmd_size(args, file);
 		file->count_size += lst->cmd_size;
 		lst->next = NULL;

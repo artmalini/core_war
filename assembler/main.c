@@ -169,6 +169,13 @@ int		count_opcode(char *str)//should be better validation for *str
 			code /= 4;
 			//ft_printf("%s\n", str);
 		}
+		// if (*str != 'r' && *str != '%')
+		// {
+		// 	get_bin = result_opcode(*str, code, get_bin);
+		// 	while (*str && (*str != ' '))
+		// 		str++;
+		// 	code /= 4;
+		// }
 		if (*str)
 			str++;			
 	}
@@ -260,7 +267,7 @@ int		main(int argc, char **argv)
 		parse_file(argv[1], &file);
 
 		//write_bytes(&file, file.inst);
-		create_cor(&file);
+
 		inter_main();//NEW FUNCTIONS (VOID);		
 
 		ft_printf("\n\n");
@@ -269,6 +276,7 @@ int		main(int argc, char **argv)
 		cmd_debug(file.inst);///COMMAND debug		
 		ft_printf("\n");
 		ft_printf("OK Rows: [%d]\n", file.rows);
+		create_cor(&file);
 
 		free_struct_tcore(&file);
 		//system("leaks asm");

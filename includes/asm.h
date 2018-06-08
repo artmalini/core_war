@@ -132,6 +132,7 @@ int		check_command(char	*lowstr, t_core *file);
 t_cmd	*add_cmd(char *cmd, char *args, t_core *file);
 void	push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
 void	create_cor(t_core *file);
+int		count_opcode(char *str);
 
 void	cmd_debug(t_inst *inst);
 void	label_debug(t_core *file);

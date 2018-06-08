@@ -75,6 +75,87 @@ void	set_cor_nbr_comment(int fd, t_core *file)
 		ft_putchar_fd(0, fd);
 }
 
+
+
+
+
+
+void	set_bytes(int fd, char *str, t_core *file)
+{
+	int		i;
+	int		j;
+	int		nb;
+	int		nbr;
+	int		size;
+
+	i = 0;
+	j = 0;
+	nb = 0;
+	ft_printf("STR |%s|\n", str);
+	size = op_tab[file->inst_pos].size;
+	if (size == 0)
+		j = 4;
+	if (size == 1)
+		j = 2;
+	if (*str >= '0' && *str <= '9')
+		nb = ft_atoi(str);
+	else if (*str == 'r')
+	{
+		nb = ft_atoi(str + 1);
+	}
+	//else if (*str == 'r' && *str == ':')
+	//{
+		
+	//}
+	nbr = nb;
+	while (nbr)
+	{		
+		nbr /= 256;
+		j++;
+	}
+	printf("NB|%d| j|%d|\n", nb, j);
+	while (size - i++)//for count byte size
+		ft_putchar_fd(0, fd);
+	asm_hexa_fd(nb, fd);
+}
+
+void	set_instruction(int fd, t_inst *inst, t_core *file)
+{
+	t_cmd	*comm;
+	int	opcode;
+	int	i;
+	
+	i = 0;
+	while (inst)
+	{
+		//ft_printf("Label (Name/Positions): [%s]/[%d]\n", inst->label, inst->label_pos);
+		comm = inst->cmd;
+		while (comm)
+		{
+			i = 0;
+			ft_printf("opcode %d\n", comm->opcode);
+			asm_hexa_fd(comm->opcode, fd);
+			check_command(comm->command, file);//	FIND current command
+			//ft_printf("comm->command %d\n", file->inst_pos);
+			if (op_tab[file->inst_pos].codage)
+			{
+				//ft_printf("str |%s|\n", comm->str);
+				opcode = count_opcode(comm->str);
+				ft_printf("COUNT_CODAGE %d\n", opcode);
+				asm_hexa_fd(opcode, fd);
+			}
+			while (i < op_tab[file->inst_pos].nbr_args)
+			{
+				if (i == 0)
+					set_bytes(fd, comm->arg1, file);
+				i++;
+			}
+			comm = comm->next;
+		}
+		inst = inst->next;
+	}
+}
+
 void	create_cor(t_core *file)
 {
 	int		fd;
@@ -84,6 +165,7 @@ void	create_cor(t_core *file)
 	set_cor_magic(fd);
 	set_cor_name(fd, file);
 	set_cor_nbr_comment(fd, file);
-	if(!close(fd))
+	set_instruction(fd, file->inst, file);
+	if(close(fd) == -1)
 		error_file(file);
 }
