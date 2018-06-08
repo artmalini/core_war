@@ -7,5 +7,8 @@ rm -rf *.cor
 
 git status
 git add .
+git status
 git commit -m "Day 10 [CoreWar] - vmakahon (auto-push)"
+git status
 git push origin master
+git status
