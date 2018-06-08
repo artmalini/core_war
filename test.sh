@@ -15,8 +15,9 @@ rm -rf */*/*.c~
 rm -rf */*/*/_*
 rm -rf */*/*/*.c~
 
-echo "\n---------------------- [TEST of My - ASSEMBLER] ---------------------- \n"
+echo "\n---------------------- [Compile CoreWar-ASM] ---------------------- \n"
 make
+echo "\n---------------------- [TEST of My - ASSEMBLER] ---------------------- \n"
 ./asm vmakahon.s
 
 echo "\n---------------------- [TEST of Custom - ASSEMBLER] ---------------------- \n"
