@@ -73,7 +73,7 @@ typedef struct		s_header
 	char			how [COMMENT_LENGTH + 1];
 }					t_header;
 
-# define BUF_SIZE (4)
+# define BUF_SIZE (5)
 
 typedef struct		s_player
 {
@@ -86,6 +86,13 @@ typedef struct		s_player
 	char			*comment;
 	// char			ex_code[size_exec];
 	char			*ex_code;
+	unsigned char		memory[MEM_SIZE];
+	unsigned int		nb_player;
+	unsigned long		cycle;
+	unsigned long		nbr_live;
+	unsigned long		old_nbr_live;
+	unsigned long		nb_process;
+	int					mem_mov;
 	
 } 					t_player;
 
