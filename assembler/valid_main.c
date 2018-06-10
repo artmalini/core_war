@@ -35,9 +35,9 @@ int			check_arg_dir(char *arg, t_core *file)
 int			check_arg_ind(int arg, t_core *file)
 {
 	(void)file;
-	int		i;
+	//int		i;
 
-	i = 0;
+	//i = 0;
 	ft_printf("-------->>> T_IND: [%d]\n", arg);
 	return (OK);
 }

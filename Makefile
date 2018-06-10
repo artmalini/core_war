@@ -23,15 +23,15 @@ GREY	= \033[37m
 all: $(NAME)
 
 $(NAME): 
-	@make -C $(LIB_DIR)
+	#@make -C $(LIB_DIR)
 	@make -C $(ASM_DIR)
 
 clean:
-	@make -C $(LIB_DIR) clean
+	#@make -C $(LIB_DIR) clean
 	@make -C $(ASM_DIR) clean
 
 fclean: clean
-	@make -C $(LIB_DIR) fclean
+	#@make -C $(LIB_DIR) fclean
 	@make -C $(ASM_DIR) fclean
 	
 re: fclean all

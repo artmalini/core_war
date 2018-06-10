@@ -76,17 +76,25 @@ void	line_handler(char *line, t_core *file)
 		while (*str && (*str == ' ' || *str == '\t'))
 			str++;
 		i = 0;
-		ft_printf("** Analyze String: [%s]\n", str);
-		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
+		if (*str)
 		{
-			if (!ft_strchr(LABEL_CHARS, str[i]))
+			ft_printf("** Analyze String: [%s]\n", str);
+			while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 			{
-				ft_printf("!! Line_handler:	ERROR\n");
-				error_file(file, 0);
+				if (!ft_strchr(LABEL_CHARS, str[i]))
+				{
+					ft_printf("!! Line_handler:	ERROR\n");
+					error_file(file, 0);
+				}
+				i++;
 			}
-			i++;
+			lowstr = ft_strsub(str, 0, i);
 		}
-		lowstr = ft_strsub(str, 0, i);
+		else
+		{
+			ft_strdel(&lowstr);
+			return ;
+		}
 	}
 	else
 	{
@@ -169,13 +177,14 @@ int		count_opcode(char *str)//should be better validation for *str
 			code /= 4;
 			//ft_printf("%s\n", str);
 		}
-		// if (*str != 'r' && *str != '%')
-		// {
-		// 	get_bin = result_opcode(*str, code, get_bin);
-		// 	while (*str && (*str != ' '))
-		// 		str++;
-		// 	code /= 4;
-		// }
+		if (*str >= '0' && *str <= '9')
+		{
+			get_bin = result_opcode(*str, code, get_bin);
+			while (*str && (*str != ' '))
+				str++;
+			code /= 4;
+			//ft_printf("%s\n", str);
+		}
 		if (*str)
 			str++;			
 	}
@@ -183,77 +192,71 @@ int		count_opcode(char *str)//should be better validation for *str
 }
 
 
-void	write_bytes(t_core *file, t_inst *inst)
-{
-	t_cmd	*comm;
-	int		opcode;
-	int		i;
-	int		j;
-	char	*str;
 
-	opcode = 0;
-	i = 0;
-	j = 0;
-	//ft_printf("file count_size %d\n", file->count_size);
-	while (inst)
+
+
+
+
+
+
+
+
+int			find_l(char *str, t_core *file)
+{
+	t_cmd	*tmp;
+
+	tmp = file->inst->cmd;
+	if (tmp)
 	{
-		//ft_printf("Label (Name/Positions): [%s]/[%d]\n", inst->label, inst->label_pos);
-		comm = inst->cmd;
-		while (comm)
+		while (tmp)
 		{
-			ft_printf("opcode %d\n", comm->opcode);
-			check_command(comm->command, file);
-			//ft_printf("comm->command %d\n", file->inst_pos);
-			if (op_tab[file->inst_pos].codage)
+			if (tmp->arg1)
 			{
-				//ft_printf("codage %d\n", op_tab[file->inst_pos].codage);
-				opcode = count_opcode(comm->str);
-				ft_printf("COUNT_CODAGE %d\n", opcode);
+				//ft_printf("STR %s\n", tmp->arg1 + 2);
+				if (!ft_strcmp(str, tmp->arg1 + 2))
+				{
+					ft_printf("		@STR %s|%d|\n", str, tmp->byte_nbr);
+					return (tmp->byte_nbr);
+				}
 			}
-			str = comm->str;
-			while (str[j])//split should be better
+			if (tmp->arg2)
 			{
-				if (str[j] == 'r')
+				if (!ft_strcmp(str, tmp->arg2 + 2))
 				{
-					j++;
-					i++;
-					ft_printf("	#|%s|\n", comm->str + i);
-					while (str[j] && (str[j] != ' '))
-					{
-						i++;
-						j++;
-					}
+					ft_printf("		@STR %s|%d|\n", str, tmp->byte_nbr);
+					return (tmp->byte_nbr);
 				}
-				else if (str[j] == '%' && str[j + 1] == ':')
-				{
-					j++;
-					i++;
-					ft_printf("	#|%s|\n", comm->str + i);
-					while (str[j] && (str[j] != ' '))
-					{
-						i++;
-						j++;
-					}
-				}
-				else 
-				{
-					j++;
-					i++;
-					ft_printf("	#|%s| %d\n", comm->str + i, i);
-					while (str[j] && (str[j] != ' '))
-					{
-						i++;
-						j++;
-					}
-				}
-				if (str[j])
-					j++;
 			}
-			comm = comm->next;
+			if (tmp->arg3)
+			{
+				if (!ft_strcmp(str, tmp->arg3 + 2))
+				{
+					ft_printf("		@STR %s|%d|\n", str, tmp->byte_nbr);
+					return (tmp->byte_nbr);
+				}
+			}
+			tmp = tmp->next;
 		}
-		inst = inst->next;
-	}	
+	}
+	return (0);
 }
+
+
+void			write_bytes(t_core *file)
+{
+	t_inst	*tmp;
+
+	tmp = file->inst;
+	if (tmp)
+	{
+		while (tmp)
+		{
+			tmp->label_pos = find_l(tmp->label, file);
+			tmp = tmp->next;
+		}
+	}
+}
+
 
 int		main(int argc, char **argv)
 {
@@ -266,7 +269,6 @@ int		main(int argc, char **argv)
 			wrong_input(1);
 		parse_file(argv[1], &file);
 
-		//write_bytes(&file, file.inst);	
 
 		ft_printf("\n\n");
 		label_debug(&file);//LABEL DEBUG
@@ -274,6 +276,7 @@ int		main(int argc, char **argv)
 		cmd_debug(file.inst);///COMMAND debug		
 		ft_printf("\n");
 		ft_printf("OK Rows: [%d]\n", file.rows);
+		//write_bytes(&file);	
 		create_cor(&file);
 
 		free_struct_tcore(&file);

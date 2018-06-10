@@ -57,30 +57,39 @@ char	*insert_cmd_string(char *args)
 	return (str);
 }
 
-int		count_cmd_size(char *args, t_core *file)
+int		count_cmd_size(char **mas, t_core *file, t_cmd *lst)
 {
 	int		l_size;
 	int		len;
+	int		i;
+	//int		j;
 
-	ft_printf("ARGS count_cmd_size|%s|\n", args);
+	//ft_printf("ARGS count_cmd_size|%s|\n", args);
 	len = 1;
 	l_size = 0;
+	i = -1;
 	if (op_tab[file->inst_pos].size == 0)
 		l_size = 4;
 	if (op_tab[file->inst_pos].size == 1)
 		l_size = 2;
 	if (op_tab[file->inst_pos].codage != 0)
 		len++;
-	while (*args)
+	while (mas[++i] && mas[i][0])
 	{
-		if (*args == 'r')
-			len++;
-		else if (*args == '%' && l_size == 4)
-			len = len + 4;
-		else if (*args == '%' && l_size == 2)
-			len = len + 2;
-		args++;
+			if (mas[i][0] == 'r')
+				len++;
+			else if (mas[i][0] == '%' && l_size == 4)
+				len = len + 4;
+			else if (mas[i][0] == '%' && l_size == 2)
+				len = len + 2;
+			else
+				len = len + 2;
+			if(mas[i][0] == 'r' && mas[i][1] == ':')
+				lst->byte_method_nbr = len;
+			//ft_printf("mas[i][j]%s| %d\n", mas[i], l_size);
+		
 	}
+	ft_printf("				LEN|%d\n", len);
 	return (len);
 }
 
@@ -108,11 +117,17 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
 		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
 		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
-		lst->cmd_size = count_cmd_size(args, file);
+		lst->cmd_size = count_cmd_size(mas, file, lst);
+
+		//lst->byte_method_nbr = lst->cmd_size;
 		file->count_size += lst->cmd_size;
+		
+		file->count_pos += file->count_size;
+		lst->byte_nbr = file->count_size - lst->cmd_size;
 		lst->next = NULL;
 	}
-	ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3);
+	ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s| lst->cmd_size|%d|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3, lst->cmd_size);
+	ft_printf(" lst->byte_method_nbr|%d|\n", lst->byte_method_nbr);
 	free_mas(mas);
 	return (lst);
 }

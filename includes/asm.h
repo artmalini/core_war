@@ -94,6 +94,8 @@ typedef struct		s_cmd
 	char			*arg3;
 	int				opcode;
 	int				cmd_size;
+	int				byte_nbr;	
+	int				byte_method_nbr;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -113,7 +115,8 @@ typedef struct		s_core
 	int				rows;
 	int				inst_pos;
 	t_inst			*inst;
-	int				size;
+	//int				new_pos;
+	int				count_pos;
 	int				count_size;
 }					t_core;
 
