@@ -94,8 +94,11 @@ typedef struct		s_cmd
 	char			*arg3;
 	int				opcode;
 	int				cmd_size;
-	int				byte_nbr;	
-	int				byte_method_nbr;
+	int				byte_nbr;
+
+	int				has_direct;
+	int				cmd_str_size;
+	//int				byte_method_nbr;
 	struct s_cmd	*next;
 }					t_cmd;
 

@@ -93,12 +93,10 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 	{
 		while (tmp)
 		{
-			if (!ft_strcmp(tmp->label, str))
+			if (tmp->label)
 			{
-				if (tmp->label_pos > cmd_size)
-					return (tmp->label_pos);
-				else
-					return (tmp->label_pos - cmd_size);				
+				if (!ft_strcmp(tmp->label, str))
+					return (cmd_size);			
 			}
 			tmp = tmp->next;
 		}
@@ -114,7 +112,7 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 	return (0);
 }
 
-void	set_bytes(int fd, char *str, t_core *file, int cmd_size)
+void	set_bytes(int fd, char *str, t_core *file, t_cmd * cmd)
 {
 	//int		i;
 	int		j;
@@ -126,7 +124,7 @@ void	set_bytes(int fd, char *str, t_core *file, int cmd_size)
 	j = 0;
 	nb = 0;
 	size = op_tab[file->inst_pos].size;
-	ft_printf("count_size %d %s\n", cmd_size, str);
+	ft_printf("count_size %d %s\n", cmd->cmd_size, str);
 	//ft_printf("	STR |%s|\n", str);
 	if (size == 0)
 		size = 4;
@@ -144,7 +142,12 @@ void	set_bytes(int fd, char *str, t_core *file, int cmd_size)
 	}
 	else if (str[0] == '%' && str[1] == ':')
 	{
-		nb = find_pos_cmd(str + 2, file, file->inst, cmd_size);
+		nb = find_pos_cmd(str + 2, file, file->inst, cmd->cmd_str_size);
+	}
+	else if (str[0] == ':')
+	{
+		size = 2;
+		nb = find_pos_cmd(str + 1, file, file->inst, cmd->cmd_str_size);
 	}
 	else if (str[0] == '%' && str[1] != ':')
 	{
@@ -214,11 +217,11 @@ void	set_instruction(int fd, t_inst *inst, t_core *file)
 			while (i < op_tab[file->inst_pos].nbr_args)
 			{
 				if (i == 0)
-					set_bytes(fd, comm->arg1, file, comm->byte_nbr);
+					set_bytes(fd, comm->arg1, file, comm);
 				if (i == 1 && op_tab[file->inst_pos].nbr_args > 1)
-					set_bytes(fd, comm->arg2, file, comm->byte_nbr);
+					set_bytes(fd, comm->arg2, file, comm);
 				if (i == 2 && op_tab[file->inst_pos].nbr_args > 2)
-					set_bytes(fd, comm->arg3, file, comm->byte_nbr);
+					set_bytes(fd, comm->arg3, file, comm);
 				i++;
 			}
 			comm = comm->next;
