@@ -25,27 +25,6 @@ void	wrong_input(int c)
 	exit(-1);
 }
 
-/*void		asm_lst_foreach(t_inst *lst, void (*f)())
-{
-	t_inst		*tmp;
-
-	tmp = lst;
-	while (tmp)
-	{
-		(*f)(tmp->label);
-		tmp = tmp->next;
-	}
-}
-
-void		free_label(char *data)
-{
-	if (data)
-	{
-		ft_strdel(&data);
-		data = NULL;
-	}
-}*/
-
 
 
 
@@ -78,15 +57,10 @@ void	cmd_lst_free(t_cmd *cmd)
 
 void	inst_data_free(t_inst *inst)
 {
-	//t_inst	*tmp;
-
-	//tmp = inst;
 	while (inst)
 	{
 		ft_strdel(&inst->label);
-		//cmd_free(inst->cmd);
 		inst = inst->next;
-		//free(tmp);
 	}
 }
 
@@ -123,11 +97,6 @@ void	free_struct_tcore(t_core *file)
 			inst_data_free(file->inst);
 			inst_free(file->inst);
 		}
-		// if (file->inst)
-		// {
-		// 	asm_lst_foreach(file->inst, free_label);
-		// 	asm_lst_data_free(file->inst);
-		// }
 		//ft_memdel((void**)&file);
 	}
 }

@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 	while ((ret = read(fd, line, CHAMP_MAX_SIZE)) > 0)
 	{
 		line[ret] = '\0';
-		ft_printf("%s", line);
+		ft_printf("%s\n", line);
 		// if (i <= 1)
 		// 	p.magic = ft_strjoin(p.magic, ft_strsub(buf, 0, BUF_SIZE));
 		// else if (i <= PROG_NAME_LENGTH / 2 + 2)
