@@ -122,7 +122,8 @@ int		find_nbr_bytes(char *str, int size)
 	else if (str[0] == 'r')
 		nbr = 1;
 	else if (str[0] == '%' && str[1] == ':')
-		nbr = nbr;
+		nbr = 0; // ERROR FOR Compile - CHECK
+		// nbr = nbr; // OLD VERIOSN
 	else if (str[0] == ':')
 		nbr = 2;
 	return (nbr);
