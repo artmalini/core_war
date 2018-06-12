@@ -41,3 +41,21 @@ void	cmd_debug(t_inst *inst)
 		inst = inst->next;
 	}
 }
+
+void		print_new_args(t_core *file, char **args, int nbr_args)
+{
+	int 	i;
+
+	i = 0;
+	ft_printf("\n#### GOOD 0%d-ARGUMENTS "
+                      "(in Array: mac[%d])\n", nbr_args, nbr_args - 1);
+	if (file->st[DEBUG_ON] && file->st[DEBUG_ARG] == ON)
+	{
+		while (i < nbr_args)
+		{
+			ft_printf("#### 0%d-ARGUMENT - [%s]\n", (i + 1), args[i]);
+			i++;
+		}
+	}
+    ft_printf("\n");
+}

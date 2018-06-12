@@ -252,6 +252,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		ft_bzero(&file, sizeof(t_core));
+        set_settings(&file, ON);                                                 //ON or OFF Settings Project
 		if (!parse_filename(argv[1], &file))
 			wrong_input(1);
 		parse_file(argv[1], &file);

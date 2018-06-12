@@ -12,63 +12,61 @@
 
 #include "asm.h"
 
-int			check_arg_reg(char *arg, t_core *file)
+void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr)
 {
-	(void)file;
-	int		i;
-
-	i = 0;
-	ft_printf("-------->>> T_REG: [%s]\n", (arg+i));
-	return (OK);
+    if (!file || !args || !nbr)
+    {
+        error_file(file, ERROR_ARG);
+        return ;
+    }
+    lst->arg1 = nbr > 0 ? ft_strdup(args[FIRST]) : NULL;
+    lst->arg2 = nbr > 1 ? ft_strdup(args[SECOND]) : NULL;
+    lst->arg3 = nbr > 2 ? ft_strdup(args[THIRD]) : NULL;
 }
 
-int			check_arg_dir(char *arg, t_core *file)
+char		**create_fresh_args(t_core *file, char **args, int nbr_args)
 {
-	(void)file;
-	int		i;
+    int     i;
+    int     nbr;
+    char    **new_args;
 
-	i = 0;
-	ft_printf("-------->>> T_DIR: [%s]\n", (arg+i));
-	return (OK);
+    nbr = 0;
+    if (nbr_args >= MAX_ARGS_NUMBER)
+    {
+        error_file(file, ERROR_ARG);
+        return (NULL);
+    }
+    new_args = ft_memalloc(sizeof(new_args) * (nbr_args + 1));                  //Need Free Memory
+    while (nbr_args > nbr && args[nbr])
+    {
+        i = 0;
+        while (args[nbr][i] && ft_isspace(args[nbr][i]))
+            i++;
+        new_args[nbr] = ft_strdup(args[nbr] + i);                               //Need Free Memory
+        nbr++;
+    }
+    return (new_args);
 }
 
-int			check_arg_ind(int arg, t_core *file)
+
+char		**valid_args_main(t_core *file, char *str_args, int nbr_args)
 {
-	(void)file;
-	//int		i;
+    char	**args;
+    char    **new_args;
 
-	//i = 0;
-	ft_printf("-------->>> T_IND: [%d]\n", arg);
-	return (OK);
-}
-
-void		valid_args(char *str, t_core *file)
-{
-	char	**args;//NEED FREE!!!!
-	int		nbr_arg;
-	int		spc[3];
-
-	nbr_arg = 0;
-	args = NULL;
-	ft_bzero(spc, sizeof(spc));
-	if (!str || !file)
+	args = ft_strsplit(str_args, ',');									        //Need free memory
+    if (!args || !file || !nbr_args)                                            //Search Errors
+        error_file(file, ERROR_ARG);
+	if (check_args_main(file, args, nbr_args) == OK)                                 //Main Check Arguments
+    {
+        new_args = create_fresh_args(file, args, nbr_args);                     //Create new args without spaces
+        free_mas(args);                                                         //Free memory
+        return (new_args);
+    }
+	else
 	{
-		ft_printf("ERROR: Wrong args\n");
-		exit(ERROR);
-	}
-	args = ft_strsplit(str, ',');//NEED FREE!!!!!!!!
-	// ft_printf("########## -------->>> 	[%s]:[%d]\n", str, i);
-	while (args[nbr_arg])
-	{
-		while (ft_strchr(SPACES_CHARS, args[nbr_arg][spc[nbr_arg]]))//CLEAN SPACES
-			spc[nbr_arg]++;
-		if (args[nbr_arg][spc[nbr_arg]] == 'r')
-			check_arg_reg(args[nbr_arg]+spc[nbr_arg], file);
-		else if (args[nbr_arg][spc[nbr_arg]] == '%')
-			check_arg_dir(args[nbr_arg]+spc[nbr_arg], file);
-		else
-			check_arg_ind((short int)(ft_atoi(args[nbr_arg])), file);
-		ft_printf("ARG[%d]:	[%s]\n", nbr_arg, args[nbr_arg]);
-		nbr_arg++;
+		error_file(file, 0);
+		free_mas(args);															//Free memory
+		return (NULL);
 	}
 }

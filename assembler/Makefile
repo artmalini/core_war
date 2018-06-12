@@ -19,18 +19,20 @@ HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft
 LIBFT_PATH	= ../libft
 
-SRCS_ASM	=	main.c \
-				op.c \
-				error_handler.c \
-				name_and_cmt_valid.c \
+SRCS_ASM	=	cmd_asm.c \
+                create_cor.c \
 				debug_asm.c \
-				read_asm.c \
-				parse_asm.c \
+				error_handler.c \
+				free_asm.c \
 				label_asm.c \
-				cmd_asm.c \
-				create_cor.c \
+				main.c \
+				name_and_cmt_valid.c \
+				op.c \
+				parse_asm.c \
+				read_asm.c \
+				settings.c \
 				valid_main.c \
-
+				check_args.c \
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 

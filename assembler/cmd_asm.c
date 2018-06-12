@@ -12,16 +12,6 @@
 
 #include "asm.h"
 
-void	free_mas(char **mas)
-{
-	int i;
-
-	i = -1;
-	while (mas[++i] != NULL)
-		free(mas[i]);
-	free(mas);
-}
-
 char	*insert_cmd_string(char *args)
 {
 	int		i;
@@ -98,26 +88,25 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 	t_cmd	*lst;
 	char	**mas;
 
-	lst = NULL;
-	lst = (t_cmd *)malloc(sizeof(t_cmd));
-	mas = NULL;
+    mas = NULL;
+	lst = ft_memalloc(sizeof(t_cmd));
 	if (lst)
 	{
-		//should be validation here for args
-		//error_file(file)
-		//valid_args(args, file);
-		//adn return fresh args string 	
-		//save this fresh string in to lst
-		lst->command = cmd ? ft_strdup(cmd) : NULL;
-		lst->opcode = op_tab[file->inst_pos].opcode;
+        lst->command = cmd ? ft_strdup(cmd) : NULL;
+        lst->opcode = op_tab[file->inst_pos].opcode;
+        mas = valid_args_main(file, args, op_tab[file->inst_pos].nbr_args);     //Check and Return arguments
+        print_new_args(file, mas, op_tab[file->inst_pos].nbr_args);             //Print new arguments
+        insert_args_lst(file, lst, mas, op_tab[file->inst_pos].nbr_args);       //Insert from **mas arguments to lst
+        lst->str = args ? insert_cmd_string(args) : NULL;                       //Don't changes str. Why? Its created mas array and arg done in lst
+        lst->cmd_size = count_cmd_size(mas, file);
+
 		//insert to count_cmd_size this fresh string 	done
 		//insert_cmd_string(args); 						done
-		lst->str = args ? insert_cmd_string(args) : NULL;
-		mas = ft_strsplit(lst->str, ' ');
-		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
-		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
-		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
-		lst->cmd_size = count_cmd_size(mas, file);
+//		mas = ft_strsplit(lst->str, ' ');
+//		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
+//		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
+//		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
+
 
 		//lst->byte_method_nbr = lst->cmd_size;
 		lst->has_direct = 0;
