@@ -46,7 +46,7 @@ char	*insert_cmd_string(char *args)
 		}
 		if ((args[i] != '\n' && args[i]))
 		{
-			ft_printf("ok |%c|\n", args[i]);
+			//ft_printf("ok |%c|\n", args[i]);
 			str[j++] = ' ';
 		}
 		//if (args[i])
@@ -89,7 +89,7 @@ int		count_cmd_size(char **mas, t_core *file)
 			//ft_printf("mas[i][j]%s| %d\n", mas[i], l_size);
 		
 	}
-	ft_printf("				LEN|%d\n", len);
+	//ft_printf("				LEN|%d\n", len);
 	return (len);
 }
 
@@ -105,7 +105,7 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 	{
 		//should be validation here for args
 		//error_file(file)
-		valid_args(args, file);
+		//valid_args(args, file);
 		//adn return fresh args string 	
 		//save this fresh string in to lst
 		lst->command = cmd ? ft_strdup(cmd) : NULL;
@@ -128,7 +128,7 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 		file->count_pos += file->count_size;
 		lst->next = NULL;
 	}
-	ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s| lst->cmd_size|%d|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3, lst->cmd_size);
+	//ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s| lst->cmd_size|%d|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3, lst->cmd_size);
 	//ft_printf(" lst->byte_method_nbr|%d|\n", lst->byte_method_nbr);
 	free_mas(mas);
 	return (lst);

@@ -12,7 +12,7 @@
 
 NAME		= ../asm
 FLAGS		= -Wall -Wextra -Werror
-CC			= gcc
+CC			= gcc -g
 
 HEADERS		= ../includes
 HEADERS_L	= ../libft/includes

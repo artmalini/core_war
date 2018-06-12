@@ -112,6 +112,7 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 	return (0);
 }
 
+
 void	set_bytes(int fd, char *str, t_core *file, t_cmd * cmd)
 {
 	//int		i;
@@ -123,13 +124,7 @@ void	set_bytes(int fd, char *str, t_core *file, t_cmd * cmd)
 	//i = 0;
 	j = 0;
 	nb = 0;
-	size = op_tab[file->inst_pos].size;
-	ft_printf("count_size %d %s\n", cmd->cmd_size, str);
-	//ft_printf("	STR |%s|\n", str);
-	if (size == 0)
-		size = 4;
-	if (size == 1)
-		size = 2;
+	size = op_tab[file->inst_pos].size == 0 ? 4 : 2;
 	if ((str[0] >= '0' && str[0] <= '9') || str[0] == '-')
 	{
 		size = 2;
@@ -174,7 +169,6 @@ void	set_bytes(int fd, char *str, t_core *file, t_cmd * cmd)
 		nbr /= 256;
 		j++;
 	}
-	ft_printf("NB|%d| j|%d|\n", nb, j);
 	if (nb == 0) //zero alignment
 		size -= 1;
 	if (nb >= 0)

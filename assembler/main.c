@@ -193,164 +193,40 @@ int		count_opcode(char *str)//should be better validation for *str
 
 
 
-
-
-
-
-
-
-
-
-/*int			find_l(char *str, t_core *file)
-{
-	t_cmd	*tmp;
-
-	tmp = file->inst->cmd;
-	if (tmp)
-	{
-		while (tmp)
-		{
-			if (tmp->arg1)
-			{
-				//ft_printf("			STR %s\n", tmp->arg1 + 2);
-				if (!ft_strcmp(str, tmp->arg1 + 2))
-				{
-					if (tmp->has_direct == 0)
-					{
-						tmp->has_direct = 1;
-						ft_printf("		^^^^^^^^^^^^^@STR %s|%d|\n", str, tmp->cmd_str_size);
-						return (tmp->cmd_str_size);
-					}
-					return (0);
-				}
-			}
-			if (tmp->arg2)
-			{
-				if (!ft_strcmp(str, tmp->arg2 + 2))
-				{
-					if (tmp->has_direct == 0)
-					{
-						tmp->has_direct = 1;
-						ft_printf("		^^^^^^^^^^^^^@STR %s|%d|\n", str, tmp->cmd_str_size);
-						return (tmp->cmd_str_size);
-					}
-					return (0);
-				}
-			}
-			if (tmp->arg3)
-			{
-				if (!ft_strcmp(str, tmp->arg3 + 2))
-				{
-					if (tmp->has_direct == 0)
-					{
-						tmp->has_direct = 1;
-						ft_printf("		^^^^^^^^^^^^^@STR %s|%d|\n", str, tmp->cmd_str_size);
-						return (tmp->cmd_str_size);
-					}
-				}
-				return (0);
-			}
-			tmp = tmp->next;
-		}
-	}
-	return (0);
-}*/
-
-/*int			find_l(char *str, t_cmd *file, int label_pos)
-{
-	t_cmd	*tmp;
-
-	tmp = file;
-	if (tmp)
-	{
-		while (tmp)
-		{
-			if (tmp->arg1)
-			{
-				//ft_printf("			STR %s\n", tmp->arg1 + 2);
-				if (!ft_strcmp(str, tmp->arg1 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->byte_nbr);
-						return (label_pos - tmp->byte_nbr);
-				}
-			}
-			if (tmp->arg2)
-			{
-				if (!ft_strcmp(str, tmp->arg2 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->byte_nbr);
-						return (label_pos - tmp->byte_nbr);
-				}
-			}
-			if (tmp->arg3)
-			{
-				if (!ft_strcmp(str, tmp->arg3 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->byte_nbr);
-						return (label_pos - tmp->byte_nbr);
-				}
-			}
-			tmp = tmp->next;
-		}
-	}
-	return (0);
-}*/
 void			find_l(char *str, t_cmd *file, int label_pos)
 {
 	t_cmd	*tmp;
 
 	tmp = file;
-	if (tmp)
+	while (tmp)
 	{
-		while (tmp)
+		if (tmp->arg1)
 		{
-			if (tmp->arg1)
-			{
-				//ft_printf("			STR %s\n", tmp->arg1 + 2);
-				if (!ft_strcmp(str, tmp->arg1 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-				if (!ft_strcmp(str, tmp->arg1 + 1))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-			}
-			if (tmp->arg2)
-			{
-				if (!ft_strcmp(str, tmp->arg2 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-				if (!ft_strcmp(str, tmp->arg2 + 1))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-			}
-			if (tmp->arg3)
-			{
-				if (!ft_strcmp(str, tmp->arg3 + 2))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-				if (!ft_strcmp(str, tmp->arg3 + 1))
-				{
-						ft_printf("		^^^^^^^^^^^^^@STR |%s|%d|\n", str, label_pos - tmp->cmd_str_size);
-						tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-				}
-			}
-			tmp = tmp->next;
+			if (!ft_strcmp(str, tmp->arg1 + 2))// %:
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
+			if (!ft_strcmp(str, tmp->arg1 + 1))// :
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
 		}
+		if (tmp->arg2)
+		{
+			if (!ft_strcmp(str, tmp->arg2 + 2))
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
+			if (!ft_strcmp(str, tmp->arg2 + 1))
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
+		}
+		if (tmp->arg3)
+		{
+			if (!ft_strcmp(str, tmp->arg3 + 2))
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
+			if (!ft_strcmp(str, tmp->arg3 + 1))
+					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
+		}
+		tmp = tmp->next;	
 	}
 }
 
 
-void			write_bytes(t_core *file)
+void			recalc_cmd_links(t_core *file)
 {
 	t_inst	*tmp;
 
@@ -388,10 +264,14 @@ int		main(int argc, char **argv)
 		ft_printf("\n");
 		ft_printf("OK Rows: [%d]\n", file.rows);
 
-		write_bytes(&file);	
+		recalc_cmd_links(&file);	
 		create_cor(&file);
 
 		free_struct_tcore(&file);
+
+		
+		//ft_printf("$$$|%d|\n", ((112 & 11000000) >> 6));
+		//ft_printf("$$$|%d|\n", ((112 >> 4) & 0x3));
 		//system("leaks asm");
 	}
 	else
