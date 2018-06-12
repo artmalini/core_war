@@ -13,55 +13,78 @@
 #ifndef ASM_H
 # define ASM_H
 
+//  Macros for [Includes Library]
+
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include <fcntl.h>
+# include <limits.h>
 
-# define OK		1
-# define ERROR	-1
+//  Macros for [ERROR MANAGER]
 
-# define T_REG	1
-# define T_DIR	2
-# define T_IND	4
-# define T_LAB	8
+# define OK		    1
+# define ERROR	    -1
+# define ERROR_ARG  1
 
-# define IND_SIZE 2
-# define REG_SIZE 4
-# define DIR_SIZE REG_SIZE
+//  Macros for [Debugs] and [Settings]
 
-# define REG_CODE 1
-# define DIR_CODE 2
-# define IND_CODE 3
+# define ON		    1
+# define OFF		0
 
-# define MAX_ARGS_NUMBER 4
-# define MAX_PLAYERS 4
-# define MEM_SIZE (4 * 1024)
-# define IDX_MOD (MEM_SIZE / 8)
-# define CHAMP_MAX_SIZE (MEM_SIZE / 6)
+# define FIRST	    0
+# define SECOND	    1
+# define THIRD	    2
 
-# define COMMENT_CHAR '#'
-# define COMMENT_CHAR2 ';'
-# define LABEL_CHAR ':'
-# define DIRECT_CHAR '%'
-# define SEPARATOR_CHAR ','
+# define DEBUG_ON	0
+# define DEBUG_LB	1
+# define DEBUG_CMD	2
+# define DEBUG_ARG	3
 
-# define NAME_CMD_STRING ".name"
-# define COMMENT_CMD_STRING ".comment"
+//  Macros for [ARGUMENTS] and [Labels]
 
-# define REG_NUMBER 16
+# define T_REG	    1
+# define T_DIR  	2
+# define T_IND	    4
+# define T_LAB	    8
 
-# define CYCLE_TO_DIE 1536
-# define CYCLE_DELTA 50
-# define NBR_LIVE 21
-# define MAX_CHECKS 10
+# define IND_SIZE   2
+# define REG_SIZE   4
+# define DIR_SIZE   REG_SIZE
 
-# define PROG_NAME_LENGTH (128)
-# define COMMENT_LENGTH (2048)
+# define REG_CODE   1
+# define DIR_CODE   2
+# define IND_CODE   3
+
+# define INT32      3
+
+//  Macros for [Virtual Machine]
+
+# define MAX_ARGS_NUMBER    4
+# define MAX_PLAYERS        4
+# define MEM_SIZE           (4 * 1024)
+# define IDX_MOD            (MEM_SIZE / 8)
+# define CHAMP_MAX_SIZE     (MEM_SIZE / 6)
+
+# define REG_NUMBER         16
+
+//  Macros for [Validations]
+
+# define COMMENT_CHAR       '#'
+# define COMMENT_CHAR2      ';'
+# define LABEL_CHAR         ':'
+# define DIRECT_CHAR        '%'
+# define SEPARATOR_CHAR     ','
+
+# define PROG_NAME_LENGTH   (128)
+# define COMMENT_LENGTH     (2048)
 # define COREWAR_EXEC_MAGIC 0xea83f3
 
-# define SPACES_CHARS	"\t \v"
-# define LABEL_CHARS	"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define NAME_CMD_STRING    ".name"
+# define COMMENT_CMD_STRING ".comment"
+
+# define SPACES_CHARS       "\t \v"
+# define LABEL_CHARS        "abcdefghijklmnopqrstuvwxyz_0123456789"
 
 typedef char 		t_arg_type;
 
@@ -98,7 +121,7 @@ typedef struct		s_cmd
 
 	int				has_direct;
 	int				cmd_str_size;
-	//int				byte_method_nbr;
+	//int			byte_method_nbr;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -121,14 +144,13 @@ typedef struct		s_core
 	//int				new_pos;
 	int				count_pos;
 	int				count_size;
+    int             st[10];//for settings
 }					t_core;
 
 extern t_op	op_tab[17];
 
-
 t_inst		*add_label(char *str, t_core *file);
 int			line_has_val(char *line);
-void		free_struct_tcore(t_core *file);
 void		read_line(char *line, t_core *file);
 void		parse_file(char *arg, t_core *file);
 void		push_laybel(char *str, t_inst **lst, t_core *file);
@@ -141,18 +163,35 @@ void		push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
 void		create_cor(t_core *file);
 int			count_opcode(char *str);
 
+
 //			[ERROR MANAGER]
+
 void		wrong_input(int c);
 void		error_file(t_core *file, int nbr_char);
 
-//			[VALADATIONS]
-void		valid_args(char *str, t_core *file);
-int			check_arg_reg(char *arg, t_core *file);
-int			check_arg_dir(char *arg, t_core *file);
-int			check_arg_ind(int arg, t_core *file);
 
-//			[DEBUG FUNCTIONS]
+//			[VALIDATION ARGUMENTS]
+
+int		    ft_isspace(char c);
+int		    ft_atoii(const char *str);
+int			check_arg_reg(t_core *file, char *str_arg, int nbr_arg);
+int			check_arg_dir(t_core *file, char *str_arg, int nbr_arg);
+int			check_arg_ind(t_core *file, char *str_arg, int nbr_arg);
+int 		check_args_main(t_core *file, char **args, int nbr_args);
+char		**create_fresh_args(t_core *file, char **args, int nbr_args);
+char		**valid_args_main(t_core *file, char *str_args, int nbr_args);
+void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr);
+
+//			[DEBUG and PRINT]
+
 void		cmd_debug(t_inst *inst);
 void		label_debug(t_core *file);
+void        set_settings(t_core	*file, int flag);
+void		print_new_args(t_core *file, char **args, int nbr_args);
+
+//			[FREE MEMORY]
+
+void		free_mas(char **mas);
+void		free_struct_tcore(t_core *file);
 
 #endif
