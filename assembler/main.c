@@ -154,36 +154,18 @@ int		count_opcode(char *str)//should be better validation for *str
 {
 	int		get_bin;
 	int		code;
-	//int		l_size;
 
 	get_bin = 0;
-	//l_size = 0;
 	code = 128;
 	while (*str)
 	{
-		if (*str == 'r')
+		if ((*str == 'r') || (*str == '%' || *str == ':') ||
+			(*str >= '0' && *str <= '9'))
 		{
 			get_bin = result_opcode(*str, code, get_bin);
 			while (*str && (*str != ' '))
 				str++;
 			code /= 4;
-			//ft_printf("%s\n", str);
-		}
-		if (*str == '%' || *str == ':')
-		{
-			get_bin = result_opcode(*str, code, get_bin);
-			while (*str && (*str != ' '))
-				str++;
-			code /= 4;
-			//ft_printf("%s\n", str);
-		}
-		if (*str >= '0' && *str <= '9')
-		{
-			get_bin = result_opcode(*str, code, get_bin);
-			while (*str && (*str != ' '))
-				str++;
-			code /= 4;
-			//ft_printf("%s\n", str);
 		}
 		if (*str)
 			str++;			

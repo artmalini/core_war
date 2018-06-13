@@ -121,9 +121,8 @@ int		find_nbr_bytes(char *str, int size)
 		nbr = 2;
 	else if (str[0] == 'r')
 		nbr = 1;
-	else if (str[0] == '%' && str[1] == ':')
-		nbr = 0; // ERROR FOR Compile - CHECK
-		// nbr = nbr; // OLD VERIOSN
+	//else if (str[0] == '%' && str[1] == ':')
+	//	nbr = nbr;
 	else if (str[0] == ':')
 		nbr = 2;
 	return (nbr);
@@ -203,7 +202,7 @@ void	set_instruction(int fd, t_cmd *cmd, t_core *file)
 		asm_hexa_fd(comm->opcode, fd);//save opcode
 		check_command(comm->command, file);//	FIND current command
 		if (op_tab[file->inst_pos].codage)
-			asm_hexa_fd(count_opcode(comm->str), fd);
+			asm_hexa_fd(count_opcode(comm->str), fd);// find and print codage
 		i = -1;
 		while (++i < op_tab[file->inst_pos].nbr_args)
 		{
