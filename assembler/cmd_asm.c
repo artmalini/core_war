@@ -24,23 +24,16 @@ char	*insert_cmd_string(char *args)
 	//flag = 0;
 	if (!(str = (char *)malloc(sizeof(str) * (ft_strlen(args) + 1))))
 		return (NULL);
-	while (args[i])
+	while (args[i] && args[i] != '#' && args[i] != ';')
 	{
-		while (args[i] && (args[i] != ' ' && args[i] != '\t' && args[i] != ','))
-		{
+		while (args[i] && (args[i] != ' ' && args[i] != '\t' &&
+			args[i] != ',' && args[i] != '#' && args[i] != ';'))
 			str[j++] = args[i++];
-		}
-		while (args[i] && (args[i] == ' ' || args[i] == '\t' || args[i] == ','))
-		{
+		while (args[i] && (args[i] == ' ' || args[i] == '\t' ||
+			args[i] == ','))
 			i++;
-		}
 		if ((args[i] != '\n' && args[i]))
-		{
-			//ft_printf("ok |%c|\n", args[i]);
 			str[j++] = ' ';
-		}
-		//if (args[i])
-		//	i++;
 	}
 	str[j] = '\0';
 	ft_printf("INSERT STR|%s|\n", str);
@@ -97,7 +90,7 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
         mas = valid_args_main(file, args, op_tab[file->inst_pos].nbr_args);     //Check and Return arguments
         print_new_args(file, mas, op_tab[file->inst_pos].nbr_args);             //Print new arguments
         insert_args_lst(file, lst, mas, op_tab[file->inst_pos].nbr_args);       //Insert from **mas arguments to lst
-        lst->str = args ? insert_cmd_string(args) : NULL;                       //Don't changes str. Why? Its created mas array and arg done in lst
+        lst->str = args ? insert_cmd_string(args) : NULL;                       //Don't changes str. Why? Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
         lst->cmd_size = count_cmd_size(mas, file);
 
 		//insert to count_cmd_size this fresh string 	done

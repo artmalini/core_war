@@ -141,10 +141,10 @@ typedef struct		s_core
 	int				rows;
 	int				inst_pos;
 	t_inst			*inst;
-	//int				new_pos;
-	int				count_pos;
 	int				count_size;
     int             st[10];//for settings
+	//int				new_pos;
+	int				count_pos;
 }					t_core;
 
 extern t_op	op_tab[17];
@@ -155,6 +155,7 @@ void		read_line(char *line, t_core *file);
 void		parse_file(char *arg, t_core *file);
 void		push_laybel(char *str, t_inst **lst, t_core *file);
 void		name_and_cmt(char *line, t_core *file);
+//int			line_label(char *line, t_core *file);
 void		line_handler(char *line, t_core *file);
 int			parse_filename(char	*arg, t_core *file);
 int			check_command(char	*lowstr, t_core *file);
