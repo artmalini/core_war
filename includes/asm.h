@@ -118,10 +118,7 @@ typedef struct		s_cmd
 	int				opcode;
 	int				cmd_size;
 	int				byte_nbr;
-
-	int				has_direct;
 	int				cmd_str_size;
-	//int			byte_method_nbr;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -135,6 +132,14 @@ typedef struct		s_inst
 
 typedef struct		s_core
 {
+	int				flag;
+	int				point_nbr;
+	int				syntax;
+	int				name_nbr;
+	int				cmt_nbr;
+	int				name_length;
+	int				cmt_length;
+
 	char			*name;
 	char			*comment;
 	char			*filename;
@@ -143,8 +148,6 @@ typedef struct		s_core
 	t_inst			*inst;
 	int				count_size;
     int             st[10];//for settings
-	//int				new_pos;
-	int				count_pos;
 }					t_core;
 
 extern t_op	op_tab[17];

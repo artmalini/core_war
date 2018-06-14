@@ -14,7 +14,7 @@
 
 int		line_has_val(char *line)
 {
-	while (*line)
+	while (line && *line)
 	{
 		if (*line != '\t' && *line != ' ')
 			return (1);
@@ -245,11 +245,8 @@ int		count_opcode(char *str)//should be better validation for *str
 
 
 
-void			find_l(char *str, t_cmd *file, int label_pos)
+void			find_l(char *str, t_cmd *tmp, int label_pos)
 {
-	t_cmd	*tmp;
-
-	tmp = file;
 	while (tmp)
 	{
 		if (tmp->arg1)

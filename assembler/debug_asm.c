@@ -17,7 +17,7 @@ void	label_debug(t_core *file)
 		t_inst	*inst;
 
 		inst = file->inst;
-		ft_printf("File Count Size:	[%d] file->name|%s|\n", file->count_size, file->name);
+		ft_printf("File Count Size:	[%d]\n file->name|%s|\n file->comment|%s|\n", file->count_size, file->name, file->comment);
 		while (inst)
 		{
 			ft_printf("Label (Name/Positions):	[%s]/[%d]\n", inst->label, inst->label_pos);
@@ -35,7 +35,7 @@ void	cmd_debug(t_inst *inst)
 		comm = inst->cmd;
 		while (comm)
 		{
-			ft_printf("CMD:	[%s]\nOpcode:	[%d]\nSize:	[%d]\nByte_nbr(for command): [%d]\n\n", comm->command, comm->opcode, comm->cmd_size, comm->byte_nbr);
+			ft_printf("CMD:	[%s]\nOpcode:	[%d]\nCount bytes:	[%d]\n\n", comm->command, comm->opcode, comm->cmd_size);
 			comm = comm->next;
 		}
 		inst = inst->next;

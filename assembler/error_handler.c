@@ -15,17 +15,22 @@
 void	wrong_input(int c)
 {
 	if (c == 0)
-		ft_printf("wrong input\n");
+		ft_printf("ERROR: wrong input\n");
 	else if (c == 1)
-		ft_printf("error\n");
+		ft_printf("ERROR:\n");
 	else if (c == 2)
-		ft_printf("wrong file name\n");
+		ft_printf("ERROR: wrong file name\n");
 	else if (c == 3)
-		ft_printf("Open file error\n");
+		ft_printf("ERROR: Open file error\n");
 	exit(-1);
 }
 
-
+void	error_file(t_core *file, int nbr_char)
+{
+	ft_printf("ERROR: At [line] - [%d] nbr_char|%d|\n", file->rows, nbr_char);
+	free_struct_tcore(file);
+	exit(ERROR);
+}
 
 
 
@@ -101,9 +106,4 @@ void	free_struct_tcore(t_core *file)
 	}
 }
 
-void	error_file(t_core *file, int nbr_char)
-{
-	ft_printf("ERROR: At [line]/[Byte_nbr] - [%d]/[%d]\n", file->rows, nbr_char);
-	free_struct_tcore(file);
-	exit(ERROR);
-}
+

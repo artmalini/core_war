@@ -1,5 +1,10 @@
-.name "zork"
-.comment "I'M ALIIIIVE"
+	;segg
+.name "zo
+r
+k"
+
+.comment "I'M ALIIIIV
+E"
 		 #jj
 
 l2:

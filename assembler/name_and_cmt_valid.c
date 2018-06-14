@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void	len_check(int len, int nb, t_core *file)
+/*void	len_check(int len, int nb, t_core *file)
 {
 	if (nb == 1)
 	{
@@ -30,38 +30,33 @@ void	len_check(int len, int nb, t_core *file)
 			error_file(file, len);
 		}
 	}
-}
+}*/
 
-void	name_and_cmt_valid(char *line, int nb, t_core *file)
+/*void	name_and_cmt_valid(char *line, int nb, t_core *file)
 {
-	int		count;
-	int		len;
-
-	count = 0;
-	len = 0;
 	//line += nb == 1 ? 6 : 9;
 	while (line && *line && *line != '\"')
 		line++;	
 	if (line && *line == '\"')
 	{
-		count++;
+		file->syntax++;
 		line++;
 	}
 	while (line && *line != '\0' && *line != '\"')
 	{
-		len++;
+		file->name_nbr++;
 		if (ft_strchr("\"", *line))
 		{
-			ft_printf("ERROR: Chars |%c|/|%d|\n", *line, count);
-			error_file(file, len);
+			//ft_printf("ERROR: Chars |%c|/|%d|\n", *line, file->syntax);
+			error_file(file, file->name_nbr);
 		}
-		len_check(len, nb, file);
+		len_check(file->name_nbr, nb, file);
 		line++;
 	}
 	if (line && *line == '\"')
-		count++;
-	if (count != 2)
-		error_file(file, len);
+		file->syntax++;
+	if (file->syntax != 2)
+		error_file(file, nb);
 }
 
 void	write_name_or_cmt(char *line, int nb, t_core *file)
@@ -77,12 +72,12 @@ void	write_name_or_cmt(char *line, int nb, t_core *file)
 	if (nb == 1)
 	{
 		file->name = ft_strsub(line, 0, i);
-		ft_printf("name_and_cmt_valid name	|%s|\n", line);
+		ft_printf("name_and_cmt_valid name	|%s|\n", file->name);
 	}
 	if (nb == 2)
 	{
 		file->comment = ft_strsub(line, 0, i);
-		ft_printf("name_and_cmt_valid comment	|%s|\n", line);
+		ft_printf("name_and_cmt_valid comment	|%s|\n", file->comment);
 	}
 }
 
@@ -92,11 +87,15 @@ void	name_and_cmt(char *line, t_core *file)
 	{
 		name_and_cmt_valid(line, 1, file);
 		write_name_or_cmt(line, 1, file);
+		file->name_nbr++;
 	}
 	else if (!ft_strncmp(line, COMMENT_CMD_STRING, 8))
 	{
+		file->syntax = 0;
+		file->name_nbr = 0;
 		name_and_cmt_valid(line, 2, file);
 		write_name_or_cmt(line, 2, file);
+		file->cmt_nbr++;
 	}
 	else
 	{
@@ -104,4 +103,4 @@ void	name_and_cmt(char *line, t_core *file)
 		ft_printf("ERROR: After decimal symbol at line %d\n", file->rows);
 		exit (ERROR);
 	}
-}
+}*/

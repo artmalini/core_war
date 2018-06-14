@@ -23,7 +23,6 @@ t_inst		*add_label(char *str, t_core *file)
 		lst->label = str ? ft_strdup(str) : NULL;
 		lst->cmd = NULL;
 		lst->label_pos = file->count_size;
-		file->count_pos = 0;
 		lst->next = NULL;
 	}
 	return (lst);

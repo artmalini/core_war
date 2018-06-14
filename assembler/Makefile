@@ -29,7 +29,6 @@ SRCS_ASM	=	cmd_asm.c \
 				name_and_cmt_valid.c \
 				op.c \
 				parse_asm.c \
-				read_asm.c \
 				settings.c \
 				valid_main.c \
 				check_args.c \

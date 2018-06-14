@@ -99,15 +99,10 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 //		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
 //		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
 //		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
-
-
 		//lst->byte_method_nbr = lst->cmd_size;
-		lst->has_direct = 0;
 		lst->cmd_str_size = file->count_size;
 		lst->byte_nbr = file->count_size - lst->cmd_size;
-		file->count_size += lst->cmd_size;
-		
-		file->count_pos += file->count_size;
+		file->count_size += lst->cmd_size;		
 		lst->next = NULL;
 	}
 	//ft_printf("---> Finded lst->str:  [%s]		|%s| |%s| |%s| lst->cmd_size|%d|\n\n", lst->str, lst->arg1, lst->arg2, lst->arg3, lst->cmd_size);
