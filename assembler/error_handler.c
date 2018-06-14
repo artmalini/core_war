@@ -12,27 +12,60 @@
 
 #include "asm.h"
 
-void	wrong_input(int c)
+/*void	wrong_input_ext(int c, char *arg, t_core *file)
+{
+	if (c == 12)
+		ft_printf("ERROR: Label must be at least one characte\n");
+}*/
+
+void	wrong_input(int c, char *arg, t_core *file)
 {
 	if (c == 0)
-		ft_printf("ERROR: wrong input\n");
+		ft_printf("ERROR: %s at line %d\n", arg, file->rows);
 	else if (c == 1)
-		ft_printf("ERROR:\n");
+		ft_printf("ERROR: wrong input arguments\n");
 	else if (c == 2)
-		ft_printf("ERROR: wrong file name\n");
+		ft_printf("ERROR: wrong input\n");
 	else if (c == 3)
-		ft_printf("ERROR: Open file error\n");
-	exit(-1);
+		ft_printf("ERROR: %s wrong file name\n", arg);
+	else if (c == 4)
+		ft_printf("ERROR: Open file %s error\n", arg);
+	else if (c == 5)
+		ft_printf("ERROR: %s wrong_syntax\n", arg);
+	else if (c == 6)
+		ft_printf("ERROR: %s to many .name arguments\n", arg);
+	else if (c == 7)
+		ft_printf("ERROR: %s to many .comment arguments\n", arg);
+	else if (c == 8)
+		ft_printf("ERROR: %s Name to long\n", arg);
+	else if (c == 9)
+		ft_printf("ERROR: %s Name to short\n", arg);
+	else if (c == 10)
+		ft_printf("ERROR: %s Comment length to long\n", arg);
+	else if (c == 11)
+		ft_printf("ERROR: %s Comment length to short\n", arg);
+	//wrong_input_ext(c, arg, file);
 }
 
-void	error_file(t_core *file, int nbr_char)
+void	error_file(t_core *file, char *arg, int nbr_char)
 {
-	ft_printf("ERROR: At [line] - [%d] nbr_char|%d|\n", file->rows, nbr_char);
+	//ft_printf("error_file [line] - [%d] nbr_char|%d|\n", file->rows, nbr_char);
+	wrong_input(nbr_char, arg, file);
 	free_struct_tcore(file);
 	exit(ERROR);
 }
 
-
+void	error_cor(t_core *file, int nbr_char)
+{
+	if (nbr_char == 0)
+		ft_printf("ERROR: more then one identical labels\n");
+	else if (nbr_char == 1)
+		ft_printf("ERROR: syntax error\n");
+	else if (nbr_char == 2)
+		ft_printf("ERROR: Label must be at least one characte\n");
+	free_struct_tcore(file);
+	exit(ERROR);
+}
 
 void	cmd_free(t_cmd *cmd)
 {
@@ -92,18 +125,19 @@ void	free_struct_tcore(t_core *file)
 			ft_strdel(&file->comment);
 		if (file->filename)
 			ft_strdel(&file->filename);
-		if (file->inst->cmd)
-		{
-			cmd_free(file->inst->cmd);
-			cmd_lst_free(file->inst->cmd);
-		}
 		if (file->inst)
 		{
 			inst_data_free(file->inst);
 			inst_free(file->inst);
+			if (file->inst->cmd)
+			{
+				cmd_free(file->inst->cmd);
+				cmd_lst_free(file->inst->cmd);
+			}
 		}
 		//ft_memdel((void**)&file);
 	}
 }
+
 
 

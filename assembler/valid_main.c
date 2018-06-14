@@ -16,7 +16,7 @@ void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr)
 {
     if (!file || !args || !nbr)
     {
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
         return ;
     }
     lst->arg1 = nbr > 0 ? ft_strdup(args[FIRST]) : NULL;
@@ -33,7 +33,7 @@ char		**create_fresh_args(t_core *file, char **args, int nbr_args)
     nbr = 0;
     if (nbr_args >= MAX_ARGS_NUMBER)
     {
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
         return (NULL);
     }
     new_args = ft_memalloc(sizeof(new_args) * (nbr_args + 1));                  //Need Free Memory
@@ -56,7 +56,7 @@ char		**valid_args_main(t_core *file, char *str_args, int nbr_args)
 
 	args = ft_strsplit(str_args, ',');									        //Need free memory
     if (!args || !file || !nbr_args)                                            //Search Errors
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
 	if (check_args_main(file, args, nbr_args) == OK)                                 //Main Check Arguments
     {
         new_args = create_fresh_args(file, args, nbr_args);                     //Create new args without spaces
@@ -65,7 +65,7 @@ char		**valid_args_main(t_core *file, char *str_args, int nbr_args)
     }
 	else
 	{
-		error_file(file, 0);
+		error_cor(file, 1);
 		free_mas(args);															//Free memory
 		return (NULL);
 	}

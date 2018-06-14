@@ -154,24 +154,25 @@ extern t_op	op_tab[17];
 
 t_inst		*add_label(char *str, t_core *file);
 int			line_has_val(char *line);
-void		read_line(char *line, t_core *file);
+void		read_line(char *line, char *arg, t_core *file);
 void		parse_file(char *arg, t_core *file);
 void		push_laybel(char *str, t_inst **lst, t_core *file);
 void		name_and_cmt(char *line, t_core *file);
 //int			line_label(char *line, t_core *file);
-void		line_handler(char *line, t_core *file);
+void		line_handler(char *line, char *arg, t_core *file);
 int			parse_filename(char	*arg, t_core *file);
 int			check_command(char	*lowstr, t_core *file);
 t_cmd		*add_cmd(char *cmd, char *args, t_core *file);
 void		push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
-void		create_cor(t_core *file);
+void		create_cor(t_core *file, char *arg);
 int			count_opcode(char *str);
 
 
 //			[ERROR MANAGER]
 
-void		wrong_input(int c);
-void		error_file(t_core *file, int nbr_char);
+void		wrong_input(int c, char *arg, t_core *file);
+void		error_file(t_core *file, char *arg, int nbr_char);
+void		error_cor(t_core *file, int nbr_char);
 
 
 //			[VALIDATION ARGUMENTS]

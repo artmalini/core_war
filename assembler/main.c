@@ -128,8 +128,7 @@ char		*line_finalize(char **str, char *lowstr, int *i, t_core *file)
 {
 	if (*i == 0)//label exist, if i == 0 should be error!
 	{
-		ft_printf("Label must be at least one character ");
-		error_file(file, 0);
+		error_cor(file, 2);
 	}
 	lowstr = ft_strsub(*str, 0, *i);
 	push_laybel(lowstr, &file->inst, file);
@@ -150,7 +149,7 @@ char		*line_finalize(char **str, char *lowstr, int *i, t_core *file)
 		if (!ft_strchr(LABEL_CHARS, (*str)[*i]))
 		{
 			ft_printf("!! Line_handler:	ERROR\n");
-			error_file(file, 0);
+			error_cor(file, 1);
 		}
 		(*i)++;
 	}
@@ -158,7 +157,7 @@ char		*line_finalize(char **str, char *lowstr, int *i, t_core *file)
 	return (lowstr);
 }
 
-void	line_handler(char *line, t_core *file)
+void	line_handler(char *line, char *arg, t_core *file)
 {
 	int		i;
 	char	*str;
@@ -186,7 +185,7 @@ void	line_handler(char *line, t_core *file)
 		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
 	}
 	else
-		error_file(file, 0);//wrong command
+		error_file(file, arg, 0);//wrong command
 	ft_strdel(&lowstr);
 }
 
@@ -303,7 +302,7 @@ int		main(int argc, char **argv)
 		ft_bzero(&file, sizeof(t_core));
         set_settings(&file, ON);                                                 //ON or OFF Settings Project
 		if (!parse_filename(argv[1], &file))
-			wrong_input(1);
+			error_cor(&file, 1);
 		parse_file(argv[1], &file);
 
 
@@ -315,7 +314,7 @@ int		main(int argc, char **argv)
 		ft_printf("OK Rows: [%d]\n", file.rows);
 
 		recalc_cmd_links(&file);	
-		create_cor(&file);
+		create_cor(&file, argv[1]);
 
 		free_struct_tcore(&file);
 
@@ -325,6 +324,6 @@ int		main(int argc, char **argv)
 		//system("leaks asm");
 	}
 	else
-		wrong_input(0);
+		error_cor(&file, 1);
 	return (0);
 }

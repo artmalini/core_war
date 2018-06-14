@@ -20,7 +20,7 @@ int			    check_arg_reg(t_core *file, char *str_arg, int nbr_arg)
     i = 0;
     if (!file || !str_arg || nbr_arg <= 0)
     {
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
         return (ERROR);
     }
     while (str_arg[i] && ft_isspace(str_arg[i]))                                //Pass Spaces
@@ -28,7 +28,7 @@ int			    check_arg_reg(t_core *file, char *str_arg, int nbr_arg)
     if (str_arg[i] == 'r')
         i++;
     else
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
     hex = ft_atoi(str_arg + i);
     if (hex > 0 && hex < REG_NUMBER)
         return (OK);
@@ -44,7 +44,7 @@ int			    check_arg_dir(t_core *file, char *str_arg, int nbr_arg)
     i = 0;
     if (!file || !str_arg || nbr_arg <= 0)
     {
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
         return (ERROR);
     }
     while (str_arg[i] && ft_isspace(str_arg[i]))                                //Pass Spaces
@@ -66,7 +66,7 @@ int			    check_arg_ind(t_core *file, char *str_arg, int nbr_arg)
     i = 0;
     if (!file || !str_arg || nbr_arg <= 0)
     {
-        error_file(file, ERROR_ARG);
+        error_cor(file, ERROR_ARG);
         return (ERROR);
     }
     while (str_arg[i] && ft_isspace(str_arg[i]))                                //Pass Spaces

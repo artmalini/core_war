@@ -88,7 +88,7 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 
 	tmp = inst;
 	i = 0;
-	ft_printf("@@@@@@@STR |%s| tmp->label_pos|%d| cmd_size|%d|\n", str, tmp->label_pos, cmd_size);
+	//ft_printf("@@@@@@@STR |%s| tmp->label_pos|%d| cmd_size|%d|\n", str, tmp->label_pos, cmd_size);
 	while (i < 2)
 	{
 		while (tmp)
@@ -105,10 +105,7 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 	}
 	ft_printf("I2 %d\n", i);
 	if (i == 1)
-	{
-		ft_printf("find_pos_cmd Wrong label ");
-		error_file(file, 0);
-	}
+		error_cor(file, 0);
 	return (0);
 }
 
@@ -137,8 +134,7 @@ int		negative_nbr(int nb, int size, t_core *file)
 	{
 		if (nb < -65536)
 		{
-			ft_printf("Command cannot contain this value ");
-			error_file(file, 0);
+			error_cor(file, 1);
 		}
 		nbr = 65536 + nb;
 	}
@@ -217,16 +213,16 @@ void	set_instruction(int fd, t_cmd *cmd, t_core *file)
 	}
 }
 
-void	create_cor(t_core *file)
+void	create_cor(t_core *file, char *arg)
 {
 	int		fd;
 
 	if (!(fd = open(file->filename, O_RDWR | O_CREAT, 0777)))
-		error_file(file, 0);
+		error_file(file, arg, 2);
 	set_cor_magic(fd);
 	set_cor_name(fd, file);
 	set_cor_nbr_comment(fd, file);
 	set_instruction(fd, file->inst->cmd, file);
 	if(close(fd) == -1)
-		error_file(file, 0);
+		error_file(file, arg, 2);
 }
