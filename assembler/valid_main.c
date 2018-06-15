@@ -12,8 +12,40 @@
 
 #include "asm.h"
 
+char        *create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr)     //Create str for Cod-age
+{
+    char    *str_args;
+
+    if (!file || !nbr || !len || !(str_args = ft_memalloc(len + 5)))
+    {
+        error_cor(file, ERROR_ARG);
+        return (NULL);
+    }
+    if (lst->arg1 && nbr >= 1)
+    {
+        str_args = ft_strcat(str_args, lst->arg1);
+    }
+    if (lst->arg2 && nbr >= 2)
+    {
+        str_args = ft_strcat(str_args, ", ");
+        str_args = ft_strcat(str_args, lst->arg2);
+    }
+    if (lst->arg3 && nbr >= 3)
+    {
+        str_args = ft_strcat(str_args, ", ");
+        str_args = ft_strcat(str_args, lst->arg3);
+    }
+    return (str_args);
+
+}
+
 void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr)
 {
+    int     i;
+    size_t  len;
+
+    i = 0;
+    len = 0;
     if (!file || !args || !nbr)
     {
         error_cor(file, ERROR_ARG);
@@ -22,6 +54,13 @@ void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr)
     lst->arg1 = nbr > 0 ? ft_strdup(args[FIRST]) : NULL;
     lst->arg2 = nbr > 1 ? ft_strdup(args[SECOND]) : NULL;
     lst->arg3 = nbr > 2 ? ft_strdup(args[THIRD]) : NULL;
+    while (nbr > i)
+    {
+        len += ft_strlen(args[i]);                                              //Size all arguments
+        i++;
+    }
+    lst->str = create_str_args(file, lst, len, nbr);                            //Create str with all arguments for Code-Age
+
 }
 
 char		**create_fresh_args(t_core *file, char **args, int nbr_args)

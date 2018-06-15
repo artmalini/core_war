@@ -88,17 +88,14 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
         lst->command = cmd ? ft_strdup(cmd) : NULL;
         lst->opcode = op_tab[file->inst_pos].opcode;
         mas = valid_args_main(file, args, op_tab[file->inst_pos].nbr_args);     //Check and Return arguments
-        print_new_args(file, mas, op_tab[file->inst_pos].nbr_args);             //Print new arguments
         insert_args_lst(file, lst, mas, op_tab[file->inst_pos].nbr_args);       //Insert from **mas arguments to lst
-        lst->str = args ? insert_cmd_string(args) : NULL;                       //Don't changes str. Why? Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
-        lst->cmd_size = count_cmd_size(mas, file);
+		print_new_args(file, lst, mas, op_tab[file->inst_pos].nbr_args);        //Print new arguments
 
+
+//		lst->str = args ? insert_cmd_string(args) : NULL;                       //Done --- Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
+		lst->cmd_size = count_cmd_size(mas, file);
 		//insert to count_cmd_size this fresh string 	done
 		//insert_cmd_string(args); 						done
-//		mas = ft_strsplit(lst->str, ' ');
-//		lst->arg1 = op_tab[file->inst_pos].nbr_args > 0 ? ft_strdup(mas[0]) : NULL;
-//		lst->arg2 = op_tab[file->inst_pos].nbr_args > 1 ? ft_strdup(mas[1]) : NULL;
-//		lst->arg3 = op_tab[file->inst_pos].nbr_args > 2 ? ft_strdup(mas[2]) : NULL;
 		//lst->byte_method_nbr = lst->cmd_size;
 		lst->cmd_str_size = file->count_size;
 		lst->byte_nbr = file->count_size - lst->cmd_size;

@@ -42,7 +42,7 @@ void	cmd_debug(t_inst *inst)
 	}
 }
 
-void		print_new_args(t_core *file, char **args, int nbr_args)
+void		print_new_args(t_core *file, t_cmd	*lst, char **args, int nbr_args)
 {
 	int 	i;
 
@@ -57,5 +57,6 @@ void		print_new_args(t_core *file, char **args, int nbr_args)
 			i++;
 		}
 	}
+	ft_printf("#### INSERT STR  - [%s]\n", lst->str);                           //Print String with arguments for Cod-Age
     ft_printf("\n");
 }

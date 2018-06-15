@@ -178,21 +178,23 @@ void		error_cor(t_core *file, int nbr_char);
 //			[VALIDATION ARGUMENTS]
 
 int		    ft_isspace(char c);
-int		    ft_atoii(const char *str);
 int			check_arg_reg(t_core *file, char *str_arg, int nbr_arg);
 int			check_arg_dir(t_core *file, char *str_arg, int nbr_arg);
 int			check_arg_ind(t_core *file, char *str_arg, int nbr_arg);
 int 		check_args_main(t_core *file, char **args, int nbr_args);
+int			check_arg_label(t_core *file, char *str_arg, int nbr_arg);
 char		**create_fresh_args(t_core *file, char **args, int nbr_args);
 char		**valid_args_main(t_core *file, char *str_args, int nbr_args);
+char        *create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr);
 void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr);
+
 
 //			[DEBUG and PRINT]
 
 void		cmd_debug(t_inst *inst);
 void		label_debug(t_core *file);
 void        set_settings(t_core	*file, int flag);
-void		print_new_args(t_core *file, char **args, int nbr_args);
+void		print_new_args(t_core *file, t_cmd	*lst, char **args, int nbr_args);
 
 //			[FREE MEMORY]
 
