@@ -57,7 +57,7 @@ char		**valid_args_main(t_core *file, char *str_args, int nbr_args)
 	args = ft_strsplit(str_args, ',');									        //Need free memory
     if (!args || !file || !nbr_args)                                            //Search Errors
         error_cor(file, ERROR_ARG);
-	if (check_args_main(file, args, nbr_args) == OK)                                 //Main Check Arguments
+	if (check_args_main(file, args, nbr_args) == OK)                            //Main Check Arguments
     {
         new_args = create_fresh_args(file, args, nbr_args);                     //Create new args without spaces
         free_mas(args);                                                         //Free memory
@@ -65,7 +65,7 @@ char		**valid_args_main(t_core *file, char *str_args, int nbr_args)
     }
 	else
 	{
-		error_cor(file, 1);
+		error_cor(file, ERROR_ARG);
 		free_mas(args);															//Free memory
 		return (NULL);
 	}
