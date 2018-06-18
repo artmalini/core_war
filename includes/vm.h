@@ -65,35 +65,86 @@ typedef char t_arg_type;
 #define COMMENT_LENGTH (2048)
 #define COREWAR_EXEC_MAGIC 0xea83f3
 
-typedef struct		s_header
-{
-	unsigned int	magic;
-	char			prog_name [PROG_NAME_LENGTH + 1];
-	unsigned int	prog_size;
-	char			how [COMMENT_LENGTH + 1];
-}					t_header;
+// typedef struct		s_header
+// {
+// 	unsigned int	magic;
+// 	char			prog_name [PROG_NAME_LENGTH + 1];
+// 	unsigned int	prog_size;
+// 	char			how [COMMENT_LENGTH + 1];
+// }					t_header;
 
 # define BUF_SIZE (5)
 
-typedef struct		s_player
-{
-	// char			magic[8];
-	char			*magic;
-	// char			bot_name[PROG_NAME_LENGTH];
-	char			*bot_name;
-	int				size_exec;
-	// char			comment[COMMENT_LENGTH];
-	char			*comment;
-	// char			ex_code[size_exec];
-	char			*ex_code;
-	unsigned char		memory[MEM_SIZE];
-	unsigned int		nb_player;
-	unsigned long		cycle;
-	unsigned long		nbr_live;
-	unsigned long		old_nbr_live;
-	unsigned long		nb_process;
-	int					mem_mov;
+// typedef struct		s_player
+// {
+// 	// char			magic[8];
+// 	char			*magic;
+// 	// char			bot_name[PROG_NAME_LENGTH];
+// 	char			*bot_name;
+// 	int				size_exec;
+// 	// char			comment[COMMENT_LENGTH];
+// 	char			*comment;
+// 	// char			ex_code[size_exec];
+// 	char			*ex_code;
+// 	unsigned char		memory[MEM_SIZE];
+// 	unsigned int		nb_player;
+// 	unsigned long		cycle;
+// 	unsigned long		nbr_live;
+// 	unsigned long		old_nbr_live;
+// 	unsigned long		nb_process;
+// 	int					mem_mov;
 	
-} 					t_player;
+// } 					t_player;
+
+
+//  для команд
+// typedef struct		s_proc
+// {
+// 	int				carry;
+// 	int				pc;
+// 	int				reg[REG_NUMBER];
+// 	int				instruction;
+// 	int				cycle_to_wait;
+// 	int				live_period;
+// 	int				id;
+// 	int				parametres_types[5];
+// 	int				save_pc;
+// 	int				alive;
+// 	struct s_proc	*next;
+// }					t_proc;
+
+typedef struct		s_champ
+{
+	int				id;
+	char			*name;
+	char			comment[COMMENT_LENGTH];
+	int				magic_number;
+	int				weight;
+	char			*prog;
+
+}					t_champ;
+
+typedef struct		s_vm
+{
+	int				fd;
+	int				dump_cycle;
+	t_champ			tab_champ[MAX_PLAYERS];
+	int				nbr_next;
+	unsigned char	arena[MEM_SIZE];
+	int				cycle;
+	int				last_check;
+	int				cycle_to_die;
+	int				cycle_before_checking;
+	int				total_lives_period;
+}					t_vm;
+
+int			vm_usage(void);
+int			vm_param_n(t_vm *vm, char **av, int *i, int ac);
+int			ft_isnumber(char *str);
+int			vm_get_param(char **av, t_vm *vm, int ac);
+void		vm_dump_arena(t_vm *vm);
+void		vm_create_arena(t_vm *vm);
+void		vm_load_champs(t_vm *vm);
+void		vm_read_champ(t_vm *vm, int number_player);
 
 #endif
