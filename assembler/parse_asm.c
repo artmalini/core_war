@@ -32,7 +32,7 @@ void		read_init_line(char *line, t_core *file, int nb, char *arg)
 	}
 	else
 	{
-		nb = file->name_nbr > 0 ? 1 : 2;
+		nb = (file->name_nbr == 1 && file->cmt_nbr == 0)? 1 : 2;
 		name_cmt(str, nb, file);
 	}
 	if (file->syntax == 4)
