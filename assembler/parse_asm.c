@@ -12,18 +12,88 @@
 
 #include "asm.h"
 
+void		read_init_line(char *line, t_core *file, int nb, char *arg)
+{
+	char	*str;
+
+	str = line;
+	while (str && *str && ft_isspace(*str))
+	 	str++;
+	if (str && str[0] == '.')
+	{
+		file->point_nbr++;
+		name_cmt_valid(str, file, arg);
+	}
+	else if (str && (str[0] == COMMENT_CHAR
+			|| str[0] == COMMENT_CHAR2 || *str == '\0'))
+	{
+		ft_strdel(&line);
+		return ;
+	}
+	else
+	{
+		nb = file->name_nbr > 0 ? 1 : 2;
+		name_cmt(str, nb, file);
+	}
+	if (file->syntax == 4)
+		file->flag = 1;//exit maybe all find
+	ft_strdel(&line);
+}
+
+void	parse_header(int fd, char *arg, t_core *file)
+{
+	char	*line;
+
+	line = NULL;
+	while (get_next_line(fd, &line) && !file->flag)
+	{
+		file->rows++;
+		if (line_has_val(line))
+			read_init_line(line, file, 0, arg);
+		else
+			ft_strdel(&line);
+	}
+	ft_strdel(&line);
+	if (file->syntax != 4)
+		error_file(file, arg, 4);
+	rebuild_name_cmt(file, arg);
+	//len_check(ft_strlen(file->name), 1, file);
+	//len_check(ft_strlen(file->comment), 2, file);
+}
+
+void	read_line(char *line, char *arg, t_core *file)
+{
+	char	*str;
+
+	str = line;
+	while (str && *str && ft_isspace(*str))
+	 	str++;
+	if (str && (str[0] == COMMENT_CHAR
+			|| str[0] == COMMENT_CHAR2))
+	{
+		ft_strdel(&line);
+		return ;
+	}
+	else
+		line_handler(str, arg, file);
+	//ft_printf("read_line |%s|\n", str);
+	ft_strdel(&line);
+}
+
 void	parse_file(char *arg, t_core *file)
 {
 	char	*line;
 	int		fd;
 
+	line = NULL;
 	if (!(fd = open(arg, O_RDONLY)))
-		wrong_input(3);
+		error_file(file, arg, 4);
+	parse_header(fd, arg, file);
 	while (get_next_line(fd, &line))
 	{
 		file->rows++;
 		if (line_has_val(line))
-			read_line(line, file);
+			read_line(line, arg, file);
 		else
 			ft_strdel(&line);
 	}
@@ -40,7 +110,7 @@ int		parse_filename(char	*arg, t_core *file)
 	len = ft_strlen(arg);
 	i = -1;
 	if ((arg[len - 1] != 's' || arg[len - 2] != '.') || len < 3)
-		wrong_input(2);
+		error_file(file, arg, 2);
 	l = len - 1;
 	file->filename = (char*)malloc(sizeof(t_core) * (len + 4));
 	while (++i < l)

@@ -12,24 +12,31 @@
 
 NAME		= ../asm
 FLAGS		= -Wall -Wextra -Werror
-CC			= gcc
+CC			= gcc -g
 
 HEADERS		= ../includes
 HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft
 LIBFT_PATH	= ../libft
 
-SRCS_ASM	=	main.c \
-				op.c \
-				error_handler.c \
-				name_and_cmt_valid.c \
-				inter_main.c \
+SRCS_ASM	=	cmd_asm.c \
+                create_cor.c \
+				create_cor_instr.c \
+				create_cor_fpos_opc.c \
 				debug_asm.c \
-				read_asm.c \
-				parse_asm.c \
+				error_handler.c \
+				free_asm.c \
 				label_asm.c \
-				cmd_asm.c \
-
+				main.c \
+				name_and_cmt_valid.c \
+				op.c \
+				parse_asm.c \
+				parse_asm_line.c \
+				recalc_cmd_links.c \
+				settings.c \
+				valid_main.c \
+				check_args.c \
+				free_asm_struct.c \
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 

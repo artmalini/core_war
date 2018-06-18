@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_asm.c                                         :+:      :+:    :+:   */
+/*   settings.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmakahon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 23:01:57 by vmakahon          #+#    #+#             */
-/*   Updated: 2018/06/05 23:01:58 by vmakahon         ###   ########.fr       */
+/*   Created: 2018/06/08 15:30:41 by vmakahon          #+#    #+#             */
+/*   Updated: 2018/06/08 15:30:43 by vmakahon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	read_line(char *line, t_core *file)
+void        set_settings(t_core	*file, int flag)
 {
-	char	*str;
-
-	str = line;
-	while (*str && (*str == ' ' || *str == '\t'))
-	 	str++;
-	if (str[0] == '.')
-	{
-		name_and_cmt(str, file);
-	}
-	else if (str[0] == COMMENT_CHAR
-		|| str[0] == COMMENT_CHAR2)
-	{
-		ft_strdel(&line);
-		return ;
-	}
-	else
-		line_handler(str, file);
-	//ft_printf("read_line |%s|\n", str);
-	ft_strdel(&line);
+    if (flag == ON)
+    {
+        file->st[DEBUG_ON] = ON;
+        file->st[DEBUG_ARG] = ON;
+        file->st[DEBUG_CMD] = ON;
+        file->st[DEBUG_LB] = ON;
+    }
 }

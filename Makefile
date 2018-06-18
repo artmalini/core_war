@@ -37,7 +37,4 @@ fclean: clean
 re: fclean all
 
 .PHONY:		all clean fclean re
-
-	#@echo " $(CYAN)$(NAME) $(GREY)generated \xF0\x9F\x98\xBA"
-	#@echo " $(RED)All objects has been deleteted!"
-	#@echo " $(RED)$(NAME)$(GREY) has been deleteted!"
+	
