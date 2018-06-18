@@ -155,6 +155,9 @@ extern t_op	op_tab[17];
 t_inst		*add_label(char *str, t_core *file);
 int			line_has_val(char *line);
 void		read_line(char *line, char *arg, t_core *file);
+void		name_cmt_valid(char *str, t_core *file, char *arg);
+void		rebuild_name_cmt(t_core *file, char *arg);
+void		name_cmt(char *str, int nb, t_core *file);
 void		parse_file(char *arg, t_core *file);
 void		push_laybel(char *str, t_inst **lst, t_core *file);
 void		name_and_cmt(char *line, t_core *file);
@@ -166,6 +169,10 @@ t_cmd		*add_cmd(char *cmd, char *args, t_core *file);
 void		push_cmd(char *cmd, char *args, t_core *file, t_cmd **lst);
 void		create_cor(t_core *file, char *arg);
 int			count_opcode(char *str);
+void		set_instruction(int fd, t_cmd *cmd, t_core *file);
+int			find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size);
+void		asm_hexa_fd(long code, int fd);
+void		recalc_cmd_links(t_core *file);
 
 
 //			[ERROR MANAGER]

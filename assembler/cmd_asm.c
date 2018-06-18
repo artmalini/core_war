@@ -91,9 +91,8 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
         insert_args_lst(file, lst, mas, op_tab[file->inst_pos].nbr_args);       //Insert from **mas arguments to lst
 		print_new_args(file, lst, mas, op_tab[file->inst_pos].nbr_args);        //Print new arguments
 
-
-//		lst->str = args ? insert_cmd_string(args) : NULL;                       //Done --- Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
 		lst->cmd_size = count_cmd_size(mas, file);
+		//lst->str = args ? insert_cmd_string(args) : NULL;                       //Done --- Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
 		//insert to count_cmd_size this fresh string 	done
 		//insert_cmd_string(args); 						done
 		//lst->byte_method_nbr = lst->cmd_size;

@@ -21,6 +21,8 @@ LIBFT_PATH	= ../libft
 
 SRCS_ASM	=	cmd_asm.c \
                 create_cor.c \
+				create_cor_instr.c \
+				create_cor_fpos_opc.c \
 				debug_asm.c \
 				error_handler.c \
 				free_asm.c \
@@ -29,9 +31,12 @@ SRCS_ASM	=	cmd_asm.c \
 				name_and_cmt_valid.c \
 				op.c \
 				parse_asm.c \
+				parse_asm_line.c \
+				recalc_cmd_links.c \
 				settings.c \
 				valid_main.c \
 				check_args.c \
+				free_asm_struct.c \
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 
