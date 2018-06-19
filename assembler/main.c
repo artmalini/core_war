@@ -16,7 +16,7 @@ void    display_header(void)
 {
 	ft_putstr("\033[31m");
 	ft_putstr("     ___           ___           ___         \n");
-	ft_putstr("    /\\  \\         /\\  \\         /\\__\\        \n");
+	ft_putstr("    /\\  \\         /\\  \\         / \\__\\        \n");
 	ft_putstr("   /::\\  \\       /::\\  \\       /::|  |       \n");
 	ft_putstr("  /:/\\:\\  \\     /:/\\ \\  \\     /:|:|  |       \n");
 	ft_putstr(" /::\\~\\:\\  \\   _\\:\\~\\ \\  \\   /:/|:|__|__     \n");
@@ -41,7 +41,7 @@ void	err_parser(int argc, char **argv)
 
 	i = 1;
 	display_header();
-	ft_putstr("ERROR: Argument ");
+	ft_putstr("ERROR: Arguments ");
 	while (--argc)
 		param_error(argv[i++]);
 	ft_putstr("is invalid!\n");

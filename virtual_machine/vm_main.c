@@ -166,8 +166,6 @@ int			main(int argc, char **argv)
 // 	return (0);
 // }
 
-<<<<<<< HEAD
-=======
 int main(int argc, char **argv)
 {
 	int fd;
@@ -202,4 +200,3 @@ int main(int argc, char **argv)
 	ft_memdel((void**)&line);
 	return (0);
 }
->>>>>>> 455623530033741ad4cfcece90bbd614789373e4
