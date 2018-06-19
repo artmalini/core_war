@@ -12,33 +12,33 @@
 
 #include "asm.h"
 
-char	*insert_cmd_string(char *args)
-{
-	int		i;
-	int		j;
-	//int		flag;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	//flag = 0;
-	if (!(str = (char *)malloc(sizeof(str) * (ft_strlen(args) + 1))))
-		return (NULL);
-	while (args[i] && args[i] != '#' && args[i] != ';')
-	{
-		while (args[i] && (args[i] != ' ' && args[i] != '\t' &&
-			args[i] != ',' && args[i] != '#' && args[i] != ';'))
-			str[j++] = args[i++];
-		while (args[i] && (args[i] == ' ' || args[i] == '\t' ||
-			args[i] == ','))
-			i++;
-		if ((args[i] != '\n' && args[i]))
-			str[j++] = ' ';
-	}
-	str[j] = '\0';
-	ft_printf("INSERT STR|%s|\n", str);
-	return (str);
-}
+//char	*insert_cmd_string(char *args)
+//{
+//	int		i;
+//	int		j;
+//	//int		flag;
+//	char	*str;
+//
+//	i = 0;
+//	j = 0;
+//	//flag = 0;
+//	if (!(str = (char *)malloc(sizeof(str) * (ft_strlen(args) + 1))))
+//		return (NULL);
+//	while (args[i] && args[i] != '#' && args[i] != ';')
+//	{
+//		while (args[i] && (args[i] != ' ' && args[i] != '\t' &&
+//			args[i] != ',' && args[i] != '#' && args[i] != ';'))
+//			str[j++] = args[i++];
+//		while (args[i] && (args[i] == ' ' || args[i] == '\t' ||
+//			args[i] == ','))
+//			i++;
+//		if ((args[i] != '\n' && args[i]))
+//			str[j++] = ' ';
+//	}
+//	str[j] = '\0';
+//	ft_printf("INSERT STR|%s|\n", str);
+//	return (str);
+//}
 
 int		count_cmd_size(char **mas, t_core *file)
 {
@@ -59,11 +59,11 @@ int		count_cmd_size(char **mas, t_core *file)
 		len++;
 	while (mas[++i] && mas[i][0])
 	{
-			if (mas[i][0] == 'r')
+			if (mas[i][0] == REGISTER_CHAR)
 				len++;
-			else if (mas[i][0] == '%' && l_size == 4)
+			else if (mas[i][0] == DIRECT_CHAR && l_size == 4)
 				len = len + 4;
-			else if (mas[i][0] == '%' && l_size == 2)
+			else if (mas[i][0] == DIRECT_CHAR && l_size == 2)
 				len = len + 2;
 			else
 				len = len + 2;
@@ -87,12 +87,12 @@ t_cmd	*add_cmd(char *cmd, char *args, t_core *file)
 	{
         lst->command = cmd ? ft_strdup(cmd) : NULL;
         lst->opcode = op_tab[file->inst_pos].opcode;
-        mas = valid_args_main(file, args, op_tab[file->inst_pos].nbr_args);     //Check and Return arguments
-        insert_args_lst(file, lst, mas, op_tab[file->inst_pos].nbr_args);       //Insert from **mas arguments to lst
-		print_new_args(file, lst, mas, op_tab[file->inst_pos].nbr_args);        //Print new arguments
+        mas = valid_args_main(file, args, NBR_ARGS(file->inst_pos));			//Check and Return arguments
+        insert_args_lst(file, lst, mas, NBR_ARGS(file->inst_pos));				//Insert from **mas arguments to lst
+		print_new_args(file, lst, mas, NBR_ARGS(file->inst_pos));				//Print new arguments
 
 		lst->cmd_size = count_cmd_size(mas, file);
-		//lst->str = args ? insert_cmd_string(args) : NULL;                       //Done --- Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
+		//lst->str = args ? insert_cmd_string(args) : NULL;                     //Done --- Это для codage asm_hexa_fd(count_opcode(comm->str), fd);
 		//insert to count_cmd_size this fresh string 	done
 		//insert_cmd_string(args); 						done
 		//lst->byte_method_nbr = lst->cmd_size;

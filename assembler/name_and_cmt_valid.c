@@ -101,7 +101,7 @@ void	name_cmt(char *str, int nb, t_core *file)
 	int		i;
 
 	i = 0;
-	while (str && *str && ft_isspace(*str))
+	while (str && *str && ft_strchr(SPACES_CHARS, *str))
 		str++;
 	while (str && str[i])
 	{
