@@ -1,3 +1,6 @@
 .DS_Store
 *.o
 *.cor
+*.a
+asm
+corewar

@@ -27,13 +27,13 @@ int			vm_param_n(t_vm *vm, char **av, int *i, int ac)
 		}
 		else
 		{
-			ft_printf("No number after the -n.");
+			ft_printf("No number after the -n. ");
 			vm_usage();
 		}
 	}
 	else
 	{
-		ft_printf("No champion after the number requested.");
+		ft_printf("No champion after the number requested. ");
 		vm_usage();
 	}
 	return (vm->nbr_next);
@@ -61,7 +61,7 @@ static void	champs(t_vm *vm, char *arg)
 	}
 	else if (vm->nbr_next >= 4)
 	{
-		ft_printf("Number of champion too high.");
+		ft_printf("Number of champion too high.\n");
 		exit(1);
 	}
 	else
@@ -91,7 +91,7 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 	}
 	if (vm->nbr_next == 0)
 	{
-		ft_printf("No .cor champion in the arena.");
+		ft_printf("No .cor champion in the arena.\n");
 		return (0);
 	}
 	return (1);

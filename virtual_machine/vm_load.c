@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
+/*static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 {
 	int	index;
 
@@ -20,6 +20,18 @@ static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 	while (index < champ.weight && (index + memory_index) < MEM_SIZE)
 	{
 		vm->arena[index + memory_index] = (unsigned char)champ.prog[index];
+		index++;
+	}
+}*/
+
+static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
+{
+	int	index;
+
+	index = 0;
+	while (index < champ.weight && (index + memory_index) < MEM_SIZE)
+	{
+		vm->arena[index + memory_index].acb = 0xFF & champ.prog[index];
 		index++;
 	}
 }

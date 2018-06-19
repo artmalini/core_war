@@ -113,6 +113,11 @@ typedef char t_arg_type;
 // 	struct s_proc	*next;
 // }					t_proc;
 
+typedef struct		s_arena
+{
+	char	acb;
+}					t_arena;
+
 typedef struct		s_champ
 {
 	int				id;
@@ -130,7 +135,8 @@ typedef struct		s_vm
 	int				dump_cycle;
 	t_champ			tab_champ[MAX_PLAYERS];
 	int				nbr_next;
-	unsigned char	arena[MEM_SIZE];
+	//unsigned char	arena[MEM_SIZE];
+	t_arena			arena[MEM_SIZE];
 	int				cycle;
 	int				last_check;
 	int				cycle_to_die;

@@ -19,7 +19,7 @@ void	ft_error(char *name)
 	exit(1);
 }
 
-void	vm_dump_arena(t_vm *vm)
+/*void	vm_dump_arena(t_vm *vm)
 {
 	int	i;
 	int	mem;
@@ -33,6 +33,7 @@ void	vm_dump_arena(t_vm *vm)
 		{
 			ft_printf("\n");
 			ft_printf("%#06x : ", mem);
+			ft_printf("%02x ", 0xFF & vm->arena[i].acb);
 			mem += 64;
 		}
 		else if (i == 64)
@@ -41,7 +42,32 @@ void	vm_dump_arena(t_vm *vm)
 			ft_printf("%#06x : ", mem);
 			mem += 64;
 		}
-		ft_printf("%02x ", vm->arena[i]);
+		ft_printf("%02x ", 0xFF &  vm->arena[i].acb);
+		i++;
+	}
+	ft_printf("\n");
+}*/
+
+void	vm_dump_arena(t_vm *vm)
+{
+	int	i;
+	int	mem;
+
+	mem = 64;
+	i = 0;
+	ft_printf("0x0000 : ");
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%02x ", 0xFF & vm->arena[i].acb);
+		if ((i + 1) % 64 == 0)
+		{ 
+			mem += 64;
+			if (i + 1 < MEM_SIZE)
+			{
+				ft_printf("\n");
+				ft_printf("%#06x : ", mem);
+			}
+		}
 		i++;
 	}
 	ft_printf("\n");
@@ -54,9 +80,14 @@ void	vm_create_arena(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		vm->arena[i] = 0;
+		vm->arena[i].acb = 0;
 		i++;
 	}
+}
+
+void	vm_load_arena(t_vm *vm)
+{
+	vm_dump_arena(vm);
 }
 
 static void	free_vm(t_vm *vm)
@@ -97,7 +128,7 @@ static void	init(t_vm *vm)
 
 int			vm_usage(void)
 {
-	ft_printf("usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...");
+	ft_printf("usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
 	exit(1);
 	return (0);
 }
@@ -117,6 +148,8 @@ int			main(int argc, char **argv)
 		vm_usage();
 	vm_load_champs(vm);
 	//нужно дописать функцию самой игры и реализовать функции
+	vm_load_arena(vm);
+	ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);
 	free_vm(vm);
 	return (0);
 }
@@ -166,7 +199,7 @@ int			main(int argc, char **argv)
 // 	return (0);
 // }
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
 	int fd;
 	int ret;
@@ -199,4 +232,4 @@ int main(int argc, char **argv)
 	}
 	ft_memdel((void**)&line);
 	return (0);
-}
+}*/
