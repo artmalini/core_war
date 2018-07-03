@@ -20,7 +20,13 @@ HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft
 LIBFT_PATH	= ../libft
 
-SRCS_VM	=	vm_main.c vm_load.c vm_params.c vm_read.c
+SRCS_VM	=	vm_errors.c \
+			vm_load.c \
+			vm_main.c \
+			vm_ncurses.c \
+			vm_params.c \
+			vm_print.c \
+			vm_read.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 

@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 
 #include "vm.h"
-#include <fcntl.h>
-
-void	ft_error(char *name)
-{
-	ft_printf("%s\n", name);
-	exit(1);
-}
 
 /*void	vm_dump_arena(t_vm *vm)
 {
@@ -102,7 +95,6 @@ static void	free_vm(t_vm *vm)
 		i++;
 	}
 	free(vm);
-	vm = NULL;
 }
 
 static void	init(t_vm *vm)
@@ -124,13 +116,6 @@ static void	init(t_vm *vm)
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
-}
-
-int			vm_usage(void)
-{
-	ft_printf("usage : ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
-	exit(1);
-	return (0);
 }
 
 int			main(int argc, char **argv)
