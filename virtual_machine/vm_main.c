@@ -66,6 +66,47 @@ void	vm_dump_arena(t_vm *vm)
 	ft_printf("\n");
 }
 
+void	vm_load_ncurses(void)
+{
+	initscr();
+	noecho();
+	start_color();
+	init_color(COLOR_WHITE, 200, 200, 200);
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_GREEN, COLOR_BLACK);
+	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+	init_pair(5, COLOR_BLUE, COLOR_BLACK);
+	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(7, COLOR_WHITE, COLOR_BLACK);
+	curs_set(FALSE);
+}
+
+
+void	vm_play_arena(t_vm *vm)
+{
+	int	i;
+
+	i = 0;
+	erase();
+	while (i < MEM_SIZE)
+	{
+		printw(" ");
+		attron(COLOR_PAIR(vm->arena[i].rgb));
+		printw("%02x", 0xFF & vm->arena[i].acb);
+		if ((i + 1) % 64 == 0)
+		{ 
+			//mem += 64;
+			//if (i + 1 < MEM_SIZE)			
+				printw(" \n");
+		}		
+		i++;		
+	}
+	printw("\n");
+	refresh();
+	
+}
+
 void	vm_create_arena(t_vm *vm)
 {
 	int	i;
@@ -74,13 +115,27 @@ void	vm_create_arena(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		vm->arena[i].acb = 0;
+		vm->arena[i].rgb = 7;
 		i++;
 	}
 }
 
+
 void	vm_load_arena(t_vm *vm)
 {
-	vm_dump_arena(vm);
+	int		i;
+
+	i = -1;
+	vm_load_ncurses();
+
+	//vm_dump_arena(vm);
+
+	while (++i < 2)
+		vm_play_arena(vm);
+
+	
+	getch();
+	endwin();
 }
 
 static void	free_vm(t_vm *vm)
@@ -116,6 +171,42 @@ static void	init(t_vm *vm)
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
+	vm->cmd = NULL;
+}
+
+t_cmd		*add_list(t_vm *vm, int i)
+{
+	t_cmd	*lst;
+
+	lst = NULL;
+	lst = (t_cmd *)malloc(sizeof(t_cmd));
+	if (lst)
+	{
+		lst->reg[0] = vm->tab_champ[i].id;
+		lst->cmd = 0;//нужно индекс первой комманды
+		lst->next = NULL;
+	}
+	return (lst);
+}
+
+void	vm_load_lists(t_cmd **cmd, t_vm *vm)
+{
+	int		i;
+	t_cmd	*tmp;
+
+	tmp = *cmd;
+	i = -1;	
+	while (++i < vm->nbr_next)
+	{
+		if (tmp)
+		{
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->next = add_list(vm, i);
+		}
+		else
+			*cmd = add_list(vm, i);
+	}
 }
 
 int			main(int argc, char **argv)
@@ -132,6 +223,7 @@ int			main(int argc, char **argv)
 	if (vm_get_param(argv, vm, argc) == 0)
 		vm_usage();
 	vm_load_champs(vm);
+	vm_load_lists(&vm->cmd, vm);
 	//нужно дописать функцию самой игры и реализовать функции
 	vm_load_arena(vm);
 	ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);

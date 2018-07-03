@@ -17,7 +17,8 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include <fcntl.h>
-# include <ncurses.h>
+// # include <ncurses.h>
+# include "curses.h"
 
 /*
 **					[Macros for ERROR MANAGER]
@@ -145,10 +146,17 @@ typedef struct		s_error
 // 	int				alive;
 // 	struct s_proc	*next;
 // }					t_proc;
+typedef struct 		s_cmd
+{
+	int				reg[REG_NUMBER];
+	int				cmd;
+	struct s_cmd	*next;
+}					t_cmd;
 
 typedef struct		s_arena
 {
 	char	acb;
+	int		rgb;//main color for chars on arena
 }					t_arena;
 
 typedef struct		s_champ
@@ -158,6 +166,7 @@ typedef struct		s_champ
 	char			comment[COMMENT_LENGTH];
 	int				magic_number;
 	int				weight;
+	int				rgb;
 	char			*prog;
 
 }					t_champ;
@@ -167,8 +176,8 @@ typedef struct		s_vm
 	int				fd;
 	int				dump_cycle;
 	t_champ			tab_champ[MAX_PLAYERS];
+	t_cmd			*cmd;
 	int				nbr_next;
-	//unsigned char	arena[MEM_SIZE];
 	t_arena			arena[MEM_SIZE];
 	int				cycle;
 	int				last_check;
