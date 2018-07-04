@@ -149,7 +149,13 @@ typedef struct		s_error
 typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
-	int				cmd;
+	int				idx;
+	int				on;
+	int				off;
+	int				carry;
+	int				wait;
+	int				increment;
+	int				playing;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -167,6 +173,9 @@ typedef struct		s_champ
 	int				magic_number;
 	int				weight;
 	int				rgb;
+
+	int				idx;
+	int				live;
 	char			*prog;
 
 }					t_champ;
@@ -179,8 +188,8 @@ typedef struct		s_vm
 	t_cmd			*cmd;
 	int				nbr_next;
 	t_arena			arena[MEM_SIZE];
-	int				cycle;
 	int				last_check;
+	int				cycle;
 	int				cycle_to_die;
 	int				cycle_before_checking;
 	int				total_lives_period;

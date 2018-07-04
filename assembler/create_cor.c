@@ -22,10 +22,7 @@ void	asm_hexa_fd(long code, int fd)
 		asm_hexa_fd(code % 256, fd);
 	}
 	else
-	{
-		ft_printf("CODE %ld\n", code);
 		ft_putchar_fd(code, fd);
-	}
 }
 void	set_cor_magic(int fd)
 {

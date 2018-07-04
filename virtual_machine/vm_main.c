@@ -71,14 +71,20 @@ void	vm_load_ncurses(void)
 	initscr();
 	noecho();
 	start_color();
-	init_color(COLOR_WHITE, 200, 200, 200);
+	init_color(COLOR_WHITE, 200, 0, 0);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
-	init_pair(5, COLOR_BLUE, COLOR_BLACK);
-	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(7, COLOR_WHITE, COLOR_BLACK);
+
+	init_pair(5, COLOR_WHITE, COLOR_RED);
+	init_pair(6, COLOR_WHITE, COLOR_YELLOW);
+	init_pair(7, COLOR_WHITE, COLOR_GREEN);
+	init_pair(8, COLOR_WHITE, COLOR_CYAN);
+
+	init_pair(9, COLOR_BLUE, COLOR_BLACK);
+	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(11, COLOR_WHITE, COLOR_BLACK);
 	curs_set(FALSE);
 }
 
@@ -115,7 +121,7 @@ void	vm_create_arena(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		vm->arena[i].acb = 0;
-		vm->arena[i].rgb = 7;
+		vm->arena[i].rgb = 11;
 		i++;
 	}
 }
@@ -124,15 +130,23 @@ void	vm_create_arena(t_vm *vm)
 void	vm_load_arena(t_vm *vm)
 {
 	int		i;
+	t_cmd	*c;
 
-	i = -1;
+	i = 1;
 	vm_load_ncurses();
 
 	//vm_dump_arena(vm);
-
-	while (++i < 2)
-		vm_play_arena(vm);
-
+	//while (++i < 2)
+	//	vm_play_arena(vm);
+	while (i)
+	{
+		c = vm->cmd;
+		while (c)
+		{
+			vm_play_arena(vm);
+			c = c->next;
+		}
+	}
 	
 	getch();
 	endwin();
@@ -183,9 +197,15 @@ t_cmd		*add_list(t_vm *vm, int i)
 	if (lst)
 	{
 		lst->reg[0] = vm->tab_champ[i].id;
-		lst->cmd = 0;//нужно индекс первой комманды
+		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
+		lst->on = 0;
+		lst->off = 0;
+		lst->carry = 0;
+		lst->wait = 0;
+		lst->increment = 0;
+		lst->playing = 0;
 		lst->next = NULL;
-	}
+	}	
 	return (lst);
 }
 
@@ -206,6 +226,7 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 		}
 		else
 			*cmd = add_list(vm, i);
+		ft_printf("@@@ %d %d\n", vm->tab_champ[i].id, vm->tab_champ[i].idx);
 	}
 }
 

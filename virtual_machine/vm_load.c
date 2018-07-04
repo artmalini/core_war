@@ -33,7 +33,7 @@ static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
 	while (index < champ.weight && (index + memory_index) < MEM_SIZE)
 	{
 		vm->arena[index + memory_index].acb = 0xFF & champ.prog[index];
-		vm->arena[index + memory_index].rgb = 1 + num_pl % 6;
+		vm->arena[index + memory_index].rgb = 1 + num_pl % 4;
 		index++;
 	}
 }
@@ -51,6 +51,11 @@ void		vm_load_champs(t_vm *vm)
 	space = 0;
 	while (num_pl < vm->nbr_next)
 	{
+		
+		vm->tab_champ[num_pl].idx = space;
+		vm->tab_champ[num_pl].live = 0;
+		ft_printf("vm_load_champs vm->tab_champ[num_pl].idx|%d|\n", vm->tab_champ[num_pl].idx);
+				
 		load_champ_to(vm, vm->tab_champ[num_pl], space, num_pl);
 		space += space_bt_champs;
 		num_pl++;

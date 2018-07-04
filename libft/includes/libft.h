@@ -93,5 +93,6 @@ int					ft_int_length(int n);
 int					ft_minint(int n);
 int					ft_count_words(char const *s, char c);
 int					ft_getword_len(char const *s, char c);
+char				*ft_strjoinstr(char *str1, char *str2);
 
 #endif
