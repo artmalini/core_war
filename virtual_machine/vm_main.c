@@ -122,6 +122,8 @@ void	vm_create_arena(t_vm *vm)
 	{
 		vm->arena[i].acb = 0;
 		vm->arena[i].rgb = 11;
+		vm->arena[i].asc_rgb = 11;
+		vm->arena[i].flag = 0;
 		i++;
 	}
 }
@@ -154,11 +156,18 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 
  	i = cmd->idx + pos;
 	cmd->idx = i % MEM_SIZE < 0 ? i % MEM_SIZE + MEM_SIZE : i % MEM_SIZE;
-	// erase();
-	// attron(COLOR_PAIR(11));
-	// printw("vm_next_step |%d|\n", cmd->idx);
-	// refresh();
+	if (vm->arena[cmd->idx].flag > 0)
+		vm->arena[cmd->idx].flag -= 1;
+	
+		// erase();
+		// attron(COLOR_PAIR(11));
+		 printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
+		 refresh();
+	vm->arena[cmd->idx].flag += 1;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
+	if (vm->arena[cmd->idx].flag == 0)
+		vm->arena[cmd->idx].rgb = vm->arena[cmd->idx].asc_rgb;
+	
 }
 
 
@@ -223,14 +232,18 @@ int		vm_calc_steps(int hex, int pos)
 	int		ret;
 
 	ret = 0;
-	param = op_tab[hex].nbr_args & 0xFF;
+	param = (op_tab[hex].nbr_args);
+			printw("param |%d|\n", param);
+			refresh();
 	if (hex < 1 || hex > 16)
 		return (1);
-	ret = vm_step_shift((pos >> 6) & 3, op_tab[hex].size);
+	ret = vm_step_shift((pos >> 6) & 3, op_tab[hex].size);	
 	if (param > 1)
 		ret += vm_step_shift((pos >> 4) & 3, op_tab[hex].size);
 	if (param > 2)
 		ret += vm_step_shift((pos >> 2) & 3, op_tab[hex].size);
+			//printw("ret |%d|\n", ret);
+			//refresh();	
 	return (ret + 2);
 }
 
@@ -242,7 +255,7 @@ void	vm_run_wait_cycle(t_vm *vm, t_cmd *cmd)
 	if (cmd->wait == 0)
 	{
 		cmd->playing = 0;
-		hex = vm->arena[cmd->idx].acb & 0xFF;
+		hex = vm->arena[cmd->idx].acb;
 		pos = vm->arena[cmd->idx + 1].acb;
 		vm_next_step(vm, cmd, vm_calc_steps(hex, pos));		
 			//printw("%d %d\n", pos, hex);
@@ -335,7 +348,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 	{
 		lst->reg[0] = vm->tab_champ[i].id;
 		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
-		lst->rgb = 5 + (i % 4);//цвет каретки
+		lst->rgb = 5 + (i % 4);//цвет каретки		
 		lst->playing = 0;
 		lst->wait = 0;
 		lst->on = 0;

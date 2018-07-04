@@ -162,8 +162,10 @@ typedef struct 		s_cmd
 
 typedef struct		s_arena
 {
-	char	acb;
-	int		rgb;//main color for chars on arena
+	char			acb;
+	int				rgb;//main color for chars on arena
+	int				asc_rgb;
+	int				flag;	
 }					t_arena;
 
 typedef struct		s_champ
