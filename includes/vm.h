@@ -150,6 +150,7 @@ typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
 	int				idx;
+	int				rgb;
 	int				on;
 	int				off;
 	int				carry;

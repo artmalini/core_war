@@ -27,6 +27,7 @@ SRCS_VM	=	vm_errors.c \
 			vm_params.c \
 			vm_print.c \
 			vm_read.c \
+			op.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 
