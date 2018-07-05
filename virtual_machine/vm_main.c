@@ -97,9 +97,9 @@ void	vm_play_arena(t_vm *vm)
 	erase();
 	while (i < MEM_SIZE)
 	{
-		printw(" ");
+		//printw(" ");
 		attron(COLOR_PAIR(vm->arena[i].rgb));
-		printw("%02x", 0xFF & vm->arena[i].acb);
+		printw("%02x ", 0xFF & vm->arena[i].acb);
 		if ((i + 1) % 64 == 0)
 		{ 
 			//mem += 64;
@@ -153,20 +153,22 @@ int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
 void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 {
 	int		i;
+	int		tm;
 
+	if (vm->arena[cmd->idx].flag > 0)
+		vm->arena[cmd->idx].flag--;
+	tm = cmd->idx;
  	i = cmd->idx + pos;
 	cmd->idx = i % MEM_SIZE < 0 ? i % MEM_SIZE + MEM_SIZE : i % MEM_SIZE;
-	if (vm->arena[cmd->idx].flag > 0)
-		vm->arena[cmd->idx].flag -= 1;
 	
 		// erase();
 		// attron(COLOR_PAIR(11));
 		 printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
 		 refresh();
-	vm->arena[cmd->idx].flag += 1;
+	vm->arena[cmd->idx].flag++;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
-	if (vm->arena[cmd->idx].flag == 0)
-		vm->arena[cmd->idx].rgb = vm->arena[cmd->idx].asc_rgb;
+	if (vm->arena[tm].flag == 0)
+		vm->arena[tm].rgb = vm->arena[tm].asc_rgb;
 	
 }
 
@@ -233,8 +235,8 @@ int		vm_calc_steps(int hex, int pos)
 
 	ret = 0;
 	param = (op_tab[hex].nbr_args);
-			printw("param |%d|\n", param);
-			refresh();
+			//printw("param |%d|\n", param);
+			//refresh();
 	if (hex < 1 || hex > 16)
 		return (1);
 	ret = vm_step_shift((pos >> 6) & 3, op_tab[hex].size);	
@@ -247,7 +249,7 @@ int		vm_calc_steps(int hex, int pos)
 	return (ret + 2);
 }
 
-void	vm_run_wait_cycle(t_vm *vm, t_cmd *cmd)
+void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		pos;
 	int		hex;
@@ -291,7 +293,9 @@ void	vm_load_arena(t_vm *vm)
 			//refresh();				
 			}
 			else
-				vm_run_wait_cycle(vm, c);
+				vm_run_waiting_cycle(vm, c);
+
+
 			//printw("%d\n", c->wait);
 			//refresh();
 			c = c->next;
@@ -356,6 +360,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->carry = 0;
 		lst->increment = 0;
 		lst->next = NULL;
+		//ft_printf("lst->idx |%d\n|", lst->idx);
 	}	
 	return (lst);
 }
