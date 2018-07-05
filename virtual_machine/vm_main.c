@@ -71,7 +71,7 @@ void	vm_load_ncurses(void)
 	initscr();
 	noecho();
 	start_color();
-	init_color(COLOR_WHITE, 200, 0, 0);
+	//init_color(COLOR_RED, 68, 0, 0);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
@@ -91,8 +91,8 @@ void	vm_load_ncurses(void)
 void	vm_game_stat(t_vm *vm)
 {
 	attron(COLOR_PAIR(10));
-	printw("Cycle : %d Cycles to die: %d\n", vm->cycle, vm->cycle_to_die);
-	refresh();
+	printw("\nCycle : %d Cycles to die: %d\n\n", vm->cycle, vm->cycle_to_die);
+	//refresh();
 }
 
 
@@ -102,6 +102,7 @@ void	vm_play_arena(t_vm *vm)
 
 	i = 0;
 	erase();
+	vm_game_stat(vm);
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
@@ -111,12 +112,11 @@ void	vm_play_arena(t_vm *vm)
 		{ 
 			//mem += 64;
 			//if (i + 1 < MEM_SIZE)			
-				printw(" \n");
+				printw("\n");
 		}		
 		i++;		
 	}
 	printw("\n");
-	vm_game_stat(vm);
 	refresh();
 	
 }
@@ -167,12 +167,12 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
  	i = cmd->idx + pos;
-	cmd->idx = i % MEM_SIZE < 0 ? i % MEM_SIZE + MEM_SIZE : i % MEM_SIZE;
+	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
 	
 		// erase();
 		// attron(COLOR_PAIR(11));
-		 printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
-		 refresh();
+		// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
+		// refresh();
 	vm->arena[cmd->idx].flag++;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
 	if (vm->arena[tm].flag == 0)
@@ -203,11 +203,15 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 
 void	vm_curet_next(t_cmd *cmd)
 {
-	while (cmd)
+	while (cmd && !cmd->flag)
 	{
 		if (!cmd->on)
+		{
 			cmd->off = 1;
+		}
 		cmd->on = 0;
+			printw("cmd->reg[0] %d\n", cmd->reg[0]);
+			refresh();
 		cmd = cmd->next;
 	}
 }
@@ -228,6 +232,7 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 		vm->last_check = 0;
 	}
 	vm->cycle = 0;
+	//vm->lives = 0;
 }
 
 void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
@@ -293,16 +298,45 @@ int		vm_calc_steps(int hex, int pos)
 	return (ret + 2);
 }
 
+int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
+{
+	int		chk;
+
+	chk = vm->arena[cmd->idx].acb;
+	if (chk < 1 || chk > 16)
+		return (0);
+	return (1);
+}
+
+void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
+{
+	if (hex == 11)
+		vm_sti(vm, cmd);
+	else if (hex == 6)
+		vm_and(vm, cmd);
+	else if (hex == 1)
+		vm_live(vm, cmd);
+	else if (hex == 9)
+		vm_zjmp(vm, cmd);
+	// printw("HEX %d\n", hex);
+	// refresh();
+}
+
 void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		pos;
 	int		hex;
 
+	hex = vm->arena[cmd->idx].acb;
 	if (cmd->wait == 0)
 	{
-		hex = vm->arena[cmd->idx].acb;
-		pos = vm->arena[cmd->idx + 1].acb;
-		vm_next_step(vm, cmd, vm_calc_steps(hex, pos));		
+		if (vm_its_cmd(vm, cmd))
+			vm_cmd_triger(vm, cmd, hex);
+		else
+		{
+			pos = vm->arena[cmd->idx + 1].acb;
+			vm_next_step(vm, cmd, vm_calc_steps(hex, pos));			
+		}
 			//printw("%d %d\n", pos, hex);
 			//refresh();		
 		cmd->playing = 0;
@@ -329,7 +363,8 @@ void	vm_load_arena(t_vm *vm)
 		vm_play_arena(vm);		
 		while (c)
 		{
-			vm_cycler_to_die(vm, c, &i);
+			if (c->flag)
+				vm_cycler_to_die(vm, c, &i);
 			if (!c->off)
 			{
 				if (!c->playing)
@@ -342,7 +377,6 @@ void	vm_load_arena(t_vm *vm)
 				else
 					vm_run_waiting_cycle(vm, c);
 			}
-
 			//printw("%d\n", c->wait);
 			//refresh();
 			c = c->next;
@@ -407,10 +441,22 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->off = 0;
 		lst->carry = 0;
 		lst->increment = 0;
+		lst->flag = 0;
 		lst->next = NULL;
 		//ft_printf("lst->idx |%d\n|", lst->idx);
 	}	
 	return (lst);
+}
+
+void	vm_glow_cur(t_vm *vm, t_cmd *cmd)
+{
+	//while (cmd && !cmd->flag)
+	while (cmd)
+	{
+		ft_printf("vm_glow_cur id player|%d|\n", cmd->reg[0]);
+		vm_next_step(vm, cmd, 0);
+		cmd = cmd->next;
+	}
 }
 
 void	vm_load_lists(t_cmd **cmd, t_vm *vm)
@@ -418,20 +464,22 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 	int		i;
 	t_cmd	*tmp;
 
-	tmp = *cmd;
-	i = -1;	
+	i = -1;
 	while (++i < vm->nbr_next)
 	{
+		tmp = *cmd;
 		if (tmp)
 		{
 			while (tmp->next != NULL)
 				tmp = tmp->next;
 			tmp->next = add_list(vm, i);
+			tmp->next->flag = 1;
 		}
 		else
 			*cmd = add_list(vm, i);
 		ft_printf("@@@ %d %d\n", vm->tab_champ[i].id, vm->tab_champ[i].idx);
 	}
+	//vm_glow_cur(vm, *cmd);
 }
 
 int			main(int argc, char **argv)
@@ -449,6 +497,7 @@ int			main(int argc, char **argv)
 		vm_usage();
 	vm_load_champs(vm);
 	vm_load_lists(&vm->cmd, vm);
+	vm_glow_cur(vm, vm->cmd);
 	//нужно дописать функцию самой игры и реализовать функции
 	vm_load_arena(vm);
 	ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);

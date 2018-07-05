@@ -157,6 +157,7 @@ typedef struct 		s_cmd
 	int				wait;
 	int				increment;
 	int				playing;
+	int				flag;
 	struct s_cmd	*next;
 }					t_cmd;
 
