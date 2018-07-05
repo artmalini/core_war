@@ -196,6 +196,7 @@ typedef struct		s_vm
 	int				cycle_to_die;
 	int				cycle_before_checking;
 	int				total_lives_period;
+	int				lives;
 }					t_vm;
 
 typedef struct		s_op

@@ -88,6 +88,13 @@ void	vm_load_ncurses(void)
 	curs_set(FALSE);
 }
 
+void	vm_game_stat(t_vm *vm)
+{
+	attron(COLOR_PAIR(10));
+	printw("Cycle : %d Cycles to die: %d\n", vm->cycle, vm->cycle_to_die);
+	refresh();
+}
+
 
 void	vm_play_arena(t_vm *vm)
 {
@@ -109,6 +116,7 @@ void	vm_play_arena(t_vm *vm)
 		i++;		
 	}
 	printw("\n");
+	vm_game_stat(vm);
 	refresh();
 	
 }
@@ -193,11 +201,47 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 
 
 
+void	vm_curet_next(t_cmd *cmd)
+{
+	while (cmd)
+	{
+		if (!cmd->on)
+			cmd->off = 1;
+		cmd->on = 0;
+		cmd = cmd->next;
+	}
+}
 
+void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
+{
+	vm_curet_next(cmd);
+	if (vm->lives == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
+		*i = 0;
+	if (vm->lives < NBR_LIVE)
+		vm->last_check += 1;
+	if (vm->last_check == MAX_CHECKS || vm->lives >= NBR_LIVE)
+	{
+		vm->cycle_to_die -= CYCLE_DELTA;
+		if (vm->cycle_to_die < 0)
+			vm->cycle_to_die = 0;
+		vm->lives = 0;
+		vm->last_check = 0;
+	}
+	vm->cycle = 0;
+}
 
-
-
-
+void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
+{
+	if (vm->cycle == vm->cycle_to_die)
+		vm_cycler_todie(vm, cmd, i);
+	//	vm_switch_cursor(cmd);
+	else
+	{
+		vm->cycle++;
+	}
+	//cmd = cmd->next;
+	//vm_play_arena(vm);
+}
 
 void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
@@ -256,12 +300,12 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 
 	if (cmd->wait == 0)
 	{
-		cmd->playing = 0;
 		hex = vm->arena[cmd->idx].acb;
 		pos = vm->arena[cmd->idx + 1].acb;
 		vm_next_step(vm, cmd, vm_calc_steps(hex, pos));		
 			//printw("%d %d\n", pos, hex);
 			//refresh();		
+		cmd->playing = 0;
 	}
 	else
 		cmd->wait -= 1;
@@ -285,16 +329,19 @@ void	vm_load_arena(t_vm *vm)
 		vm_play_arena(vm);		
 		while (c)
 		{
-			if (!c->playing)
-			{				
-				vm_set_cycle_wait(vm, c);
-				//vm_play_arena(vm);
-			//printw("%d\n", c->wait);
-			//refresh();				
+			vm_cycler_to_die(vm, c, &i);
+			if (!c->off)
+			{
+				if (!c->playing)
+				{
+					vm_set_cycle_wait(vm, c);
+					//vm_play_arena(vm);
+				//printw("%d\n", c->wait);
+				//refresh();				
+				}
+				else
+					vm_run_waiting_cycle(vm, c);
 			}
-			else
-				vm_run_waiting_cycle(vm, c);
-
 
 			//printw("%d\n", c->wait);
 			//refresh();
@@ -339,6 +386,7 @@ static void	init(t_vm *vm)
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
+	vm->lives = 0;
 	vm->cmd = NULL;
 }
 
