@@ -149,7 +149,7 @@ int			main(int argc, char **argv)
 	vm_load_champs(vm);
 	//нужно дописать функцию самой игры и реализовать функции
 	vm_load_arena(vm);
-	ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);
+	//ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);
 	free_vm(vm);
 	return (0);
 }

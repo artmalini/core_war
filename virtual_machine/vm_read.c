@@ -58,7 +58,7 @@ static void			cpy_prog(t_vm *vm, char *prog, int num_player)
 	index = 0;
 	while (index < vm->tab_champ[num_player].weight)
 	{
-		ft_printf("cpy_prog %d\n", prog[index]);
+		//ft_printf("cpy_prog %d\n", prog[index]);
 		vm->tab_champ[num_player].prog[index] = prog[index];
 		index++;
 	}
