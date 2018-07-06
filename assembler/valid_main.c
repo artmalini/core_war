@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char        *create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr)     //Create str for Cod-age
+char        *create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr)     //Create str for Code_Age
 {
     char    *str_args;
 
@@ -54,12 +54,17 @@ void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr)
     lst->arg1 = nbr > 0 ? ft_strdup(args[FIRST]) : NULL;
     lst->arg2 = nbr > 1 ? ft_strdup(args[SECOND]) : NULL;
     lst->arg3 = nbr > 2 ? ft_strdup(args[THIRD]) : NULL;
+	lst->args[FIRST] = nbr > 0 ? ft_strdup(args[FIRST]) : NULL;
+	lst->args[SECOND] = nbr > 1 ? ft_strdup(args[SECOND]) : NULL;
+	lst->args[THIRD] = nbr > 2 ? ft_strdup(args[THIRD]) : NULL;
+//	if (check_arg_of_cmd(file, lst) == ERROR)									//Check arguments with command (DON'T WORK FUNCTION)
+//		error_cor(file, ERROR_ARG);
     while (nbr > i)
     {
         len += ft_strlen(args[i]);                                              //Size all arguments
         i++;
     }
-    lst->str = create_str_args(file, lst, len, nbr);                            //Create str with all arguments for Code-Age
+    lst->str = create_str_args(file, lst, len, nbr);                            //Create str with all arguments for Code_Age
 
 }
 
@@ -79,7 +84,7 @@ char		**create_fresh_args(t_core *file, char **args, int nbr_args)
     while (nbr_args > nbr && args[nbr])
     {
         i = 0;
-        while (args[nbr][i] && ft_isspace(args[nbr][i]))
+        while (args[nbr][i] && ft_strchr(SPACES_CHARS, args[nbr][i]))
             i++;
         new_args[nbr] = ft_strdup(args[nbr] + i);                               //Need Free Memory
         nbr++;

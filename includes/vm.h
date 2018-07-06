@@ -17,7 +17,32 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include <fcntl.h>
-# include <ncurses.h>
+// # include <ncurses.h>
+# include "curses.h"
+
+/*
+**					[Macros for ERROR MANAGER]
+*/
+
+# define OKAY			0
+# define ERROR			1
+# define ERROR_OPEN		2
+# define ERROR_READ		3
+# define ERROR_CLOSE	4
+# define ERROR_MAGIC	5
+# define ERROR_NAME		6
+# define ERROR_SIZE		7
+# define ERROR_PLAYER	8
+# define ERROR_DUP		9
+# define ERROR_COMMENT	10
+# define ERROR_FILE		11
+# define ERROR_SFILE	12
+# define ERROR_1		13
+# define ERROR_2		14
+# define ERROR_3		15
+# define ERROR_4		16
+
+
 #define IND_SIZE 2
 #define REG_SIZE 4
 #define DIR_SIZE REG_SIZE
@@ -65,6 +90,15 @@ typedef char t_arg_type;
 #define COMMENT_LENGTH (2048)
 #define COREWAR_EXEC_MAGIC 0xea83f3
 
+# define BUF_SIZE (5)
+
+typedef struct		s_error
+{
+	int				id;
+	char			*name;
+
+}					t_error;
+
 // typedef struct		s_header
 // {
 // 	unsigned int	magic;
@@ -73,7 +107,7 @@ typedef char t_arg_type;
 // 	char			how [COMMENT_LENGTH + 1];
 // }					t_header;
 
-# define BUF_SIZE (5)
+
 
 // typedef struct		s_player
 // {
@@ -112,10 +146,27 @@ typedef char t_arg_type;
 // 	int				alive;
 // 	struct s_proc	*next;
 // }					t_proc;
+typedef struct 		s_cmd
+{
+	int				reg[REG_NUMBER];
+	int				idx;
+	int				rgb;
+	int				on;
+	int				off;
+	int				carry;
+	int				wait;
+	int				increment;
+	int				playing;
+	int				flag;
+	struct s_cmd	*next;
+}					t_cmd;
 
 typedef struct		s_arena
 {
-	char	acb;
+	char			acb;
+	int				rgb;//main color for chars on arena
+	int				asc_rgb;
+	int				flag;	
 }					t_arena;
 
 typedef struct		s_champ
@@ -125,6 +176,10 @@ typedef struct		s_champ
 	char			comment[COMMENT_LENGTH];
 	int				magic_number;
 	int				weight;
+	int				rgb;
+
+	int				idx;
+	int				live;
 	char			*prog;
 
 }					t_champ;
@@ -134,15 +189,30 @@ typedef struct		s_vm
 	int				fd;
 	int				dump_cycle;
 	t_champ			tab_champ[MAX_PLAYERS];
+	t_cmd			*cmd;
 	int				nbr_next;
-	//unsigned char	arena[MEM_SIZE];
 	t_arena			arena[MEM_SIZE];
-	int				cycle;
 	int				last_check;
+	int				cycle;
 	int				cycle_to_die;
 	int				cycle_before_checking;
 	int				total_lives_period;
+	int				lives;
 }					t_vm;
+
+typedef struct		s_op
+{
+	char			*name;
+	int				nbr_args;
+	char			type_params[MAX_ARGS_NUMBER];
+	int				opcode;
+	int				cycles;
+	char			*full_name;
+	int				codage;
+	int				size;
+}					t_op;
+
+extern t_op	op_tab[17];
 
 int			vm_usage(void);
 int			vm_param_n(t_vm *vm, char **av, int *i, int ac);
@@ -152,5 +222,9 @@ void		vm_dump_arena(t_vm *vm);
 void		vm_create_arena(t_vm *vm);
 void		vm_load_champs(t_vm *vm);
 void		vm_read_champ(t_vm *vm, int number_player);
+
+
+void		ft_print_error(t_error *e);
+char 		*vm_str_error(int error);
 
 #endif

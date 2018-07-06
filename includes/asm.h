@@ -13,7 +13,9 @@
 #ifndef ASM_H
 # define ASM_H
 
-//  Macros for [Includes Library]
+/*
+**					[Includes Library]
+*/
 
 # include "libft.h"
 # include "get_next_line.h"
@@ -21,44 +23,51 @@
 # include <fcntl.h>
 # include <limits.h>
 
-//  Macros for [ERROR MANAGER]
+/*
+**					[Macros for ERROR MANAGER]
+*/
 
-# define OK		    1
-# define ERROR	    -1
-# define ERROR_ARG  1
+# define OK			1
+# define ERROR		-1
+# define ERROR_ARG	1
 
-//  Macros for [Debugs] and [Settings]
+/*
+**					[Macros for Debugs and Settings]
+*/
 
-# define ON		    1
+# define ON			1
 # define OFF		0
 
-# define FIRST	    0
-# define SECOND	    1
-# define THIRD	    2
+# define FIRST		0
+# define SECOND		1
+# define THIRD		2
 
 # define DEBUG_ON	0
 # define DEBUG_LB	1
 # define DEBUG_CMD	2
 # define DEBUG_ARG	3
 
-//  Macros for [ARGUMENTS] and [Labels]
+/*
+**					[Macros for Arguments and Labels]
+*/
 
-# define T_REG	    1
-# define T_DIR  	2
-# define T_IND	    4
-# define T_LAB	    8
+# define T_REG		1
+# define T_DIR		2
+# define T_IND		4
+# define T_LAB		8
 
-# define IND_SIZE   2
-# define REG_SIZE   4
-# define DIR_SIZE   REG_SIZE
+# define IND_SIZE	2
+# define REG_SIZE	4
+# define DIR_SIZE	REG_SIZE
+# define REG_NUMBER	16
 
-# define REG_CODE   1
-# define DIR_CODE   2
-# define IND_CODE   3
+# define REG_CODE	1
+# define DIR_CODE	2
+# define IND_CODE	3
 
-# define INT32      3
-
-//  Macros for [Virtual Machine]
+/*
+**					[Macros for Virtual Machine]
+*/
 
 # define MAX_ARGS_NUMBER    4
 # define MAX_PLAYERS        4
@@ -66,15 +75,16 @@
 # define IDX_MOD            (MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE     (MEM_SIZE / 6)
 
-# define REG_NUMBER         16
+/*
+**					[Macros for Validations]
+*/
 
-//  Macros for [Validations]
-
-# define COMMENT_CHAR       '#'
-# define COMMENT_CHAR2      ';'
-# define LABEL_CHAR         ':'
-# define DIRECT_CHAR        '%'
-# define SEPARATOR_CHAR     ','
+# define LABEL_CHAR			':'
+# define DIRECT_CHAR		'%'
+# define REGISTER_CHAR		'r'
+# define COMMENT_CHAR		'#'
+# define COMMENT_CHAR2		';'
+# define SEPARATOR_CHAR		','
 
 # define PROG_NAME_LENGTH   (128)
 # define COMMENT_LENGTH     (2048)
@@ -83,17 +93,32 @@
 # define NAME_CMD_STRING    ".name"
 # define COMMENT_CMD_STRING ".comment"
 
-# define SPACES_CHARS       "\t \v"
+# define SPACES_CHARS       " \t\n\v\f\r"
 # define LABEL_CHARS        "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define IN_DIRECT_CHARS	"-0123456789"
+
+/*
+**					[Macros for easy reading code]
+*/
+
+# define CMD			(lst->opcode -1)
+# define OP(CMD)		(op_tab[CMD])
+# define NBR_ARGS(CMD)	(op_tab[CMD].nbr_args)
+# define TYPE_ARG(nbr)	(op_tab[CMD].type_params[nbr])
+
+
+/*
+**					[Typedef and Structs Part]
+*/
 
 typedef char 		t_arg_type;
 
 typedef struct		s_header
 {
 	unsigned int	magic;
-	char			prog_name [PROG_NAME_LENGTH + 1];
+	char			prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int	prog_size;
-	char			how [COMMENT_LENGTH + 1];
+	char			how[COMMENT_LENGTH + 1];
 } 					t_header;
 
 typedef struct		s_op
@@ -115,6 +140,7 @@ typedef struct		s_cmd
 	char			*arg1;
 	char			*arg2;
 	char			*arg3;
+	char 			*args[MAX_ARGS_NUMBER];                                     //Need free new **array args.
 	int				opcode;
 	int				cmd_size;
 	int				byte_nbr;
@@ -175,35 +201,41 @@ void		asm_hexa_fd(long code, int fd);
 void		recalc_cmd_links(t_core *file);
 
 
-//			[ERROR MANAGER]
+/*
+**					[ERROR MANAGER]
+*/
 
 void		wrong_input(int c, char *arg, t_core *file);
 void		error_file(t_core *file, char *arg, int nbr_char);
 void		error_cor(t_core *file, int nbr_char);
 
+/*
+**					[VALIDATION ARGUMENTS]
+*/
 
-//			[VALIDATION ARGUMENTS]
-
-int		    ft_isspace(char c);
+int			check_arg_of_cmd(t_core *file, t_cmd *lst);
 int			check_arg_reg(t_core *file, char *str_arg, int nbr_arg);
 int			check_arg_dir(t_core *file, char *str_arg, int nbr_arg);
 int			check_arg_ind(t_core *file, char *str_arg, int nbr_arg);
-int 		check_args_main(t_core *file, char **args, int nbr_args);
+int			check_args_main(t_core *file, char **args, int nbr_args);
 int			check_arg_label(t_core *file, char *str_arg, int nbr_arg);
 char		**create_fresh_args(t_core *file, char **args, int nbr_args);
 char		**valid_args_main(t_core *file, char *str_args, int nbr_args);
-char        *create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr);
-void        insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr);
+char		*create_str_args(t_core *file, t_cmd *lst, size_t len, int nbr);
+void		insert_args_lst(t_core *file, t_cmd	*lst, char **args, int nbr);
 
-
-//			[DEBUG and PRINT]
+/*
+**					[DEBUG and PRINT]
+*/
 
 void		cmd_debug(t_inst *inst);
 void		label_debug(t_core *file);
 void        set_settings(t_core	*file, int flag);
 void		print_new_args(t_core *file, t_cmd	*lst, char **args, int nbr_args);
 
-//			[FREE MEMORY]
+/*
+**					[FREE MEMORY]
+*/
 
 void		free_mas(char **mas);
 void		free_struct_tcore(t_core *file);

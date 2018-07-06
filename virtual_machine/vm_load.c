@@ -24,14 +24,17 @@
 	}
 }*/
 
-static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
+static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
 {
 	int	index;
 
 	index = 0;
+	//ft_printf("num_pl %d\n", num_pl);
 	while (index < champ.weight && (index + memory_index) < MEM_SIZE)
 	{
 		vm->arena[index + memory_index].acb = 0xFF & champ.prog[index];
+		vm->arena[index + memory_index].rgb = 1 + num_pl % 4;
+		vm->arena[index + memory_index].asc_rgb = 1 + num_pl % 4;
 		index++;
 	}
 }
@@ -39,18 +42,23 @@ static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 void		vm_load_champs(t_vm *vm)
 {
 	int	space_bt_champs;
-	int	num_players;
+	int	num_pl;
 	int	space;
 
-	num_players = 0;
+	num_pl = 0;
 	space_bt_champs = MEM_SIZE / vm->nbr_next;
 	if (vm->nbr_next == 1)
 		space_bt_champs = 0;
 	space = 0;
-	while (num_players < vm->nbr_next)
+	while (num_pl < vm->nbr_next)
 	{
-		load_champ_to(vm, vm->tab_champ[num_players], space);
+		
+		vm->tab_champ[num_pl].idx = space;
+		vm->tab_champ[num_pl].live = 0;
+		ft_printf("vm_load_champs vm->tab_champ[num_pl].idx|%d|\n", vm->tab_champ[num_pl].idx);
+				
+		load_champ_to(vm, vm->tab_champ[num_pl], space, num_pl);
 		space += space_bt_champs;
-		num_players++;
+		num_pl++;
 	}
 }

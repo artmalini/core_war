@@ -12,22 +12,6 @@
 
 #include "asm.h"
 
-char	*ft_strjoinstr(char *str1, char *str2)
-{
-	char 	*str3;
-
-	if (!str1 || !str2)
-		return (NULL);
-	str3 = (char *)malloc(sizeof(str3) * ((ft_strlen(str1)) + (ft_strlen(str2))) + 1);
-	if (!str3)
-		return (NULL);
-	*str3 = 0;
-	str3 = ft_strcat(ft_strcat(str3, str1), str2);
-	free(str1);
-	free(str2);
-	return (str3);
-}
-
 int		len_check(int len, int nb, t_core *file, char *arg)
 {
 	if (nb == 1)
@@ -101,7 +85,7 @@ void	name_cmt(char *str, int nb, t_core *file)
 	int		i;
 
 	i = 0;
-	while (str && *str && ft_isspace(*str))
+	while (str && *str && ft_strchr(SPACES_CHARS, *str))
 		str++;
 	while (str && str[i])
 	{

@@ -17,7 +17,7 @@ void		read_init_line(char *line, t_core *file, int nb, char *arg)
 	char	*str;
 
 	str = line;
-	while (str && *str && ft_isspace(*str))
+	while (str && *str && ft_strchr(SPACES_CHARS, *str))
 	 	str++;
 	if (str && str[0] == '.')
 	{
@@ -66,7 +66,7 @@ void	read_line(char *line, char *arg, t_core *file)
 	char	*str;
 
 	str = line;
-	while (str && *str && ft_isspace(*str))
+	while (str && *str && ft_strchr(SPACES_CHARS, *str))
 	 	str++;
 	if (str && (str[0] == COMMENT_CHAR
 			|| str[0] == COMMENT_CHAR2))

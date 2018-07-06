@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_asm.c                                         :+:      :+:    :+:   */
+/*   vm_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmakahon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vmakahon <vmakahon@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 22:57:56 by vmakahon          #+#    #+#             */
-/*   Updated: 2018/06/05 22:57:58 by vmakahon         ###   ########.fr       */
+/*   Created: 2018/07/03 14:36:00 by vmakahon          #+#    #+#             */
+/*   Updated: 2018/07/03 14:36:00 by vmakahon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "vm.h"
 
-void	free_mas(char **mas)
+int			vm_usage(void)
 {
-    int i;
-
-    i = -1;
-    if (!mas)
-        return ;
-    while (mas[++i] != NULL)
-        free(mas[i]);
-    free(mas);
+	ft_printf("usage : ./corewar [-dump nbr_cycles]"
+					  "[[-n number] champion1.cor] ...\n");
+	exit(1);
+	return (0);
 }
