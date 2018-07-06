@@ -13,11 +13,11 @@
 NAME		= ../corewar
 FLAGS		= -Wall -Wextra -Werror
 CC			= gcc
-LD			= -lncurses
+#LD			= -lncurses
 
 HEADERS		= ../includes
 HEADERS_L	= ../libft/includes
-LIBFT		= -L ../libft -lft
+LIBFT		= -L ../libft -lft -lcurses
 LIBFT_PATH	= ../libft
 
 SRCS_VM	=	vm_errors.c \
@@ -28,6 +28,7 @@ SRCS_VM	=	vm_errors.c \
 			vm_print.c \
 			vm_read.c \
 			op.c \
+			vm_sti.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 
@@ -38,8 +39,9 @@ GREY		= \033[37m
 
 all: $(NAME)
 
+	#@$(CC) $(LD) $(OBJS_VM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
 $(NAME): $(OBJS_VM)
-	@$(CC) $(LD) $(OBJS_VM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
+	@$(CC) $(OBJS_VM) $(FLAGS) -I $(HEADERS) -I $(HEADERS_L) $(LIBFT) -o $@
 	@echo "\033[0;32m ----> Created (corewar)"
 
 $(OBJS_VM): %.o: %.c

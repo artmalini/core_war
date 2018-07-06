@@ -17,9 +17,8 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include <fcntl.h>
-// # include <ncurses.h>
+//# include <ncurses.h>
 # include "curses.h"
-
 /*
 **					[Macros for ERROR MANAGER]
 */
@@ -55,7 +54,7 @@
 
 #define MAX_ARGS_NUMBER 4
 #define MAX_PLAYERS 4
-#define MEM_SIZE (4 * 1024)
+#define MEM_SIZE (4 * 1024)//4096
 #define IDX_MOD (MEM_SIZE / 8)//512
 #define CHAMP_MAX_SIZE (MEM_SIZE / 6)
 
@@ -225,6 +224,9 @@ void		vm_read_champ(t_vm *vm, int number_player);
 
 
 void		ft_print_error(t_error *e);
-char 		*vm_str_error(int error);
+char		*vm_str_error(int error);
+
+void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
+void		vm_sti(t_vm *vm, t_cmd *cmd);
 
 #endif

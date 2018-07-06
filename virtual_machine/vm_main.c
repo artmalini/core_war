@@ -312,12 +312,12 @@ void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 {
 	if (hex == 11)
 		vm_sti(vm, cmd);
-	else if (hex == 6)
-		vm_and(vm, cmd);
-	else if (hex == 1)
-		vm_live(vm, cmd);
-	else if (hex == 9)
-		vm_zjmp(vm, cmd);
+	// else if (hex == 6)
+	// 	vm_and(vm, cmd);
+	// else if (hex == 1)
+	// 	vm_live(vm, cmd);
+	// else if (hex == 9)
+	// 	vm_zjmp(vm, cmd);
 	// printw("HEX %d\n", hex);
 	// refresh();
 }
