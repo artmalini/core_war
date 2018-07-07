@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recalc_cmd_links.c                                 :+:      :+:    :+:   */
+/*   asm_recalc_cmd_links.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,36 +12,36 @@
 
 #include "asm.h"
 
-void			find_l(char *str, t_cmd *tmp, int label_pos)
+void		find_l(t_cmd *tmp, char *str, int label_pos)
 {
 	while (tmp)
 	{
-		if (tmp->arg1)
+		if (tmp->args[FIRST])
 		{
-			if (!ft_strcmp(str, tmp->arg1 + 2))// %:
+			if (!ft_strcmp(str, tmp->args[FIRST] + 2))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-			if (!ft_strcmp(str, tmp->arg1 + 1))// :
+			if (!ft_strcmp(str, tmp->args[FIRST] + 1))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
 		}
-		if (tmp->arg2)
+		if (tmp->args[SECOND])
 		{
-			if (!ft_strcmp(str, tmp->arg2 + 2))
+			if (!ft_strcmp(str, tmp->args[SECOND] + 2))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-			if (!ft_strcmp(str, tmp->arg2 + 1))
+			if (!ft_strcmp(str, tmp->args[SECOND] + 1))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
 		}
-		if (tmp->arg3)
+		if (tmp->args[THIRD])
 		{
-			if (!ft_strcmp(str, tmp->arg3 + 2))
+			if (!ft_strcmp(str, tmp->args[THIRD] + 2))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
-			if (!ft_strcmp(str, tmp->arg3 + 1))
+			if (!ft_strcmp(str, tmp->args[THIRD] + 1))
 					tmp->cmd_str_size = label_pos - tmp->cmd_str_size;
 		}
 		tmp = tmp->next;	
 	}
 }
 
-void			recalc_cmd_links(t_core *file)
+void		recalc_cmd_links(t_core *file)
 {
 	t_inst	*tmp;
 
@@ -51,7 +51,7 @@ void			recalc_cmd_links(t_core *file)
 		while (tmp)
 		{
 			if (tmp->label)
-				find_l(tmp->label, file->inst->cmd, tmp->label_pos);
+				find_l(file->inst->cmd, tmp->label, tmp->label_pos);
 			tmp = tmp->next;
 		}
 	}

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_asm_line.c                                   :+:      :+:    :+:   */
+/*   asm_parse_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,90 +12,85 @@
 
 #include "asm.h"
 
-int		line_has_val(char *line)
+int			line_has_val(char *line)
 {
 	while (line && *line)
 	{
 		if (*line != '\t' && *line != ' ')
-			return (1);
+			return (OKAY);
 		line++;
 	}
-	return (0);	
+	return (ERROR);
 }
 
-int		check_command(char	*lowstr, t_core *file)
+int			check_command(t_core *file, char *lowstr)
 {
 	int		i;
 
 	i = -1;
+	if (!file || !lowstr)
+		return (ft_error_int(file, ERROR_FT_ARG));
+	file->error->cmd = ft_strdup(lowstr);
 	while (++i < 16)
 	{
 		if (!ft_strcmp(op_tab[i].name, lowstr))
 		{
 			file->inst_pos = i;
-			return (1);
+			return (OKAY);
 		}
 	}
-	return (0);
+	return (ERROR);
 }
 
-char		*line_finalize(char **str, char *lowstr, int *i, t_core *file)
+char		*line_finalize(t_core *file, char **str, char *lowstr, int *i)
 {
 	if (*i == 0)//label exist, if i == 0 should be error!
-		error_cor(file, 2);
-	lowstr = ft_strsub(*str, 0, *i);
-	push_laybel(lowstr, &file->inst, file);
-		ft_printf("\n---> Finded LABEL: [%s]\n", lowstr);
+		ft_error(file, ERROR_LABEL);
+	lowstr = ft_strsub(*str, 0, (size_t)*i);
+	push_laybel(file, &file->inst, lowstr);
 	ft_strdel(&lowstr);
 	while (**str && ft_strchr(LABEL_CHARS, **str) && **str != ':')
 		(*str)++;
 	if (**str == ':')
-		(*str)++;//!!!!!for :
+		(*str)++;
 	while (**str && (**str == ' ' || **str == '\t'))
 		(*str)++;
 	if (!(**str))
 		return (NULL);
 	*i = 0;
-		ft_printf("** Analyze String: [%s]\n", *str);
 	while ((*str)[*i] && ((*str)[*i] != ' ' && (*str)[*i] != '\t'))
 	{
 		if (!ft_strchr(LABEL_CHARS, (*str)[*i]))
-		{
-			ft_printf("!! Line_handler:	ERROR\n");
-			error_cor(file, 1);
-		}
+			ft_error(file, ERROR_LABEL);
 		(*i)++;
 	}
-	lowstr = ft_strsub(*(str), 0, *i);
+	lowstr = ft_strsub(*(str), 0, (size_t)*i);
 	return (lowstr);
 }
 
-void	line_handler(char *line, char *arg, t_core *file)
+void		line_handler(t_core *file, char *line, char *lowstr)
 {
 	int		i;
 	char	*str;
-	char	*lowstr;
 
 	i = 0;
 	str = line;
-	lowstr = NULL;
 	while (str[i] && str[i] != ':' && ft_strchr(LABEL_CHARS, str[i]))
 		i++;
 	if (str[i] == ':')
 	{
-		if (!(lowstr = line_finalize(&str, lowstr, &i, file)))
+		if (!(lowstr = line_finalize(file, &str, lowstr, &i)))
 			return ;
 	}	
 	else
-		lowstr = ft_strsub(str, 0, i);
-	if (check_command(lowstr, file))
+		lowstr = ft_strsub(str, 0, (size_t)i);
+	if (check_command(file, lowstr) == OKAY)
 	{
-		ft_printf("** Check_commands: [%s]  |%s|%d\n", lowstr, str + (ft_strlen(lowstr) + 1), i);
-		if (!file->inst)//!!!!!!!!!  IF LABEL DOES NOT EXIST
-			push_laybel(NULL, &file->inst, file);
-		push_cmd(lowstr, str + (ft_strlen(lowstr) + 1), file, &file->inst->cmd);
+		if (!file->inst)
+			push_laybel(file, &file->inst, NULL);
+		push_cmd(file, &file->inst->cmd, lowstr, str + (ft_strlen(lowstr) + 1));
 	}
 	else
-		error_file(file, arg, 0);//wrong command
+		return(ft_error(file, ERROR_CMD));
 	ft_strdel(&lowstr);
 }
