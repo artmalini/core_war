@@ -63,6 +63,18 @@ int		vm_read(t_vm *vm, t_cmd *cmd)
 	return ((low + med) % 512);
 }*/
 
+void	load_res(t_vm *vm, t_cmd *cmd, int direct)
+{
+	int		i;
+
+	i = -1;
+	while (++i <= 3)
+	{
+		vm->arena[mdx(direct + i)].acb = (cmd->reg[0] >> ((3 - i) * 8)) & 0xFF;
+		//ft_printf("cmdREG|%d|\n", (cmd->reg[0] >> ((3 - i) * 8)) & 0xFF);
+	}
+}
+
 void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
 	int		i;
@@ -72,34 +84,37 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 	i = vm_read(vm, cmd);
 	//vm->arena[idx()] =
 	direct = 0;
-	if (((vm->arena[cmd->idx + 1].acb >> 6) & 3) == REG_CODE)
+	tmp = 0;
+	if (((vm->arena[mdx(cmd->idx + 1)].acb >> 6) & 3) == REG_CODE)
 	{
-		vm->arena[cmd->idx].rgb = cmd->rgb - 5;
+		vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
 		//vm->arena[cmd->idx].asc_rgb = cmd->rgb - 5;
-		direct = (cmd->idx - 1) + vm->arena[cmd->idx + 2].acb;//PC + первый арг
-		if (((vm->arena[cmd->idx + 1].acb >> 4) & 3) == DIR_CODE)
+		direct = (cmd->idx - 1) + vm->arena[mdx(cmd->idx + 2)].acb;//PC + первый арг
+		if (((vm->arena[mdx(cmd->idx + 1)].acb >> 4) & 3) == DIR_CODE)
 		{
-			direct = vm->arena[cmd->idx + 3].acb << 8 |
-				vm->arena[cmd->idx + 4].acb;//второй
-			direct += vm->arena[cmd->idx + 5].acb << 8 |
-				vm->arena[cmd->idx + 6].acb;//третий
+			tmp = vm->arena[mdx(cmd->idx + 3)].acb << 8 |
+							vm->arena[mdx(cmd->idx + 4)].acb;//второй
+			direct += vm->arena[mdx(cmd->idx + 5)].acb << 8 |
+				vm->arena[mdx(cmd->idx + 6)].acb;//третий
+			direct += tmp;
 		}
-		if (((vm->arena[cmd->idx + 1].acb >> 4) & 3) == IND_CODE)
+		if (((vm->arena[mdx(cmd->idx + 1)].acb >> 4) & 3) == IND_CODE)
 		{
-			tmp = vm->arena[cmd->idx + 3].acb << 8 |
-				vm->arena[cmd->idx + 4].acb;
-			direct += (mdx(vm->arena[cmd->idx + ].acb) << 24 |
-						mdx(vm->arena[cmd->idx + 1].acb) << 16 |
-						mdx(vm->arena[cmd->idx + 2].acb) << 8 |
-						mdx(vm->arena[cmd->idx + 3].acb));
+			tmp = vm->arena[mdx(cmd->idx + 3)].acb << 8 |
+							vm->arena[mdx(cmd->idx + 4)].acb;
+			direct = vm->arena[mdx(cmd->idx + tmp)].acb << 24 |
+						vm->arena[mdx(cmd->idx + tmp + 1)].acb << 16 |
+						vm->arena[mdx(cmd->idx + tmp + 2)].acb << 8 |
+						vm->arena[mdx(cmd->idx + tmp + 3)].acb;
 			//direct += vm->arena[cmd->idx + 7].acb << 8 |
 			//	vm->arena[cmd->idx + 8].acb;//третий
 		}
 	}
+	load_res(vm, cmd,direct);
+	//ft_printf("cmd->idx |%d| tmp|%d| direct|%d| cmd->idx|%d|\n", cmd->idx, tmp, direct, cmd->reg[0]);	
 	//vm->arena[direct].rgb = cmd->rgb - 5;
 	//vm->arena[direct].asc_rgb = cmd->rgb - 5;
 	vm_next_step(vm, cmd, i);
 	//printf("vm_sti cycle|%d| i |%d|\n", vm->cycle, i);
-	//printf("cmd->idx |%d| direct|%d|\n", cmd->idx, direct);
 	//vm_next_step(vm, cmd, pos);	
 }
