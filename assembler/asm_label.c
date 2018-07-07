@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   label_asm.c                                        :+:      :+:    :+:   */
+/*   asm_label.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmakahon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,23 +12,23 @@
 
 #include "asm.h"
 
-t_inst		*add_label(char *str, t_core *file)
+t_inst		*add_label(t_core *file, t_inst	*lst, char *str)
 {
-	t_inst	*lst;
 
-	lst = NULL;
-	lst = (t_inst *)malloc(sizeof(t_inst));
+	if (!(lst = ft_memalloc(sizeof(t_inst))))
+		ft_error(file, ERROR_MEMORY);
 	if (lst)
 	{
 		lst->label = str ? ft_strdup(str) : NULL;
 		lst->cmd = NULL;
 		lst->label_pos = file->count_size;
 		lst->next = NULL;
+		file->error->label = &(*lst->label);//check
 	}
 	return (lst);
 }
 
-void		push_laybel(char *str, t_inst **lst, t_core *file)
+void		push_laybel(t_core *file, t_inst **lst, char *str)
 {
 	t_inst	*tmp;
 
@@ -37,10 +37,8 @@ void		push_laybel(char *str, t_inst **lst, t_core *file)
 	{
 		while (tmp->next != NULL)
 			tmp = tmp->next;
-		tmp->next = add_label(str, file);
+		tmp->next = add_label(file, NULL, str);
 	}
 	else
-	{
-		*lst = add_label(str, file);
-	}
+		*lst = add_label(file, NULL, str);
 }

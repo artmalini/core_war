@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_asm_struct.c                                  :+:      :+:    :+:   */
+/*   asm_free_struct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,33 +12,32 @@
 
 #include "asm.h"
 
-void	cmd_free(t_cmd *cmd)
+void		cmd_free(t_cmd *c)
 {
-	while (cmd)
+	while (c)
 	{
-		ft_strdel(&cmd->command);
-		ft_strdel(&cmd->str);
-		ft_strdel(&cmd->arg1);
-		ft_strdel(&cmd->arg2);
-		ft_strdel(&cmd->arg3);
-		cmd = cmd->next;
+		ft_strdel(&c->command);
+		ft_strdel(&c->str);
+		ft_strdel(&c->args[FIRST]);
+		ft_strdel(&c->args[SECOND]);
+		ft_strdel(&c->args[THIRD]);
+		c = c->next;
 	}
 }
 
-void	cmd_lst_free(t_cmd *cmd)
+void		cmd_lst_free(t_cmd *c)
 {
 	t_cmd	*tmp;
 
-	tmp = cmd;
-	while (cmd)
+	while (c)
 	{
-		tmp = cmd;
-		cmd = cmd->next;
+		tmp = c;
+		c = c->next;
 		free(tmp);
 	}
 }
 
-void	inst_data_free(t_inst *inst)
+void		inst_data_free(t_inst *inst)
 {
 	while (inst)
 	{
@@ -47,11 +46,10 @@ void	inst_data_free(t_inst *inst)
 	}
 }
 
-void	inst_free(t_inst *first)
+void		inst_free(t_inst *first)
 {
 	t_inst	*tmp;
 
-	tmp = first;
 	while (first)
 	{
 		tmp = first;
@@ -60,7 +58,7 @@ void	inst_free(t_inst *first)
 	}
 }
 
-void	free_struct_tcore(t_core *file)
+void		free_struct_tcore(t_core *file)
 {
 	if (file)
 	{

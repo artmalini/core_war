@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_asm.c                                        :+:      :+:    :+:   */
+/*   asm_parse_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmakahon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void		read_init_line(char *line, t_core *file, int nb, char *arg)
+void		read_init_line(t_core *file, char *line, int nb)
 {
 	char	*str;
 
@@ -22,103 +22,97 @@ void		read_init_line(char *line, t_core *file, int nb, char *arg)
 	if (str && str[0] == '.')
 	{
 		file->point_nbr++;
-		name_cmt_valid(str, file, arg);
+		name_cmt_valid(file, str);
 	}
 	else if (str && (str[0] == COMMENT_CHAR
-			|| str[0] == COMMENT_CHAR2 || *str == '\0'))
+					 || str[0] == COMMENT_CHAR2 || *str == '\0'))
 	{
 		ft_strdel(&line);
 		return ;
 	}
 	else
 	{
-		nb = (file->name_nbr == 1 && file->cmt_nbr == 0)? 1 : 2;
-		name_cmt(str, nb, file);
+		nb = (file->name_nbr == 1 && file->cmt_nbr == 0) ? 1 : 2;
+		name_cmt(file, str, nb);
 	}
 	if (file->syntax == 4)
-		file->flag = 1;//exit maybe all find
+		file->flag = ON;
 	ft_strdel(&line);
 }
 
-void	parse_header(int fd, char *arg, t_core *file)
+void		parse_header(t_core *file, int fd)
 {
 	char	*line;
 
 	line = NULL;
 	while (get_next_line(fd, &line) && !file->flag)
 	{
-		file->rows++;
-		if (line_has_val(line))
-			read_init_line(line, file, 0, arg);
+		file->error->rows++;
+		if (!line_has_val(line))
+			read_init_line(file, line, 0);
 		else
 			ft_strdel(&line);
 	}
 	ft_strdel(&line);
 	if (file->syntax != 4)
-		error_file(file, arg, 4);
-	rebuild_name_cmt(file, arg);
-	//len_check(ft_strlen(file->name), 1, file);
-	//len_check(ft_strlen(file->comment), 2, file);
+		return(ft_error(file, ERROR_READ));
+	rebuild_name_cmt(file, 0);
 }
 
-void	read_line(char *line, char *arg, t_core *file)
+void		read_line(t_core *file, char *line)
 {
 	char	*str;
 
 	str = line;
 	while (str && *str && ft_strchr(SPACES_CHARS, *str))
 	 	str++;
-	if (str && (str[0] == COMMENT_CHAR
-			|| str[0] == COMMENT_CHAR2))
+	if (str && (str[0] == COMMENT_CHAR || str[0] == COMMENT_CHAR2))
 	{
 		ft_strdel(&line);
 		return ;
 	}
 	else
-		line_handler(str, arg, file);
-	//ft_printf("read_line |%s|\n", str);
+		line_handler(file, str, NULL);
 	ft_strdel(&line);
 }
 
-void	parse_file(char *arg, t_core *file)
+void		parse_file(t_core *file, char *arg, char *line)
 {
-	char	*line;
 	int		fd;
 
-	line = NULL;
 	if (!(fd = open(arg, O_RDONLY)))
-		error_file(file, arg, 4);
-	parse_header(fd, arg, file);
+		return (ft_error(file, ERROR_OPEN));
+	parse_header(file, fd);
 	while (get_next_line(fd, &line))
 	{
-		file->rows++;
-		if (line_has_val(line))
-			read_line(line, arg, file);
+		file->error->rows++;
+		if (line_has_val(line) == OKAY)
+			read_line(file, line);
 		else
 			ft_strdel(&line);
 	}
 	ft_strdel(&line);
-	close(fd);
+	if (close(fd) == ERROR)
+		return (ft_error(file, ERROR_CLOSE));
 }
 
-int		parse_filename(char	*arg, t_core *file)
+int			parse_filename(t_core *file, char *arg, int len)
 {
-	int		len;
 	int		i;
 	int		l;
 
-	len = ft_strlen(arg);
 	i = -1;
-	if ((arg[len - 1] != 's' || arg[len - 2] != '.') || len < 3)
-		error_file(file, arg, 2);
 	l = len - 1;
-	file->filename = (char*)malloc(sizeof(t_core) * (len + 4));
+	if (!(file->error->arg = ft_strdup(arg)))
+		return (ft_error_int(file, ERROR_MEMORY));
+	if ((arg[len - 1] != 's' || arg[len - 2] != '.') || len < 3)
+		return (ft_error_int(file, ERROR_INPUT));
+	file->filename = ft_memalloc((size_t)len + 4);
 	while (++i < l)
 		file->filename[i] = arg[i];
 	file->filename[i++] = 'c';
 	file->filename[i++] = 'o';
 	file->filename[i++] = 'r';
 	file->filename[i] = '\0';
-	//ft_printf("filename %s\n",file->filename);
-	return (1);
+	return (OKAY);
 }

@@ -19,24 +19,23 @@ HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft
 LIBFT_PATH	= ../libft
 
-SRCS_ASM	=	cmd_asm.c \
-                create_cor.c \
-				create_cor_instr.c \
-				create_cor_fpos_opc.c \
-				debug_asm.c \
-				error_handler.c \
-				free_asm.c \
-				label_asm.c \
+SRCS_ASM	=	asm_check_args.c \
+                asm_cmd.c \
+				asm_create_cor.c \
+				asm_create_cor_fpos_opc.c \
+				asm_create_cor_instr.c \
+				asm_errors.c \
+				asm_free_struct.c \
+				asm_init_and_free.c \
+				asm_label.c \
+				asm_name_cmt_valid.c \
+				asm_parse_line.c \
+				asm_parse_main.c \
+				asm_print.c \
+				asm_recalc_cmd_links.c \
+				asm_valid_main.c \
 				main.c \
-				name_and_cmt_valid.c \
-				op.c \
-				parse_asm.c \
-				parse_asm_line.c \
-				recalc_cmd_links.c \
-				settings.c \
-				valid_main.c \
-				check_args.c \
-				free_asm_struct.c \
+
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_cor_fpos_opc.c                              :+:      :+:    :+:   */
+/*   asm_create_cor_fpos_opc.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
+int			find_pos_cmd(t_core *file, t_inst *inst, char *str, int cmd_size)
 {
 	int		i;
 	t_inst	*tmp;
@@ -33,13 +33,13 @@ int		find_pos_cmd(char *str, t_core *file, t_inst *inst, int cmd_size)
 		tmp = inst;
 	}
 	if (i == 1)
-		error_cor(file, 0);
-	return (0);
+		return (ft_error_int(file, ERROR_ID_LABEL));
+	return (OKAY);
 }
 
-int		get_binary_code(char c)
+int			get_binary_code(char c)
 {
-	//ft_printf("get_binary_code %c\n", c);
+
 	if (c == 'r')
 		return (1);
 	else if (c == '%')
@@ -48,26 +48,24 @@ int		get_binary_code(char c)
 		return (11);
 }
 
-int		result_opcode(char c, int code, int get_bin)
+int			result_opcode(char c, int code, int get_bin)
 {
 	int		res;
 	int		binary;
 
-	res = 0;
 	binary = get_binary_code(c);
 	res = get_bin + (binary / 10 * code) + (binary % 10 * code / 2);
-	//ft_printf("RES %d\n", res);
 	return (res);
 }
 
-int		count_opcode(char *str)//should be better validation for *str
+int			count_opcode(char *str)
 {
 	int		get_bin;
 	int		code;
 
 	get_bin = 0;
 	code = 128;
-	if (!str)//////
+	if (!str)
 		return (0);
 	while (str && *str && (*str != '#' && *str != ';'))
 	{

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   name_and_cmt_valid.c                               :+:      :+:    :+:   */
+/*   asm_name_and_cmt_valid.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,77 +12,70 @@
 
 #include "asm.h"
 
-int		len_check(int len, int nb, t_core *file, char *arg)
+int			len_check(t_core *file, int type, int len)
 {
-	if (nb == 1)
+	if (type == NAME)
 	{
 		if (len > PROG_NAME_LENGTH)
-			error_file(file, arg, 8);
+			return (ft_error_int(file, ERROR_L_NAME));
 		if (len < 1)
-			error_file(file, arg, 9);
+			return (ft_error_int(file, ERROR_S_NAME));
 	}
-	if (nb == 2)
+	if (type == COMMENT)
 	{
 		if (len > COMMENT_LENGTH)
-			error_file(file, arg, 10);
+			return (ft_error_int(file, ERROR_L_CMT));
 		if (len < 1)
-			error_file(file, arg, 11);
+			return (ft_error_int(file, ERROR_L_CMT));
 	}
-	return (0);
+	return (OKAY);
 }
 
-int		parse_header_name(char *str, t_core *file, char *arg)
+int			parse_header_name(t_core *file, char *str, int i)
 {
-	int		i;
 	int		j;
 
-	i = 0;
 	j = 0;
 	if (str && str[0] != '\"')
-		error_file(file, arg, 5);
+		return (ft_error_int(file, ERROR_SYNTAX));
 	while (str && str[i])
 	{
 		if (str[i] == '\"')
 			j++;
 		i++;
 	}
-	if (str[i - 1] != '\"')
-		error_file(file, arg, 5);
-	//ft_printf("		@@@@len|%d| quoters|%d|\n", i, j);
+	if (str && str[i - 1] != '\"')
+		return (ft_error_int(file, ERROR_SYNTAX));
 	return (i);
 }
 
-void	rebuild_name_cmt(t_core *file, char *arg)
+void		rebuild_name_cmt(t_core *file, int len)
 {
-	int		len;
 	char	*tmp;
 
-	tmp = NULL;
-	len = 0;
 	if (file->name)
 	{
-		len = parse_header_name(file->name, file, arg);
-		len_check(len - 2, 1, file, arg);
+		len = parse_header_name(file, file->name, 0);
+		len_check(file, NAME, len - 2);
 		tmp = ft_strdup(file->name);
 		ft_strdel(&file->name);
-		file->name = ft_strsub(tmp, 1, (len - 2));
+		file->name = ft_strsub(tmp, 1, (size_t)(len - 2));
 		ft_strdel(&tmp);		
 	}
 	if (file->comment)
 	{
-		len = parse_header_name(file->comment, file, arg);
-		len_check(len - 2, 2, file, arg);
+		len = parse_header_name(file, file->comment, 0);
+		len_check(file, COMMENT, len - 2);
 		tmp = ft_strdup(file->comment);
 		ft_strdel(&file->comment);
-		file->comment = ft_strsub(tmp, 1, (len - 2));
+		file->comment = ft_strsub(tmp, 1, (size_t)(len - 2));
 		ft_strdel(&tmp);
 	}
-	//ft_printf("len|%d|\n", len);
 }
 
-void	name_cmt(char *str, int nb, t_core *file)
+void		name_cmt(t_core *file, char *str, int type)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (str && *str && ft_strchr(SPACES_CHARS, *str))
@@ -91,46 +84,43 @@ void	name_cmt(char *str, int nb, t_core *file)
 	{
 		if (str[i] == '\"')
 			file->syntax++;
-		if (nb == 1)
+		if (type == NAME)
 			file->name_length++;
-		if (nb == 2)
+		if (type == COMMENT)
 			file->cmt_length++;
 		i++;
 	}
-	if (nb == 1)
+	if (type == NAME)
 	{
 		file->name = file->name ?
 		ft_strjoinstr(file->name, ft_strsub(str, 0, i)) : ft_strsub(str, 0, i);
 	}
-	if (nb == 2)
+	if (type == COMMENT)
 	{
 		file->comment = file->comment ?
 		ft_strjoinstr(file->comment, ft_strsub(str, 0, i)) : ft_strsub(str, 0, i);
 	}
 }
 
-void	name_cmt_valid(char *str, t_core *file, char *arg)
+void		name_cmt_valid(t_core *file, char *str)
 {
 	if (!ft_strncmp(str, NAME_CMD_STRING, 5))
 	{
-		//write_name_or_cmt(str, 1, file);
 		file->name_nbr++;
-		name_cmt(str + 5, 1, file);
+		name_cmt(file, str + 5, NAME);
 		if (file->name_nbr > 1)
-			error_file(file, arg, 6);
+			return(ft_error(file, ERROR_A_NAME));
 	}
 	else if (!ft_strncmp(str, COMMENT_CMD_STRING, 8))
 	{
-		
-		//write_name_or_cmt(str, 2, file);
+
 		file->cmt_nbr++;
-		name_cmt(str + 8, 2, file);
+		name_cmt(file, str + 8, COMMENT);
 		if (file->cmt_nbr > 1)
-			error_file(file, arg, 7);
+			return(ft_error(file, ERROR_A_CMT));
 	}
 	else
 	{
-		//ft_printf("ERROR: %s at line %d\n", file->filename, file->rows);
 		free_struct_tcore(file);
 		exit (ERROR);
 	}
