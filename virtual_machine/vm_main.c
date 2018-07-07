@@ -148,9 +148,10 @@ int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
 	int i;
 
 	i = vm->arena[cmd->idx].acb & 0xFF;
+	i -= 1;
 	// erase();
 	// attron(COLOR_PAIR(11));
-	// printw("vm_has_cmd |%d|\n", i);
+	 //printw("vm_has_cmd |%d|\n", i);
 	// refresh();
 	if (i > 0 && i < 17)
 		return (i);
@@ -210,8 +211,8 @@ void	vm_curet_next(t_cmd *cmd)
 			cmd->off = 1;
 		}
 		cmd->on = 0;
-			printw("cmd->reg[0] %d\n", cmd->reg[0]);
-			refresh();
+			//printw("cmd->reg[0] %d\n", cmd->reg[0]);
+			//refresh();
 		cmd = cmd->next;
 	}
 }
@@ -258,7 +259,7 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		cmd->wait = op_tab[i].cycles;
 		//vm_next_step(vm, cmd, 1);
 		//
-		//printw("%d\n", op_tab[i].cycles);
+		//printw("%s %d\n", op_tab[i].name, op_tab[i].cycles);
 		//refresh();
 	}
 	else
