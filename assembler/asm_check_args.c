@@ -105,7 +105,7 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg)
 {
     int		i;
 	int 	len;
-    int		arg;
+    //int		arg;
 
     i = 0;
     if (!file || !c || !str_arg)
@@ -126,7 +126,7 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg)
     if (ft_isdigit(str_arg[i]) || (ft_strlen(str_arg + i) > 1
            && str_arg[i] == '-' && ft_isdigit(str_arg[i + 1])))
     {
-        arg = ft_atoi(str_arg + i);
+        //arg = ft_atoi(str_arg + i);
 		return (OKAY);
     }
     return (ERROR);

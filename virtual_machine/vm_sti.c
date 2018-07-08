@@ -102,6 +102,7 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 		{
 			tmp = vm->arena[mdx(cmd->idx + 3)].acb << 8 |
 							vm->arena[mdx(cmd->idx + 4)].acb;
+			tmp = tmp % 512;
 			direct = vm->arena[mdx(cmd->idx + tmp)].acb << 24 |
 						vm->arena[mdx(cmd->idx + tmp + 1)].acb << 16 |
 						vm->arena[mdx(cmd->idx + tmp + 2)].acb << 8 |
