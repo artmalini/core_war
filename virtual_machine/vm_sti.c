@@ -79,7 +79,7 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
 	int		i;
 	int		direct;
-	int		tmp;
+	int		tmp;	
 
 	i = vm_read(vm, cmd);
 	//vm->arena[idx()] =
@@ -111,7 +111,7 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 			//	vm->arena[cmd->idx + 8].acb;//третий
 		}
 	}
-	load_res(vm, cmd,direct);
+	load_res(vm, cmd, direct);
 	//ft_printf("cmd->idx |%d| tmp|%d| direct|%d| cmd->idx|%d|\n", cmd->idx, tmp, direct, cmd->reg[0]);	
 	//vm->arena[direct].rgb = cmd->rgb - 5;
 	//vm->arena[direct].asc_rgb = cmd->rgb - 5;

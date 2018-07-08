@@ -91,16 +91,93 @@ void	vm_load_ncurses(void)
 void	vm_game_stat(t_vm *vm)
 {
 	attron(COLOR_PAIR(10));
-	printw("\nCycle : %d Cycles to die: %d\n\n", vm->cycle, vm->cycle_to_die);
-	//refresh();
+	printw("\nCycle : %d Cycles to die: %d\n\n", vm->cycle, vm->cycle_to_die);	
 }
 
+// void	draw_dead_pl(int j)
+// {
+// ##  ### ##  
+// # #  #  # # 
+// ##   #  ##  
+// # #  #  #   
+// # # ### #
+// }
+
+void	draw_pl_heart(int j)
+{
+	attron(COLOR_PAIR(1));
+	if (j == 20 || j == 26)
+		printw("\t ###    ###");
+	if (j == 21 || j == 27)
+		printw("\t#####  #####");
+	if (j == 22 || j == 28)
+		printw("\t ##########");
+	if (j == 23 || j == 29)
+		printw("\t   ######");
+	if (j == 24 || j == 30)
+		printw("\t     ##");
+}
+
+void	print_header2(int j, t_vm *vm)
+{
+	if (j == 13)
+		printw(" #############   ####  ############ ");
+	if (j == 14)
+		printw(" ###### ######  ####   ###### ####  ");
+	if (j == 15)
+		printw(" #####   ##### ##############  #### ");
+	if (j == 16)
+		printw(" ####     ########     ######   #### ");
+	if (j >= 20 && j <= 24 && vm->nbr_next >= 1)
+	{
+		if (j == 20)
+			printw("%s", vm->tab_champ[0].name);
+		draw_pl_heart(j);
+	}
+	if (j >= 26 && j <= 30 && vm->nbr_next >= 2)
+	{
+		if (j == 26)
+			printw("%s", vm->tab_champ[1].name);
+		draw_pl_heart(j);
+	}	
+}
+
+void	print_header(int j, t_vm *vm)
+{
+	if (j == 0)
+		printw("  #######                 ##########");
+	if (j == 1)
+		printw(" ####  ###                ###       ");
+	if (j == 2)
+		printw(" ###    ##                ###       ");
+	if (j == 3)
+		printw(" ###         ##### ##############   ");
+	if (j == 4)
+		printw(" ###       ###  ## ####   ###       ");
+	if (j == 5)
+		printw(" ###    ######  ######    ###       ");
+	if (j == 6)
+		printw(" ####  ### ###  ## ###    ###       ");
+	if (j == 7)
+		printw("  #######    ####  ###    ##########");
+	if (j == 9)
+		printw(" ###       ###       ##############  ");
+	if (j == 10)
+		printw(" ###   #   ###      #########   #### ");
+	if (j == 11)
+		printw(" ###  ###  ###     ##########    ### ");
+	if (j == 12)
+		printw(" ### ##### ###    #### ######   #### ");
+	print_header2(j, vm);	
+}
 
 void	vm_play_arena(t_vm *vm)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = -1;
 	erase();
 	vm_game_stat(vm);
 	while (i < MEM_SIZE)
@@ -111,7 +188,9 @@ void	vm_play_arena(t_vm *vm)
 		if ((i + 1) % 64 == 0)
 		{ 
 			//mem += 64;
-			//if (i + 1 < MEM_SIZE)			
+			//if (i + 1 < MEM_SIZE)
+			attron(COLOR_PAIR(2));
+			print_header(++j, vm);	
 				printw("\n");
 		}		
 		i++;		
@@ -252,11 +331,12 @@ void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
 void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		i;
-
+	//ft_printf("ok\n");
 	if ((i = vm_has_cmd(vm, cmd)) != 0)
 	{
 		cmd->playing = 1;		
 		cmd->wait = op_tab[i].cycles;
+		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
 		//
 		//printw("%s %d\n", op_tab[i].name, op_tab[i].cycles);
@@ -371,6 +451,7 @@ void	vm_load_arena(t_vm *vm)
 				if (!c->playing)
 				{
 					vm_set_cycle_wait(vm, c);
+					//ft_printf("WAIT %d\n", c->wait);
 					//vm_play_arena(vm);
 				//printw("%d\n", c->wait);
 				//refresh();				
