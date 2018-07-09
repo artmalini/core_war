@@ -88,7 +88,6 @@
 # define NBR_ARGS(CMD)	(op_tab[CMD].nbr_args)
 # define TYPE_ARG(nbr)	(op_tab[CMD].type_params[nbr])
 
-
 /*
 **					[Typedef and Structs Part]
 */
@@ -180,7 +179,6 @@ void		line_handler(t_core *file, char *line, char *lowstr);
 void		push_cmd(t_core *file, t_cmd **lst, char *cmd, char *args);
 char		*line_finalize(t_core *file, char **str, char *lowstr, int *i);
 
-
 /*
 **					[ASM FILE .cor]
 */
@@ -216,14 +214,14 @@ int 		ft_error_int(t_core *file, int id);
 void		insert_args_lst(t_core *file, t_cmd	*c);
 int			check_arg_of_cmd(t_core *file, t_cmd *c);
 int			cut_cmt_str_args(t_core *file, char *old_str);
+int			check_arg_ind(t_core *file, t_cmd *c, char *arg);
 int			check_arg_reg(t_core *file, t_cmd *c, char *str_arg);
 int			check_arg_dir(t_core *file, t_cmd *c, char *str_arg);
-int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg);
 int			check_args_main(t_core *file, t_cmd *c, char **args);
+char		*create_str_args(t_core *file, t_cmd *c, size_t len);
 int			check_arg_label(t_core *file, t_cmd *c, char *str_arg);
 int			valid_args_main(t_core *file, t_cmd *c, char *old_args);
 int 		create_fresh_args(t_core *file, t_cmd *c, char **old_args);
-char		*create_str_args(t_core *file, t_cmd *c, size_t len);
 
 /*
 **					[DEBUG and PRINT]

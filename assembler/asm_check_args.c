@@ -102,34 +102,30 @@ int			check_arg_dir(t_core *file, t_cmd *c, char *str_arg)
     return (ERROR);
 }
 
-int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg)
+int			check_arg_ind(t_core *file, t_cmd *c, char *arg)
 {
     int		i;
 	int 	len;
-    int		arg;
 
     i = 0;
-    if (!file || !c || !str_arg)
+    if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	if (str_arg[i] == LABEL_CHAR)
-		return (check_arg_label(file, c, str_arg));
-	len = (int)ft_strlen(str_arg);
+	if (arg[i] == LABEL_CHAR)
+		return (check_arg_label(file, c, arg));
+	len = (int)ft_strlen(arg);
 	while (i < len)
 	{
-		if (i == 0 && str_arg[i] == '-')
+		if (i == 0 && arg[i] == '-')
 			i++;
-		if (ft_strchr("01234567890", str_arg[i]))
+		if (ft_strchr("01234567890", arg[i]))
 			i++;
 		else
 			return (ft_error_int(file, ERROR_T_IND));
 	}
 	i = 0;
-    if (ft_isdigit(str_arg[i]) || (ft_strlen(str_arg + i) > 1
-           && str_arg[i] == '-' && ft_isdigit(str_arg[i + 1])))
-    {
-        arg = ft_atoi(str_arg + i);
+    if (ft_isdigit(arg[i]) || (ft_strlen(arg + i) > 1
+           							&& arg[i] == '-' && ft_isdigit(arg[i + 1])))
 		return (OKAY);
-    }
     return (ERROR);
 }
 
