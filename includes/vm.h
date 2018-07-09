@@ -226,7 +226,13 @@ void		vm_read_champ(t_vm *vm, int number_player);
 void		ft_print_error(t_error *e);
 char		*vm_str_error(int error);
 
+int			mdx(int nbr);
+int			vm_pos_curs(t_vm *vm, t_cmd *cmd);
 void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
+
 void		vm_sti(t_vm *vm, t_cmd *cmd);
+void		vm_and(t_vm *vm, t_cmd *cmd);
+void		vm_live(t_vm *vm, t_cmd *cmd);
+void		vm_zjmp(t_vm *vm, t_cmd *cmd);
 
 #endif

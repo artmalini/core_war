@@ -248,6 +248,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	tm = cmd->idx;
  	i = cmd->idx + pos;
 	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
+	//ft_printf("cmd->idx |%d| ", cmd->idx);
 	
 		// erase();
 		// attron(COLOR_PAIR(11));
@@ -384,6 +385,7 @@ int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 	int		chk;
 
 	chk = vm->arena[cmd->idx].acb;
+	//ft_printf("chk %d ", chk);
 	if (chk < 1 || chk > 16)
 		return (0);
 	return (1);
@@ -391,14 +393,25 @@ int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 
 void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 {
+	//ft_printf("HEX %d ", hex);
 	if (hex == 11)
+	{
+		ft_printf("sti ");
 		vm_sti(vm, cmd);
-	// else if (hex == 6)
-	// 	vm_and(vm, cmd);
-	// else if (hex == 1)
-	// 	vm_live(vm, cmd);
-	// else if (hex == 9)
-	// 	vm_zjmp(vm, cmd);
+	}
+	else if (hex == 6)
+	{
+		ft_printf("and ");
+	 	vm_and(vm, cmd);
+	}
+	else if (hex == 1)
+	{
+		ft_printf("live ");
+	 	vm_live(vm, cmd);
+	}
+	else if (hex == 9)
+	 	vm_zjmp(vm, cmd);
+	 //ft_printf("HEX %d", hex);
 	// printw("HEX %d\n", hex);
 	// refresh();
 }
@@ -446,19 +459,21 @@ void	vm_load_arena(t_vm *vm)
 		{
 			if (c->flag)
 				vm_cycler_to_die(vm, c, &i);
-			if (!c->off)
-			{
-				if (!c->playing)
+			//else
+			//{
+				if (!c->off)
 				{
-					vm_set_cycle_wait(vm, c);
-					//ft_printf("WAIT %d\n", c->wait);
-					//vm_play_arena(vm);
-				//printw("%d\n", c->wait);
-				//refresh();				
+					if (!c->playing)
+					{
+						vm_set_cycle_wait(vm, c);
+					//printw("%d\n", c->wait);
+					//refresh();				
+					}
+					else
+						vm_run_waiting_cycle(vm, c);
 				}
-				else
-					vm_run_waiting_cycle(vm, c);
-			}
+				
+			//}
 			//printw("%d\n", c->wait);
 			//refresh();
 			c = c->next;
@@ -535,7 +550,7 @@ void	vm_glow_cur(t_vm *vm, t_cmd *cmd)
 	//while (cmd && !cmd->flag)
 	while (cmd)
 	{
-		ft_printf("vm_glow_cur id player|%d|\n", cmd->reg[0]);
+		//ft_printf("vm_glow_cur id player|%d|\n", cmd->reg[0]);
 		vm_next_step(vm, cmd, 0);
 		cmd = cmd->next;
 	}
