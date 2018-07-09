@@ -22,6 +22,7 @@ int			check_arg_of_cmd(t_core *file, t_cmd *c)
 		return (ft_error_int(file, ERROR_FT_ARG));
 	while (c->nbr_args > nbr)
 	{
+		file->error->current_arg = c->args[nbr];
 		if (c->args[nbr][0] == REGISTER_CHAR)
 			arg = T_REG;
 		else if (c->args[nbr][0] == DIRECT_CHAR)
@@ -105,7 +106,7 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg)
 {
     int		i;
 	int 	len;
-    //int		arg;
+    int		arg;
 
     i = 0;
     if (!file || !c || !str_arg)
@@ -126,7 +127,7 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *str_arg)
     if (ft_isdigit(str_arg[i]) || (ft_strlen(str_arg + i) > 1
            && str_arg[i] == '-' && ft_isdigit(str_arg[i + 1])))
     {
-        //arg = ft_atoi(str_arg + i);
+        arg = ft_atoi(str_arg + i);
 		return (OKAY);
     }
     return (ERROR);
@@ -144,6 +145,7 @@ int			check_args_main(t_core *file, t_cmd *c, char **args)
 		i = 0;
 		while (args[nbr][i] && ft_strchr(SPACES_CHARS, args[nbr][i]))
 			i++;
+		file->error->current_arg = &(args[nbr][i]);
 		if (args[nbr][i] && args[nbr][i] == REGISTER_CHAR)
 			status = check_arg_reg(file, c, (args[nbr] + i + 1));
 		else if (args[nbr][i] && args[nbr][i] == DIRECT_CHAR)
@@ -152,7 +154,7 @@ int			check_args_main(t_core *file, t_cmd *c, char **args)
 				args[nbr][i] == '-')
 			status = check_arg_ind(file, c, (args[nbr] + i));
 		else
-			return (ft_error_int(file, ERROR_ARG));
+			return (ft_error_int(file, ERROR_ID_ARG));
 		if (status != OKAY)
 			return (ERROR);
 		nbr++;

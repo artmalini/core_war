@@ -40,22 +40,25 @@ int			cut_cmt_str_args(t_core *file, char *old_str)
 	return (ERROR);
 }
 
-char		*create_str_args(t_core *file, t_cmd *c, size_t len, int nbr)
+char		*create_str_args(t_core *file, t_cmd *c, size_t len)
 {
 	char	*str_args;
 
-	if (!file || !c || !nbr || !len || !(str_args = ft_memalloc(len + 5)))
+	if (!file || !c || !len || !(str_args = ft_memalloc(len + 5)))
+	{
 		ft_error(file, ERROR_FT_ARG);
-	if (c->args[FIRST] && nbr >= 1)
+		return (NULL);
+	}
+	if (c->args[FIRST] && c->nbr_args >= 1)
 	{
 		str_args = ft_strcat(str_args, c->args[FIRST]);
 	}
-	if (c->args[SECOND] && nbr >= 2)
+	if (c->args[SECOND] && c->nbr_args >= 2)
 	{
 		str_args = ft_strcat(str_args, ", ");
 		str_args = ft_strcat(str_args, c->args[SECOND]);
 	}
-	if (c->args[THIRD] && nbr >= 3)
+	if (c->args[THIRD] && c->nbr_args >= 3)
 	{
 		str_args = ft_strcat(str_args, ", ");
 		str_args = ft_strcat(str_args, c->args[THIRD]);
@@ -73,18 +76,15 @@ void		insert_args_lst(t_core *file, t_cmd	*c)
 	if (!file || !c)
 		return(ft_error(file, ERROR_FT_ARG));
 	if (check_arg_of_cmd(file, c) == ERROR)
-		return(ft_error(file, ERROR_ARG));
-	while (c->nbr_args > i)//why*
-	{
-		len += ft_strlen(c->args[i]);
-		i++;
-	}
-	c->str = create_str_args(file, c, len, c->nbr_args);
+		return(ft_error(file, ERROR_TYPE_ARG));
+	while (c->nbr_args > i)
+		len += ft_strlen(c->args[i++]);
+	c->str = create_str_args(file, c, len);
 }
 
 int 		create_fresh_args(t_core *file, t_cmd *c, char **old_args)
 {
-	int		i;
+	int 	i;
 	int		nbr;
 
 	nbr = 0;
@@ -96,14 +96,20 @@ int 		create_fresh_args(t_core *file, t_cmd *c, char **old_args)
 		while (old_args[nbr][i] && ft_strchr(SPACES_CHARS, old_args[nbr][i]))
 			i++;
 		c->args[nbr] = ft_strdup(old_args[nbr] + i);
+		i = 0;
+		while (c->args[nbr][i] && !ft_strchr(SPACES_CHARS, c->args[nbr][i]))
+			i++;
+		c->args[nbr][i] = '\0';
 		nbr++;
 	}
 	return (OKAY);
 }
 
 
+
 int			valid_args_main(t_core *file, t_cmd *c, char *old_args)
 {
+	int 	i;
 	char	**tmp_args;
 
 	if (!file || !c || !old_args)
@@ -111,6 +117,11 @@ int			valid_args_main(t_core *file, t_cmd *c, char *old_args)
 	cut_cmt_str_args(file, old_args);
 	if (!(tmp_args = ft_strsplit(old_args, ',')))
 		return (ft_error_int(file, ERROR_MEMORY));
+	i = 0;
+	while (tmp_args[i] != NULL)
+		i++;
+	if (i != c->nbr_args || i >= MAX_ARGS_NUMBER)
+		return (ft_error_int(file, ERROR_NBR_ARG));
 	if (check_args_main(file, c, tmp_args) == OKAY)
 	{
 		create_fresh_args(file, c, tmp_args);

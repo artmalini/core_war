@@ -69,8 +69,14 @@
 
 # define ERROR_T_DIR	120
 # define ERROR_T_IND	121
-# define ERROR_3		122
-# define ERROR_4		123
+# define ERROR_NBR_ARG	122
+# define ERROR_ID_ARG	123
+# define ERROR_TYPE_ARG	124
+
+# define ERROR_1		125
+# define ERROR_2		126
+# define ERROR_3		127
+# define ERROR_4		128
 
 /*
 **					[Macros for easy reading code]
@@ -92,11 +98,12 @@ typedef char 		t_arg_type;
 typedef struct		s_error
 {
 	int				id;
-	int 			usage;
 	char 			*arg;
 	char 			*cmd;
+	int 			usage;
 	int				*rows;
 	char 			*label;
+	char 			*current_arg;
 
 }					t_error;
 
@@ -216,7 +223,7 @@ int			check_args_main(t_core *file, t_cmd *c, char **args);
 int			check_arg_label(t_core *file, t_cmd *c, char *str_arg);
 int			valid_args_main(t_core *file, t_cmd *c, char *old_args);
 int 		create_fresh_args(t_core *file, t_cmd *c, char **old_args);
-char		*create_str_args(t_core *file, t_cmd *c, size_t len, int nbr);
+char		*create_str_args(t_core *file, t_cmd *c, size_t len);
 
 /*
 **					[DEBUG and PRINT]

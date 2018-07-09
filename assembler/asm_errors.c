@@ -17,9 +17,19 @@ int 		ft_error_int(t_core *file, int id)
 	if (!file || !id)
 		return (ERROR);
 	file->error->id = id;
-	if (file->error->id != OKAY)
+	if (id == ERROR_OPEN || id == ERROR_READ || id == ERROR_CLOSE ||
+		id == ERROR_INPUT)
 		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
 				  file->error->arg, RESET);
+	else if (id == ERROR_ID_ARG || id == ERROR_T_IND || id == ERROR_T_DIR ||
+			 id == ERROR_TYPE_ARG)
+		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
+				  file->error->current_arg, RESET);
+	else if (id > 0)
+		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
+				  "VOID", RESET);
+	else if (file->error->id)
+		ft_printf("%s%s%s\n", RED, ft_str_asma(file->error->id), RESET);
 	free_struct_tcore(file);
 	exit(ERROR);
 	return (ERROR);
@@ -30,9 +40,19 @@ void 		ft_error(t_core *file, int id)
 	if (!file || !id)
 		return ;
 	file->error->id = id;
-	if (file->error->id != OKAY)
+	if (id == ERROR_OPEN || id == ERROR_READ || id == ERROR_CLOSE ||
+		id == ERROR_INPUT)
 		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
 				  file->error->arg, RESET);
+	else if (id == ERROR_ID_ARG || id == ERROR_T_IND || id == ERROR_T_DIR ||
+			 id == ERROR_TYPE_ARG)
+		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
+				  file->error->current_arg, RESET);
+	else if (id > 0)
+		ft_printf("%s%s ---> [%s]%s\n", RED, ft_str_asma(file->error->id),
+				  "VOID", RESET);
+	else if (file->error->id)
+		ft_printf("%s%s%s\n", RED, ft_str_asma(file->error->id), RESET);
 	free_struct_tcore(file);
 	exit(ERROR);
 }
@@ -89,6 +109,12 @@ char 		*ft_str_asmb(int id)
 		return ("ERROR: Wrong size of input T_DIR argument");
 	if (id == ERROR_T_IND)
 		return ("ERROR: Wrong size of input T_IND argument");
+	if (id == ERROR_NBR_ARG)
+		return ("ERROR: Wrong count arguments of command");
+	if (id == ERROR_ID_ARG)
+		return ("ERROR: Identification of the command argument");
+	if (id == ERROR_TYPE_ARG)
+		return ("ERROR: Invalid command argument Type");
 	return ("ERROR: Syntax error");
 }
 
