@@ -227,11 +227,11 @@ int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
 	int i;
 
 	i = vm->arena[cmd->idx].acb & 0xFF;
-	i -= 1;
+	//i -= 1;
 	// erase();
 	// attron(COLOR_PAIR(11));
-	 //printw("vm_has_cmd |%d|\n", i);
-	// refresh();
+	//printw("vm_has_cmd |%d|\n", i);
+	//refresh();
 	if (i > 0 && i < 17)
 		return (i);
 	else
@@ -249,7 +249,8 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
  	i = cmd->idx + pos;
 	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
 	//ft_printf("cmd->idx |%d| ", cmd->idx);
-	
+		//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
+		//refresh();
 		// erase();
 		// attron(COLOR_PAIR(11));
 		// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
@@ -336,7 +337,7 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	if ((i = vm_has_cmd(vm, cmd)) != 0)
 	{
 		cmd->playing = 1;		
-		cmd->wait = op_tab[i].cycles;
+		cmd->wait = op_tab[i - 1].cycles;
 		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
 		//
@@ -384,8 +385,10 @@ int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 {
 	int		chk;
 
-	chk = vm->arena[cmd->idx].acb;
+	chk = 0xFF & vm->arena[cmd->idx].acb;
 	//ft_printf("chk %d ", chk);
+	//printw("chk %d ", chk);
+	//refresh();
 	if (chk < 1 || chk > 16)
 		return (0);
 	return (1);
@@ -396,17 +399,17 @@ void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 	//ft_printf("HEX %d ", hex);
 	if (hex == 11)
 	{
-		ft_printf("sti ");
+		//ft_printf("sti ");
 		vm_sti(vm, cmd);
 	}
 	else if (hex == 6)
 	{
-		ft_printf("and ");
+		//ft_printf("and ");
 	 	vm_and(vm, cmd);
 	}
 	else if (hex == 1)
 	{
-		ft_printf("live ");
+		//ft_printf("live ");
 	 	vm_live(vm, cmd);
 	}
 	else if (hex == 9)
@@ -429,7 +432,7 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 		else
 		{
 			pos = vm->arena[cmd->idx + 1].acb;
-			vm_next_step(vm, cmd, vm_calc_steps(hex, pos));			
+			vm_next_step(vm, cmd, vm_calc_steps(hex, pos));
 		}
 			//printw("%d %d\n", pos, hex);
 			//refresh();		
