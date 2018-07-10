@@ -154,9 +154,9 @@ typedef struct 		s_cmd
 	int				off;
 	int				carry;
 	int				wait;
-	int				increment;
 	int				playing;
 	int				flag;
+	int				life;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -178,7 +178,7 @@ typedef struct		s_champ
 	int				rgb;
 
 	int				idx;
-	int				live;
+	int				life;
 	char			*prog;
 
 }					t_champ;
@@ -196,7 +196,8 @@ typedef struct		s_vm
 	int				cycle_to_die;
 	int				cycle_before_checking;
 	int				total_lives_period;
-	int				lives;
+	int				lifes;
+	int				win;
 }					t_vm;
 
 typedef struct		s_op

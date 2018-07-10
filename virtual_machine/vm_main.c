@@ -88,10 +88,21 @@ void	vm_load_ncurses(void)
 	curs_set(FALSE);
 }
 
+void	vm_pl_stats(t_vm *vm, int i)
+{
+	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
+	printw("\nLives for %-20s %d", vm->tab_champ[i].name, vm->tab_champ[i].life);
+}
+
 void	vm_game_stat(t_vm *vm)
 {
+	int		i;
+
+	i = -1;
+	while (++i < vm->nbr_next)
+		vm_pl_stats(vm, i);
 	attron(COLOR_PAIR(10));
-	printw("\nCycle : %d Cycles to die: %d\n\n", vm->cycle, vm->cycle_to_die);	
+	printw("\nCycle : %d Cycles to die: %d \n\n", vm->cycle, vm->cycle_to_die);
 }
 
 // void	draw_dead_pl(int j)
@@ -131,13 +142,19 @@ void	print_header2(int j, t_vm *vm)
 	if (j >= 20 && j <= 24 && vm->nbr_next >= 1)
 	{
 		if (j == 20)
+		{
+			attron(COLOR_PAIR(vm->tab_champ[0].rgb));
 			printw("%s", vm->tab_champ[0].name);
+		}
 		draw_pl_heart(j);
 	}
 	if (j >= 26 && j <= 30 && vm->nbr_next >= 2)
 	{
 		if (j == 26)
+		{
+			attron(COLOR_PAIR(vm->tab_champ[1].rgb));
 			printw("%s", vm->tab_champ[1].name);
+		}
 		draw_pl_heart(j);
 	}	
 }
@@ -287,11 +304,11 @@ void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd && !cmd->flag)
 	{
-		if (!cmd->on)
+		if (!cmd->life)
 		{
 			cmd->off = 1;
 		}
-		cmd->on = 0;
+		cmd->life = 0;
 			//printw("cmd->reg[0] %d\n", cmd->reg[0]);
 			//refresh();
 		cmd = cmd->next;
@@ -301,16 +318,16 @@ void	vm_curet_next(t_cmd *cmd)
 void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 {
 	vm_curet_next(cmd);
-	if (vm->lives == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
+	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
 		*i = 0;
-	if (vm->lives < NBR_LIVE)
+	if (vm->lifes < NBR_LIVE)
 		vm->last_check += 1;
-	if (vm->last_check == MAX_CHECKS || vm->lives >= NBR_LIVE)
+	if (vm->last_check == MAX_CHECKS || vm->lifes >= NBR_LIVE)
 	{
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 			vm->cycle_to_die = 0;
-		vm->lives = 0;
+		vm->lifes = 0;
 		vm->last_check = 0;
 	}
 	vm->cycle = 0;
@@ -320,7 +337,10 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
 {
 	if (vm->cycle == vm->cycle_to_die)
+	{
+		//cmd->flag = 0;
 		vm_cycler_todie(vm, cmd, i);
+	}
 	//	vm_switch_cursor(cmd);
 	else
 	{
@@ -509,6 +529,7 @@ static void	init(t_vm *vm)
 	while (i < MAX_PLAYERS)
 	{
 		vm->tab_champ[i].weight = 0;
+		vm->tab_champ[i].rgb = 1 + (i % 4);
 		vm->tab_champ[i].id = -1;
 		i++;
 	}
@@ -520,7 +541,8 @@ static void	init(t_vm *vm)
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
-	vm->lives = 0;
+	vm->lifes = 0;
+	vm->win = -1;
 	vm->cmd = NULL;
 }
 
@@ -540,7 +562,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->on = 0;
 		lst->off = 0;
 		lst->carry = 0;
-		lst->increment = 0;
+		lst->life = 0;
 		lst->flag = 0;
 		lst->next = NULL;
 		//ft_printf("lst->idx |%d\n|", lst->idx);
