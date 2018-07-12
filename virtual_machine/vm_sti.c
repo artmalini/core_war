@@ -13,64 +13,87 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	}
 }
 
+int		vm_rdr2(t_vm *vm, t_cmd *cmd)
+{
+	int		pc;
+	int		res;
+	short	arg1;
+	short	arg2;
+	
+	res = 0;
+	pc = (cmd->idx - 1) + (0xFF & vm->arena[mdx(cmd->idx + 2)].acb);
+	//ft_printf("PC %d %d\n", pc, vm->arena[mdx(cmd->idx + 2)].acb);
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
+	arg2 <<= 8;
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
+	res = pc + ((arg1 + arg2) % IDX_MOD);
+	return (res);
+}
+
+int		vm_rir2(t_vm *vm, t_cmd *cmd)
+{
+	int		pc;
+	int		res;
+	int		arg1;
+	short	arg2;
+	
+	res = 0;
+	pc = (cmd->idx - 1) + (0xFF & vm->arena[mdx(cmd->idx + 2)].acb);
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
+	arg2 <<= 8;
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
+	res = pc + (((arg1 % IDX_MOD) + arg2) % IDX_MOD);
+	return (res);
+}
+
+int		vm_rrr2(t_vm *vm, t_cmd *cmd)
+{
+	int		pc;
+	int		res;
+	short	arg1;
+	short	arg2;
+	
+	res = 0;
+	pc = (cmd->idx - 1) + (0xFF & vm->arena[mdx(cmd->idx + 2)].acb);
+	//ft_printf("PC %d %d\n", pc, vm->arena[mdx(cmd->idx + 2)].acb);
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
+	arg2 <<= 8;
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
+	res = pc + ((arg1 + arg2) % IDX_MOD);
+	return (res);
+}
+
 void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
-	int		i;
+	int		cdg;
 	int		direct;
-	//int		tmp;
-	//short	tmp;	
 
-	i = vm_pos_curs(vm, cmd);
-	//vm->arena[idx()] =
 	direct = 0;
-	//tmp = 0;
-	/*if (((vm->arena[mdx(cmd->idx + 1)].acb >> 6) & 3) == REG_CODE)
-	{
-		vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
-		//vm->arena[cmd->idx].asc_rgb = cmd->rgb - 5;
-		direct = ((cmd->idx - 1) + (0xFF & vm->arena[mdx(cmd->idx + 2)].acb));//PC + первый арг
-		if (((vm->arena[mdx(cmd->idx + 1)].acb >> 4) & 3) == DIR_CODE)
-		{
-			tmp = (0xFF & vm->arena[mdx(cmd->idx + 3)].acb) << 8 |
-							(0xFF & vm->arena[mdx(cmd->idx + 4)].acb);//второй
-			direct += (0xFF & vm->arena[mdx(cmd->idx + 5)].acb << 8) |
-				(0xFF & vm->arena[mdx(cmd->idx + 6)].acb);//третий
-			direct += tmp;
-		}
-		if (((vm->arena[mdx(cmd->idx + 1)].acb >> 4) & 3) == IND_CODE)
-		{
-			tmp = vm->arena[mdx(cmd->idx + 3)].acb << 8 |
-							vm->arena[mdx(cmd->idx + 4)].acb;
-			tmp = tmp % 512;
-			// direct = vm->arena[mdx(cmd->idx + tmp)].acb << 24 |
-			// 			vm->arena[mdx(cmd->idx + tmp + 1)].acb << 16 |
-			// 			vm->arena[mdx(cmd->idx + tmp + 2)].acb << 8 |
-			// 			vm->arena[mdx(cmd->idx + tmp + 3)].acb;
-			direct = 0xFF & vm->arena[mdx(cmd->idx + tmp)].acb;
-			direct <<= 8;
-			direct = 0xFF & vm->arena[mdx(cmd->idx + tmp + 1)].acb;
-			direct <<= 8;
-			direct = 0xFF & vm->arena[mdx(cmd->idx + tmp + 2)].acb;
-			direct <<= 8;
-			direct = 0xFF & vm->arena[mdx(cmd->idx + tmp + 3)].acb;
-		}
-	}*/
-	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 104)
-	{
-		vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
-
-		direct = (cmd->idx - 1) + (0xFF & vm->arena[mdx(cmd->idx + 2)].acb) + 
-					((short)((0xFF & vm->arena[mdx(cmd->idx + 3)].acb) << 8 |
-																	(0xFF & vm->arena[mdx(cmd->idx + 4)].acb)) + 
-										(short)((0xFF & vm->arena[mdx(cmd->idx + 5)].acb << 8) |
-														(0xFF & vm->arena[mdx(cmd->idx + 6)].acb)) % 512);//третий	
-
-	}
+	cdg = (0xFF & vm->arena[mdx(cmd->idx + 1)].acb);
+	if (cdg == 104)		
+		direct = vm_rdr2(vm, cmd);
+	else if (cdg == 84)
+		direct = vm_rdr2(vm, cmd);
+	else if (cdg == 88)
+		direct = vm_rdr2(vm, cmd);
+	else if (cdg == 104)
+		direct = vm_rdr2(vm, cmd);
+	else if (cdg == 116)
+		direct = vm_rir2(vm, cmd);
 	load_res(vm, cmd, direct);
-	//ft_printf("cmd->idx |%d| direct|%d| cmd->idx|%d| ", cmd->idx, direct, cmd->reg[0]);	
-	//vm->arena[direct].rgb = cmd->rgb - 5;
-	//vm->arena[direct].asc_rgb = cmd->rgb - 5;
-	vm_next_step(vm, cmd, i);
-	//ft_printf("vm_sti cycle|%d| i |%d|\n", vm->cycle, i);
-	//vm_next_step(vm, cmd, pos);	
+	vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
+	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }

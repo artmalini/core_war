@@ -157,6 +157,7 @@ typedef struct 		s_cmd
 	int				playing;
 	int				flag;
 	int				life;
+	int				nbr_process;
 	struct s_cmd	*next;
 }					t_cmd;
 
@@ -179,6 +180,7 @@ typedef struct		s_champ
 
 	int				idx;
 	int				life;
+	int				nbr_process;
 	char			*prog;
 
 }					t_champ;
@@ -231,6 +233,10 @@ int			mdx(int nbr);
 int			vm_pos_curs(t_vm *vm, t_cmd *cmd);
 void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
 
+int			vm_v_cmd(int a, int b, int c);
+int			vm_direct(t_vm *vm, t_cmd *cmd, int *arg);
+int			vm_indir(t_vm *vm, t_cmd *cmd, int nb);
+int			get_indir_arg(t_vm *vm, t_cmd *cmd, int nb);
 void		vm_sti(t_vm *vm, t_cmd *cmd);
 void		vm_and(t_vm *vm, t_cmd *cmd);
 void		vm_live(t_vm *vm, t_cmd *cmd);

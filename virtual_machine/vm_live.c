@@ -23,20 +23,20 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 
 	place = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	place <<= 8;
-	place = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
+	place += 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	place <<= 8;
-	place = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	place += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	place <<= 8;
-	place = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	//ft_printf("id %d", place);
-	id = vm_getpl(vm, (place - 1));
+	place += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	id = vm_getpl(vm, (place));
+	//ft_printf("id %d", id);
 	//id = vm->tab_champ[place];
 	if (id > -1)
 	{
 		vm->lifes += 1;
 		vm->win = id;
 		vm->tab_champ[id].life += 1;
-		cmd->life = 1;
+		cmd->life = 1;		
 		vm_next_step(vm, cmd, 5);
 	}
 	else
