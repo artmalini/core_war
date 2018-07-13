@@ -214,32 +214,39 @@ typedef struct		s_op
 	int				size;
 }					t_op;
 
-extern t_op	op_tab[17];
+extern t_op			op_tab[17];
 
-int			vm_usage(void);
-int			vm_param_n(t_vm *vm, char **av, int *i, int ac);
-int			ft_isnumber(char *str);
-int			vm_get_param(char **av, t_vm *vm, int ac);
-void		vm_dump_arena(t_vm *vm);
-void		vm_create_arena(t_vm *vm);
-void		vm_load_champs(t_vm *vm);
-void		vm_read_champ(t_vm *vm, int number_player);
+int					vm_usage(void);
+int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
+int					ft_isnumber(char *str);
+int					vm_get_param(char **av, t_vm *vm, int ac);
+void				vm_dump_arena(t_vm *vm);
+void				vm_create_arena(t_vm *vm);
+void				vm_load_champs(t_vm *vm);
+void				vm_read_champ(t_vm *vm, int number_player);
 
 
-void		ft_print_error(t_error *e);
-char		*vm_str_error(int error);
+void				ft_print_error(t_error *e);
+char				*vm_str_error(int error);
 
-int			mdx(int nbr);
-int			vm_pos_curs(t_vm *vm, t_cmd *cmd);
-void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
+int					mdx(int nbr);
+int					vm_pos_curs(t_vm *vm, t_cmd *cmd);
+void				vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
 
-int			vm_v_cmd(int a, int b, int c);
-int			vm_direct(t_vm *vm, t_cmd *cmd, int *arg);
-int			vm_indir(t_vm *vm, t_cmd *cmd, int nb);
-int			get_indir_arg(t_vm *vm, t_cmd *cmd, int nb);
-void		vm_sti(t_vm *vm, t_cmd *cmd);
-void		vm_and(t_vm *vm, t_cmd *cmd);
-void		vm_live(t_vm *vm, t_cmd *cmd);
-void		vm_zjmp(t_vm *vm, t_cmd *cmd);
+int					vm_v_cmd(int a, int b, int c);
+int					vm_direct(t_vm *vm, t_cmd *cmd, int *arg);
+int					vm_indir(t_vm *vm, t_cmd *cmd, int nb);
+int					get_indir_arg(t_vm *vm, t_cmd *cmd, int nb);
+void				vm_live(t_vm *vm, t_cmd *cmd);
+void				vm_ld(t_vm *vm, t_cmd *cmd);
+void				vm_st(t_vm *vm, t_cmd *cmd);
+void				vm_zjmp(t_vm *vm, t_cmd *cmd);
+void				vm_add(t_vm *vm, t_cmd *cmd);
+void				vm_sub(t_vm *vm, t_cmd *cmd);
+void				vm_and(t_vm *vm, t_cmd *cmd);
+
+void				vm_ldi(t_vm *vm, t_cmd *cmd);
+void				vm_sti(t_vm *vm, t_cmd *cmd);
+void				vm_fork(t_vm *vm, t_cmd **cmd);
 
 #endif

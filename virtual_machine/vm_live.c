@@ -28,7 +28,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 	place += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	place <<= 8;
 	place += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	id = vm_getpl(vm, (place));
+	id = vm_getpl(vm, (place * -1));
 	//ft_printf("id %d", id);
 	//id = vm->tab_champ[place];
 	if (id > -1)

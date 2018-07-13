@@ -457,29 +457,34 @@ int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 	return (1);
 }
 
+void	vm_cmd_triger2(t_vm *vm, t_cmd *cmd, int hex)
+{
+	if (hex == 12)
+		vm_fork(vm, &cmd);
+}
+
 void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 {
-	//ft_printf("HEX %d ", hex);
-	if (hex == 11)
-	{
-		//ft_printf("sti ");
-		vm_sti(vm, cmd);
-	}
+	if (hex == 1)
+		vm_live(vm, cmd);
+	else if (hex == 2)
+		vm_ld(vm, cmd);
+	else if (hex == 3)
+		vm_st(vm, cmd);
+	else if (hex == 4)
+		vm_add(vm, cmd);
+	else if (hex == 5)
+		vm_sub(vm, cmd);
 	else if (hex == 6)
-	{
-		//ft_printf("and ");
-	 	vm_and(vm, cmd);
-	}
-	else if (hex == 1)
-	{
-		//ft_printf("live ");
-	 	vm_live(vm, cmd);
-	}
+		vm_and(vm, cmd);
 	else if (hex == 9)
-	 	vm_zjmp(vm, cmd);
-	 //ft_printf("HEX %d", hex);
-	// printw("HEX %d\n", hex);
-	// refresh();
+		vm_zjmp(vm, cmd);
+	else if (hex == 10)
+		vm_ldi(vm, cmd);
+	else if (hex == 11)
+		vm_sti(vm, cmd);
+	else
+		vm_cmd_triger2(vm, cmd, hex);
 }
 
 void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)

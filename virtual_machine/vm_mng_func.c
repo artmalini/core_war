@@ -31,7 +31,7 @@ int		vm_pos_curs(t_vm *vm, t_cmd *cmd)
 			bitln += 4;
 		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == DIR_CODE && l_size == 2)
 			bitln += 2;
-		else
+		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == IND_CODE)
 			bitln += 2;
 		i -= 2;
 	}

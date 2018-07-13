@@ -8,7 +8,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	i = -1;
 	while (++i <= 3)
 	{
-		vm->arena[mdx(direct + i)].acb = (cmd->reg[0] >> ((3 - i) * 8)) & 0xFF;		
+		vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 		//ft_printf("cmdREG|%d|\n", (cmd->reg[0] >> ((3 - i) * 8)) & 0xFF);
 	}
 }
