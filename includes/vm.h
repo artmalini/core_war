@@ -175,7 +175,7 @@ typedef struct		s_proc
 	int				save_pc;
 	int				alive;
 	struct s_proc	*next;
-}
+}					t_proc;
 
 typedef struct		s_arena
 {
