@@ -28,14 +28,13 @@ SRCS_ASM	=	asm_check_args.c \
 				asm_free_struct.c \
 				asm_init_and_free.c \
 				asm_label.c \
+				asm_main.c \
 				asm_name_cmt_valid.c \
 				asm_parse_line.c \
 				asm_parse_main.c \
 				asm_print.c \
 				asm_recalc_cmd_links.c \
-				asm_valid_main.c \
-				main.c \
-
+				asm_valid_main.c
 
 OBJS_ASM	=   $(SRCS_ASM:.c=.o)
 

@@ -30,7 +30,7 @@ int			check_command(t_core *file, char *lowstr)
 	i = -1;
 	if (!file || !lowstr)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	file->error->cmd = ft_strdup(lowstr);
+	file->error->current_cmd = lowstr;
 	while (++i < 16)
 	{
 		if (!ft_strcmp(op_tab[i].name, lowstr))
@@ -44,7 +44,7 @@ int			check_command(t_core *file, char *lowstr)
 
 char		*line_finalize(t_core *file, char **str, char *lowstr, int *i)
 {
-	if (*i == 0)//label exist, if i == 0 should be error!
+	if (*i == 0)
 		ft_error(file, ERROR_LABEL);
 	lowstr = ft_strsub(*str, 0, (size_t)*i);
 	push_laybel(file, &file->inst, lowstr);
@@ -75,6 +75,7 @@ void		line_handler(t_core *file, char *line, char *lowstr)
 
 	i = 0;
 	str = line;
+	file->error->current_cmd = lowstr;
 	while (str[i] && str[i] != ':' && ft_strchr(LABEL_CHARS, str[i]))
 		i++;
 	if (str[i] == ':')

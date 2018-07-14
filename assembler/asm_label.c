@@ -20,10 +20,11 @@ t_inst		*add_label(t_core *file, t_inst	*lst, char *str)
 	if (lst)
 	{
 		lst->label = str ? ft_strdup(str) : NULL;
+		file->error->current_label = lst->label;
 		lst->cmd = NULL;
 		lst->label_pos = file->count_size;
 		lst->next = NULL;
-		file->error->label = &(*lst->label);//check
+
 	}
 	return (lst);
 }

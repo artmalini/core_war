@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   asm_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,13 @@
 
 #include "asm.h"
 
-int				main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_core		file;
+	t_core	file;
 
 	if (argc == 2)
 	{
-		ft_init(&file);
+		ft_init(&file, argv[1]);
 		if (parse_filename(&file, argv[1], (int)ft_strlen(argv[1])))
 			return (ft_error_int(&file, ERROR_SYNTAX));
 		parse_file(&file, argv[1], NULL);

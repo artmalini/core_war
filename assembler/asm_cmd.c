@@ -58,8 +58,6 @@ t_cmd		*add_cmd(t_core *file, char *cmd, char *str_args)
 		file->count_size += lst->cmd_size;		
 		lst->next = NULL;
 	}
-//	while (lst && lst->args[i])
-//		free(lst->args[i]);
 	return (lst);
 }
 
