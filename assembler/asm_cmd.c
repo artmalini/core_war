@@ -41,10 +41,8 @@ int			count_cmd_size(t_core *file, t_cmd *c, int l_size)
 
 t_cmd		*add_cmd(t_core *file, char *cmd, char *str_args)
 {
-//	int 	i;
 	t_cmd	*lst;
 
-//	i = 0;
 	if (!(lst = ft_memalloc(sizeof(t_cmd))))
 		ft_error(file, ERROR_MEMORY);
 	if (lst)
