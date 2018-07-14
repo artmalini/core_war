@@ -29,5 +29,5 @@ int			main(int argc, char **argv)
 	}
 	else
 		err_parser(argc, argv);
-	return (OKAY);
+	return (EXIT_SUCCESS);
 }

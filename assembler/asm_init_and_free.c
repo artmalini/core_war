@@ -21,6 +21,7 @@ void		ft_init(t_core *file, char *argument)
 	ft_bzero(file, sizeof(t_core));
 	file->error = new;
 	file->error->asm_arg = argument;
+	file->error->current_rows = 1;
 }
 
 void	free_mas(char **mas)

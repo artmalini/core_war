@@ -12,88 +12,66 @@
 
 #include "asm.h"
 
-int			check_arg_of_cmd(t_core *file, t_cmd *c)
-{
-	int 	nbr;
-	int 	arg;
-
-	nbr = 0;
-	if (!file || !c)
-		return (ft_error_int(file, ERROR_FT_ARG));
-	while (c->nbr_args > nbr)
-	{
-		file->error->current_arg = c->args[nbr];
-		if (c->args[nbr][0] == REGISTER_CHAR)
-			arg = T_REG;
-		else if (c->args[nbr][0] == DIRECT_CHAR)
-			arg = T_DIR;
-		else arg = T_IND;
-		if (!(TYPE_ARG(nbr) & arg))
-			return (ERROR);
-		nbr++;
-	}
-	return (OKAY);
-}
-
-int			check_arg_label(t_core *file, t_cmd *c, char *str_arg)
+int			check_arg_label(t_core *file, t_cmd *c, const char *arg)
 {
 	int		i;
 
 	i = 0;
-	if (!file || !c || !str_arg)
+	if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	while (str_arg[i] && ft_strchr(SPACES_CHARS, str_arg[i]))
+	while (arg[i] && ft_strchr(SPACES_CHARS, arg[i]))
 		i++;
-	if (str_arg[i] == LABEL_CHAR)
+	if (arg[i] == LABEL_CHAR)
 	{
 		i++;
-		while (str_arg[i] && ft_strchr(LABEL_CHARS, str_arg[i]))
+		while (arg[i] && ft_strchr(LABEL_CHARS, arg[i]))
 			i++;
-		if (str_arg[i] == '\0')
+		if (arg[i] == '\0')
 			return (OKAY);
 	}
 	return (ERROR);
 }
 
-int			check_arg_reg(t_core *file, t_cmd *c, char *str_arg)
+int			check_arg_reg(t_core *file, t_cmd *c, const char *arg)
 {
-    int		i;
 	int 	len;
     int		hex;
 
-    i = 0;
-    if (!file || !c || !str_arg)
+    if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	while (!ft_strchr(SPACES_CHARS, str_arg[i]))
-		i++;
-	str_arg[i] = '\0';
-	len = (int)ft_strlen(str_arg);
-    if (len > 0 && len < 3 && ft_isdigit(*str_arg))
+	if (check_correct_end(file, c, arg) == ERROR)
+		return (ft_error_int(file, ERROR_NAME_ARG));
+	if (check_digital_arg(file, c, arg))
+		return (ft_error_int(file, ERROR_NAME_ARG));
+	len = (int)ft_strlen(arg);
+    if (len > 0 && ft_isdigit(*arg))
     {
-		hex = ft_atoi(str_arg);
+		hex = ft_atoi(arg);
         if (hex > 0 && hex <= REG_NUMBER)
             return (OKAY);
     }
     return (ERROR);
 }
 
-int			check_arg_dir(t_core *file, t_cmd *c, char *str_arg)
+int			check_arg_dir(t_core *file, t_cmd *c, const char *arg)
 {
     int		i;
-    int		arg;
+    int		nbr_arg;
 
     i = 0;
-    if (!file || !c || !str_arg)
+    if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
-    if (str_arg[i] == LABEL_CHAR)
-        return (check_arg_label(file, c, str_arg));
-    else if (ft_isdigit(str_arg[i]) || (ft_strlen(str_arg + i) > 1
-                && str_arg[i] == '-' && ft_isdigit(str_arg[i + 1])))
+    if (arg[i] == LABEL_CHAR)
+        return (check_arg_label(file, c, arg));
+	if (check_correct_end(file, c, arg) == ERROR)
+		return (ft_error_int(file, ERROR_NAME_ARG));
+    if (ft_isdigit(arg[i]) || (ft_strlen(arg + i) > 1 && arg[i] == '-' &&
+			ft_isdigit(arg[i + 1])))
     {
-        arg = ft_atoi(str_arg + i);
+		nbr_arg = ft_atoi(arg + i);
 		if (SIZE(CMD) == ON)
 		{
-			if (arg >= INT16_MIN && arg <= INT16_MAX)
+			if (nbr_arg >= INT16_MIN && nbr_arg <= INT16_MAX)
 				return (OKAY);
 			else
 				return (ft_error_int(file, ERROR_T_DIR));
@@ -113,6 +91,8 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
 	if (arg[i] == LABEL_CHAR)
 		return (check_arg_label(file, c, arg));
+	if (check_correct_end(file, c, arg) == ERROR)
+		return (ft_error_int(file, ERROR_NAME_ARG));
 	len = (int)ft_strlen(arg);
 	while (i < len)
 	{

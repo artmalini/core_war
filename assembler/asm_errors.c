@@ -37,7 +37,7 @@ char 		*ft_str_asma(int id)
 	if (id == ERROR_S_CMT)
 		return ("ERROR: Player's COMMENT length to short");
 	if (id == ERROR_SYNTAX)
-		return ("ERROR: Syntax error");
+		return ("ERROR: SYNTAX Error");
 	return (ft_str_asmb(id));
 }
 
@@ -54,13 +54,14 @@ int 		ft_error_int(t_core *file, int id)
 	if (id >= 15 && id <= 17)
 		ft_printf("%s%s ---> %s[%s]:[%d]%s\n",
 				  RED, ft_str_asma(id), BLUE, ER_CMD, ER_ROWS, RESET);
-	if (id >= 18 && id <= 21)
+	if (id >= 18 && id <= 22)
 		ft_printf("%s%s ---> %s[%s][%s]:[%d]%s\n",
 				  RED, ft_str_asma(id), BLUE, ER_CMD, ER_ARG, ER_ROWS, RESET);
 	if (id >= 30)
-		ft_printf("%s%s%s\n", RED, ft_str_asma(id), RESET);
+		ft_printf("%s%s ---> %s[%d]%s\n",
+				  RED, ft_str_asma(id), BLUE, ER_ROWS, RESET);
 	free_struct_tcore(file);
-	exit(ERROR);
+	exit(EXIT_FAILURE);
 	return (ERROR);
 }
 
@@ -81,30 +82,33 @@ void 		ft_error(t_core *file, int id)
 		ft_printf("%s%s ---> %s[%s][%s]:[%d]%s\n",
 				  RED, ft_str_asma(id), BLUE, ER_CMD, ER_ARG, ER_ROWS, RESET);
 	if (id >= 30)
-		ft_printf("%s%s%s\n", RED, ft_str_asma(id), RESET);
+		ft_printf("%s%s ---> %s[%d]%s\n",
+				  RED, ft_str_asma(id), BLUE, ER_ROWS, RESET);
 	free_struct_tcore(file);
-	exit(ERROR);
+	exit(EXIT_FAILURE);
 }
 
 char 		*ft_str_asmb(int id)
 {
 	if (id == ERROR_ID_LABEL)
-		return ("ERROR: More then one identical LABELS");
+		return ("ERROR: More then one Identical LABELS");
 	if (id == ERROR_LABEL)
 		return ("ERROR: LABEL must be at least one character");
 	if (id == ERROR_CMD)
-		return ("ERROR: Wrong COMMAND name");
+		return ("ERROR: Wrong Name of COMMAND");
 	if (id == ERROR_ARG)
-		return ("ERROR: Wrong input arguments of command");
+		return ("ERROR: Wrong of command ARGUMENTS");
 	if (id == ERROR_NBR_ARG)
-		return ("ERROR: Wrong count arguments of command");
+		return ("ERROR: Wrong Number of command ARGUMENTS");
 
+	if (id == ERROR_NAME_ARG)
+		return ("ERROR: Incorrect ARGUMENT Chars");
 	if (id == ERROR_T_DIR)
-		return ("ERROR: Wrong size of input T_DIR argument");
+		return ("ERROR: Wrong Size of input T_DIR argument");
 	if (id == ERROR_T_IND)
-		return ("ERROR: Wrong size of input T_IND argument");
+		return ("ERROR: Wrong Size of input T_IND argument");
 	if (id == ERROR_ID_ARG)
-		return ("ERROR: Identification of the command argument");
+		return ("ERROR: Wrong Identification of command ARGUMENTS");
 	if (id == ERROR_TYPE_ARG)
 		return ("ERROR: Invalid command argument Type");
 
@@ -115,7 +119,7 @@ char 		*ft_str_asmb(int id)
 		return ("ERROR: Wrong input function arguments");
 	if (id == ERROR_MEMORY)
 		return ("ERROR: Don't have a MEMORY");
-	return ("ERROR: Syntax error");
+	return ("ERROR: LEXICAL Error");
 }
 
 //ft_printf("ERROR: %s at line %d\n", arg, file->rows);

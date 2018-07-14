@@ -63,12 +63,13 @@
 # define ERROR_T_IND	19
 # define ERROR_ID_ARG	20
 # define ERROR_TYPE_ARG	21
+# define ERROR_NAME_ARG	22
 
 # define ERROR_LINE		30
 # define ERROR_MEMORY	31
 # define ERROR_FT_ARG	32
 
-# define ERROR_1		33
+
 # define ERROR_2		34
 # define ERROR_3		35
 # define ERROR_4		36
@@ -214,13 +215,17 @@ void		insert_args_lst(t_core *file, t_cmd	*c);
 int			check_arg_of_cmd(t_core *file, t_cmd *c);
 int			cut_cmt_str_args(t_core *file, char *old_str);
 int			check_arg_ind(t_core *file, t_cmd *c, char *arg);
-int			check_arg_reg(t_core *file, t_cmd *c, char *str_arg);
-int			check_arg_dir(t_core *file, t_cmd *c, char *str_arg);
+int			check_arg_reg(t_core *file, t_cmd *c, const char *arg);
+int			check_arg_dir(t_core *file, t_cmd *c, const char *arg);
 int			check_args_main(t_core *file, t_cmd *c, char **args);
 char		*create_str_args(t_core *file, t_cmd *c, size_t len);
-int			check_arg_label(t_core *file, t_cmd *c, char *str_arg);
+int			check_arg_label(t_core *file, t_cmd *c, const char *arg);
 int			valid_args_main(t_core *file, t_cmd *c, char *old_args);
 int 		create_fresh_args(t_core *file, t_cmd *c, char **old_args);
+int 		check_comma_args(t_core *file, t_cmd *c, const char *args);
+
+int 		check_digital_arg(t_core *file, t_cmd *c, const char *arg);
+int 		check_correct_end(t_core *file, t_cmd *c, const char *str_arg);
 
 /*
 **					[DEBUG and PRINT]

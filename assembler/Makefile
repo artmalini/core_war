@@ -19,7 +19,8 @@ HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft
 LIBFT_PATH	= ../libft
 
-SRCS_ASM	=	asm_check_args.c \
+SRCS_ASM	=	asm_check.c \
+				asm_check_args.c \
                 asm_cmd.c \
 				asm_create_cor.c \
 				asm_create_cor_fpos_opc.c \

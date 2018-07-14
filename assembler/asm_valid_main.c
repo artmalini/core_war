@@ -19,22 +19,12 @@ int			cut_cmt_str_args(t_core *file, char *old_str)
 
 	i = 0;
 	if (!file || !old_str)
-		ft_error(file, ERROR_FT_ARG);
+		return (ft_error_int(file, ERROR_FT_ARG));
 	len = (int)ft_strlen(old_str);
-	while (old_str && len > i)
-	{
-		if (ft_strchr("#;", old_str[i]))
-			break ;
-	i++;
-	}
-	if (len != i)
-	{
-		while (old_str && len > i)
-		{
-			old_str[i] = '\0';
-			i++;
-		}
-	}
+	while (len > i && !ft_strchr("#;", old_str[i]))
+		i++;
+	while (len != i && len > i)
+		old_str[i++] = '\0';
 	if (len == i)
 		return (OKAY);
 	return (ERROR);
@@ -74,9 +64,9 @@ void		insert_args_lst(t_core *file, t_cmd	*c)
 	i = 0;
 	len = 0;
 	if (!file || !c)
-		return(ft_error(file, ERROR_FT_ARG));
+		return (ft_error(file, ERROR_FT_ARG));
 	if (check_arg_of_cmd(file, c) == ERROR)
-		return(ft_error(file, ERROR_TYPE_ARG));
+		return (ft_error(file, ERROR_TYPE_ARG));
 	while (c->nbr_args > i)
 		len += ft_strlen(c->args[i++]);
 	c->str = create_str_args(file, c, len);
@@ -114,7 +104,10 @@ int			valid_args_main(t_core *file, t_cmd *c, char *old_args)
 
 	if (!file || !c || !old_args)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	cut_cmt_str_args(file, old_args);
+	if (cut_cmt_str_args(file, old_args) == ERROR)
+		return (ft_error_int(file, ERROR_ARG));
+	if (check_comma_args(file, c, old_args))
+		return (ft_error_int(file, ERROR_NBR_ARG));
 	if (!(tmp_args = ft_strsplit(old_args, ',')))
 		return (ft_error_int(file, ERROR_MEMORY));
 	i = 0;
