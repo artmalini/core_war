@@ -66,6 +66,7 @@ int		vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
 	unsigned int	one;
 	unsigned short	two;
 
+	one = 0;
 	if (arg[4] == 4)
 	{
 		one = 0xFF & vm->arena[mdx(cmd->idx + arg[3])].acb;
@@ -75,6 +76,7 @@ int		vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
 		one += 0xFF & vm->arena[mdx(cmd->idx + arg[3] + 2)].acb;
 		one <<= 8;
 		one += 0xFF & vm->arena[mdx(cmd->idx + arg[3] + 3)].acb;
+		return ((int)one);
 	}
 	else if (arg[4] == 2)
 	{
@@ -83,7 +85,7 @@ int		vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
 		two += 0xFF & vm->arena[mdx(cmd->idx + arg[3] + 1)].acb;
 		return ((short)two);
 	}
-	return ((int)one);
+	return (one);
 }
 
 int		vm_indir(t_vm *vm, t_cmd *cmd, int nb)

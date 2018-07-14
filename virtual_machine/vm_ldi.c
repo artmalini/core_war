@@ -23,8 +23,8 @@ void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 void	vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		res;
-	int		arg[4];
-	int		tmp[4];
+	int		arg[5];
+	int		tmp[5];
 
 	if (hex == 228)
 	{
@@ -40,7 +40,7 @@ void	vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 		arg[4] = 2;
 		tmp[3] = 4;
 		tmp[4] = 2;
-		res = vm_direct(vm, cmd, arg); + vm_direct(vm, cmd, tmp);
+		res = vm_direct(vm, cmd, arg) + vm_direct(vm, cmd, tmp);
 		vm_next_step(vm, cmd, 6);
 		vm_ldi_write(vm, cmd, 6, (res % IDX_MOD));
 	}
@@ -50,8 +50,10 @@ void	vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		a;
 	int		res;
-	int		arg[4];
+	int		arg[5];
 
+	a = 0;
+	res = 0;
 	if (hex == 148)
 	{
 		arg[3] = 2;
@@ -76,8 +78,10 @@ void	vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		a;
 	int		res;
-	int		arg[4];
+	int		arg[5];
 
+	a = 0;
+	res = 0;
 	if (hex == 100)
 	{
 		arg[3] = 3;

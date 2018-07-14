@@ -73,7 +73,7 @@ void	vm_dir(t_vm *vm, t_cmd *cmd, int *arg, int let)
 
 void	vm_ddr(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
-	int		tmp[4];
+	int		tmp[5];
 
 	tmp[3] = 6;
 	tmp[4] = 4;
@@ -232,7 +232,7 @@ void	vm_and_2(t_vm *vm, t_cmd *cmd, int *arg)
 
 void	vm_and(t_vm *vm, t_cmd *cmd)
 {
-	int	arg[4];
+	int	arg[5];
 
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 100)
 	{
