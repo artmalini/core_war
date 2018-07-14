@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void		ft_init(t_core *file)
+void		ft_init(t_core *file, char *argument)
 {
 	t_error	*new;
 
@@ -20,6 +20,7 @@ void		ft_init(t_core *file)
 		ft_error(file, ERROR_MEMORY);
 	ft_bzero(file, sizeof(t_core));
 	file->error = new;
+	file->error->asm_arg = argument;
 }
 
 void	free_mas(char **mas)

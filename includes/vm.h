@@ -161,6 +161,22 @@ typedef struct 		s_cmd
 	struct s_cmd	*next;
 }					t_cmd;
 
+// tvertohr and
+typedef struct		s_proc
+{
+	int				carry;
+	int				pc;
+	int				reg[REG_NUMBER];
+	int				instruction;
+	int				cycle_to_wait;
+	int				live_period;
+	int				id;
+	int				parametres_types[3];
+	int				save_pc;
+	int				alive;
+	struct s_proc	*next;
+}					t_proc;
+
 typedef struct		s_arena
 {
 	char			acb;

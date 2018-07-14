@@ -47,7 +47,7 @@ void		parse_header(t_core *file, int fd)
 	line = NULL;
 	while (get_next_line(fd, &line) && !file->flag)
 	{
-		file->error->rows++;
+		file->error->current_rows++;
 		if (!line_has_val(line))
 			read_init_line(file, line, 0);
 		else
@@ -85,7 +85,7 @@ void		parse_file(t_core *file, char *arg, char *line)
 	parse_header(file, fd);
 	while (get_next_line(fd, &line))
 	{
-		file->error->rows++;
+		file->error->current_rows++;
 		if (line_has_val(line) == OKAY)
 			read_line(file, line);
 		else
@@ -103,10 +103,8 @@ int			parse_filename(t_core *file, char *arg, int len)
 
 	i = -1;
 	l = len - 1;
-	if (!(file->error->arg = ft_strdup(arg)))
-		return (ft_error_int(file, ERROR_MEMORY));
 	if ((arg[len - 1] != 's' || arg[len - 2] != '.') || len < 3)
-		return (ft_error_int(file, ERROR_INPUT));
+		return (ft_error_int(file, ERROR_READ));
 	file->filename = ft_memalloc((size_t)len + 4);
 	while (++i < l)
 		file->filename[i] = arg[i];

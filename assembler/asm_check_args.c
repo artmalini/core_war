@@ -44,8 +44,6 @@ int			check_arg_label(t_core *file, t_cmd *c, char *str_arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
 	while (str_arg[i] && ft_strchr(SPACES_CHARS, str_arg[i]))
 		i++;
-	if (str_arg[i] == DIRECT_CHAR)
-		i++;
 	if (str_arg[i] == LABEL_CHAR)
 	{
 		i++;
@@ -66,8 +64,11 @@ int			check_arg_reg(t_core *file, t_cmd *c, char *str_arg)
     i = 0;
     if (!file || !c || !str_arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
+	while (!ft_strchr(SPACES_CHARS, str_arg[i]))
+		i++;
+	str_arg[i] = '\0';
 	len = (int)ft_strlen(str_arg);
-    if (len > 0 && len < 3 && ft_isdigit(str_arg[i]))
+    if (len > 0 && len < 3 && ft_isdigit(*str_arg))
     {
 		hex = ft_atoi(str_arg);
         if (hex > 0 && hex <= REG_NUMBER)

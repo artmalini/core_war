@@ -22,8 +22,6 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
-//# include <opencl-c.h>
-//# include <limits.h>
 
 /*
 **					[Macros for ERROR MANAGER]
@@ -41,42 +39,39 @@
 # define OKAY			0
 # define ERROR			-1
 
-# define ERROR_OPEN		100
-# define ERROR_READ		101
-# define ERROR_CLOSE	102
-# define ERROR_INPUT	103
+# define ERROR_OPEN		1
+# define ERROR_READ		2
+# define ERROR_CLOSE	3
+# define ERROR_NAME		4
+# define ERROR_A_NAME	5
+# define ERROR_L_NAME	6
+# define ERROR_S_NAME	7
+# define ERROR_CMT		8
+# define ERROR_A_CMT	9
+# define ERROR_L_CMT	10
+# define ERROR_S_CMT	11
+# define ERROR_SYNTAX	12
 
-# define ERROR_NAME		104
-# define ERROR_L_NAME	105
-# define ERROR_S_NAME	106
+# define ERROR_LABEL	13
+# define ERROR_ID_LABEL	14
 
-# define ERROR_CMT		107
-# define ERROR_L_CMT	108
-# define ERROR_S_CMT	109
+# define ERROR_CMD		15
+# define ERROR_ARG		16
+# define ERROR_NBR_ARG	17
 
-# define ERROR_LABEL	110
-# define ERROR_ID_LABEL	111
-# define ERROR_SYNTAX	112
-# define ERROR_MEMORY	113
-# define ERROR_CMD		114
+# define ERROR_T_DIR	18
+# define ERROR_T_IND	19
+# define ERROR_ID_ARG	20
+# define ERROR_TYPE_ARG	21
 
-# define ERROR_A_NAME	115
-# define ERROR_A_CMT	116
+# define ERROR_LINE		30
+# define ERROR_MEMORY	31
+# define ERROR_FT_ARG	32
 
-# define ERROR_LINE		117
-# define ERROR_ARG		118
-# define ERROR_FT_ARG	119
-
-# define ERROR_T_DIR	120
-# define ERROR_T_IND	121
-# define ERROR_NBR_ARG	122
-# define ERROR_ID_ARG	123
-# define ERROR_TYPE_ARG	124
-
-# define ERROR_1		125
-# define ERROR_2		126
-# define ERROR_3		127
-# define ERROR_4		128
+# define ERROR_1		33
+# define ERROR_2		34
+# define ERROR_3		35
+# define ERROR_4		36
 
 /*
 **					[Macros for easy reading code]
@@ -88,6 +83,12 @@
 # define NBR_ARGS(CMD)	(op_tab[CMD].nbr_args)
 # define TYPE_ARG(nbr)	(op_tab[CMD].type_params[nbr])
 
+# define ER_FILE		(file->error->asm_arg)
+# define ER_CMD			(file->error->current_cmd)
+# define ER_ARG			(file->error->current_arg)
+# define ER_ROWS		(file->error->current_rows)
+# define ER_LABEL		(file->error->current_label)
+
 /*
 **					[Typedef and Structs Part]
 */
@@ -96,13 +97,11 @@ typedef char 		t_arg_type;
 
 typedef struct		s_error
 {
-	int				id;
-	char 			*arg;
-	char 			*cmd;
-	int 			usage;
-	int				*rows;
-	char 			*label;
+	char 			*asm_arg;
+	int				current_rows;
+	char 			*current_cmd;
 	char 			*current_arg;
+	char 			*current_label;
 
 }					t_error;
 
@@ -203,7 +202,7 @@ int			find_pos_cmd(t_core *file, t_inst *inst, char *str, int cmd_size);
 
 char 		*ft_str_asma(int id);
 char 		*ft_str_asmb(int id);
-void		ft_init(t_core *file);
+void		ft_init(t_core *file, char *argument);
 void 		ft_error(t_core *file, int id);
 int 		ft_error_int(t_core *file, int id);
 
