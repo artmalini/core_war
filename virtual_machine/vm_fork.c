@@ -20,12 +20,12 @@ t_cmd		*fork_add_list(t_cmd *cmd1)
 	{
 		fork_update_reg(lst->reg, cmd1->reg);
 		lst->idx = cmd1->idx;
-		lst->rgb = cmd1->rgb;		
+		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
 		lst->wait = 0;
 		lst->on = 0;
 		lst->off = 0;
-		lst->carry = 0;
+		lst->carry = cmd1->carry;		
 		lst->life = 1;
 		lst->nbr_process = 1;
 		lst->flag = 0;
