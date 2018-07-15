@@ -14,13 +14,13 @@
 
 int 		check_digital_arg(t_core *file, t_cmd *c, const char *arg)
 {
-	int 	i;
-	int 	len;
+	//int 	i;
+	//int 	len;
 
-	i = 0;
+	//i = 0;
 	if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
-	len = (int)ft_strlen(arg);
+	//len = (int)ft_strlen(arg);
 //	while (ft_isdigit(arg[i]))
 //		i++;
 //	while (!ft_strchr(SPACES_CHARS, arg[i]))

@@ -1,9 +1,14 @@
 
 #include "vm.h"
 
+/*
+** 80  == (T_REG, T_REG)
+** 112 == (T_REG, T_IND)
+*/
+
 void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 {
-	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1];
+	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1] * -1;
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
@@ -19,10 +24,16 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	//printf("%d", two % IDX_MOD);
 	while (++i <= 3)
 	{
+		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb =
+		//	((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb =
-		((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
+			((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
+		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].asc_rgb = cmd->rgb - 5;
+		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].bold = 50;
 	}
+	//ft_printf("st |%d| cursor |%d|", mdx(cmd->idx + (two % IDX_MOD) + i), cmd->reg[(reg1 - 1)]);
 	//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 5;
+	//ft_printf("st_pos|%d|\n",  vm_pos_curs(vm, cmd));
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 

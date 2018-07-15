@@ -1,10 +1,15 @@
 
 #include "vm.h"
 
+/*
+** 144 == (T_DIR, T_REG)
+** 208 == (T_IND, T_REG)
+*/
+
 void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
 {
 	cmd->reg[vm->arena[mdx(cmd->idx + 6)].acb - 1] = one;
-	//ft_printf("@|%d| %d\n", cmd->reg[vm->arena[mdx(cmd->idx + 6)].acb - 1], one);
+	//ft_printf("ld |%d| value|%d|", vm->arena[mdx(cmd->idx + 6)].acb - 1, one);
 	if (one == 0)
 		cmd->carry = 1;
 	else

@@ -190,18 +190,26 @@ void	print_header(int j, t_vm *vm)
 
 void	vm_play_arena(t_vm *vm)
 {
+	erase();
+	vm_game_stat(vm);
 	int	i;
 	int	j;
 
 	i = 0;
 	j = -1;
-	erase();
-	vm_game_stat(vm);
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
+		//if (vm->arena[i].bold > 0)
+		//	attron(A_BOLD);
 		attron(COLOR_PAIR(vm->arena[i].rgb));
 		printw("%02x ", 0xFF & vm->arena[i].acb);
+		//attroff(COLOR_PAIR(vm->arena[i].rgb));
+		// if (vm->arena[i].bold > 0)
+		// {
+		// 	attroff(A_BOLD);
+		// 	vm->arena[i].bold -= 1;
+		// }
 		if ((i + 1) % 64 == 0)
 		{ 
 			//mem += 64;
@@ -217,6 +225,11 @@ void	vm_play_arena(t_vm *vm)
 	
 }
 
+// void	vm_play_arena(void)
+// {
+// 	refresh();	
+// }
+
 void	vm_create_arena(t_vm *vm)
 {
 	int	i;
@@ -228,6 +241,7 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].rgb = 11;
 		vm->arena[i].asc_rgb = 11;
 		vm->arena[i].flag = 0;
+		//vm->arena[i].bold = 0;
 		i++;
 	}
 }
@@ -335,7 +349,7 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 		vm->last_check = 0;
 	}
 	vm->cycle = 0;
-	//vm->lives = 0;
+	//vm->lifes = 0;
 }
 
 /*
@@ -400,7 +414,7 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	if ((i = vm_has_cmd(vm, cmd)) != 0)
 	{
 		cmd->playing = 1;		
-		cmd->wait = op_tab[i - 1].cycles;
+		cmd->wait = op_tab[i - 1].cycles - 2;
 		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
 		//
@@ -525,6 +539,7 @@ void	vm_load_arena(t_vm *vm)
 	while (i)
 	{		
 		c = vm->cmd;
+		//vm_play_arena();
 		vm_play_arena(vm);		
 		while (c)
 		{

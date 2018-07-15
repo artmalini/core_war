@@ -182,7 +182,8 @@ typedef struct		s_arena
 	char			acb;
 	int				rgb;//main color for chars on arena
 	int				asc_rgb;
-	int				flag;	
+	int				flag;
+	//int				bold;	
 }					t_arena;
 
 typedef struct		s_champ
