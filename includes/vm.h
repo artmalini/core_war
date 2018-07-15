@@ -265,4 +265,8 @@ void				vm_ldi(t_vm *vm, t_cmd *cmd);
 void				vm_sti(t_vm *vm, t_cmd *cmd);
 void				vm_fork(t_vm *vm, t_cmd **cmd);
 
+void				vm_aff(t_vm *vm, t_proc *proc);
+int 				get_reg(t_vm *vm, int *i);
+int 				is_reg(int value);
+
 #endif
