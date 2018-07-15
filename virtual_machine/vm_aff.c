@@ -34,8 +34,8 @@ void	vm_aff(t_vm *vm, t_cmd *cmd)
 	int	arg1;
 	int	pc;
 
-	cmd->pc++;
-	pc = cmd->pc + 1;
+	cmd->idx++;
+	pc = cmd->idx + 1;
 	arg1 = get_reg(vm, &pc);
 	if (!is_reg(arg1))
 		return ;
@@ -45,5 +45,5 @@ void	vm_aff(t_vm *vm, t_cmd *cmd)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
-	cmd->pc = pc;
+	cmd->idx = pc;
 }
