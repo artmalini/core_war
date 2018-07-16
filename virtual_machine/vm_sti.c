@@ -12,8 +12,8 @@
 void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 {
 	int		i;
-	int		val;
-	int		dat;
+	char	val;
+	char	dat;
 
 	i = -1;
 	val = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
@@ -23,7 +23,8 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	while (++i <= 3)
 	{
 		vm->arena[mdx(cmd->idx + direct + i)].acb = ((dat * -1) >> ((3 - i) * 8)) & 0xFF;
-		//vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 1;
+		vm->arena[mdx(cmd->idx + direct + i)].rgb = cmd->rgb - 4;
+		vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 4;
 		//vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 	}
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
@@ -48,8 +49,8 @@ int		vm_rdd_sti(t_vm *vm, t_cmd *cmd)
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 	//res = cmd->reg[pc - 1] + ((arg1 + arg2) % IDX_MOD);
-	res = (arg1 + arg2) % IDX_MOD;
-	//ft_printf("sti arg1|%d| arg2|%d|\n", arg1, arg2);
+	res = (arg1 + arg2);
+	//ft_printf("sti arg1|%d| arg2|%d| %d\n", arg1, arg2, res);
 	return (res);
 }
 
@@ -74,7 +75,7 @@ int		vm_rir_sti(t_vm *vm, t_cmd *cmd)
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir + 3)].acb;
 
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	res = (arg1 + arg2) % IDX_MOD;
+	res = (arg1 + arg2);
 	return (res);
 }
 
@@ -90,7 +91,7 @@ int		vm_rrd_sti(t_vm *vm, t_cmd *cmd)
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	res = (arg1 + arg2) % IDX_MOD;
+	res = (arg1 + arg2);
 	return (res);
 }
 
@@ -103,7 +104,7 @@ int		vm_rrr_sti(t_vm *vm, t_cmd *cmd)
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	res = (arg1 + arg2) % IDX_MOD;
+	res = (arg1 + arg2);
 	return (res);
 }
 
@@ -130,13 +131,13 @@ int		vm_rid_sti(t_vm *vm, t_cmd *cmd)
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir + 2)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir + 3)].acb;
-	res = (arg1 + arg2) % IDX_MOD;
+	res = (arg1 + arg2);
 	return (res);
 }
 
 void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
-	int		cdg;
+	char	cdg;
 	int		direct;
 
 	direct = 0;

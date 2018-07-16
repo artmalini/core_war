@@ -6,19 +6,17 @@
 ** 208 == (T_IND, T_REG)
 */
 
-void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
+void	vm_lld_dr(t_vm *vm, t_cmd *cmd, int one)
 {
 	cmd->reg[vm->arena[mdx(cmd->idx + 6)].acb - 1] = one;
-	//ft_printf("ld |%d| value|%d|", vm->arena[mdx(cmd->idx + 6)].acb - 1, one);
 	if (one == 0)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
-	//ft_printf("pos |%d|", vm_pos_curs(vm, cmd));
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
-void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
+void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
 {
 	short	two;
 	int		pos;
@@ -28,7 +26,7 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	two = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
-	val = mdx(cmd->idx + (two % IDX_MOD));
+	val = mdx(cmd->idx + two);
 	pos = 0xFF & vm->arena[val].acb;
 	pos <<= 8;
 	pos += 0xFF & vm->arena[val + 1].acb;
@@ -45,7 +43,7 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	}
 }
 
-void	vm_ld(t_vm *vm, t_cmd *cmd)
+void	vm_lld(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
 	int		one;
@@ -61,8 +59,8 @@ void	vm_ld(t_vm *vm, t_cmd *cmd)
 		one += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 		hex = 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 		if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
-			vm_ld_dr(vm, cmd, one);
+			vm_lld_dr(vm, cmd, one);
 	}
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
-		vm_ld_ir(vm, cmd);
+		vm_lld_ir(vm, cmd);
 }

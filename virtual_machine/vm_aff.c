@@ -24,7 +24,7 @@ int	get_reg(t_vm *vm, int *i)
 	int	reg;
 
 	reg = 0;
-	reg = (unsigned char)vm->arena[(*i) % MEM_SIZE];
+	reg = (unsigned char)vm->arena[(*i) % MEM_SIZE].acb;
 	(*i)++;
 	return (reg);
 }

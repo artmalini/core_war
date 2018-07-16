@@ -13,7 +13,7 @@
 ** 244 == (T_IND, T_IND, T_REG)
 */
 
-void	vm_and_5(t_vm *vm, t_cmd *cmd, int *arg)
+void	vm_xor_5(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 212)
 	{
@@ -23,12 +23,12 @@ void	vm_and_5(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 0;
 		arg[4] = 0;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_irr(vm, cmd, arg, 1);
+			vm_irr(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 }
 
-void	vm_and_4(t_vm *vm, t_cmd *cmd, int *arg)
+void	vm_xor_4(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 148)
 	{
@@ -38,7 +38,7 @@ void	vm_and_4(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 2;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[1] - 1))
-			vm_drr(vm, cmd, arg, 1);
+			vm_drr(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 116)
@@ -49,13 +49,13 @@ void	vm_and_4(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 0;
 		arg[4] = 0;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[1] - 1))
-			vm_rir(vm, cmd, arg, 1);
+			vm_rir(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
-	vm_and_5(vm, cmd, arg);
+	vm_xor_5(vm, cmd, arg);
 }
 
-void	vm_and_3(t_vm *vm, t_cmd *cmd, int *arg)
+void	vm_xor_3(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 180)
 	{
@@ -65,7 +65,7 @@ void	vm_and_3(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 2;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_dir_bit(vm, cmd, arg, 1);
+			vm_dir_bit(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 164)
@@ -76,13 +76,13 @@ void	vm_and_3(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 2;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_ddr(vm, cmd, arg, 1);
+			vm_ddr(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
-	vm_and_4(vm, cmd, arg);
+	vm_xor_4(vm, cmd, arg);
 }
 
-void	vm_and_2(t_vm *vm, t_cmd *cmd, int *arg)
+void	vm_xor_2(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 228)
 	{
@@ -92,7 +92,7 @@ void	vm_and_2(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 4;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_idr_bit(vm, cmd, arg, 1);
+			vm_idr_bit(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 244)
@@ -103,14 +103,14 @@ void	vm_and_2(t_vm *vm, t_cmd *cmd, int *arg)
 		arg[3] = 0;
 		arg[4] = 0;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_iir_bit(vm, cmd, arg, 1);
+			vm_iir_bit(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else
-		vm_and_3(vm, cmd, arg);
+		vm_xor_3(vm, cmd, arg);
 }
 
-void	vm_and(t_vm *vm, t_cmd *cmd)
+void	vm_xor(t_vm *vm, t_cmd *cmd)
 {
 	int	arg[5];
 
@@ -122,7 +122,7 @@ void	vm_and(t_vm *vm, t_cmd *cmd)
 		arg[3] = 3;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[1] - 1))
-			vm_rdr_bit(vm, cmd, arg, 1);
+			vm_rdr_bit(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 84)
@@ -131,9 +131,9 @@ void	vm_and(t_vm *vm, t_cmd *cmd)
 		arg[1] = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 		arg[2] = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 		if (vm_v_cmd(arg[0] - 1, arg[1] - 1, arg[2] - 1))
-			vm_rrr_bit(cmd, arg, 1);
+			vm_rrr_bit(cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));		
 	}
 	else
-		vm_and_2(vm, cmd, arg);
+		vm_xor_2(vm, cmd, arg);
 }

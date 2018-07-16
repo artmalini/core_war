@@ -254,19 +254,31 @@ int					vm_v_cmd(int a, int b, int c);
 int					vm_direct(t_vm *vm, t_cmd *cmd, int *arg);
 int					vm_indir(t_vm *vm, t_cmd *cmd, int nb);
 int					get_indir_arg(t_vm *vm, t_cmd *cmd, int nb);
+void				vm_rdr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_rrr_bit(t_cmd *cmd, int *arg, int let);
+void				vm_idr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_iir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_dir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_ddr(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_drr(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_rir(t_vm *vm, t_cmd *cmd, int *arg, int let);
+void				vm_irr(t_vm *vm, t_cmd *cmd, int *arg, int let);
 void				vm_live(t_vm *vm, t_cmd *cmd);
 void				vm_ld(t_vm *vm, t_cmd *cmd);
 void				vm_st(t_vm *vm, t_cmd *cmd);
-void				vm_zjmp(t_vm *vm, t_cmd *cmd);
 void				vm_add(t_vm *vm, t_cmd *cmd);
 void				vm_sub(t_vm *vm, t_cmd *cmd);
 void				vm_and(t_vm *vm, t_cmd *cmd);
-
+void				vm_or(t_vm *vm, t_cmd *cmd);
+void				vm_xor(t_vm *vm, t_cmd *cmd);
+void				vm_zjmp(t_vm *vm, t_cmd *cmd);
 void				vm_ldi(t_vm *vm, t_cmd *cmd);
 void				vm_sti(t_vm *vm, t_cmd *cmd);
 void				vm_fork(t_vm *vm, t_cmd **cmd);
-
-void				vm_aff(t_vm *vm, t_proc *proc);
+void				vm_lld(t_vm *vm, t_cmd *cmd);
+void				vm_lldi(t_vm *vm, t_cmd *cmd);
+void				vm_lfork(t_vm *vm, t_cmd **cmd);
+void				vm_aff(t_vm *vm, t_cmd *cmd);
 int 				get_reg(t_vm *vm, int *i);
 int 				is_reg(int value);
 

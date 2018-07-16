@@ -16,8 +16,6 @@ int		vm_getpl(t_vm *vm, int place)
 
 void	vm_live(t_vm *vm, t_cmd *cmd)
 {
-	//ft_printf("TTT|%d|", 5);
-	//refresh();
 	int	place;
 	int	id;
 

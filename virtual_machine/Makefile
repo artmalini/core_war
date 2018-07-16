@@ -29,8 +29,12 @@ SRCS_VM	=	vm_errors.c \
 			vm_read.c \
 			op.c \
 			vm_mng_func.c \
+			vm_mng_bit1.c \
+			vm_mng_bit2.c \
 			vm_sti.c \
 			vm_and.c \
+			vm_or.c \
+			vm_xor.c \
 			vm_live.c \
 			vm_zjmp.c \
 			vm_ld.c \
@@ -39,6 +43,10 @@ SRCS_VM	=	vm_errors.c \
 			vm_sub.c \
 			vm_ldi.c \
 			vm_fork.c \
+			vm_lld.c \
+			vm_lldi.c \
+			vm_lfork.c \
+			vm_aff.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 
