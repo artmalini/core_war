@@ -188,7 +188,7 @@ void	print_header(int j, t_vm *vm)
 	print_header2(j, vm);	
 }
 
-/*void	vm_play_arena(t_vm *vm)
+void	vm_play_arena(t_vm *vm)
 {
 	erase();
 	vm_game_stat(vm);
@@ -223,12 +223,12 @@ void	print_header(int j, t_vm *vm)
 	printw("\n");
 	refresh();
 	
-}*/
-
-void	vm_play_arena(void)
-{
-	refresh();	
 }
+
+// void	vm_play_arena(void)
+// {
+// 	refresh();	
+// }
 
 void	vm_create_arena(t_vm *vm)
 {
@@ -541,7 +541,7 @@ void	vm_load_arena(t_vm *vm)
 
 
 	i = 1;
-	//vm_load_ncurses();
+	vm_load_ncurses();
 
 	//vm_dump_arena(vm);
 	//while (++i < 2)
@@ -550,7 +550,7 @@ void	vm_load_arena(t_vm *vm)
 	{		
 		c = vm->cmd;
 		//vm_play_arena();
-		//vm_play_arena(vm);		
+		vm_play_arena(vm);		
 		while (c)
 		{
 			if (!c->flag)
@@ -576,8 +576,8 @@ void	vm_load_arena(t_vm *vm)
 		}
 	}
 	
-	//getch();
-	//endwin();
+	getch();
+	endwin();
 }
 
 static void	free_vm(t_vm *vm)
@@ -586,16 +586,14 @@ static void	free_vm(t_vm *vm)
 	t_cmd	*tmp1;
 	int	i;
 
-	i = 0;
-	while (i < vm->nbr_next)
+	i = -1;
+	while (++i < vm->nbr_next)
 	{
 		free(vm->tab_champ[i].name);
 		free(vm->tab_champ[i].prog);
-		i++;
 	}
 	if (vm->cmd)
 	{
-		i = -1;
 		tmp = vm->cmd;
 		while (tmp)
 		{
