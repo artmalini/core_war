@@ -26,7 +26,7 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	{
 		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb =
 		//	((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
-		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb =
+		vm->arena[mdx(cmd->idx + ((short)two % IDX_MOD) + i)].acb =
 			((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].asc_rgb = cmd->rgb - 4;
@@ -34,7 +34,7 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	}
 	//ft_printf("st |%d| cursor |%d|", mdx(cmd->idx + (two % IDX_MOD) + i), cmd->reg[(reg1 - 1)]);
 	//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 5;
-	//ft_printf("st_pos|%d|\n",  vm_pos_curs(vm, cmd));
+	//ft_printf("st_ri|%d| ", (short)two % IDX_MOD);
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 

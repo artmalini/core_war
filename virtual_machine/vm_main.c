@@ -117,15 +117,15 @@ void	vm_game_stat(t_vm *vm)
 void	draw_pl_heart(int j)
 {
 	attron(COLOR_PAIR(1));
-	if (j == 20 || j == 26)
+	if (j == 21 || j == 27 || j == 33 || j == 39)
 		printw("\t ###    ###");
-	if (j == 21 || j == 27)
+	if (j == 22 || j == 28 || j == 34 || j == 40)
 		printw("\t#####  #####");
-	if (j == 22 || j == 28)
+	if (j == 23 || j == 29 || j == 35 || j == 41)
 		printw("\t ##########");
-	if (j == 23 || j == 29)
+	if (j == 24 || j == 30 || j == 36 || j == 42)
 		printw("\t   ######");
-	if (j == 24 || j == 30)
+	if (j == 25 || j == 31 || j == 37 || j == 43)
 		printw("\t     ##");
 }
 
@@ -139,24 +139,42 @@ void	print_header2(int j, t_vm *vm)
 		printw(" #####   ##### ##############  #### ");
 	if (j == 16)
 		printw(" ####     ########     ######   #### ");
-	if (j >= 20 && j <= 24 && vm->nbr_next >= 1)
+	if (j >= 20 && j <= 25 && vm->nbr_next >= 1)
 	{
 		if (j == 20)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[0].rgb));
-			printw("%s", vm->tab_champ[0].name);
+			printw("%-16s", vm->tab_champ[0].name);
 		}
 		draw_pl_heart(j);
 	}
-	if (j >= 26 && j <= 30 && vm->nbr_next >= 2)
+	if (j >= 26 && j <= 31 && vm->nbr_next >= 2)
 	{
 		if (j == 26)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[1].rgb));
-			printw("%s", vm->tab_champ[1].name);
+			printw("%-16s", vm->tab_champ[1].name);
 		}
 		draw_pl_heart(j);
-	}	
+	}
+	if (j >= 32 && j <= 37 && vm->nbr_next >= 3)
+	{
+		if (j == 32)
+		{
+			attron(COLOR_PAIR(vm->tab_champ[2].rgb));
+			printw("%-16s", vm->tab_champ[2].name);
+		}
+		draw_pl_heart(j);
+	}
+	if (j >= 38 && j <= 43 && vm->nbr_next == 4)
+	{
+		if (j == 38)
+		{
+			attron(COLOR_PAIR(vm->tab_champ[3].rgb));
+			printw("%-16s", vm->tab_champ[3].name);
+		}
+		draw_pl_heart(j);
+	}
 }
 
 void	print_header(int j, t_vm *vm)
@@ -221,13 +239,12 @@ void	vm_play_arena(t_vm *vm)
 		i++;		
 	}
 	printw("\n");
-	refresh();
-	
+	refresh();	
 }
 
 // void	vm_play_arena(void)
 // {
-// 	refresh();	
+// 	refresh();
 // }
 
 void	vm_create_arena(t_vm *vm)
@@ -312,43 +329,71 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 
 
 
-
-
-void	vm_curet_next(t_cmd *cmd)
+/*void	check_process(t_vm *vm)
 {
-	if (cmd && !cmd->flag)
+	t_cmd	*tmp;
+	//int		i;
+
+	tmp = vm->cmd;
+	//i = vm->total_process - 1;
+	//printf("total_process|%d\n", i);
+	// while (tmp && !tmp->flag)
+	// {
+	// 	if (!tmp->life)
+	// 	{
+	// 		//ft_printf("OK\n");
+	// 		tmp->off = 1;
+	// 		tmp->flag = 1;
+	// 		vm->tab_champ[tmp->reg[0]].nbr_process -= 1;
+	// 	}
+	// 	tmp = tmp->next;
+	// }
+}*/
+
+/*void	vm_curet_next(t_vm *vm, t_cmd *cmd)
+{
+	//printf("total_process|%d\n", cmd->life);
+	while (cmd && !cmd->flag)
 	{
-		if (cmd->life)
+		if (!vm->tab_champ[cmd->reg[0]].alive)
 		{
+			//ft_printf("yepnext\n");
+			vm->tab_champ[cmd->reg[0]].nbr_process -= 1;
 			cmd->off = 1;
-			cmd->flag = 1;
+			cmd->flag = 1;			
 		}
 		cmd->life = 0;
+		cmd = cmd->next;
 	}
 }
 
 void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 {
+	
+	//ft_printf("cmd->reg[0] %d\n", vm->tab_champ[cmd->reg[0]].old_check);
 	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
 		*i = 0;
-	if (vm->lifes < NBR_LIVE)
-		vm->last_check += 1;
-	if (vm->last_check == MAX_CHECKS || vm->lifes >= NBR_LIVE)
+	if (vm->tab_champ[cmd->reg[0]].alive < NBR_LIVE)
+		vm->tab_champ[cmd->reg[0]].old_check += 1;
+	if (vm->tab_champ[cmd->reg[0]].old_check == MAX_CHECKS || vm->tab_champ[cmd->reg[0]].alive >= NBR_LIVE)
 	{
+			//check_process(vm);			
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 		{
-			vm_curet_next(cmd);
+			//vm_curet_next(vm, cmd);
+			//vm->tab_champ[cmd->reg[0]].nbr_process -= 1;			
 			vm->cycle_to_die = 0;
+			//vm->tab_champ[cmd->reg[0]].old_check = 0;
 		}
-		vm->lifes = 0;
-		vm->last_check = 0;
+		vm->tab_champ[cmd->reg[0]].alive = 0;
+		vm->tab_champ[cmd->reg[0]].old_check = 0;
 	}
 	vm->cycle = 0;
 	//vm->lifes = 0;
-}
+}*/
 
-/*
+
 void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd && !cmd->flag)
@@ -385,7 +430,7 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 	}
 	vm->cycle = 0;
 	//vm->lives = 0;
-}*/
+}
 
 void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
 {
@@ -584,7 +629,7 @@ static void	free_vm(t_vm *vm)
 {
 	t_cmd	*tmp;
 	t_cmd	*tmp1;
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -616,6 +661,8 @@ static void	init(t_vm *vm)
 		vm->tab_champ[i].rgb = 1 + (i % 4);
 		vm->tab_champ[i].id = -1;
 		vm->tab_champ[i].nbr_process = 1;
+		vm->tab_champ[i].alive = 0;
+		vm->tab_champ[i].old_check = 0;
 		i++;
 	}
 	vm->fd = 0;
@@ -628,6 +675,7 @@ static void	init(t_vm *vm)
 	vm->cycle_before_checking = CYCLE_TO_DIE;
 	vm->lifes = 0;
 	vm->win = -1;
+	vm->total_process = 1;
 	vm->cmd = NULL;
 }
 
@@ -647,9 +695,9 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->on = 0;
 		lst->off = 0;
 		lst->carry = 0;
-		lst->life = 1;
+		lst->life = 0;
 		lst->nbr_process = 1;
-		lst->flag = 0;
+		lst->flag = 0;		
 		lst->next = NULL;
 		//ft_printf("lst->idx |%d\n|", lst->idx);
 	}	

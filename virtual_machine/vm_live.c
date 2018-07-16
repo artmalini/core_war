@@ -35,8 +35,10 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 		vm->lifes += 1;
 		vm->win = id;
 		vm->tab_champ[id].life += 1;
+		vm->tab_champ[id].alive += 1;
 		cmd->life = 1;		
 		vm_next_step(vm, cmd, 5);
+		//ft_printf("live |%d|\n", cmd->reg[0]);
 	}
 	else
 		vm_next_step(vm, cmd, 5);
