@@ -12,8 +12,8 @@
 void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 {
 	int		i;
-	char	val;
-	char	dat;
+	int		val;
+	int		dat;
 
 	i = -1;
 	val = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
@@ -137,7 +137,7 @@ int		vm_rid_sti(t_vm *vm, t_cmd *cmd)
 
 void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
-	char	cdg;
+	int		cdg;
 	int		direct;
 
 	direct = 0;

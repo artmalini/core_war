@@ -6,13 +6,13 @@
 ** 112 == (T_REG, T_IND)
 */
 
-void	vm_st_rr(t_vm *vm, t_cmd *cmd, char reg1, char reg2)
+void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 {
 	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1] * -1;
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
-void	vm_st_ri(t_vm *vm, t_cmd *cmd, char reg1)
+void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 {
 	int		i;
 	short	two;
@@ -40,8 +40,8 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, char reg1)
 
 void	vm_st(t_vm *vm, t_cmd *cmd)
 {
-	char	reg1;
-	char	reg2;
+	int	reg1;
+	int	reg2;
 	//ft_printf("vm_st");
 	reg1 = vm->arena[mdx(cmd->idx + 2)].acb;	
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
