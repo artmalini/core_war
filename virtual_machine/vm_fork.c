@@ -55,8 +55,8 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	{
 		//ft_printf("fork ok1\n");
 		tmp = fork_add_list(*cmd);
-		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
-		//vm->total_process += 1;
+		vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
+		vm->total_process += 1;
 		while (cmd1->next != NULL)
 			cmd1 = cmd1->next;
 		cmd1->next = tmp;

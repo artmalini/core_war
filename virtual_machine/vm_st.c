@@ -14,7 +14,7 @@ void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 
 void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 {
-	int		i;
+	int				i;
 	unsigned short	two;
 
 	i = -1;

@@ -91,7 +91,7 @@ void	vm_load_ncurses(void)
 void	vm_pl_stats(t_vm *vm, int i)
 {
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
-	printw("\nLives for %-20s %d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].life, vm->tab_champ[i].nbr_process);
+	printw("\nLives for %.20s	%d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].life, vm->tab_champ[i].nbr_process);
 }
 
 void	vm_game_stat(t_vm *vm)
@@ -144,7 +144,7 @@ void	print_header2(int j, t_vm *vm)
 		if (j == 20)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[0].rgb));
-			printw("%-16s", vm->tab_champ[0].name);
+			printw("%.16s", vm->tab_champ[0].name);
 		}
 		draw_pl_heart(j);
 	}
@@ -153,7 +153,7 @@ void	print_header2(int j, t_vm *vm)
 		if (j == 26)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[1].rgb));
-			printw("%-16s", vm->tab_champ[1].name);
+			printw("%.16s", vm->tab_champ[1].name);
 		}
 		draw_pl_heart(j);
 	}
@@ -162,7 +162,7 @@ void	print_header2(int j, t_vm *vm)
 		if (j == 32)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[2].rgb));
-			printw("%-16s", vm->tab_champ[2].name);
+			printw("%.16s", vm->tab_champ[2].name);
 		}
 		draw_pl_heart(j);
 	}
@@ -171,7 +171,7 @@ void	print_header2(int j, t_vm *vm)
 		if (j == 38)
 		{
 			attron(COLOR_PAIR(vm->tab_champ[3].rgb));
-			printw("%-16s", vm->tab_champ[3].name);
+			printw("%.16s", vm->tab_champ[3].name);
 		}
 		draw_pl_heart(j);
 	}
@@ -394,7 +394,7 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 }*/
 
 
-void	vm_curet_next(t_cmd *cmd)
+/*void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd && !cmd->flag)
 	{
@@ -412,7 +412,7 @@ void	vm_curet_next(t_cmd *cmd)
 
 void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 {
-	//vm_curet_next(cmd);
+	vm_curet_next(cmd);
 	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
 		*i = 0;
 	if (vm->lifes < NBR_LIVE)
@@ -422,7 +422,42 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 		{
-			vm_curet_next(cmd);
+			//vm_curet_next(cmd);
+			vm->cycle_to_die = 0;
+		}
+		vm->lifes = 0;
+		vm->last_check = 0;
+	}
+	vm->cycle = 0;
+	//vm->lives = 0;
+}*/
+
+void	vm_curet_next(t_cmd *cmd)
+{
+	while (cmd)
+	{
+		if (!cmd->life)
+		{
+			cmd->flag = 1;
+		}
+		cmd->life = 0;
+		cmd = cmd->next;
+	}
+}
+
+void	vm_cycler_todie(t_vm *vm, int *i)
+{
+	vm_curet_next(vm->cmd);
+	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
+		*i = 0;
+	if (vm->lifes < NBR_LIVE)
+		vm->last_check += 1;
+	if (vm->last_check == MAX_CHECKS || vm->lifes >= NBR_LIVE)
+	{
+		vm->cycle_to_die -= CYCLE_DELTA;
+		if (vm->cycle_to_die < 0)
+		{
+			//vm_curet_next(cmd);
 			vm->cycle_to_die = 0;
 		}
 		vm->lifes = 0;
@@ -432,12 +467,12 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 	//vm->lives = 0;
 }
 
-void	vm_cycler_to_die(t_vm *vm, t_cmd *cmd, int *i)
+void	vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle == vm->cycle_to_die)
 	{
 		//cmd->flag = 0;
-		vm_cycler_todie(vm, cmd, i);
+		vm_cycler_todie(vm, i);
 	}
 	//	vm_switch_cursor(cmd);
 	else
@@ -455,7 +490,7 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	if ((i = vm_has_cmd(vm, cmd)) != 0)
 	{
 		cmd->playing = 1;		
-		cmd->wait = op_tab[i - 1].cycles - 2;
+		cmd->wait = op_tab[i - 1].cycles;
 		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
 		//
@@ -599,7 +634,7 @@ void	vm_load_arena(t_vm *vm)
 		while (c)
 		{
 			if (!c->flag)
-				vm_cycler_to_die(vm, c, &i);
+				vm_cycler_to_die(vm, &i);
 			//else
 			//{
 				if (!c->off)
