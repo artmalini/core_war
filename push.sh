@@ -8,7 +8,7 @@ rm -rf *.cor
 git status
 git add .
 git status
-git commit -m "[CoreWar_ASM]: Day 42 -  vmakahon (auto-push)"
+git commit -m "[CoreWar_ASM]: Day 44 -  vmakahon (auto-push)"
 git status
 git push origin master
 git status

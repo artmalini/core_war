@@ -1,0 +1,3 @@
+/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_ASM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_ASM/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_ASM/cmake-build-debug/CMakeFiles/CoreWar_ASM.dir
