@@ -16,7 +16,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	int		dat;
 
 	i = -1;
-	val = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
+	val = (0xFF & vm->arena[mdx(cmd->idx + 2)].acb);
 	if (val < 0 && val >= REG_NUMBER)
 		return ;
 	dat = cmd->reg[val - 1];
@@ -33,9 +33,9 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 int		vm_rdd_sti(t_vm *vm, t_cmd *cmd)
 {
 	//int		pc;
-	int				res;
-	unsigned short	arg1;
-	unsigned short	arg2;
+	int		res;
+	short	arg1;
+	short	arg2;
 	
 	res = 0;
 	//pc = 0xFF & (vm->arena[mdx(cmd->idx + 2)].acb);
@@ -49,7 +49,7 @@ int		vm_rdd_sti(t_vm *vm, t_cmd *cmd)
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 	//res = cmd->reg[pc - 1] + ((arg1 + arg2) % IDX_MOD);
-	res = ((short)arg1 + (short)arg2);
+	res = (arg1 + arg2);
 	//ft_printf("sti arg1|%d| arg2|%d| %d\n", arg1, arg2, res);
 	return (res);
 }
@@ -58,21 +58,22 @@ int		vm_rir_sti(t_vm *vm, t_cmd *cmd)
 {
 	int				res;
 	int				arg1;
-	unsigned short	arg2;
+	short			arg2;
 	short			dir;
+	int				dir1;
 	
 	res = 0;
 	dir = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	dir <<= 8;
 	dir += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	dir = ((short)dir % IDX_MOD);
-	arg1 = 0xFF & vm->arena[mdx(cmd->idx + dir)].acb;
+	dir1 = (dir % IDX_MOD);
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx + dir1)].acb;
 	arg1 <<= 8;
-	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir + 1)].acb;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 1)].acb;
 	arg1 <<= 8;
-	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir + 2)].acb;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 2)].acb;
 	arg1 <<= 8;
-	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir + 3)].acb;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 3)].acb;
 
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	res = (arg1 + arg2);
@@ -83,7 +84,7 @@ int		vm_rrd_sti(t_vm *vm, t_cmd *cmd)
 {
 	int				res;
 	int				arg1;
-	unsigned short	arg2;
+	short			arg2;
 	
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
@@ -91,7 +92,7 @@ int		vm_rrd_sti(t_vm *vm, t_cmd *cmd)
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	res = (arg1 + (short)arg2);
+	res = (arg1 + arg2);
 	return (res);
 }
 
@@ -111,27 +112,27 @@ int		vm_rrr_sti(t_vm *vm, t_cmd *cmd)
 int		vm_rid_sti(t_vm *vm, t_cmd *cmd)
 {
 	int				res;
-	unsigned short	arg1;
+	short			arg1;
 	short			dir;
 	int				arg2;
+	int				dir1;
 	
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-
 	dir = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	dir <<= 8;
 	dir += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
-	dir = (dir % IDX_MOD);
-	arg2 = 0xFF & vm->arena[mdx(cmd->idx + dir)].acb;
+	dir1 = (dir % IDX_MOD);
+	arg2 = 0xFF & vm->arena[mdx(cmd->idx + dir1)].acb;
 	arg2 <<= 8;
-	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir + 1)].acb;
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 1)].acb;
 	arg2 <<= 8;
-	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir + 2)].acb;
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 2)].acb;
 	arg2 <<= 8;
-	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir + 3)].acb;
-	res = ((short)arg1 + arg2);
+	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 3)].acb;
+	res = (arg1 + arg2);
 	return (res);
 }
 

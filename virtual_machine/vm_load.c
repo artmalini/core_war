@@ -54,7 +54,7 @@ void		vm_load_champs(t_vm *vm)
 	{
 		
 		vm->tab_champ[num_pl].idx = space;
-		vm->tab_champ[num_pl].life = 0;
+		//vm->tab_champ[num_pl].life = 0;
 		ft_printf("vm_load_champs vm->tab_champ[num_pl].idx|%d|\n", vm->tab_champ[num_pl].idx);
 				
 		load_champ_to(vm, vm->tab_champ[num_pl], space, num_pl);

@@ -196,10 +196,12 @@ typedef struct		s_champ
 	int				rgb;
 
 	int				idx;
-	int				life;
+	//int			life;
 	int				nbr_process;
 	int				alive;
 	int				old_check;
+	int				prev_live;
+	int				lives_in_period;	
 	char			*prog;
 }					t_champ;
 
@@ -218,6 +220,7 @@ typedef struct		s_vm
 	int				total_lives_period;
 	int				lifes;
 	int				total_process;
+	int				total_cycle;
 	int				win;
 }					t_vm;
 

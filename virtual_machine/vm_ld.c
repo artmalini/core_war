@@ -20,7 +20,8 @@ void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
 
 void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 {
-	unsigned short	two;
+	short	two;
+	int		two_val;
 	int		pos;
 	int		val;
 	char	hex;
@@ -28,7 +29,8 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	two = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
-	val = mdx(cmd->idx + ((short)two % IDX_MOD));
+	two_val = two % IDX_MOD;
+	val = mdx(cmd->idx + two_val);
 	pos = 0xFF & vm->arena[val].acb;
 	pos <<= 8;
 	pos += 0xFF & vm->arena[val + 1].acb;

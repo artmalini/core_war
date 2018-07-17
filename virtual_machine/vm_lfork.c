@@ -49,7 +49,7 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	if (cmd1)
 	{
 		tmp = lfork_add_list(*cmd);
-		vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
+		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		while (cmd1->next != NULL)
 			cmd1 = cmd1->next;
 		cmd1->next = tmp;

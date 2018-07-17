@@ -8,28 +8,31 @@
 
 void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 {
-	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1] * -1;
+	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1];
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
 void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 {
-	int				i;
-	unsigned short	two;
+	int		i;
+	short	two;
+	int		two_val;
 
 	i = -1;
 	two = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	two_val = two % IDX_MOD;
 	//printf("%d", two % IDX_MOD);
 	while (++i <= 3)
 	{
 		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb =
 		//	((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
-		vm->arena[mdx(cmd->idx + ((short)two % IDX_MOD) + i)].acb =
-			((cmd->reg[(reg1 - 1)] * -1) >> ((3 - i) * 8)) & 0xFF;
-		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 4;
-		vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].asc_rgb = cmd->rgb - 4;
+		//ft_printf("st |%d| ", vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].acb);
+		vm->arena[mdx(cmd->idx + two_val + i)].acb =
+			((cmd->reg[(reg1 - 1)]) >> ((3 - i) * 8)) & 0xFF;
+		vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
+		vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;
 		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].bold = 50;
 	}
 	//ft_printf("st |%d| cursor |%d|", mdx(cmd->idx + (two % IDX_MOD) + i), cmd->reg[(reg1 - 1)]);

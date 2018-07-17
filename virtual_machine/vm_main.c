@@ -91,7 +91,8 @@ void	vm_load_ncurses(void)
 void	vm_pl_stats(t_vm *vm, int i)
 {
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
-	printw("\nLives for %.20s	%d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].life, vm->tab_champ[i].nbr_process);
+	printw("\nLives for %.20s	%d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
+	printw(" Lives in current period: %d", vm->tab_champ[i].lives_in_period);
 }
 
 void	vm_game_stat(t_vm *vm)
@@ -432,6 +433,15 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 	//vm->lives = 0;
 }*/
 
+void	pl_period_live(t_vm *vm)
+{
+	int i;
+
+	i = -1;
+	while (++i < vm->nbr_next)
+		vm->tab_champ[i].lives_in_period = 0;
+}
+
 void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd)
@@ -447,7 +457,7 @@ void	vm_curet_next(t_cmd *cmd)
 
 void	vm_cycler_todie(t_vm *vm, int *i)
 {
-	vm_curet_next(vm->cmd);
+	//vm_curet_next(vm->cmd);
 	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
 		*i = 0;
 	if (vm->lifes < NBR_LIVE)
@@ -457,14 +467,15 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 		{
-			//vm_curet_next(cmd);
+			vm_curet_next(vm->cmd);
 			vm->cycle_to_die = 0;
 		}
 		vm->lifes = 0;
 		vm->last_check = 0;
 	}
+	pl_period_live(vm);
 	vm->cycle = 0;
-	//vm->lives = 0;
+	//vm->lifes = 0;
 }
 
 void	vm_cycler_to_die(t_vm *vm, int *i)
@@ -478,9 +489,8 @@ void	vm_cycler_to_die(t_vm *vm, int *i)
 	else
 	{
 		vm->cycle++;
+		vm->total_cycle++;
 	}
-	//cmd = cmd->next;
-	//vm_play_arena(vm);
 }
 
 void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
@@ -698,12 +708,13 @@ static void	init(t_vm *vm)
 		vm->tab_champ[i].nbr_process = 1;
 		vm->tab_champ[i].alive = 0;
 		vm->tab_champ[i].old_check = 0;
+		vm->tab_champ[i].prev_live = 0;
+		vm->tab_champ[i].lives_in_period = 0;
 		i++;
 	}
 	vm->fd = 0;
 	vm->dump_cycle = -1;
 	vm->nbr_next = 0;
-	vm->cycle = 0;
 	vm->last_check = 0;
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
@@ -711,6 +722,8 @@ static void	init(t_vm *vm)
 	vm->lifes = 0;
 	vm->win = -1;
 	vm->total_process = 1;
+	vm->cycle = 0;
+	vm->total_cycle = 0;
 	vm->cmd = NULL;
 }
 

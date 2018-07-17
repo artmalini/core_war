@@ -40,7 +40,8 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
 	//int		cursor;
-	unsigned short	two;
+	short	two;
+	int		two_val;
 
 
 	cmd1 = NULL;
@@ -50,12 +51,13 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	two = 0xFF & vm->arena[mdx(cmd1->idx + 1)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
+	two_val = (two % IDX_MOD);
 	//cursor = two;
 	if (cmd1)
 	{
 		//ft_printf("fork ok1\n");
 		tmp = fork_add_list(*cmd);
-		vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
+		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
 		while (cmd1->next != NULL)
 			cmd1 = cmd1->next;
@@ -67,6 +69,6 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	vm_next_step(vm, *cmd, 3);
 
 	//ft_printf("fork |%d|", mdx(cursor));
-	vm_next_step(vm, tmp, ((short)two % IDX_MOD));
+	vm_next_step(vm, tmp, two_val);
 	//ft_printf("fork |%d| |%d| ", two, tmp->idx);
 }
