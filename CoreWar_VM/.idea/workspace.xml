@@ -68,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vm_st.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vm_st.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_st.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreWar_VM (disassembly)" pinned="false" current-in-tab="false">
-        <entry file="mock:///CoreWar_VM (disassembly)">
+      <file leaf-file-name="vm_sti.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sti.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="1560">
+              <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -260,7 +260,7 @@
       <workItem from="1531562344040" duration="9000" />
       <workItem from="1531863949451" duration="8417000" />
       <workItem from="1531873612315" duration="8000" />
-      <workItem from="1531901165602" duration="8874000" />
+      <workItem from="1531901165602" duration="9531000" />
     </task>
     <task id="LOCAL-00001" summary="Clion [Auto-Push] - CoreWar_VM">
       <created>1530544377852</created>
@@ -280,7 +280,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29517000" />
+    <option name="totallyTimeSpent" value="30174000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -293,8 +293,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-33" width="1920" height="1113" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8326271" visible="true" weight="0.124406956" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8342466" visible="true" weight="0.124406956" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32857144" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49947917" weight="0.29081634" />
       <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49920928" weight="0.32857144" />
@@ -302,9 +303,9 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4010204" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Structure" order="1" sideWeight="0.16737288" side_tool="true" visible="true" weight="0.124406956" />
+      <window_info id="Structure" order="1" sideWeight="0.16575342" side_tool="true" visible="true" weight="0.124406956" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32959184" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.51836735" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25510204" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Reviews" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -328,17 +329,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/virtual_machine/vm_st.c</url>
-          <line>42</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -563,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sti.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sub.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -681,6 +668,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sti.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
         </state>
       </provider>
     </entry>

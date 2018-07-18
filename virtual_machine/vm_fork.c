@@ -10,7 +10,7 @@ void		fork_update_reg(int *dest, int *host)
 		dest[i] = host[i];
 }
 
-t_cmd		*fork_add_list(t_cmd *cmd1)
+t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
 {
 	t_cmd	*lst;
 
@@ -26,8 +26,8 @@ t_cmd		*fork_add_list(t_cmd *cmd1)
 		lst->on = 0;
 		lst->off = 0;
 		lst->carry = cmd1->carry;
-		lst->life = 1;
-		lst->nbr_process = cmd1->nbr_process++;
+		lst->life = 0;
+		lst->nbr_process = nb;
 		lst->flag = 0;
 		lst->next = NULL;
 		//ft_printf("lst->idx |%d|", lst->idx);
@@ -55,9 +55,9 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	//cursor = two;
 	if (cmd1)
 	{
-		tmp = fork_add_list(*cmd);
+		tmp = fork_add_list(*cmd, cmd1->nbr_process + 1);
 		if (vm->debug)
-			ft_printf("|P\t%d| fork |%d| (%d)\n", tmp->nbr_process, two_val, tmp->idx + two_val);
+			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process, two_val, tmp->idx + two_val);
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
 		while (cmd1->next != NULL)

@@ -32,6 +32,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 	if (vm->debug)
 		ft_printf("|P\t%d| live id %d place|%d|\n", cmd->nbr_process, id, place);
 	//id = vm->tab_champ[place];
+	//id = 0;
 	if (id > -1)
 	{
 		vm->lifes += 1;
