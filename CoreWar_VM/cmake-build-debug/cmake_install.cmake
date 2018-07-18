@@ -1,4 +1,4 @@
-# Install script for directory: /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM
+# Install script for directory: /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

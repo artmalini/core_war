@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_live.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 14:11:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/06/18 14:11:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
-int		vm_getpl(t_vm *vm, int place)
+static int		vm_getpl(t_vm *vm, int place)
 {
-	int i;
+	int 		i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -14,10 +25,10 @@ int		vm_getpl(t_vm *vm, int place)
 	return (-1);
 }
 
-void	vm_live(t_vm *vm, t_cmd *cmd)
+void			vm_live(t_vm *vm, t_cmd *cmd)
 {
-	int	place;
-	int	id;
+	int			place;
+	int			id;
 
 	place = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	place <<= 8;

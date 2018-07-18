@@ -1,3 +1,3 @@
-/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles/CoreWar_VM.dir
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles/CoreWar_VM.dir

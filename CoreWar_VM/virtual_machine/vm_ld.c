@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_ld.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 14:11:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/06/18 14:11:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** 144 == (T_DIR, T_REG)
-** 208 == (T_IND, T_REG)
+** 				144 == (T_DIR, T_REG)
+** 				208 == (T_IND, T_REG)
 */
 
-void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
+static void		vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
 {
 	cmd->reg[vm->arena[mdx(cmd->idx + 6)].acb - 1] = one;
 	//ft_printf("ld |%d| value|%d|", vm->arena[mdx(cmd->idx + 6)].acb - 1, one);
@@ -18,13 +29,13 @@ void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
-void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
+static void		vm_ld_ir(t_vm *vm, t_cmd *cmd)
 {
-	short	two;
-	int		two_val;
-	int		pos;
-	int		val;
-	char	hex;
+	short		two;
+	int			two_val;
+	int			pos;
+	int			val;
+	char		hex;
 
 	two = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	two <<= 8;
@@ -47,10 +58,10 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	}
 }
 
-void	vm_ld(t_vm *vm, t_cmd *cmd)
+void			vm_ld(t_vm *vm, t_cmd *cmd)
 {
-	int		hex;
-	int		one;
+	int			hex;
+	int			one;
 
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 144)
 	{

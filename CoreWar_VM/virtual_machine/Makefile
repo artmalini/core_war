@@ -23,11 +23,10 @@ LIBFT_PATH	= ../libft
 SRCS_VM	=	vm_errors.c \
 			vm_load.c \
 			vm_main.c \
-			vm_ncurses.c \
 			vm_params.c \
 			vm_print.c \
 			vm_read.c \
-			op.c \
+			vm_op.c \
 			vm_mng_func.c \
 			vm_mng_bit1.c \
 			vm_mng_bit2.c \
@@ -47,6 +46,13 @@ SRCS_VM	=	vm_errors.c \
 			vm_lldi.c \
 			vm_lfork.c \
 			vm_aff.c \
+			vm_arena.c \
+			vm_ncurses.c \
+			vm_free_and_init.c \
+			vm_cycles.c	\
+			vm_steps.c \
+			vm_cmd.c \
+			vm_lst.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 

@@ -94,8 +94,6 @@
 **					[Typedef and Structs Part]
 */
 
-typedef char 		t_arg_type;
-
 typedef struct		s_error
 {
 	char 			*asm_arg;

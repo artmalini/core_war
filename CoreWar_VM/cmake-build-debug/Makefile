@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM
+CMAKE_SOURCE_DIR = /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,167 @@ CoreWar_VM/fast:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/build
 .PHONY : CoreWar_VM/fast
 
-virtual_machine/op.o: virtual_machine/op.c.o
+virtual_machine/vm_add.o: virtual_machine/vm_add.c.o
 
-.PHONY : virtual_machine/op.o
+.PHONY : virtual_machine/vm_add.o
 
 # target to build an object file
-virtual_machine/op.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/op.c.o
-.PHONY : virtual_machine/op.c.o
+virtual_machine/vm_add.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o
+.PHONY : virtual_machine/vm_add.c.o
 
-virtual_machine/op.i: virtual_machine/op.c.i
+virtual_machine/vm_add.i: virtual_machine/vm_add.c.i
 
-.PHONY : virtual_machine/op.i
+.PHONY : virtual_machine/vm_add.i
 
 # target to preprocess a source file
-virtual_machine/op.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/op.c.i
-.PHONY : virtual_machine/op.c.i
+virtual_machine/vm_add.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.i
+.PHONY : virtual_machine/vm_add.c.i
 
-virtual_machine/op.s: virtual_machine/op.c.s
+virtual_machine/vm_add.s: virtual_machine/vm_add.c.s
 
-.PHONY : virtual_machine/op.s
+.PHONY : virtual_machine/vm_add.s
 
 # target to generate assembly for a file
-virtual_machine/op.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/op.c.s
-.PHONY : virtual_machine/op.c.s
+virtual_machine/vm_add.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.s
+.PHONY : virtual_machine/vm_add.c.s
+
+virtual_machine/vm_aff.o: virtual_machine/vm_aff.c.o
+
+.PHONY : virtual_machine/vm_aff.o
+
+# target to build an object file
+virtual_machine/vm_aff.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o
+.PHONY : virtual_machine/vm_aff.c.o
+
+virtual_machine/vm_aff.i: virtual_machine/vm_aff.c.i
+
+.PHONY : virtual_machine/vm_aff.i
+
+# target to preprocess a source file
+virtual_machine/vm_aff.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.i
+.PHONY : virtual_machine/vm_aff.c.i
+
+virtual_machine/vm_aff.s: virtual_machine/vm_aff.c.s
+
+.PHONY : virtual_machine/vm_aff.s
+
+# target to generate assembly for a file
+virtual_machine/vm_aff.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.s
+.PHONY : virtual_machine/vm_aff.c.s
+
+virtual_machine/vm_and.o: virtual_machine/vm_and.c.o
+
+.PHONY : virtual_machine/vm_and.o
+
+# target to build an object file
+virtual_machine/vm_and.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o
+.PHONY : virtual_machine/vm_and.c.o
+
+virtual_machine/vm_and.i: virtual_machine/vm_and.c.i
+
+.PHONY : virtual_machine/vm_and.i
+
+# target to preprocess a source file
+virtual_machine/vm_and.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.i
+.PHONY : virtual_machine/vm_and.c.i
+
+virtual_machine/vm_and.s: virtual_machine/vm_and.c.s
+
+.PHONY : virtual_machine/vm_and.s
+
+# target to generate assembly for a file
+virtual_machine/vm_and.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.s
+.PHONY : virtual_machine/vm_and.c.s
+
+virtual_machine/vm_arena.o: virtual_machine/vm_arena.c.o
+
+.PHONY : virtual_machine/vm_arena.o
+
+# target to build an object file
+virtual_machine/vm_arena.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_arena.c.o
+.PHONY : virtual_machine/vm_arena.c.o
+
+virtual_machine/vm_arena.i: virtual_machine/vm_arena.c.i
+
+.PHONY : virtual_machine/vm_arena.i
+
+# target to preprocess a source file
+virtual_machine/vm_arena.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_arena.c.i
+.PHONY : virtual_machine/vm_arena.c.i
+
+virtual_machine/vm_arena.s: virtual_machine/vm_arena.c.s
+
+.PHONY : virtual_machine/vm_arena.s
+
+# target to generate assembly for a file
+virtual_machine/vm_arena.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_arena.c.s
+.PHONY : virtual_machine/vm_arena.c.s
+
+virtual_machine/vm_cmd.o: virtual_machine/vm_cmd.c.o
+
+.PHONY : virtual_machine/vm_cmd.o
+
+# target to build an object file
+virtual_machine/vm_cmd.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cmd.c.o
+.PHONY : virtual_machine/vm_cmd.c.o
+
+virtual_machine/vm_cmd.i: virtual_machine/vm_cmd.c.i
+
+.PHONY : virtual_machine/vm_cmd.i
+
+# target to preprocess a source file
+virtual_machine/vm_cmd.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cmd.c.i
+.PHONY : virtual_machine/vm_cmd.c.i
+
+virtual_machine/vm_cmd.s: virtual_machine/vm_cmd.c.s
+
+.PHONY : virtual_machine/vm_cmd.s
+
+# target to generate assembly for a file
+virtual_machine/vm_cmd.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cmd.c.s
+.PHONY : virtual_machine/vm_cmd.c.s
+
+virtual_machine/vm_cycles.o: virtual_machine/vm_cycles.c.o
+
+.PHONY : virtual_machine/vm_cycles.o
+
+# target to build an object file
+virtual_machine/vm_cycles.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.o
+.PHONY : virtual_machine/vm_cycles.c.o
+
+virtual_machine/vm_cycles.i: virtual_machine/vm_cycles.c.i
+
+.PHONY : virtual_machine/vm_cycles.i
+
+# target to preprocess a source file
+virtual_machine/vm_cycles.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.i
+.PHONY : virtual_machine/vm_cycles.c.i
+
+virtual_machine/vm_cycles.s: virtual_machine/vm_cycles.c.s
+
+.PHONY : virtual_machine/vm_cycles.s
+
+# target to generate assembly for a file
+virtual_machine/vm_cycles.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.s
+.PHONY : virtual_machine/vm_cycles.c.s
 
 virtual_machine/vm_errors.o: virtual_machine/vm_errors.c.o
 
@@ -177,6 +312,222 @@ virtual_machine/vm_errors.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.s
 .PHONY : virtual_machine/vm_errors.c.s
 
+virtual_machine/vm_fork.o: virtual_machine/vm_fork.c.o
+
+.PHONY : virtual_machine/vm_fork.o
+
+# target to build an object file
+virtual_machine/vm_fork.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o
+.PHONY : virtual_machine/vm_fork.c.o
+
+virtual_machine/vm_fork.i: virtual_machine/vm_fork.c.i
+
+.PHONY : virtual_machine/vm_fork.i
+
+# target to preprocess a source file
+virtual_machine/vm_fork.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.i
+.PHONY : virtual_machine/vm_fork.c.i
+
+virtual_machine/vm_fork.s: virtual_machine/vm_fork.c.s
+
+.PHONY : virtual_machine/vm_fork.s
+
+# target to generate assembly for a file
+virtual_machine/vm_fork.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.s
+.PHONY : virtual_machine/vm_fork.c.s
+
+virtual_machine/vm_free_and_init.o: virtual_machine/vm_free_and_init.c.o
+
+.PHONY : virtual_machine/vm_free_and_init.o
+
+# target to build an object file
+virtual_machine/vm_free_and_init.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.o
+.PHONY : virtual_machine/vm_free_and_init.c.o
+
+virtual_machine/vm_free_and_init.i: virtual_machine/vm_free_and_init.c.i
+
+.PHONY : virtual_machine/vm_free_and_init.i
+
+# target to preprocess a source file
+virtual_machine/vm_free_and_init.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.i
+.PHONY : virtual_machine/vm_free_and_init.c.i
+
+virtual_machine/vm_free_and_init.s: virtual_machine/vm_free_and_init.c.s
+
+.PHONY : virtual_machine/vm_free_and_init.s
+
+# target to generate assembly for a file
+virtual_machine/vm_free_and_init.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.s
+.PHONY : virtual_machine/vm_free_and_init.c.s
+
+virtual_machine/vm_ld.o: virtual_machine/vm_ld.c.o
+
+.PHONY : virtual_machine/vm_ld.o
+
+# target to build an object file
+virtual_machine/vm_ld.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o
+.PHONY : virtual_machine/vm_ld.c.o
+
+virtual_machine/vm_ld.i: virtual_machine/vm_ld.c.i
+
+.PHONY : virtual_machine/vm_ld.i
+
+# target to preprocess a source file
+virtual_machine/vm_ld.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.i
+.PHONY : virtual_machine/vm_ld.c.i
+
+virtual_machine/vm_ld.s: virtual_machine/vm_ld.c.s
+
+.PHONY : virtual_machine/vm_ld.s
+
+# target to generate assembly for a file
+virtual_machine/vm_ld.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.s
+.PHONY : virtual_machine/vm_ld.c.s
+
+virtual_machine/vm_ldi.o: virtual_machine/vm_ldi.c.o
+
+.PHONY : virtual_machine/vm_ldi.o
+
+# target to build an object file
+virtual_machine/vm_ldi.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o
+.PHONY : virtual_machine/vm_ldi.c.o
+
+virtual_machine/vm_ldi.i: virtual_machine/vm_ldi.c.i
+
+.PHONY : virtual_machine/vm_ldi.i
+
+# target to preprocess a source file
+virtual_machine/vm_ldi.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.i
+.PHONY : virtual_machine/vm_ldi.c.i
+
+virtual_machine/vm_ldi.s: virtual_machine/vm_ldi.c.s
+
+.PHONY : virtual_machine/vm_ldi.s
+
+# target to generate assembly for a file
+virtual_machine/vm_ldi.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.s
+.PHONY : virtual_machine/vm_ldi.c.s
+
+virtual_machine/vm_lfork.o: virtual_machine/vm_lfork.c.o
+
+.PHONY : virtual_machine/vm_lfork.o
+
+# target to build an object file
+virtual_machine/vm_lfork.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o
+.PHONY : virtual_machine/vm_lfork.c.o
+
+virtual_machine/vm_lfork.i: virtual_machine/vm_lfork.c.i
+
+.PHONY : virtual_machine/vm_lfork.i
+
+# target to preprocess a source file
+virtual_machine/vm_lfork.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.i
+.PHONY : virtual_machine/vm_lfork.c.i
+
+virtual_machine/vm_lfork.s: virtual_machine/vm_lfork.c.s
+
+.PHONY : virtual_machine/vm_lfork.s
+
+# target to generate assembly for a file
+virtual_machine/vm_lfork.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.s
+.PHONY : virtual_machine/vm_lfork.c.s
+
+virtual_machine/vm_live.o: virtual_machine/vm_live.c.o
+
+.PHONY : virtual_machine/vm_live.o
+
+# target to build an object file
+virtual_machine/vm_live.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o
+.PHONY : virtual_machine/vm_live.c.o
+
+virtual_machine/vm_live.i: virtual_machine/vm_live.c.i
+
+.PHONY : virtual_machine/vm_live.i
+
+# target to preprocess a source file
+virtual_machine/vm_live.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.i
+.PHONY : virtual_machine/vm_live.c.i
+
+virtual_machine/vm_live.s: virtual_machine/vm_live.c.s
+
+.PHONY : virtual_machine/vm_live.s
+
+# target to generate assembly for a file
+virtual_machine/vm_live.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.s
+.PHONY : virtual_machine/vm_live.c.s
+
+virtual_machine/vm_lld.o: virtual_machine/vm_lld.c.o
+
+.PHONY : virtual_machine/vm_lld.o
+
+# target to build an object file
+virtual_machine/vm_lld.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o
+.PHONY : virtual_machine/vm_lld.c.o
+
+virtual_machine/vm_lld.i: virtual_machine/vm_lld.c.i
+
+.PHONY : virtual_machine/vm_lld.i
+
+# target to preprocess a source file
+virtual_machine/vm_lld.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.i
+.PHONY : virtual_machine/vm_lld.c.i
+
+virtual_machine/vm_lld.s: virtual_machine/vm_lld.c.s
+
+.PHONY : virtual_machine/vm_lld.s
+
+# target to generate assembly for a file
+virtual_machine/vm_lld.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.s
+.PHONY : virtual_machine/vm_lld.c.s
+
+virtual_machine/vm_lldi.o: virtual_machine/vm_lldi.c.o
+
+.PHONY : virtual_machine/vm_lldi.o
+
+# target to build an object file
+virtual_machine/vm_lldi.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o
+.PHONY : virtual_machine/vm_lldi.c.o
+
+virtual_machine/vm_lldi.i: virtual_machine/vm_lldi.c.i
+
+.PHONY : virtual_machine/vm_lldi.i
+
+# target to preprocess a source file
+virtual_machine/vm_lldi.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.i
+.PHONY : virtual_machine/vm_lldi.c.i
+
+virtual_machine/vm_lldi.s: virtual_machine/vm_lldi.c.s
+
+.PHONY : virtual_machine/vm_lldi.s
+
+# target to generate assembly for a file
+virtual_machine/vm_lldi.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.s
+.PHONY : virtual_machine/vm_lldi.c.s
+
 virtual_machine/vm_load.o: virtual_machine/vm_load.c.o
 
 .PHONY : virtual_machine/vm_load.o
@@ -203,6 +554,33 @@ virtual_machine/vm_load.s: virtual_machine/vm_load.c.s
 virtual_machine/vm_load.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_load.c.s
 .PHONY : virtual_machine/vm_load.c.s
+
+virtual_machine/vm_lst.o: virtual_machine/vm_lst.c.o
+
+.PHONY : virtual_machine/vm_lst.o
+
+# target to build an object file
+virtual_machine/vm_lst.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lst.c.o
+.PHONY : virtual_machine/vm_lst.c.o
+
+virtual_machine/vm_lst.i: virtual_machine/vm_lst.c.i
+
+.PHONY : virtual_machine/vm_lst.i
+
+# target to preprocess a source file
+virtual_machine/vm_lst.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lst.c.i
+.PHONY : virtual_machine/vm_lst.c.i
+
+virtual_machine/vm_lst.s: virtual_machine/vm_lst.c.s
+
+.PHONY : virtual_machine/vm_lst.s
+
+# target to generate assembly for a file
+virtual_machine/vm_lst.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lst.c.s
+.PHONY : virtual_machine/vm_lst.c.s
 
 virtual_machine/vm_main.o: virtual_machine/vm_main.c.o
 
@@ -231,6 +609,87 @@ virtual_machine/vm_main.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_main.c.s
 .PHONY : virtual_machine/vm_main.c.s
 
+virtual_machine/vm_mng_bit1.o: virtual_machine/vm_mng_bit1.c.o
+
+.PHONY : virtual_machine/vm_mng_bit1.o
+
+# target to build an object file
+virtual_machine/vm_mng_bit1.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o
+.PHONY : virtual_machine/vm_mng_bit1.c.o
+
+virtual_machine/vm_mng_bit1.i: virtual_machine/vm_mng_bit1.c.i
+
+.PHONY : virtual_machine/vm_mng_bit1.i
+
+# target to preprocess a source file
+virtual_machine/vm_mng_bit1.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.i
+.PHONY : virtual_machine/vm_mng_bit1.c.i
+
+virtual_machine/vm_mng_bit1.s: virtual_machine/vm_mng_bit1.c.s
+
+.PHONY : virtual_machine/vm_mng_bit1.s
+
+# target to generate assembly for a file
+virtual_machine/vm_mng_bit1.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.s
+.PHONY : virtual_machine/vm_mng_bit1.c.s
+
+virtual_machine/vm_mng_bit2.o: virtual_machine/vm_mng_bit2.c.o
+
+.PHONY : virtual_machine/vm_mng_bit2.o
+
+# target to build an object file
+virtual_machine/vm_mng_bit2.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o
+.PHONY : virtual_machine/vm_mng_bit2.c.o
+
+virtual_machine/vm_mng_bit2.i: virtual_machine/vm_mng_bit2.c.i
+
+.PHONY : virtual_machine/vm_mng_bit2.i
+
+# target to preprocess a source file
+virtual_machine/vm_mng_bit2.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.i
+.PHONY : virtual_machine/vm_mng_bit2.c.i
+
+virtual_machine/vm_mng_bit2.s: virtual_machine/vm_mng_bit2.c.s
+
+.PHONY : virtual_machine/vm_mng_bit2.s
+
+# target to generate assembly for a file
+virtual_machine/vm_mng_bit2.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.s
+.PHONY : virtual_machine/vm_mng_bit2.c.s
+
+virtual_machine/vm_mng_func.o: virtual_machine/vm_mng_func.c.o
+
+.PHONY : virtual_machine/vm_mng_func.o
+
+# target to build an object file
+virtual_machine/vm_mng_func.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o
+.PHONY : virtual_machine/vm_mng_func.c.o
+
+virtual_machine/vm_mng_func.i: virtual_machine/vm_mng_func.c.i
+
+.PHONY : virtual_machine/vm_mng_func.i
+
+# target to preprocess a source file
+virtual_machine/vm_mng_func.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.i
+.PHONY : virtual_machine/vm_mng_func.c.i
+
+virtual_machine/vm_mng_func.s: virtual_machine/vm_mng_func.c.s
+
+.PHONY : virtual_machine/vm_mng_func.s
+
+# target to generate assembly for a file
+virtual_machine/vm_mng_func.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.s
+.PHONY : virtual_machine/vm_mng_func.c.s
+
 virtual_machine/vm_ncurses.o: virtual_machine/vm_ncurses.c.o
 
 .PHONY : virtual_machine/vm_ncurses.o
@@ -257,6 +716,60 @@ virtual_machine/vm_ncurses.s: virtual_machine/vm_ncurses.c.s
 virtual_machine/vm_ncurses.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ncurses.c.s
 .PHONY : virtual_machine/vm_ncurses.c.s
+
+virtual_machine/vm_op.o: virtual_machine/vm_op.c.o
+
+.PHONY : virtual_machine/vm_op.o
+
+# target to build an object file
+virtual_machine/vm_op.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_op.c.o
+.PHONY : virtual_machine/vm_op.c.o
+
+virtual_machine/vm_op.i: virtual_machine/vm_op.c.i
+
+.PHONY : virtual_machine/vm_op.i
+
+# target to preprocess a source file
+virtual_machine/vm_op.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_op.c.i
+.PHONY : virtual_machine/vm_op.c.i
+
+virtual_machine/vm_op.s: virtual_machine/vm_op.c.s
+
+.PHONY : virtual_machine/vm_op.s
+
+# target to generate assembly for a file
+virtual_machine/vm_op.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_op.c.s
+.PHONY : virtual_machine/vm_op.c.s
+
+virtual_machine/vm_or.o: virtual_machine/vm_or.c.o
+
+.PHONY : virtual_machine/vm_or.o
+
+# target to build an object file
+virtual_machine/vm_or.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o
+.PHONY : virtual_machine/vm_or.c.o
+
+virtual_machine/vm_or.i: virtual_machine/vm_or.c.i
+
+.PHONY : virtual_machine/vm_or.i
+
+# target to preprocess a source file
+virtual_machine/vm_or.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.i
+.PHONY : virtual_machine/vm_or.c.i
+
+virtual_machine/vm_or.s: virtual_machine/vm_or.c.s
+
+.PHONY : virtual_machine/vm_or.s
+
+# target to generate assembly for a file
+virtual_machine/vm_or.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.s
+.PHONY : virtual_machine/vm_or.c.s
 
 virtual_machine/vm_params.o: virtual_machine/vm_params.c.o
 
@@ -339,6 +852,168 @@ virtual_machine/vm_read.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.s
 .PHONY : virtual_machine/vm_read.c.s
 
+virtual_machine/vm_st.o: virtual_machine/vm_st.c.o
+
+.PHONY : virtual_machine/vm_st.o
+
+# target to build an object file
+virtual_machine/vm_st.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o
+.PHONY : virtual_machine/vm_st.c.o
+
+virtual_machine/vm_st.i: virtual_machine/vm_st.c.i
+
+.PHONY : virtual_machine/vm_st.i
+
+# target to preprocess a source file
+virtual_machine/vm_st.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.i
+.PHONY : virtual_machine/vm_st.c.i
+
+virtual_machine/vm_st.s: virtual_machine/vm_st.c.s
+
+.PHONY : virtual_machine/vm_st.s
+
+# target to generate assembly for a file
+virtual_machine/vm_st.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.s
+.PHONY : virtual_machine/vm_st.c.s
+
+virtual_machine/vm_steps.o: virtual_machine/vm_steps.c.o
+
+.PHONY : virtual_machine/vm_steps.o
+
+# target to build an object file
+virtual_machine/vm_steps.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_steps.c.o
+.PHONY : virtual_machine/vm_steps.c.o
+
+virtual_machine/vm_steps.i: virtual_machine/vm_steps.c.i
+
+.PHONY : virtual_machine/vm_steps.i
+
+# target to preprocess a source file
+virtual_machine/vm_steps.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_steps.c.i
+.PHONY : virtual_machine/vm_steps.c.i
+
+virtual_machine/vm_steps.s: virtual_machine/vm_steps.c.s
+
+.PHONY : virtual_machine/vm_steps.s
+
+# target to generate assembly for a file
+virtual_machine/vm_steps.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_steps.c.s
+.PHONY : virtual_machine/vm_steps.c.s
+
+virtual_machine/vm_sti.o: virtual_machine/vm_sti.c.o
+
+.PHONY : virtual_machine/vm_sti.o
+
+# target to build an object file
+virtual_machine/vm_sti.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o
+.PHONY : virtual_machine/vm_sti.c.o
+
+virtual_machine/vm_sti.i: virtual_machine/vm_sti.c.i
+
+.PHONY : virtual_machine/vm_sti.i
+
+# target to preprocess a source file
+virtual_machine/vm_sti.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.i
+.PHONY : virtual_machine/vm_sti.c.i
+
+virtual_machine/vm_sti.s: virtual_machine/vm_sti.c.s
+
+.PHONY : virtual_machine/vm_sti.s
+
+# target to generate assembly for a file
+virtual_machine/vm_sti.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.s
+.PHONY : virtual_machine/vm_sti.c.s
+
+virtual_machine/vm_sub.o: virtual_machine/vm_sub.c.o
+
+.PHONY : virtual_machine/vm_sub.o
+
+# target to build an object file
+virtual_machine/vm_sub.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o
+.PHONY : virtual_machine/vm_sub.c.o
+
+virtual_machine/vm_sub.i: virtual_machine/vm_sub.c.i
+
+.PHONY : virtual_machine/vm_sub.i
+
+# target to preprocess a source file
+virtual_machine/vm_sub.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.i
+.PHONY : virtual_machine/vm_sub.c.i
+
+virtual_machine/vm_sub.s: virtual_machine/vm_sub.c.s
+
+.PHONY : virtual_machine/vm_sub.s
+
+# target to generate assembly for a file
+virtual_machine/vm_sub.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.s
+.PHONY : virtual_machine/vm_sub.c.s
+
+virtual_machine/vm_xor.o: virtual_machine/vm_xor.c.o
+
+.PHONY : virtual_machine/vm_xor.o
+
+# target to build an object file
+virtual_machine/vm_xor.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o
+.PHONY : virtual_machine/vm_xor.c.o
+
+virtual_machine/vm_xor.i: virtual_machine/vm_xor.c.i
+
+.PHONY : virtual_machine/vm_xor.i
+
+# target to preprocess a source file
+virtual_machine/vm_xor.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.i
+.PHONY : virtual_machine/vm_xor.c.i
+
+virtual_machine/vm_xor.s: virtual_machine/vm_xor.c.s
+
+.PHONY : virtual_machine/vm_xor.s
+
+# target to generate assembly for a file
+virtual_machine/vm_xor.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.s
+.PHONY : virtual_machine/vm_xor.c.s
+
+virtual_machine/vm_zjmp.o: virtual_machine/vm_zjmp.c.o
+
+.PHONY : virtual_machine/vm_zjmp.o
+
+# target to build an object file
+virtual_machine/vm_zjmp.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o
+.PHONY : virtual_machine/vm_zjmp.c.o
+
+virtual_machine/vm_zjmp.i: virtual_machine/vm_zjmp.c.i
+
+.PHONY : virtual_machine/vm_zjmp.i
+
+# target to preprocess a source file
+virtual_machine/vm_zjmp.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.i
+.PHONY : virtual_machine/vm_zjmp.c.i
+
+virtual_machine/vm_zjmp.s: virtual_machine/vm_zjmp.c.s
+
+.PHONY : virtual_machine/vm_zjmp.s
+
+# target to generate assembly for a file
+virtual_machine/vm_zjmp.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.s
+.PHONY : virtual_machine/vm_zjmp.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -348,21 +1023,78 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... CoreWar_VM"
-	@echo "... virtual_machine/op.o"
-	@echo "... virtual_machine/op.i"
-	@echo "... virtual_machine/op.s"
+	@echo "... virtual_machine/vm_add.o"
+	@echo "... virtual_machine/vm_add.i"
+	@echo "... virtual_machine/vm_add.s"
+	@echo "... virtual_machine/vm_aff.o"
+	@echo "... virtual_machine/vm_aff.i"
+	@echo "... virtual_machine/vm_aff.s"
+	@echo "... virtual_machine/vm_and.o"
+	@echo "... virtual_machine/vm_and.i"
+	@echo "... virtual_machine/vm_and.s"
+	@echo "... virtual_machine/vm_arena.o"
+	@echo "... virtual_machine/vm_arena.i"
+	@echo "... virtual_machine/vm_arena.s"
+	@echo "... virtual_machine/vm_cmd.o"
+	@echo "... virtual_machine/vm_cmd.i"
+	@echo "... virtual_machine/vm_cmd.s"
+	@echo "... virtual_machine/vm_cycles.o"
+	@echo "... virtual_machine/vm_cycles.i"
+	@echo "... virtual_machine/vm_cycles.s"
 	@echo "... virtual_machine/vm_errors.o"
 	@echo "... virtual_machine/vm_errors.i"
 	@echo "... virtual_machine/vm_errors.s"
+	@echo "... virtual_machine/vm_fork.o"
+	@echo "... virtual_machine/vm_fork.i"
+	@echo "... virtual_machine/vm_fork.s"
+	@echo "... virtual_machine/vm_free_and_init.o"
+	@echo "... virtual_machine/vm_free_and_init.i"
+	@echo "... virtual_machine/vm_free_and_init.s"
+	@echo "... virtual_machine/vm_ld.o"
+	@echo "... virtual_machine/vm_ld.i"
+	@echo "... virtual_machine/vm_ld.s"
+	@echo "... virtual_machine/vm_ldi.o"
+	@echo "... virtual_machine/vm_ldi.i"
+	@echo "... virtual_machine/vm_ldi.s"
+	@echo "... virtual_machine/vm_lfork.o"
+	@echo "... virtual_machine/vm_lfork.i"
+	@echo "... virtual_machine/vm_lfork.s"
+	@echo "... virtual_machine/vm_live.o"
+	@echo "... virtual_machine/vm_live.i"
+	@echo "... virtual_machine/vm_live.s"
+	@echo "... virtual_machine/vm_lld.o"
+	@echo "... virtual_machine/vm_lld.i"
+	@echo "... virtual_machine/vm_lld.s"
+	@echo "... virtual_machine/vm_lldi.o"
+	@echo "... virtual_machine/vm_lldi.i"
+	@echo "... virtual_machine/vm_lldi.s"
 	@echo "... virtual_machine/vm_load.o"
 	@echo "... virtual_machine/vm_load.i"
 	@echo "... virtual_machine/vm_load.s"
+	@echo "... virtual_machine/vm_lst.o"
+	@echo "... virtual_machine/vm_lst.i"
+	@echo "... virtual_machine/vm_lst.s"
 	@echo "... virtual_machine/vm_main.o"
 	@echo "... virtual_machine/vm_main.i"
 	@echo "... virtual_machine/vm_main.s"
+	@echo "... virtual_machine/vm_mng_bit1.o"
+	@echo "... virtual_machine/vm_mng_bit1.i"
+	@echo "... virtual_machine/vm_mng_bit1.s"
+	@echo "... virtual_machine/vm_mng_bit2.o"
+	@echo "... virtual_machine/vm_mng_bit2.i"
+	@echo "... virtual_machine/vm_mng_bit2.s"
+	@echo "... virtual_machine/vm_mng_func.o"
+	@echo "... virtual_machine/vm_mng_func.i"
+	@echo "... virtual_machine/vm_mng_func.s"
 	@echo "... virtual_machine/vm_ncurses.o"
 	@echo "... virtual_machine/vm_ncurses.i"
 	@echo "... virtual_machine/vm_ncurses.s"
+	@echo "... virtual_machine/vm_op.o"
+	@echo "... virtual_machine/vm_op.i"
+	@echo "... virtual_machine/vm_op.s"
+	@echo "... virtual_machine/vm_or.o"
+	@echo "... virtual_machine/vm_or.i"
+	@echo "... virtual_machine/vm_or.s"
 	@echo "... virtual_machine/vm_params.o"
 	@echo "... virtual_machine/vm_params.i"
 	@echo "... virtual_machine/vm_params.s"
@@ -372,6 +1104,24 @@ help:
 	@echo "... virtual_machine/vm_read.o"
 	@echo "... virtual_machine/vm_read.i"
 	@echo "... virtual_machine/vm_read.s"
+	@echo "... virtual_machine/vm_st.o"
+	@echo "... virtual_machine/vm_st.i"
+	@echo "... virtual_machine/vm_st.s"
+	@echo "... virtual_machine/vm_steps.o"
+	@echo "... virtual_machine/vm_steps.i"
+	@echo "... virtual_machine/vm_steps.s"
+	@echo "... virtual_machine/vm_sti.o"
+	@echo "... virtual_machine/vm_sti.i"
+	@echo "... virtual_machine/vm_sti.s"
+	@echo "... virtual_machine/vm_sub.o"
+	@echo "... virtual_machine/vm_sub.i"
+	@echo "... virtual_machine/vm_sub.s"
+	@echo "... virtual_machine/vm_xor.o"
+	@echo "... virtual_machine/vm_xor.i"
+	@echo "... virtual_machine/vm_xor.s"
+	@echo "... virtual_machine/vm_zjmp.o"
+	@echo "... virtual_machine/vm_zjmp.i"
+	@echo "... virtual_machine/vm_zjmp.s"
 .PHONY : help
 
 

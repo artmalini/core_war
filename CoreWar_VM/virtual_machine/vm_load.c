@@ -24,9 +24,9 @@
 	}
 }*/
 
-static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
+void		load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
 {
-	int	index;
+	int		index;
 
 	index = 0;
 	//ft_printf("num_pl %d\n", num_pl);

@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_fork.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 14:11:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/06/18 14:11:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
-void		fork_update_reg(int *dest, int *host)
+static void		fork_update_reg(int *dest, int *host)
 {
-	int i;
+	int 		i;
 
 	i = -1;
 	while (++i < REG_NUMBER)
 		dest[i] = host[i];
 }
 
-t_cmd		*fork_add_list(t_cmd *cmd1)
+static t_cmd	*fork_add_list(t_cmd *cmd1)
 {
-	t_cmd	*lst;
+	t_cmd		*lst;
 
 	lst = NULL;
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
@@ -35,13 +46,13 @@ t_cmd		*fork_add_list(t_cmd *cmd1)
 	return (lst);
 }
 
-void	vm_fork(t_vm *vm, t_cmd **cmd)
+void			vm_fork(t_vm *vm, t_cmd **cmd)
 {
-	t_cmd	*tmp;
-	t_cmd	*cmd1;
+	t_cmd		*tmp;
+	t_cmd		*cmd1;
 	//int		cursor;
-	short	two;
-	int		two_val;
+	short		two;
+	int			two_val;
 
 
 	cmd1 = NULL;

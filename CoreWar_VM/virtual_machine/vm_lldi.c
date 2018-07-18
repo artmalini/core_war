@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_lldi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 14:11:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/06/18 14:11:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -10,7 +21,7 @@
 ** 164 == (T_DIR, T_DIR, T_REG)
 */
 
-void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
+void		vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;
 	int		val1;
@@ -29,7 +40,7 @@ void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
 }
 
-void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
+void		lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		res;
 	int		arg[5];
@@ -55,7 +66,7 @@ void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
+void		lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	char	a;
 	int		res;
@@ -83,7 +94,7 @@ void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	char	a;
 	int		res;
@@ -103,7 +114,7 @@ void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_lldi(t_vm *vm, t_cmd *cmd)
+void		vm_lldi(t_vm *vm, t_cmd *cmd)
 {
 	char	a;
 	char	b;

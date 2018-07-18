@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_and.c                                           :+:      :+:    :+:   */
+/*   vm_and1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvertohr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-void	and(t_vm *vm, t_proc *proc)
+void			and(t_vm *vm, t_proc *proc)
 {
 	int	arg[3];
 
@@ -22,7 +22,7 @@ void	and(t_vm *vm, t_proc *proc)
 	param_op(vm, proc, arg);
 }
 
-static void	choose_op(int *arg, t_proc *proc)
+static void		choose_op(int *arg, t_proc *proc)
 {
 	if (proc->instruction == 6)
 		proc->reg[arg[2] - 1] = arg[0] & arg[1];
@@ -36,7 +36,7 @@ static void	choose_op(int *arg, t_proc *proc)
 		proc->carry = 0;
 }
 
-static void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
+static void		param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
 {
 	if (PARAM2 == REG)
 	{
@@ -60,14 +60,14 @@ static void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
 	proc->pc = *pc;
 }
 
-int	is_reg(int value)
+int				is_reg(int value)
 {
 	if (value > 0 && value < REG_NUMBER)
 		return (1);
 	return (0);
 }
 
-int	get_reg(t_vm *vm, int *i)
+int				get_reg(t_vm *vm, int *i)
 {
 	int	reg;
 
@@ -77,7 +77,7 @@ int	get_reg(t_vm *vm, int *i)
 	return (reg);
 }
 
-int	get_ind(t_vm *vm, int *i)
+int				get_ind(t_vm *vm, int *i)
 {
 	int	ind;
 
@@ -106,17 +106,17 @@ long int		get_value(t_vm *vm, int index)
 	return (value);
 }
 
-int	mod(int a, int b)
+int				mod(int a, int b)
 {
 	if (a % b >= 0)
 		return (a % b);
 	return ((a % b) + b);
 }
 
-int	get_dir(t_vm *vm, int *i, int op_code)
+int				get_dir(t_vm *vm, int *i, int op_code)
 {
-	int	dir;
-	int	j;
+	int			dir;
+	int			j;
 
 	j = 0;
 	dir = 0;
@@ -142,9 +142,9 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 	return (dir);
 }
 
-void		param_op(t_vm *vm, t_proc *proc, int *arg)
+void			param_op(t_vm *vm, t_proc *proc, int *arg)
 {
-	int	pc;
+	int			pc;
 
 	proc->pc++;
 	pc = proc->pc + 1;

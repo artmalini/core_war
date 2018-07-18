@@ -6,5 +6,5 @@ C_FLAGS =  -std=c11 -Wall -Wextra -Werror  -g -isysroot /Applications/Xcode.app/
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/includes -I/Users/vmakahon/UNIT_Factory/JetBrains/CLion/CoreWar_VM/libft/includes 
+C_INCLUDES = -I/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/includes -I/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/libft/includes 
 

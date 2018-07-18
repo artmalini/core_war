@@ -52,7 +52,7 @@ int			ft_isnumber(char *str)
 	return (1);
 }
 
-static void	champs(t_vm *vm, char *arg)
+void		champs(t_vm *vm, char *arg)
 {
 	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 	{

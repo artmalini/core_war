@@ -57,11 +57,19 @@
 **					[Macros for Virtual Machine]
 */
 
+# define BUF_SIZE			5
+
 # define MAX_ARGS_NUMBER    4
 # define MAX_PLAYERS        4
-# define MEM_SIZE           (4 * 1024)
-# define IDX_MOD            (MEM_SIZE / 8)
+# define NBR_LIVE			21
+# define MAX_CHECKS			10
+# define CYCLE_DELTA		50
+# define CYCLE_TO_DIE		1536
+# define MEM_SIZE           (4 * 1024)//4096
+# define IDX_MOD            (MEM_SIZE / 8)//512
 # define CHAMP_MAX_SIZE     (MEM_SIZE / 6)
+
+typedef char 		t_arg_type;
 
 typedef struct		s_op
 {

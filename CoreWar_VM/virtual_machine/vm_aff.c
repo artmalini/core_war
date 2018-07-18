@@ -12,16 +12,16 @@
 
 #include "vm.h"
 
-int	is_reg(int value)
+static int		is_reg(int value)
 {
 	if (value > 0 && value < REG_NUMBER)
 		return (1);
 	return (0);
 }
 
-int	get_reg(t_vm *vm, int *i)
+static int		get_reg(t_vm *vm, int *i)
 {
-	int	reg;
+	int			reg;
 
 	reg = 0;
 	reg = (unsigned char)vm->arena[(*i) % MEM_SIZE].acb;
@@ -29,10 +29,10 @@ int	get_reg(t_vm *vm, int *i)
 	return (reg);
 }
 
-void	vm_aff(t_vm *vm, t_cmd *cmd)
+void			vm_aff(t_vm *vm, t_cmd *cmd)
 {
-	int	arg1;
-	int	pc;
+	int			arg1;
+	int			pc;
 
 	cmd->idx++;
 	pc = cmd->idx + 1;

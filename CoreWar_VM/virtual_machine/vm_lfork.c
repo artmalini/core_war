@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_lfork.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/18 14:11:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/06/18 14:11:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
-void		lfork_update_reg(int *dest, int *host)
+static void		lfork_update_reg(int *dest, int *host)
 {
-	int i;
+	int			i;
 
 	i = -1;
 	while (++i < REG_NUMBER)
 		dest[i] = host[i];
 }
 
-t_cmd		*lfork_add_list(t_cmd *cmd1)
+static t_cmd	*lfork_add_list(t_cmd *cmd1)
 {
-	t_cmd	*lst;
+	t_cmd		*lst;
 
 	lst = NULL;
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
@@ -34,7 +45,7 @@ t_cmd		*lfork_add_list(t_cmd *cmd1)
 	return (lst);
 }
 
-void	vm_lfork(t_vm *vm, t_cmd **cmd)
+void			vm_lfork(t_vm *vm, t_cmd **cmd)
 {
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
