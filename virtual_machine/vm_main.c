@@ -656,14 +656,11 @@ void	vm_load_arena(t_vm *vm)
 	i = 1;
 	if (!vm->debug)
 		vm_load_ncurses();
-
-	//vm_dump_arena(vm);
 	//while (++i < 2)
 	//	vm_play_arena(vm);
 	while (i)
 	{		
 		c = vm->cmd;
-		//vm_play_arena();
 		if (!vm->debug)
 			vm_play_arena(vm);		
 		while (c)

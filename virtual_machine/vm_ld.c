@@ -9,7 +9,7 @@
 void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 {
 	if (vm->debug)
-		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, one, cmd->reg[hex - 1]);
+		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, one, hex);
 	cmd->reg[hex - 1] = one;
 	if (one == 0)
 		cmd->carry = 1;

@@ -57,7 +57,7 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	{
 		tmp = fork_add_list(*cmd);
 		if (vm->debug)
-			ft_printf("|P\t%d| fork |%d| (%d)\n", tmp->nbr_process, two_val, two);
+			ft_printf("|P\t%d| fork |%d| (%d)\n", tmp->nbr_process, two_val, tmp->idx + two_val);
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
 		while (cmd1->next != NULL)
