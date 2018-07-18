@@ -131,8 +131,10 @@ typedef struct		s_vm
 **					[MAIN FUNCTIONS]
 */
 
+void				vm_load_champs(t_vm *vm);
 int					vm_its_cmd(t_vm *vm, t_cmd *cmd);
 void				vm_read_champ(t_vm *vm, int nbr_player);
+void				load_res(t_vm *vm, t_cmd *cmd, int direct);
 void				vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex);
 
 /*
@@ -148,6 +150,8 @@ void				vm_aff(t_vm *vm, t_cmd *cmd);
 void				vm_xor(t_vm *vm, t_cmd *cmd);
 void				vm_sub(t_vm *vm, t_cmd *cmd);
 void				vm_lld(t_vm *vm, t_cmd *cmd);
+void				vm_sti(t_vm *vm, t_cmd *cmd);
+void				vm_lldi(t_vm *vm, t_cmd *cmd);
 void				vm_zjmp(t_vm *vm, t_cmd *cmd);
 void				vm_live(t_vm *vm, t_cmd *cmd);
 void				vm_fork(t_vm *vm, t_cmd **cmd);
@@ -183,23 +187,6 @@ void				vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i);
-
-/*
-**					[vm_lldi.c]
-*/
-
-void				vm_lldi(t_vm *vm, t_cmd *cmd);
-void				vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex);
-void				lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex);
-void				lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex);
-void				vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i);
-
-/*
-**					[vm_load.c]
-*/
-
-void				vm_load_champs(t_vm *vm);
-void				load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl);
 
 /*
 **					[vm_lst.c]
@@ -252,18 +239,6 @@ int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
 int					vm_calc_steps(int hex, int pos);
 int					vm_step_shift(int type, int label_size);
 void				vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
-
-/*
-**					[vm_sti.c]
-*/
-
-void				vm_sti(t_vm *vm, t_cmd *cmd);
-int					vm_rid_sti(t_vm *vm, t_cmd *cmd);
-int					vm_rrr_sti(t_vm *vm, t_cmd *cmd);
-int					vm_rrd_sti(t_vm *vm, t_cmd *cmd);
-int					vm_rir_sti(t_vm *vm, t_cmd *cmd);
-int					vm_rdd_sti(t_vm *vm, t_cmd *cmd);
-void				load_res(t_vm *vm, t_cmd *cmd, int direct);
 
 /*
 **					[DEBUG and PRINT and ERROR]

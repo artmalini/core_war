@@ -13,19 +13,19 @@
 #include "vm.h"
 
 /*
-** 84  == (T_REG, T_REG, T_REG)
-** 100 == (T_REG, T_DIR, T_REG)
-** 148 == (T_DIR, T_REG, T_REG)
-** 212 == (T_IND, T_REG, T_REG)
-** 228 == (T_IND, T_DIR, T_REG)
-** 164 == (T_DIR, T_DIR, T_REG)
+**				84  == (T_REG, T_REG, T_REG)
+**				100 == (T_REG, T_DIR, T_REG)
+**				148 == (T_DIR, T_REG, T_REG)
+**				212 == (T_IND, T_REG, T_REG)
+**				228 == (T_IND, T_DIR, T_REG)
+**				164 == (T_DIR, T_DIR, T_REG)
 */
 
-void		vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
+static void		vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
-	int		one;
-	int		val1;
-	char	a;
+	int			one;
+	int			val1;
+	char		a;
 
 	val1 = cmd->idx - val + i;
 	one = 0xFF & vm->arena[mdx(val1)].acb;
@@ -40,11 +40,11 @@ void		vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
 }
 
-void		lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
+static void		lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
-	int		res;
-	int		arg[5];
-	int		tmp[5];
+	int			res;
+	int			arg[5];
+	int			tmp[5];
 
 	if (hex == 228)
 	{
@@ -66,11 +66,11 @@ void		lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void		lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
+static void		lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
-	char	a;
-	int		res;
-	int		arg[5];
+	char		a;
+	int			res;
+	int			arg[5];
 
 	a = 0;
 	res = 0;
@@ -94,11 +94,11 @@ void		lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void		vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
+static void		vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
-	char	a;
-	int		res;
-	int		arg[5];
+	char		a;
+	int			res;
+	int			arg[5];
 
 	a = 0;
 	res = 0;
@@ -114,12 +114,12 @@ void		vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void		vm_lldi(t_vm *vm, t_cmd *cmd)
+void			vm_lldi(t_vm *vm, t_cmd *cmd)
 {
-	char	a;
-	char	b;
-	int		res;
-	int		hex;
+	char		a;
+	char		b;
+	int			res;
+	int			hex;
 
 	hex = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	if (hex == 84)

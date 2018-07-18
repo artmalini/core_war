@@ -96,4 +96,3 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 	}
 	return (1);
 }
-

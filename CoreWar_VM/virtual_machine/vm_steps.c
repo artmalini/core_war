@@ -36,7 +36,6 @@ void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 
 }
 
-
 int			vm_step_shift(int type, int label_size)
 {
 	if (type == REG_CODE)

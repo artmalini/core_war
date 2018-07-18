@@ -49,8 +49,6 @@ int			main(int argc, char **argv)
 //  endwin();
 // }
 
-
-
 // // void vm_read(char *av, int fd)
 // // {
 // // 	char *
@@ -208,7 +206,6 @@ void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
 	vm->cycle = 0;
 	//vm->lifes = 0;
 }*/
-
 
 /*void	vm_curet_next(t_cmd *cmd)
 {
