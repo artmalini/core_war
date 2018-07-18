@@ -48,20 +48,22 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 
 void		vm_play_arena(t_vm *vm)
 {
-	erase();
-	vm_game_stat(vm);
+	//erase();
+	//vm_game_stat(vm);
 	int	i;
-	int	j;
+	//int	j;
 
 	i = 0;
-	j = -1;
+	//j = -1;
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
 		//if (vm->arena[i].bold > 0)
 		//	attron(A_BOLD);
-		attron(COLOR_PAIR(vm->arena[i].rgb));
-		printw("%02x ", 0xFF & vm->arena[i].acb);
+
+		//attron(COLOR_PAIR(vm->arena[i].rgb));
+		//printw("%02x ", 0xFF & vm->arena[i].acb);
+		ft_printf("%02x ", 0xFF & vm->arena[i].acb);
 		//attroff(COLOR_PAIR(vm->arena[i].rgb));
 		// if (vm->arena[i].bold > 0)
 		// {
@@ -72,14 +74,17 @@ void		vm_play_arena(t_vm *vm)
 		{
 			//mem += 64;
 			//if (i + 1 < MEM_SIZE)
-			attron(COLOR_PAIR(2));
-			print_header(++j, vm);
-			printw("\n");
+
+			//attron(COLOR_PAIR(2));
+			//print_header(++j, vm);
+			//printw("\n");
+			ft_printf("\n");
 		}
 		i++;
 	}
-	printw("\n");
-	refresh();
+	ft_printf("\n");
+	//printw("\n");
+	//refresh();
 }
 
 void		vm_create_arena(t_vm *vm)
@@ -105,7 +110,7 @@ void		vm_load_arena(t_vm *vm)
 
 
 	i = 1;
-	vm_load_ncurses();
+	//vm_load_ncurses();
 
 	//vm_dump_arena(vm);
 	//while (++i < 2)
@@ -114,7 +119,7 @@ void		vm_load_arena(t_vm *vm)
 	{
 		c = vm->cmd;
 		//vm_play_arena();
-		vm_play_arena(vm);
+		//vm_play_arena(vm);
 		while (c)
 		{
 			if (!c->flag)
@@ -140,6 +145,6 @@ void		vm_load_arena(t_vm *vm)
 		}
 	}
 
-	getch();
-	endwin();
+	//getch();
+	//endwin();
 }

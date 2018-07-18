@@ -87,6 +87,11 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 			if (ft_strcmp(av[i], "-n") == 0)
 				vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, &i, ac);
 		}
+		if (!ft_strcmp(av[i], "-d"))
+		{
+			vm->debug = 1;
+			i++;
+		}
 		champs(vm, av[i]);
 	}
 	if (vm->nbr_next == 0)

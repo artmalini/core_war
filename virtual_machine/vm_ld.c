@@ -6,10 +6,11 @@
 ** 208 == (T_IND, T_REG)
 */
 
-void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one)
+void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 {
-	cmd->reg[vm->arena[mdx(cmd->idx + 6)].acb - 1] = one;
-	//ft_printf("ld |%d| value|%d|", vm->arena[mdx(cmd->idx + 6)].acb - 1, one);
+	cmd->reg[hex] = one;
+	if (vm->debug)
+		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, one, hex);
 	if (one == 0)
 		cmd->carry = 1;
 	else
@@ -63,7 +64,7 @@ void	vm_ld(t_vm *vm, t_cmd *cmd)
 		one += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 		hex = 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 		if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
-			vm_ld_dr(vm, cmd, one);
+			vm_ld_dr(vm, cmd, one, hex);
 	}
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
 		vm_ld_ir(vm, cmd);

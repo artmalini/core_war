@@ -27,7 +27,7 @@ t_cmd		*lfork_add_list(t_cmd *cmd1)
 		lst->off = 0;
 		lst->carry = cmd1->carry;
 		lst->life = 1;
-		lst->nbr_process = 1;
+		lst->nbr_process = cmd1->nbr_process++;
 		lst->flag = 0;
 		lst->next = NULL;
 	}	

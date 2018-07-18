@@ -27,7 +27,7 @@ t_cmd		*fork_add_list(t_cmd *cmd1)
 		lst->off = 0;
 		lst->carry = cmd1->carry;
 		lst->life = 1;
-		lst->nbr_process = 1;
+		lst->nbr_process = cmd1->nbr_process++;
 		lst->flag = 0;
 		lst->next = NULL;
 		//ft_printf("lst->idx |%d|", lst->idx);
@@ -55,8 +55,9 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	//cursor = two;
 	if (cmd1)
 	{
-		//ft_printf("fork ok1\n");
 		tmp = fork_add_list(*cmd);
+		if (vm->debug)
+			ft_printf("|P\t%d| fork |%d| (%d)\n", tmp->nbr_process, two_val, two);
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
 		while (cmd1->next != NULL)

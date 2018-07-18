@@ -222,6 +222,7 @@ typedef struct		s_vm
 	int				total_process;
 	int				total_cycle;
 	int				win;
+	int				debug;
 }					t_vm;
 
 typedef struct		s_op

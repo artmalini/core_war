@@ -50,135 +50,135 @@ string.h
 get_next_line.h
 ../libft/includes/get_next_line.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_add.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_add.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_aff.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_aff.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_and.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_and.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_arena.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_arena.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_cmd.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_cmd.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_cycles.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_cycles.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_errors.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_errors.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_fork.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_fork.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_free_and_init.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_free_and_init.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ld.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_ld.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ldi.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_ldi.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_lfork.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_lfork.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_live.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_live.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_lld.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_lld.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_lldi.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_lldi.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_load.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_load.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_lst.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_lst.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_main.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_main.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_mng_bit1.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_mng_bit1.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_mng_bit2.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_mng_bit2.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_mng_func.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_mng_func.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ncurses.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_ncurses.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_op.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_op.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_or.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_or.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_params.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_params.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_print.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_print.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_read.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_read.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_st.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_st.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_steps.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_steps.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_sti.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_sti.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_sub.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_sub.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_xor.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_xor.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_zjmp.c
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm_zjmp.c
 vm.h
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+/home/artem/unit/corewar/core_war/CoreWar_VM/virtual_machine/vm.h
 

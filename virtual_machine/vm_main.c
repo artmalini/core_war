@@ -601,6 +601,29 @@ void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 		vm_cmd_triger2(vm, cmd, hex);
 }
 
+/*void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
+{
+	int		pos;
+	int		hex;
+
+	hex = vm->arena[cmd->idx].acb;
+	if (cmd->wait == 0)
+	{
+		if (vm_its_cmd(vm, cmd))
+			vm_cmd_triger(vm, cmd, hex);
+		else
+		{
+			pos = vm->arena[cmd->idx + 1].acb;
+			vm_next_step(vm, cmd, vm_calc_steps(hex, pos));
+		}
+			//printw("%d %d\n", pos, hex);
+			//refresh();		
+		cmd->playing = 0;
+	}
+	else
+		cmd->wait -= 1;
+}*/
+
 void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		pos;
@@ -631,7 +654,8 @@ void	vm_load_arena(t_vm *vm)
 
 
 	i = 1;
-	vm_load_ncurses();
+	if (!vm->debug)
+		vm_load_ncurses();
 
 	//vm_dump_arena(vm);
 	//while (++i < 2)
@@ -640,7 +664,8 @@ void	vm_load_arena(t_vm *vm)
 	{		
 		c = vm->cmd;
 		//vm_play_arena();
-		vm_play_arena(vm);		
+		if (!vm->debug)
+			vm_play_arena(vm);		
 		while (c)
 		{
 			if (!c->flag)
@@ -665,9 +690,11 @@ void	vm_load_arena(t_vm *vm)
 			c = c->next;
 		}
 	}
-	
-	getch();
-	endwin();
+	if (!vm->debug)
+	{
+		getch();
+		endwin();		
+	}
 }
 
 static void	free_vm(t_vm *vm)
@@ -724,6 +751,7 @@ static void	init(t_vm *vm)
 	vm->total_process = 1;
 	vm->cycle = 0;
 	vm->total_cycle = 0;
+	vm->debug = 0;
 	vm->cmd = NULL;
 }
 
