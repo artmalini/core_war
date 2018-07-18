@@ -11,7 +11,7 @@ void	vm_zjmp(t_vm *vm, t_cmd *cmd)
 		place <<= 8;
 		place += 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 		if (vm->debug)
-			ft_printf("|P\t%d| |%d|\n", cmd->nbr_process, place % IDX_MOD);
+			ft_printf("|P\t%d| zjmp |%d|\n", cmd->nbr_process, place % IDX_MOD);
 		vm_next_step(vm, cmd, place % IDX_MOD);
 	}
 	else

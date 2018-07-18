@@ -16,7 +16,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	int		dat;
 
 	i = -1;
-	reg1 = (vm->arena[mdx(cmd->idx + 2)].acb) & 0xFF;
+	reg1 =  0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	if (reg1 < 0 && reg1 >= REG_NUMBER)
 		return ;
 	dat = cmd->reg[reg1 - 1];
@@ -28,7 +28,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 		//vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 	}
 	if (vm->debug)
-		ft_printf("|P\t%d| sti |%d| |r%d| |%d|\n", cmd->nbr_process, direct, reg1, dat);
+		ft_printf("|P\t%d| sti |%d| |r%d| val|%d| %d\n", cmd->nbr_process, direct, reg1, dat, mdx(cmd->idx + direct));
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
 }
 
@@ -78,7 +78,7 @@ int		vm_rir_sti(t_vm *vm, t_cmd *cmd)
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 3)].acb;
 
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	res = (arg1 + arg2);
+	res = (arg1 + cmd->reg[arg2 - 1]);
 	return (res);
 }
 
@@ -96,7 +96,7 @@ int		vm_rrd_sti(t_vm *vm, t_cmd *cmd)//ultima end2:
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	//if (vm->debug)
 	//	ft_printf("|P\t%d|sti arg1|%d| arg2|%d|\n", cmd->nbr_process, arg1, arg2);
-	res = (arg1 + arg2);
+	res = (cmd->reg[arg1 - 1] + arg2);
 	return (res);
 }
 
@@ -109,7 +109,7 @@ int		vm_rrr_sti(t_vm *vm, t_cmd *cmd)
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	res = (arg1 + arg2);
+	res = (cmd->reg[arg1 - 1] + cmd->reg[arg2 - 1]);
 	return (res);
 }
 
