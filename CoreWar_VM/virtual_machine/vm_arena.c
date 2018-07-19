@@ -115,7 +115,7 @@ void		vm_load_arena(t_vm *vm)
 	//vm_dump_arena(vm);
 	//while (++i < 2)
 	//	vm_play_arena(vm);
-	while (i)
+	while (i++)
 	{
 		c = vm->cmd;
 		//vm_play_arena();

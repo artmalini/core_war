@@ -28,7 +28,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 		//vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 	}
 	if (vm->debug)
-		ft_printf("|P\t%d| sti |%d| |r%d| val|%d| %d\n", cmd->nbr_process, direct, reg1, dat, mdx(cmd->idx + direct));
+		ft_printf("|P\t%d| sti |%d| |r%d| (with pc and mod %d)\n", cmd->nbr_process, direct, reg1, mdx(cmd->idx + direct));
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
 }
 

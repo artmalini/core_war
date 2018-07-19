@@ -448,6 +448,8 @@ void	vm_curet_next(t_cmd *cmd)
 	{
 		if (!cmd->life)
 		{
+			//cmd->nbr_process--;
+			//cmd->off = 1;
 			cmd->flag = 1;
 		}
 		cmd->life = 0;
@@ -457,7 +459,7 @@ void	vm_curet_next(t_cmd *cmd)
 
 void	vm_cycler_todie(t_vm *vm, int *i)
 {
-	//vm_curet_next(vm->cmd);
+	vm_curet_next(vm->cmd);
 	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
 		*i = 0;
 	if (vm->lifes < NBR_LIVE)
@@ -467,7 +469,7 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 		{
-			vm_curet_next(vm->cmd);
+			//vm_curet_next(vm->cmd);
 			vm->cycle_to_die = 0;
 		}
 		vm->lifes = 0;
@@ -500,7 +502,7 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	if ((i = vm_has_cmd(vm, cmd)) != 0)
 	{
 		cmd->playing = 1;		
-		cmd->wait = op_tab[i - 1].cycles;
+		cmd->wait = op_tab[i - 1].cycles - 2;
 		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
 		//
@@ -679,8 +681,7 @@ void	vm_load_arena(t_vm *vm)
 					}
 					else
 						vm_run_waiting_cycle(vm, c);
-				}
-				
+				}				
 			//}
 			//printw("%d\n", c->wait);
 			//refresh();

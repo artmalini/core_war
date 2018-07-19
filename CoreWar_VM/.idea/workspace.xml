@@ -26,7 +26,7 @@
       <file leaf-file-name="vm_main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
+            <state relative-caret-position="-384">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
@@ -35,17 +35,26 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            <state relative-caret-position="735">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vm_arena.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vm_arena.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_arena.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="231">
+              <caret line="143" selection-start-line="143" selection-end-line="143" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vm_op.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/virtual_machine/vm_op.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -53,17 +62,8 @@
       <file leaf-file-name="vm_cycles.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cycles.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="1253">
               <caret line="88" selection-start-line="88" selection-end-line="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vm_ncurses.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/virtual_machine/vm_ncurses.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -71,17 +71,17 @@
       <file leaf-file-name="vm_st.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_st.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="645">
               <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vm_sti.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vm_sti.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sti.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
+            <state relative-caret-position="924">
+              <caret line="125" column="17" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -89,7 +89,7 @@
       <file leaf-file-name="vm_cmd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cmd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
+            <state relative-caret-position="848">
               <caret line="69" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
@@ -119,7 +119,6 @@
         <option value="$PROJECT_DIR$/includes/op.h" />
         <option value="$PROJECT_DIR$/includes/asm.h" />
         <option value="$PROJECT_DIR$/virtual_machine/vm_and1.c" />
-        <option value="$PROJECT_DIR$/virtual_machine/vm_op.c" />
         <option value="$PROJECT_DIR$/virtual_machine/Makefile" />
         <option value="$PROJECT_DIR$/virtual_machine/vm_sub.c" />
         <option value="$PROJECT_DIR$/virtual_machine/vm_zjmp.c" />
@@ -155,6 +154,7 @@
         <option value="$PROJECT_DIR$/includes/vm.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/virtual_machine/vm_arena.c" />
+        <option value="$PROJECT_DIR$/virtual_machine/vm_op.c" />
       </list>
     </option>
   </component>
@@ -167,9 +167,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="2560" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="30" />
+    <option name="width" value="1920" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -192,7 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,6 +209,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,7 +237,7 @@
   </component>
   <component name="RunManager" selected="Application.CoreWar_VM">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" EXPLICIT_BUILD_TARGET_NAME="all" />
-    <configuration name="CoreWar_VM" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="ultima.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CoreWar_VM" TARGET_NAME="CoreWar_VM" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" />
+    <configuration name="CoreWar_VM" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="helltrain.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CoreWar_VM" TARGET_NAME="CoreWar_VM" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" />
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.CoreWar_VM" />
@@ -260,7 +261,8 @@
       <workItem from="1531562344040" duration="9000" />
       <workItem from="1531863949451" duration="8417000" />
       <workItem from="1531873612315" duration="8000" />
-      <workItem from="1531901165602" duration="9531000" />
+      <workItem from="1531901165602" duration="10141000" />
+      <workItem from="1532001650047" duration="4083000" />
     </task>
     <task id="LOCAL-00001" summary="Clion [Auto-Push] - CoreWar_VM">
       <created>1530544377852</created>
@@ -280,7 +282,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30174000" />
+    <option name="totallyTimeSpent" value="34867000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -292,29 +294,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-33" width="1920" height="1113" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8342466" visible="true" weight="0.124406956" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8319328" visible="true" weight="0.124406956" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32857144" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49947917" weight="0.29081634" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49947917" weight="0.29007635" />
       <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49920928" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007907" side_tool="true" weight="0.32857144" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4010204" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Structure" order="1" sideWeight="0.16575342" side_tool="true" visible="true" weight="0.124406956" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4002181" />
+      <window_info id="Structure" order="1" sideWeight="0.16806723" side_tool="true" visible="true" weight="0.124406956" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32959184" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25510204" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.48091602" />
       <window_info anchor="bottom" id="Reviews" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="News Feed" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="News Feed" order="3" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,14 +330,67 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <condition expression="i == 374" language="ObjectiveC" />
+          <url>file://$PROJECT_DIR$/virtual_machine/vm_arena.c</url>
+          <line>122</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="18" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>i == 374</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i == 342</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i == 340</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i == 300</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i == 500</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>10 == i</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i &gt;= 10</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i &gt;= 500</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i &lt; 540</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>2</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -508,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_op.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virtual_machine/vm_or.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="904">
@@ -618,27 +665,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        <state relative-caret-position="735">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cycles.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/core_src (1)/core_src/ultima.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ultima.s">
       <provider selected="true" editor-type-id="text-editor" />
@@ -650,31 +680,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cmd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_arena.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/virtual_machine/vm_st.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="645">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/virtual_machine/vm_sti.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
+        <state relative-caret-position="924">
+          <caret line="125" column="17" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/core_src (1)/core_src/ultima.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cmd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-384">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_cycles.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1253">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_op.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtual_machine/vm_arena.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
         </state>
       </provider>
     </entry>
