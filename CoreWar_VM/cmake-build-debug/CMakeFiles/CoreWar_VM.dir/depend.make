@@ -49,6 +49,14 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.o: ../libft/includes/get_n
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.o: ../libft/includes/libft.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.o: ../virtual_machine/vm_cycles.c
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../includes/color.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../includes/op.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../includes/vm.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../libft/includes/libft.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o: ../virtual_machine/vm_debug.c
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o: ../includes/color.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o: ../includes/op.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o: ../includes/vm.h
@@ -72,6 +80,14 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.o: ../libft/include
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.o: ../libft/includes/get_next_line.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.o: ../libft/includes/libft.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.o: ../virtual_machine/vm_free_and_init.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../includes/color.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../includes/op.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../includes/vm.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../libft/includes/libft.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o: ../virtual_machine/vm_ft_other.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o: ../includes/color.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o: ../includes/op.h
@@ -201,6 +217,22 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_params.c.o: ../libft/includes/get_n
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_params.c.o: ../libft/includes/libft.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_params.c.o: ../virtual_machine/vm_params.c
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../includes/color.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../includes/op.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../includes/vm.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../libft/includes/libft.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o: ../virtual_machine/vm_parse_check.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../includes/color.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../includes/op.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../includes/vm.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../libft/includes/libft.h
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o: ../virtual_machine/vm_parse_read.c
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../includes/color.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../includes/op.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../includes/vm.h
@@ -208,14 +240,6 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../libft/includes/ft_pri
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../libft/includes/get_next_line.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../libft/includes/libft.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o: ../virtual_machine/vm_print.c
-
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../includes/color.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../includes/op.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../includes/vm.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../libft/includes/ft_printf.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../libft/includes/get_next_line.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../libft/includes/libft.h
-CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o: ../virtual_machine/vm_read.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o: ../includes/color.h
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o: ../includes/op.h

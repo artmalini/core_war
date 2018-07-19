@@ -74,6 +74,10 @@ vm.h
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_debug.c
+vm.h
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_errors.c
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
@@ -83,6 +87,10 @@ vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_free_and_init.c
+vm.h
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ft_other.c
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 
@@ -150,11 +158,15 @@ vm.h
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_print.c
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_parse_check.c
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 
-/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_read.c
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_parse_read.c
+vm.h
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
+
+/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_print.c
 vm.h
 /Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm.h
 

@@ -18,6 +18,7 @@ set(SOURCE_FILES
 		virtual_machine/vm_arena.c
 		virtual_machine/vm_cmd.c
 		virtual_machine/vm_cycles.c
+		virtual_machine/vm_debug.c
 		virtual_machine/vm_errors.c
 		virtual_machine/vm_fork.c
 		virtual_machine/vm_free_and_init.c
@@ -38,14 +39,14 @@ set(SOURCE_FILES
 		virtual_machine/vm_or.c
 		virtual_machine/vm_params.c
 		virtual_machine/vm_print.c
-		virtual_machine/vm_read.c
+		virtual_machine/vm_parse_check.c
 		virtual_machine/vm_st.c
 		virtual_machine/vm_steps.c
 		virtual_machine/vm_sti.c
 		virtual_machine/vm_sub.c
 		virtual_machine/vm_xor.c
 		virtual_machine/vm_zjmp.c
-		)
+		virtual_machine/vm_ft_other.c virtual_machine/vm_parse_read.c)
 
 add_executable(CoreWar_VM ${SOURCE_FILES})
 

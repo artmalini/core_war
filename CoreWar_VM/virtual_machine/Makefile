@@ -53,6 +53,8 @@ SRCS_VM	=	vm_errors.c \
 			vm_steps.c \
 			vm_cmd.c \
 			vm_lst.c \
+			vm_debug.c \
+			vm_ft_other.c \
 
 OBJS_VM	=   $(SRCS_VM:.c=.o)
 

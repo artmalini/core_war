@@ -12,13 +12,36 @@
 
 #include "vm.h"
 
-void		ft_print_error(t_error *e)
+int 		ft_error_int(t_vm *vm, int id)
 {
-	perror(vm_str_error(e->id));
-	exit(1);
+	if (!vm || !id)
+		return (ERROR);
+	if (id == ERROR_REG_CHAMP || id == ERROR_N_PARAM)
+	{
+		ft_printf("%s[%s]%s\n", RED, ft_str_cwa(id), RESET);
+		vm_usage();
+	}
+	else if (id >= ON)
+		ft_printf("%s[%s]%s\n", RED, ft_str_cwa(id), RESET);
+	exit(EXIT_FAILURE);
+	return (ERROR);
 }
 
-char 		*vm_str_error(int error)
+void 		ft_error(t_vm *vm, int id)
+{
+	if (!vm || !id)
+		return ;
+	if (id == ERROR_REG_CHAMP || id == ERROR_N_PARAM)
+	{
+		ft_printf("%s[%s]%s\n", RED, ft_str_cwa(id), RESET);
+		vm_usage();
+	}
+	else if (id >= ON)
+		ft_printf("%s[%s]%s\n", RED, ft_str_cwa(id), RESET);
+	exit(EXIT_FAILURE);
+}
+
+char 		*ft_str_cwa(int error)
 {
 	if (error == ERROR_OPEN)
 		return ("Failed to open");
@@ -48,5 +71,30 @@ char 		*vm_str_error(int error)
 //		return ("The file size is too large.");
 //	if (error == ERROR_SFILE)
 //		return ("The file size is too large.");
-	return ("Undefined\n");
+	return (ft_str_cwb(error));
+}
+
+char 		*ft_str_cwb(int error)
+{
+	if (error == ERROR_FT_ARG)
+		return ("Invalid Function Input Arguments.");
+	if (error == ERROR_CHAMP)
+		return ("Invalid Number of Champion.");
+	if (error == ERROR_NOT_CHAMP)
+		return ("No [.cor] Champion in the arena.");
+	if (error == ERROR_REG_CHAMP)
+		return ("No Champion after the number requested.");
+	if (error == ERROR_N_PARAM)
+		return ("No Number after the [-n].");
+	if (error == ERROR_BIG_CHAMP)
+		return ("Champion too heavy.");
+	if (error == ERROR_HEADER)
+		return ("The Header of a Player is incorrect.");
+	if (error == ERROR_MEMORY)
+		return ("Don't free Memory for Malloc");
+	//	if (error == ERROR_MEMORY)
+//		return ("Don't free Memory for Malloc");
+	//	if (error == ERROR_MEMORY)
+//		return ("Don't free Memory for Malloc");
+	return ("Undefined");
 }

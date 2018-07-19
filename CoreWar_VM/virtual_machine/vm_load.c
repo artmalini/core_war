@@ -47,41 +47,40 @@ void			load_res(t_vm *vm, t_cmd *cmd, int direct)
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
 }
 
-static void		load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
+static void		load_champ_to(t_vm *vm, int memory_index)
 {
-	int			index;
+	size_t		index;
 
 	index = 0;
-	//ft_printf("num_pl %d\n", num_pl);
-	while (index < champ.weight && (index + memory_index) < MEM_SIZE)
+	while (index < WEIGHT(PLAYER) && (index + memory_index) < MEM_SIZE)
 	{
-		vm->arena[index + memory_index].acb = 0xFF & champ.prog[index];
-		vm->arena[index + memory_index].rgb = 1 + num_pl % 4;
-		vm->arena[index + memory_index].asc_rgb = 1 + num_pl % 4;
+		vm->arena[index + memory_index].acb = (char)(0xFF & PROG(PLAYER)[index]);
+		vm->arena[index + memory_index].rgb = 1 + (int)PLAYER % 4;
+		vm->arena[index + memory_index].asc_rgb = 1 + (int)PLAYER % 4;
 		index++;
 	}
 }
 
 void			vm_load_champs(t_vm *vm)
 {
-	int			space_bt_champs;
-	int			num_pl;
 	int			space;
+	size_t		space_bt_champs;
 
-	num_pl = 0;
-	space_bt_champs = MEM_SIZE / vm->nbr_next;
-	if (vm->nbr_next == 1)
-		space_bt_champs = 0;
 	space = 0;
-	while (num_pl < vm->nbr_next)
+	vm->current_player = 1;
+	space_bt_champs = MEM_SIZE / TOTAL_PLAYERS;
+	if (TOTAL_PLAYERS == 1)
+		space_bt_champs = 0;
+	while (PLAYER < TOTAL_PLAYERS)
 	{
-		
-		vm->tab_champ[num_pl].idx = space;
+		IDX(PLAYER) = space;
 		//vm->tab_champ[num_pl].life = 0;
-		ft_printf("vm_load_champs vm->tab_champ[num_pl].idx|%d|\n", vm->tab_champ[num_pl].idx);
-				
-		load_champ_to(vm, vm->tab_champ[num_pl], space, num_pl);
+		if (vm->debug == ON)
+			ft_printf("* Player %d, Start position %d\n",
+					  (PLAYER + 1), IDX(PLAYER));
+		load_champ_to(vm, space);
 		space += space_bt_champs;
-		num_pl++;
+		vm->current_player++;
 	}
+	vm->current_player = OFF;
 }

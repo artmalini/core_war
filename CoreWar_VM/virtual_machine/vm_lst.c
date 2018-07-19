@@ -12,52 +12,39 @@
 
 #include "vm.h"
 
-t_cmd		*add_list(t_vm *vm, int i)
+static t_cmd	*add_list(t_vm *vm)
 {
-	t_cmd	*lst;
+	t_cmd		*lst;
 
-	lst = NULL;
-	lst = (t_cmd *)malloc(sizeof(t_cmd));
-	if (lst)
+	if ((lst = ft_memalloc(sizeof(t_cmd))))
 	{
-		lst->reg[0] = vm->tab_champ[i].id;
-		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
-		lst->rgb = 5 + (i % 4);//цвет каретки
-		lst->playing = 0;
-		lst->wait = 0;
-		lst->on = 0;
-		lst->off = 0;
-		lst->carry = 0;
-		lst->life = 0;
-		lst->nbr_process = 1;
-		lst->flag = 0;
-		lst->next = NULL;
+		lst->reg[0] = ID(PLAYER);
+		lst->idx = IDX(PLAYER);//индекс первой  позиции курсора
+		lst->rgb = 5 + ((int)PLAYER % 4);//цвет каретки
+		lst->nbr_process = ON;
 		//ft_printf("lst->idx |%d\n|", lst->idx);
 	}
+	else
+		ft_error(vm, ERROR_MEMORY);
 	return (lst);
 }
 
-
-
-void		vm_load_lists(t_cmd **cmd, t_vm *vm)
+void			vm_load_lists(t_vm *vm, t_cmd **cmd, t_cmd	*tmp)
 {
-	int		i;
-	t_cmd	*tmp;
-
-	i = -1;
-	while (++i < vm->nbr_next)
+	vm->current_player = 1;
+	while (PLAYER < TOTAL_PLAYERS)
 	{
-		tmp = *cmd;
-		if (tmp)
+		if ((tmp = *cmd))
 		{
 			while (tmp->next != NULL)
 				tmp = tmp->next;
-			tmp->next = add_list(vm, i);
+			tmp->next = add_list(vm);
 			//tmp->next->flag = 1;
 		}
 		else
-			*cmd = add_list(vm, i);
-		ft_printf("@@@ %d %d\n", vm->tab_champ[i].id, vm->tab_champ[i].idx);
+			*cmd = add_list(vm);
+		vm->current_player++;
+//		ft_printf("@@@ %d %d\n", ID(PLAYER), IDX(PLAYER));
 	}
-	//vm_glow_cur(vm, *cmd);
+	vm->current_player = OFF;
 }
