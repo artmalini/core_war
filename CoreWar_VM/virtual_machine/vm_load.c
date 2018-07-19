@@ -24,24 +24,26 @@
 	}
 }*/
 
-void		load_res(t_vm *vm, t_cmd *cmd, int direct)
+void			load_res(t_vm *vm, t_cmd *cmd, int direct)
 {
-	int		i;
-	int		val;
-	int		dat;
+	int			i;
+	int			reg1;
+	int			dat;
 
 	i = -1;
-	val = (0xFF & vm->arena[mdx(cmd->idx + 2)].acb);
-	if (val < 0 && val >= REG_NUMBER)
+	reg1 =  0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
+	if (reg1 < 0 && reg1 >= REG_NUMBER)
 		return ;
-	dat = cmd->reg[val - 1];
+	dat = cmd->reg[reg1 - 1];
 	while (++i <= 3)
 	{
-		vm->arena[mdx(cmd->idx + direct + i)].acb = ((dat * -1) >> ((3 - i) * 8)) & 0xFF;
+		vm->arena[mdx(cmd->idx + direct + i)].acb = ((dat) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + direct + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 4;
 		//vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 	}
+	if (vm->debug)
+		ft_printf("|P\t%d| sti |%d| |r%d| val|%d| %d\n", cmd->nbr_process, direct, reg1, dat, mdx(cmd->idx + direct));
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
 }
 

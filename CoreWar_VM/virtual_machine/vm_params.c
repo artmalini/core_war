@@ -12,9 +12,9 @@
 
 #include "vm.h"
 
-int			vm_param_n(t_vm *vm, char **av, int *i, int ac)
+static int		vm_param_n(t_vm *vm, char **av, int *i, int ac)
 {
-	int		id;
+	int			id;
 
 	if (ac > (*i) + 1)
 	{
@@ -39,9 +39,9 @@ int			vm_param_n(t_vm *vm, char **av, int *i, int ac)
 	return (vm->nbr_next);
 }
 
-int			ft_isnumber(char *str)
+int				ft_isnumber(char *str)
 {
-	int		i;
+	int			i;
 
 	i = -1;
 	while (str[++i])
@@ -52,7 +52,7 @@ int			ft_isnumber(char *str)
 	return (1);
 }
 
-void		champs(t_vm *vm, char *arg)
+static void		champs(t_vm *vm, char *arg)
 {
 	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 	{
@@ -68,7 +68,7 @@ void		champs(t_vm *vm, char *arg)
 		vm_usage();
 }
 
-int			vm_get_param(char **av, t_vm *vm, int ac)
+int				vm_get_param(char **av, t_vm *vm, int ac)
 {
 	int		i;
 
@@ -78,7 +78,7 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 		if (((ft_strcmp(av[i], "-n") == 0) || ft_strcmp(av[i], "-dump") == 0))
 		{
 			if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1
-					&& ac > i + 2 && ft_isnumber(av[i + 1]))
+				&& ac > i + 2 && ft_isnumber(av[i + 1]))
 			{
 				i++;
 				vm->dump_cycle = ft_atoi(av[i]);
@@ -86,6 +86,11 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 			}
 			if (ft_strcmp(av[i], "-n") == 0)
 				vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, &i, ac);
+		}
+		if (!ft_strcmp(av[i], "-d"))
+		{
+			vm->debug = 1;
+			i++;
 		}
 		champs(vm, av[i]);
 	}
