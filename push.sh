@@ -5,7 +5,7 @@ make clean
 git status
 git add .
 git status
-git commit -m "[CoreWar]: Day 45 -  vmakahon (auto-push)"
+git commit -m "[CoreWar]: Day 46 -  vmakahon (auto-push)"
 git status
 git push origin master
 git status

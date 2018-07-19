@@ -14,7 +14,7 @@
 
 static void		lfork_update_reg(int *dest, int *host)
 {
-	int			i;
+	int i;
 
 	i = -1;
 	while (++i < REG_NUMBER)
@@ -38,18 +38,18 @@ static t_cmd	*lfork_add_list(t_cmd *cmd1)
 		lst->off = 0;
 		lst->carry = cmd1->carry;
 		lst->life = 1;
-		lst->nbr_process = 1;
+		lst->nbr_process = cmd1->nbr_process++;
 		lst->flag = 0;
 		lst->next = NULL;
-	}	
+	}
 	return (lst);
 }
 
 void			vm_lfork(t_vm *vm, t_cmd **cmd)
 {
-	t_cmd	*tmp;
-	t_cmd	*cmd1;
-	short	two;
+	t_cmd		*tmp;
+	t_cmd		*cmd1;
+	short		two;
 
 	cmd1 = NULL;
 	tmp = NULL;

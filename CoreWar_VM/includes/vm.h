@@ -125,6 +125,7 @@ typedef struct		s_vm
 	int				total_process;
 	int				total_cycle;
 	int				win;
+	int				debug;
 }					t_vm;
 
 /*
@@ -134,6 +135,7 @@ typedef struct		s_vm
 void				vm_load_champs(t_vm *vm);
 int					vm_its_cmd(t_vm *vm, t_cmd *cmd);
 void				vm_read_champ(t_vm *vm, int nbr_player);
+int					vm_get_param(char **av, t_vm *vm, int ac);
 void				load_res(t_vm *vm, t_cmd *cmd, int direct);
 void				vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex);
 
@@ -228,9 +230,7 @@ void				vm_pl_stats(t_vm *vm, int i);
 */
 
 int					ft_isnumber(char *str);
-void				champs(t_vm *vm, char *arg);
-int					vm_get_param(char **av, t_vm *vm, int ac);
-int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
+
 
 /*
 **					[vm_steps.c]
