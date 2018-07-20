@@ -22,7 +22,7 @@ t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
 		lst->idx = cmd1->idx;
 		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
-		lst->wait = 0;
+		lst->wait = 1;
 		lst->on = 0;
 		lst->off = 0;
 		lst->carry = cmd1->carry;

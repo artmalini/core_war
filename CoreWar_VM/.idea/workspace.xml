@@ -201,9 +201,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="2560" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="y" value="30" />
+    <option name="width" value="1920" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -283,19 +284,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.CoreWar_VM">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" EXPLICIT_BUILD_TARGET_NAME="all">
-      <envs />
-    </configuration>
-    <configuration name="CoreWar_VM" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-d zork.cor zork.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CoreWar_VM" TARGET_NAME="CoreWar_VM" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM">
-      <envs />
-    </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CoreWar_VM" />
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" EXPLICIT_BUILD_TARGET_NAME="all" />
+    <configuration name="CoreWar_VM" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-d zork.cor zork.cor" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CoreWar_VM" TARGET_NAME="CoreWar_VM" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CoreWar_VM" RUN_TARGET_NAME="CoreWar_VM" />
+    <list>
+      <item itemvalue="Application.Build All" />
+      <item itemvalue="Application.CoreWar_VM" />
     </list>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>

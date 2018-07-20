@@ -680,7 +680,7 @@ void	vm_load_arena(t_vm *vm)
 	{	
 		c = vm->cmd;
 		if (!vm->debug)
-			vm_play_arena(vm);		
+			vm_play_arena(vm);
 		while (c)
 		{
 			if (!c->off)
@@ -689,7 +689,7 @@ void	vm_load_arena(t_vm *vm)
 				{
 					vm_set_cycle_wait(vm, c);
 				//printw("%d\n", c->wait);
-				//refresh();				
+				//refresh();
 				}
 				else
 					vm_run_waiting_cycle(vm, c);
