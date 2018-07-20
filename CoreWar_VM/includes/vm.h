@@ -24,23 +24,38 @@
 **					[Macros for ERROR MANAGER]
 */
 
+# define ON				1
+# define OFF			0
+
 # define OKAY			0
-# define ERROR			1
-# define ERROR_OPEN		2
-# define ERROR_READ		3
-# define ERROR_CLOSE	4
-# define ERROR_MAGIC	5
-# define ERROR_NAME		6
-# define ERROR_SIZE		7
-# define ERROR_PLAYER	8
-# define ERROR_DUP		9
-# define ERROR_COMMENT	10
-# define ERROR_FILE		11
-# define ERROR_SFILE	12
-# define ERROR_1		13
-# define ERROR_2		14
-# define ERROR_3		15
-# define ERROR_4		16
+# define ERROR			-1
+
+# define ERROR_OPEN			2
+# define ERROR_READ			3
+# define ERROR_CLOSE		4
+# define ERROR_MAGIC		5
+# define ERROR_NAME			6
+# define ERROR_SIZE			7
+
+# define ERROR_DUP			9
+# define ERROR_COMMENT		10
+# define ERROR_FILE			11
+# define ERROR_SFILE		12
+
+# define ERROR_HEADER		26
+
+# define ERROR_CHAMP		20
+# define ERROR_PLAYER		21
+# define ERROR_N_PARAM		22
+# define ERROR_NOT_CHAMP	23
+# define ERROR_REG_CHAMP	24
+# define ERROR_BIG_CHAMP	25
+
+//# define ERROR_REG_CHAMP	24
+
+
+# define ERROR_FT_ARG		100
+# define ERROR_MEMORY		101
 
 typedef struct		s_error
 {
@@ -96,7 +111,7 @@ typedef struct		s_champ
 	char			*name;
 	char			comment[COMMENT_LENGTH];
 	int				magic_number;
-	int				weight;
+
 	int				rgb;
 	int				idx;
 	//int			life;
@@ -106,6 +121,10 @@ typedef struct		s_champ
 	int				prev_live;
 	int				lives_in_period;	
 	char			*prog;
+
+
+	size_t			bot_weight;
+	size_t 			file_weight;
 }					t_champ;
 
 typedef struct		s_vm
@@ -126,7 +145,24 @@ typedef struct		s_vm
 	int				total_cycle;
 	int				win;
 	int				debug;
+
+	size_t 			total_players;
+	size_t 			current_player;
 }					t_vm;
+
+/*
+**							[Macros for easy reading code]
+*/
+
+# define TOTAL_PLAYERS		(vm->total_players)
+# define PLAYER				(vm->current_player - 1)
+# define ID(player)			(vm->tab_champ[player].id)
+# define IDX(player)		(vm->tab_champ[player].idx)
+# define NAME(player)		(vm->tab_champ[player].name)
+# define PROG(player)		(vm->tab_champ[player].prog)
+# define COMMENT(player)	(vm->tab_champ[player].comment)
+# define WEIGHT(player)		(vm->tab_champ[player].bot_weight)
+
 
 /*
 **					[MAIN FUNCTIONS]
@@ -134,10 +170,20 @@ typedef struct		s_vm
 
 void				vm_load_champs(t_vm *vm);
 int					vm_its_cmd(t_vm *vm, t_cmd *cmd);
-void				vm_read_champ(t_vm *vm, int nbr_player);
-int					vm_get_param(char **av, t_vm *vm, int ac);
 void				load_res(t_vm *vm, t_cmd *cmd, int direct);
 void				vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex);
+
+
+/*
+**					[PARSE PART]
+*/
+
+void				vm_parse_champs(t_vm *vm, char *arg);
+void				vm_check_size(t_vm *vm, const char *str);
+void				vm_check_magic(t_vm *vm, const char *str);
+int					vm_get_param(t_vm *vm, char **av, int ac);
+void				vm_load_lists(t_vm *vm, t_cmd **cmd, t_cmd	*tmp);
+
 
 /*
 **					[MAIN COMMANDS]
@@ -190,12 +236,6 @@ void				vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i);
 
-/*
-**					[vm_lst.c]
-*/
-
-t_cmd				*add_list(t_vm *vm, int i);
-void				vm_load_lists(t_cmd **cmd, t_vm *vm);
 
 /*
 **					[vm_mng.c]
@@ -241,17 +281,28 @@ int					vm_step_shift(int type, int label_size);
 void				vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
 
 /*
-**					[DEBUG and PRINT and ERROR]
+**					[DEBUG and PRINT]
 */
 
 int					vm_usage(void);
 //void				draw_dead_pl(int j);
 void				draw_pl_heart(int j);
 void				vm_dump_arena(t_vm *vm);
-char				*vm_str_error(int error);
+
 void				ft_print_error(t_error *e);
 void				print_header(int j, t_vm *vm);
 void				print_header2(int j, t_vm *vm);
+void				vm_print_debug_champ(t_vm *vm);
+
+/*
+**					[ERROR MANGER]
+*/
+
+char 				*ft_str_cwa(int error);
+char 				*ft_str_cwb(int error);
+void 				ft_error(t_vm *vm, int id);
+int 				ft_error_int(t_vm *vm, int id);
+
 
 /*
 **					[vm_free_and_init.c]

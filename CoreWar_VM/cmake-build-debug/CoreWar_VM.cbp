@@ -102,6 +102,9 @@
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_cycles.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
+		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_debug.c">
+			<Option target="CoreWar_VM"/>
+		</Unit>
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_errors.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
@@ -109,6 +112,9 @@
 			<Option target="CoreWar_VM"/>
 		</Unit>
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_free_and_init.c">
+			<Option target="CoreWar_VM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ft_other.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_ld.c">
@@ -159,10 +165,13 @@
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_params.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
-		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_print.c">
+		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_parse_check.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
-		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_read.c">
+		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_parse_read.c">
+			<Option target="CoreWar_VM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_print.c">
 			<Option target="CoreWar_VM"/>
 		</Unit>
 		<Unit filename="/Users/vmakahon/UNIT_Factory/CoreWar/CoreWar_VM/virtual_machine/vm_st.c">

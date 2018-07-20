@@ -285,6 +285,33 @@ virtual_machine/vm_cycles.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_cycles.c.s
 .PHONY : virtual_machine/vm_cycles.c.s
 
+virtual_machine/vm_debug.o: virtual_machine/vm_debug.c.o
+
+.PHONY : virtual_machine/vm_debug.o
+
+# target to build an object file
+virtual_machine/vm_debug.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.o
+.PHONY : virtual_machine/vm_debug.c.o
+
+virtual_machine/vm_debug.i: virtual_machine/vm_debug.c.i
+
+.PHONY : virtual_machine/vm_debug.i
+
+# target to preprocess a source file
+virtual_machine/vm_debug.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.i
+.PHONY : virtual_machine/vm_debug.c.i
+
+virtual_machine/vm_debug.s: virtual_machine/vm_debug.c.s
+
+.PHONY : virtual_machine/vm_debug.s
+
+# target to generate assembly for a file
+virtual_machine/vm_debug.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_debug.c.s
+.PHONY : virtual_machine/vm_debug.c.s
+
 virtual_machine/vm_errors.o: virtual_machine/vm_errors.c.o
 
 .PHONY : virtual_machine/vm_errors.o
@@ -365,6 +392,33 @@ virtual_machine/vm_free_and_init.s: virtual_machine/vm_free_and_init.c.s
 virtual_machine/vm_free_and_init.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_free_and_init.c.s
 .PHONY : virtual_machine/vm_free_and_init.c.s
+
+virtual_machine/vm_ft_other.o: virtual_machine/vm_ft_other.c.o
+
+.PHONY : virtual_machine/vm_ft_other.o
+
+# target to build an object file
+virtual_machine/vm_ft_other.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.o
+.PHONY : virtual_machine/vm_ft_other.c.o
+
+virtual_machine/vm_ft_other.i: virtual_machine/vm_ft_other.c.i
+
+.PHONY : virtual_machine/vm_ft_other.i
+
+# target to preprocess a source file
+virtual_machine/vm_ft_other.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.i
+.PHONY : virtual_machine/vm_ft_other.c.i
+
+virtual_machine/vm_ft_other.s: virtual_machine/vm_ft_other.c.s
+
+.PHONY : virtual_machine/vm_ft_other.s
+
+# target to generate assembly for a file
+virtual_machine/vm_ft_other.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ft_other.c.s
+.PHONY : virtual_machine/vm_ft_other.c.s
 
 virtual_machine/vm_ld.o: virtual_machine/vm_ld.c.o
 
@@ -798,6 +852,60 @@ virtual_machine/vm_params.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_params.c.s
 .PHONY : virtual_machine/vm_params.c.s
 
+virtual_machine/vm_parse_check.o: virtual_machine/vm_parse_check.c.o
+
+.PHONY : virtual_machine/vm_parse_check.o
+
+# target to build an object file
+virtual_machine/vm_parse_check.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.o
+.PHONY : virtual_machine/vm_parse_check.c.o
+
+virtual_machine/vm_parse_check.i: virtual_machine/vm_parse_check.c.i
+
+.PHONY : virtual_machine/vm_parse_check.i
+
+# target to preprocess a source file
+virtual_machine/vm_parse_check.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.i
+.PHONY : virtual_machine/vm_parse_check.c.i
+
+virtual_machine/vm_parse_check.s: virtual_machine/vm_parse_check.c.s
+
+.PHONY : virtual_machine/vm_parse_check.s
+
+# target to generate assembly for a file
+virtual_machine/vm_parse_check.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_check.c.s
+.PHONY : virtual_machine/vm_parse_check.c.s
+
+virtual_machine/vm_parse_read.o: virtual_machine/vm_parse_read.c.o
+
+.PHONY : virtual_machine/vm_parse_read.o
+
+# target to build an object file
+virtual_machine/vm_parse_read.c.o:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.o
+.PHONY : virtual_machine/vm_parse_read.c.o
+
+virtual_machine/vm_parse_read.i: virtual_machine/vm_parse_read.c.i
+
+.PHONY : virtual_machine/vm_parse_read.i
+
+# target to preprocess a source file
+virtual_machine/vm_parse_read.c.i:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.i
+.PHONY : virtual_machine/vm_parse_read.c.i
+
+virtual_machine/vm_parse_read.s: virtual_machine/vm_parse_read.c.s
+
+.PHONY : virtual_machine/vm_parse_read.s
+
+# target to generate assembly for a file
+virtual_machine/vm_parse_read.c.s:
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_parse_read.c.s
+.PHONY : virtual_machine/vm_parse_read.c.s
+
 virtual_machine/vm_print.o: virtual_machine/vm_print.c.o
 
 .PHONY : virtual_machine/vm_print.o
@@ -824,33 +932,6 @@ virtual_machine/vm_print.s: virtual_machine/vm_print.c.s
 virtual_machine/vm_print.c.s:
 	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.s
 .PHONY : virtual_machine/vm_print.c.s
-
-virtual_machine/vm_read.o: virtual_machine/vm_read.c.o
-
-.PHONY : virtual_machine/vm_read.o
-
-# target to build an object file
-virtual_machine/vm_read.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.o
-.PHONY : virtual_machine/vm_read.c.o
-
-virtual_machine/vm_read.i: virtual_machine/vm_read.c.i
-
-.PHONY : virtual_machine/vm_read.i
-
-# target to preprocess a source file
-virtual_machine/vm_read.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.i
-.PHONY : virtual_machine/vm_read.c.i
-
-virtual_machine/vm_read.s: virtual_machine/vm_read.c.s
-
-.PHONY : virtual_machine/vm_read.s
-
-# target to generate assembly for a file
-virtual_machine/vm_read.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_read.c.s
-.PHONY : virtual_machine/vm_read.c.s
 
 virtual_machine/vm_st.o: virtual_machine/vm_st.c.o
 
@@ -1041,6 +1122,9 @@ help:
 	@echo "... virtual_machine/vm_cycles.o"
 	@echo "... virtual_machine/vm_cycles.i"
 	@echo "... virtual_machine/vm_cycles.s"
+	@echo "... virtual_machine/vm_debug.o"
+	@echo "... virtual_machine/vm_debug.i"
+	@echo "... virtual_machine/vm_debug.s"
 	@echo "... virtual_machine/vm_errors.o"
 	@echo "... virtual_machine/vm_errors.i"
 	@echo "... virtual_machine/vm_errors.s"
@@ -1050,6 +1134,9 @@ help:
 	@echo "... virtual_machine/vm_free_and_init.o"
 	@echo "... virtual_machine/vm_free_and_init.i"
 	@echo "... virtual_machine/vm_free_and_init.s"
+	@echo "... virtual_machine/vm_ft_other.o"
+	@echo "... virtual_machine/vm_ft_other.i"
+	@echo "... virtual_machine/vm_ft_other.s"
 	@echo "... virtual_machine/vm_ld.o"
 	@echo "... virtual_machine/vm_ld.i"
 	@echo "... virtual_machine/vm_ld.s"
@@ -1098,12 +1185,15 @@ help:
 	@echo "... virtual_machine/vm_params.o"
 	@echo "... virtual_machine/vm_params.i"
 	@echo "... virtual_machine/vm_params.s"
+	@echo "... virtual_machine/vm_parse_check.o"
+	@echo "... virtual_machine/vm_parse_check.i"
+	@echo "... virtual_machine/vm_parse_check.s"
+	@echo "... virtual_machine/vm_parse_read.o"
+	@echo "... virtual_machine/vm_parse_read.i"
+	@echo "... virtual_machine/vm_parse_read.s"
 	@echo "... virtual_machine/vm_print.o"
 	@echo "... virtual_machine/vm_print.i"
 	@echo "... virtual_machine/vm_print.s"
-	@echo "... virtual_machine/vm_read.o"
-	@echo "... virtual_machine/vm_read.i"
-	@echo "... virtual_machine/vm_read.s"
 	@echo "... virtual_machine/vm_st.o"
 	@echo "... virtual_machine/vm_st.i"
 	@echo "... virtual_machine/vm_st.s"

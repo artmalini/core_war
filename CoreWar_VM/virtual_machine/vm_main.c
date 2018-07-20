@@ -23,10 +23,10 @@ int			main(int argc, char **argv)
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	init(vm);
 	vm_create_arena(vm);
-	if (vm_get_param(argv, vm, argc) == 0)
+	if (vm_get_param(vm, argv, argc) == ERROR)
 		vm_usage();
 	vm_load_champs(vm);
-	vm_load_lists(&vm->cmd, vm);
+	vm_load_lists(vm, &vm->cmd, NULL);
 	vm_glow_cur(vm, vm->cmd);
 	//нужно дописать функцию самой игры и реализовать функции
 	vm_load_arena(vm);
