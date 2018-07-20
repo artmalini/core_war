@@ -25,6 +25,7 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	two_val = two % IDX_MOD;
+	//two_val = two;
 	//printf("%d", two % IDX_MOD);
 	while (++i <= 3)
 	{
@@ -46,7 +47,7 @@ void	vm_st(t_vm *vm, t_cmd *cmd)
 	int	reg1;
 	int	reg2;
 	//ft_printf("vm_st");
-	reg1 = vm->arena[mdx(cmd->idx + 2)].acb;	
+	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;	
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
 	{		
 		reg2 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;

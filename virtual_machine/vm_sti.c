@@ -17,7 +17,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 
 	i = -1;
 	reg1 =  0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
-	if (reg1 < 0 && reg1 >= REG_NUMBER)
+	if (!(reg1 > 0 && reg1 < 17))
 		return ;
 	dat = cmd->reg[reg1 - 1];
 	while (++i <= 3)
@@ -78,7 +78,8 @@ int		vm_rir_sti(t_vm *vm, t_cmd *cmd)
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 3)].acb;
 
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	res = (arg1 + cmd->reg[arg2 - 1]);
+	if (vm_v_cmd(arg2 - 1, arg2 - 1, arg2 - 1))
+		res = (arg1 + cmd->reg[arg2 - 1]);
 	return (res);
 }
 
@@ -96,7 +97,8 @@ int		vm_rrd_sti(t_vm *vm, t_cmd *cmd)//ultima end2:
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	//if (vm->debug)
 	//	ft_printf("|P\t%d|sti arg1|%d| arg2|%d|\n", cmd->nbr_process, arg1, arg2);
-	res = (cmd->reg[arg1 - 1] + arg2);
+	if (vm_v_cmd(arg1 - 1, arg1 - 1, arg1 - 1))
+		res = (cmd->reg[arg1 - 1] + arg2);
 	return (res);
 }
 
@@ -109,7 +111,8 @@ int		vm_rrr_sti(t_vm *vm, t_cmd *cmd)
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	res = (cmd->reg[arg1 - 1] + cmd->reg[arg2 - 1]);
+	if (vm_v_cmd(arg1 - 1, arg1 - 1, arg2 - 1))
+		res = (cmd->reg[arg1 - 1] + cmd->reg[arg2 - 1]);
 	return (res);
 }
 

@@ -13,7 +13,7 @@
 NAME = compiling
 
 LIB_DIR = ./libft
-ASM_DIR = ./assembler
+#ASM_DIR = ./assembler
 VM_DIR = ./virtual_machine
 
 RED		= \033[31m

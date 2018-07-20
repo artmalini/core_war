@@ -5,7 +5,7 @@ int		mdx(int nbr)
 {
 	int		ret;
 
-	ret = (nbr % MEM_SIZE < 0) ? ((nbr % MEM_SIZE) + MEM_SIZE) : nbr % MEM_SIZE;
+	ret = (nbr % MEM_SIZE < 0) ? (nbr % MEM_SIZE + MEM_SIZE) : nbr % MEM_SIZE;
 	return (ret);
 }
 

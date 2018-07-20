@@ -31,14 +31,14 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	two_val = two % IDX_MOD;
-	val = mdx(cmd->idx + two_val);
-	pos = 0xFF & vm->arena[val].acb;
+	val = (cmd->idx + two_val);
+	pos = 0xFF & vm->arena[mdx(val)].acb;
 	pos <<= 8;
-	pos += 0xFF & vm->arena[val + 1].acb;
+	pos += 0xFF & vm->arena[mdx(val + 1)].acb;
 	pos <<= 8;
-	pos += 0xFF & vm->arena[val + 2].acb;
+	pos += 0xFF & vm->arena[mdx(val + 2)].acb;
 	pos <<= 8;
-	pos += 0xFF & vm->arena[val + 3].acb;
+	pos += 0xFF & vm->arena[mdx(val + 3)].acb;
 	hex = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	if (vm->debug)
 		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);

@@ -210,20 +210,21 @@ void	print_header(int j, t_vm *vm)
 void	vm_play_arena(t_vm *vm)
 {
 	erase();
-	vm_game_stat(vm);
 	int	i;
 	int	j;
 
 	i = 0;
-	j = -1;
+	//j = -1;
+	vm_game_stat(vm);
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
 		//if (vm->arena[i].bold > 0)
 		//	attron(A_BOLD);
 		attron(COLOR_PAIR(vm->arena[i].rgb));
-		printw("%02x ", 0xFF & vm->arena[i].acb);
-		//attroff(COLOR_PAIR(vm->arena[i].rgb));
+		printw("%02x", 0xFF & vm->arena[i].acb);
+		attroff(COLOR_PAIR(vm->arena[i].rgb));
+		printw(" ");
 		// if (vm->arena[i].bold > 0)
 		// {
 		// 	attroff(A_BOLD);
@@ -296,6 +297,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
  	i = cmd->idx + pos;
+ 	//ft_printf("cmd->idx |%d|\n ", i);
 	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
 	//ft_printf("cmd->idx |%d| ", cmd->idx);
 		//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
@@ -697,7 +699,7 @@ void	vm_load_arena(t_vm *vm)
 			if (c->next == NULL)
 			{
 				//if (!c->flag)
-					vm_cycler_to_die(vm, &i);
+				vm_cycler_to_die(vm, &i);
 			}
 			c = c->next;
 		}
@@ -849,83 +851,3 @@ int			main(int argc, char **argv)
 	free_vm(vm);
 	return (0);
 }
-
-// int main() {
-
-//  initscr();
-//  noecho();
-//  curs_set(FALSE);
-
-//  mvprintw(0, 0, "Hello, world!");
-//  refresh();
-
-//  sleep(1);
-
-//  endwin();
-// }
-
-
-
-// // void vm_read(char *av, int fd)
-// // {
-// // 	char *
-// // }
-
-// int main(int argc, char **argv)
-// {
-// 	int fd;
-// 	int ret;
-// 	//int i;
-// 	//char buf[BUF_SIZE];
-// 	char *line;
-// 	//t_player p;
-
-// 	if (argc == 1)
-// 		ft_error("Not enough arguments.");
-// 	//i = 0;
-// 	//ft_bzero(&p, sizeof(t_player));
-// 	line = ft_memalloc(CHAMP_MAX_SIZE);
-// 	fd = open(argv[1], O_RDONLY);
-// 	while ((ret = read(fd, line, CHAMP_MAX_SIZE)) > 0)
-// 	{
-// 		line[ret] = '\0';
-// 		ft_printf("%s", line);
-// 	}
-// 	ft_memdel((void**)&line);
-// 	return (0);
-// }
-
-/*int main(int argc, char **argv)
-{
-	int fd;
-	int ret;
-	//int i;
-	//char buf[BUF_SIZE];
-	char *line;
-	//t_player p;
-
-	if (argc == 1)
-		ft_error("Not enough arguments.");
-	//i = 0;
-	//ft_bzero(&p, sizeof(t_player));
-	line = ft_memalloc(CHAMP_MAX_SIZE);
-	fd = open(argv[1], O_RDONLY);
-	while ((ret = read(fd, line, CHAMP_MAX_SIZE)) > 0)
-	{
-		line[ret] = '\0';
-		ft_printf("%s\n", line);
-		// if (i <= 1)
-		// 	p.magic = ft_strjoin(p.magic, ft_strsub(buf, 0, BUF_SIZE));
-		// else if (i <= PROG_NAME_LENGTH / 2 + 2)
-		// 	p.bot_name = ft_strjoin(p.bot_name, ft_strsub(buf, 0, BUF_SIZE));
-		// else if (i == PROG_NAME_LENGTH / 2 + 4)
-		// 	p.size_exec = ft_atoi_base(buf, 16); //здесь должно быть переведение з 16 в 10 систему, но пока просто атои
-		// else if (i <= PROG_NAME_LENGTH / 2 + 4 + COMMENT_LENGTH / 2)
-		// 	p.comment = ft_strjoin(p.comment, ft_strsub(buf, 0, BUF_SIZE));
-		// else if (i >  PROG_NAME_LENGTH / 2 + 4 + COMMENT_LENGTH / 2 + 1)
-		// 	p.ex_code = ft_strjoin(p.ex_code, ft_strsub(buf, 0, BUF_SIZE));
-		// i++;
-	}
-	ft_memdel((void**)&line);
-	return (0);
-}*/

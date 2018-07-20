@@ -39,6 +39,7 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
 	short	two;
+	int		val1;
 
 	cmd1 = NULL;
 	tmp = NULL;
@@ -46,17 +47,17 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	two = 0xFF & vm->arena[mdx(cmd1->idx + 1)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
+	val1 = mdx(two);
 	if (cmd1)
 	{
-		tmp = lfork_add_list(*cmd,  vm->total_process + 1);
+		tmp = lfork_add_list(cmd1, vm->total_process + 1);
 		if (vm->debug)
 			ft_printf("|P\t%d| lfork |%d| (%d)\n", cmd1->nbr_process, two, tmp->idx + two);
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
-		while (cmd1->next != NULL)
-			cmd1 = cmd1->next;
-		cmd1->next = tmp;
+		tmp->next = vm->cmd;
+		vm->cmd = tmp;
 	}
 	vm_next_step(vm, *cmd, 3);
-	vm_next_step(vm, tmp, mdx(two));
+	vm_next_step(vm, tmp, val1);
 }
