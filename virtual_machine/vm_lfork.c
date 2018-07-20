@@ -10,7 +10,7 @@ void		lfork_update_reg(int *dest, int *host)
 		dest[i] = host[i];
 }
 
-t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
+t_cmd		*lfork_add_list(t_cmd *cmd1, int nb)
 {
 	t_cmd	*lst;
 
@@ -18,7 +18,7 @@ t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
 	if (lst)
 	{
-		fork_update_reg(lst->reg, cmd1->reg);
+		lfork_update_reg(lst->reg, cmd1->reg);
 		lst->idx = cmd1->idx;
 		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
@@ -39,8 +39,6 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
 	short	two;
-	int		two_val;
-
 
 	cmd1 = NULL;
 	tmp = NULL;
@@ -50,9 +48,9 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
 	if (cmd1)
 	{
-		tmp = fork_add_list(*cmd, cmd1->nbr_process + 1);
+		tmp = lfork_add_list(*cmd,  vm->total_process + 1);
 		if (vm->debug)
-			ft_printf("|P\t%d| lfork |%d| (%d)\n", cmd1->nbr_process, two_val, tmp->idx + two);
+			ft_printf("|P\t%d| lfork |%d| (%d)\n", cmd1->nbr_process, two, tmp->idx + two);
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 		vm->total_process += 1;
 		while (cmd1->next != NULL)

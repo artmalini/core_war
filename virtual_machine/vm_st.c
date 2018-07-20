@@ -46,7 +46,7 @@ void	vm_st(t_vm *vm, t_cmd *cmd)
 	int	reg1;
 	int	reg2;
 	//ft_printf("vm_st");
-	reg1 = (unsigned char)vm->arena[mdx(cmd->idx + 2)].acb;	
+	reg1 = vm->arena[mdx(cmd->idx + 2)].acb;	
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
 	{		
 		reg2 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;

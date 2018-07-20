@@ -442,7 +442,7 @@ void	pl_period_live(t_vm *vm)
 		vm->tab_champ[i].lives_in_period = 0;
 }
 
-void	vm_curet_next(t_cmd *cmd)
+/*void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd)
 	{
@@ -451,6 +451,21 @@ void	vm_curet_next(t_cmd *cmd)
 			//cmd->nbr_process--;
 			//cmd->off = 1;
 			cmd->flag = 1;
+		}
+		cmd->life = 0;
+		cmd = cmd->next;
+	}
+}*/
+
+void	vm_curet_next(t_cmd *cmd)
+{
+	while (cmd)
+	{
+		if (!cmd->life)	
+		{
+			//cmd->playing = 1;
+			cmd->off = 1;
+			//cmd->flag = 1;
 		}
 		cmd->life = 0;
 		cmd = cmd->next;
@@ -469,7 +484,6 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 		vm->cycle_to_die -= CYCLE_DELTA;
 		if (vm->cycle_to_die < 0)
 		{
-			//vm_curet_next(vm->cmd);
 			vm->cycle_to_die = 0;
 		}
 		vm->lifes = 0;
@@ -477,7 +491,7 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 	}
 	pl_period_live(vm);
 	vm->cycle = 0;
-	//vm->lifes = 0;
+	vm->lifes = 0;
 }
 
 void	vm_cycler_to_die(t_vm *vm, int *i)
@@ -652,6 +666,7 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 void	vm_load_arena(t_vm *vm)
 {
 	int		i;
+	//int		j;
 	t_cmd	*c;
 
 
@@ -660,33 +675,33 @@ void	vm_load_arena(t_vm *vm)
 		vm_load_ncurses();
 	//while (++i < 2)
 	//	vm_play_arena(vm);
+	//j = 1;
 	while (i)
-	{		
+	{	
 		c = vm->cmd;
 		if (!vm->debug)
 			vm_play_arena(vm);		
 		while (c)
 		{
-			if (!c->flag)
-				vm_cycler_to_die(vm, &i);
-			//else
-			//{
-				if (!c->off)
+			if (!c->off)
+			{
+				if (!c->playing)
 				{
-					if (!c->playing)
-					{
-						vm_set_cycle_wait(vm, c);
-					//printw("%d\n", c->wait);
-					//refresh();				
-					}
-					else
-						vm_run_waiting_cycle(vm, c);
-				}				
-			//}
-			//printw("%d\n", c->wait);
-			//refresh();
+					vm_set_cycle_wait(vm, c);
+				//printw("%d\n", c->wait);
+				//refresh();				
+				}
+				else
+					vm_run_waiting_cycle(vm, c);
+			}
+			if (c->next == NULL)
+			{
+				//if (!c->flag)
+					vm_cycler_to_die(vm, &i);
+			}
 			c = c->next;
 		}
+		//usleep(10000);
 	}
 	if (!vm->debug)
 	{
@@ -761,7 +776,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
 	if (lst)
 	{
-		lst->reg[0] = vm->tab_champ[i].id;
+		lst->reg[0] = (vm->tab_champ[i].id * -1);
 		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
 		lst->rgb = 5 + (i % 4);//цвет каретки		
 		lst->playing = 0;

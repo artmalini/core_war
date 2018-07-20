@@ -8,10 +8,6 @@ include_directories(libft/includes)
 
 set(LIBFT ${CMAKE_SOURCE_DIR}/libft/libft.a)
 
-find_package( Curses REQUIRED )
-include_directories( ${CURSES_INCLUDE_DIRS} )
-target_link_libraries( CoreWar_VM ${CURSES_LIBRARIES} )
-
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wall -Wextra -Werror ")
 
 set(SOURCE_FILES
