@@ -547,7 +547,8 @@ int		vm_calc_steps(int hex, int pos)
 	int		ret;
 
 	ret = 0;
-	param = (op_tab[hex].nbr_args);
+	if (hex > 0 && hex < 17)
+		param = op_tab[hex].nbr_args;
 			//printw("param |%d|\n", param);
 			//refresh();
 	if (hex < 1 || hex > 16)

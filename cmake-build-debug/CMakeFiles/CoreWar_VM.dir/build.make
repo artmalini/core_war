@@ -273,9 +273,105 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o.provides: CMakeFiles/CoreWa
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o
 
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o: ../virtual_machine/vm_mng_bit1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit1.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit1.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit1.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o
+
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o: ../virtual_machine/vm_mng_bit2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit2.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit2.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_bit2.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o
+
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o: ../virtual_machine/vm_mng_func.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_func.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_func.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_mng_func.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o
+
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o: ../virtual_machine/vm_aff.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_aff.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_aff.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_aff.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o
+
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o: ../virtual_machine/vm_and.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_and.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.i: cmake_force
@@ -297,9 +393,57 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o.provides: CMakeFiles/CoreWa
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o
 
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o: ../virtual_machine/vm_or.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_or.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_or.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_or.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o
+
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o: ../virtual_machine/vm_xor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_xor.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_xor.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_xor.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o
+
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o: ../virtual_machine/vm_live.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_live.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.i: cmake_force
@@ -323,7 +467,7 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o.provides.build: CMakeFiles
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o: ../virtual_machine/vm_zjmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_zjmp.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.i: cmake_force
@@ -347,7 +491,7 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o.provides.build: CMakeFiles
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o: ../virtual_machine/vm_ld.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_ld.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.i: cmake_force
@@ -371,7 +515,7 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o.provides.build: CMakeFiles/C
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o: ../virtual_machine/vm_st.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_st.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.i: cmake_force
@@ -395,7 +539,7 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o.provides.build: CMakeFiles/C
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o: ../virtual_machine/vm_add.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_add.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.i: cmake_force
@@ -419,7 +563,7 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o: ../virtual_machine/vm_sub.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_sub.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.i: cmake_force
@@ -441,9 +585,57 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o.provides: CMakeFiles/CoreWa
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o
 
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o: ../virtual_machine/vm_lld.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_lld.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_lld.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_lld.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o
+
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o: ../virtual_machine/vm_lldi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_lldi.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_lldi.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_lldi.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o
+
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o: ../virtual_machine/vm_ldi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_ldi.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.i: cmake_force
@@ -465,9 +657,33 @@ CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o.provides: CMakeFiles/CoreWa
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o
 
 
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o: ../virtual_machine/vm_lfork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_lfork.c
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/artem/unit/corewar/core_war/virtual_machine/vm_lfork.c > CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.i
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/artem/unit/corewar/core_war/virtual_machine/vm_lfork.c -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.s
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.requires:
+
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.requires
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.provides: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.requires
+	$(MAKE) -f CMakeFiles/CoreWar_VM.dir/build.make CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.provides.build
+.PHONY : CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.provides
+
+CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.provides.build: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o
+
+
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o: CMakeFiles/CoreWar_VM.dir/flags.make
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o: ../virtual_machine/vm_fork.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o   -c /home/artem/unit/corewar/core_war/virtual_machine/vm_fork.c
 
 CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.i: cmake_force
@@ -500,14 +716,23 @@ CoreWar_VM_OBJECTS = \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o" \
+"CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o" \
 "CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o"
 
 # External object files for target CoreWar_VM
@@ -522,19 +747,28 @@ CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ncurses.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o
+CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/build.make
 CoreWar_VM: ../libft/libft.a
 CoreWar_VM: CMakeFiles/CoreWar_VM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking C executable CoreWar_VM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/artem/unit/corewar/core_war/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking C executable CoreWar_VM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CoreWar_VM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -551,14 +785,23 @@ CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_errors.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_print.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sti.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit1.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_bit2.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_mng_func.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_aff.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_and.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_or.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_xor.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_live.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_zjmp.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ld.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_st.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_add.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_sub.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lld.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lldi.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_ldi.c.o.requires
+CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_lfork.c.o.requires
 CMakeFiles/CoreWar_VM.dir/requires: CMakeFiles/CoreWar_VM.dir/virtual_machine/vm_fork.c.o.requires
 
 .PHONY : CMakeFiles/CoreWar_VM.dir/requires

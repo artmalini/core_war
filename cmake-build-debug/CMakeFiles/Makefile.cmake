@@ -45,5 +45,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/CoreWar_VM.dir/DependInfo.cmake"
+  "CMakeFiles/core_war.dir/DependInfo.cmake"
   )

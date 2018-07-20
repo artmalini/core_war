@@ -14,6 +14,8 @@ void	vm_add(t_vm *vm, t_cmd *cmd)
 	{
 		cmd->reg[c - 1] = cmd->reg[a - 1] + cmd->reg[b - 1];
 		cmd->carry = (cmd->reg[c - 1] == 0) ? 1 : 0;
+		if (vm->debug)
+			ft_printf("|P\t%d| add |r%d| |r%d| |r%d|\n", cmd->nbr_process, a, b, c);
 		vm_next_step(vm, cmd, 5);
 	}
 	else

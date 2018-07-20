@@ -132,6 +132,8 @@ void	vm_and(t_vm *vm, t_cmd *cmd)
 		arg[2] = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 		if (vm_v_cmd(arg[0] - 1, arg[1] - 1, arg[2] - 1))
 			vm_rrr_bit(cmd, arg, 1);
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[2]);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));		
 	}
 	else
