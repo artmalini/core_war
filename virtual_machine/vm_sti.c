@@ -28,7 +28,7 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 		//vm->arena[mdx(direct + i)].acb = ((cmd->reg[0] * -1) >> ((3 - i) * 8)) & 0xFF;
 	}
 	if (vm->debug)
-		ft_printf("|P\t%d| sti |%d| |r%d| (with pc and mod %d)\n", cmd->nbr_process, direct, reg1, mdx(cmd->idx + direct));
+		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)\n", cmd->nbr_process, direct, reg1, cmd->idx + direct);
 	//ft_printf("sti |%d| value|%d| jump|%d|\n", direct, dat, vm_pos_curs(vm, cmd));
 }
 
@@ -69,6 +69,7 @@ int		vm_rir_sti(t_vm *vm, t_cmd *cmd)
 	dir <<= 8;
 	dir += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	dir1 = (dir % IDX_MOD);
+	//dir1 = dir;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + dir1)].acb;
 	arg1 <<= 8;
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 1)].acb;
@@ -129,6 +130,7 @@ int		vm_rid_sti(t_vm *vm, t_cmd *cmd)
 	dir <<= 8;
 	dir += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 	dir1 = (dir % IDX_MOD);
+	//dir1 = dir;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + dir1)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 1)].acb;
@@ -159,7 +161,7 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 			direct = vm_rid_sti(vm, cmd);
 		else if (cdg == 116)
 			direct = vm_rir_sti(vm, cmd);
-		load_res(vm, cmd, direct % IDX_MOD);
+		load_res(vm, cmd, (direct % IDX_MOD));
 		vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}

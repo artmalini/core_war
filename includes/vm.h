@@ -149,6 +149,7 @@ typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
 	int				idx;
+	int				previdx;
 	int				rgb;
 	int				on;
 	int				off;
@@ -159,6 +160,7 @@ typedef struct 		s_cmd
 	int				life;	
 	int				nbr_process;
 	struct s_cmd	*next;
+	struct s_cmd	*prev;
 }					t_cmd;
 
 // tvertohr and
@@ -239,7 +241,7 @@ typedef struct		s_op
 
 extern t_op			op_tab[17];
 
-int					vm_usage(void);
+int					vm_usage(int argc, char **argv);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
 int					ft_isnumber(char *str);
 int					vm_get_param(char **av, t_vm *vm, int ac);

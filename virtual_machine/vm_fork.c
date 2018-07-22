@@ -20,16 +20,18 @@ t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
 	{
 		fork_update_reg(lst->reg, cmd1->reg);
 		lst->idx = cmd1->idx;
+		lst->previdx = cmd1->previdx;
 		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
-		lst->wait = 0;
-		lst->on = 0;
-		lst->off = 0;
+		lst->wait = cmd1->wait;
+		lst->off = cmd1->off;
 		lst->carry = cmd1->carry;
-		lst->life = 1;
+		lst->life = cmd1->life;
 		lst->nbr_process = nb;
+		lst->on = 0;
 		lst->flag = 0;
 		lst->next = NULL;
+		lst->prev = NULL;
 	}	
 	return (lst);
 }
@@ -38,6 +40,9 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 {
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
+	//t_cmd	*res;
+
+	//t_cmd	*base;
 	short	two;
 	int		two_val;
 
@@ -49,6 +54,8 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
 	two_val = (two % IDX_MOD);
+	//res = *cmd;
+	//base = vm->cmd;
 	if (cmd1)
 	{
 		tmp = fork_add_list(cmd1, vm->total_process + 1);
@@ -57,11 +64,16 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 
 		vm->total_process += 1;
-		//while (cmd1->next != NULL)
-		//	cmd1 = cmd1->next;
-		//cmd1->next = tmp;
+		// while (cmd1->next != NULL)
+		//  	cmd1 = cmd1->next;
 		tmp->next = vm->cmd;
 		vm->cmd = tmp;
+
+		// tmp->prev = cmd1;
+		// if (base != NULL)
+		// 	base->prev = tmp;
+		// tmp->next = vm->cmd;
+		// vm->cmd = tmp;
 	}
 
 	vm_next_step(vm, *cmd, 3);

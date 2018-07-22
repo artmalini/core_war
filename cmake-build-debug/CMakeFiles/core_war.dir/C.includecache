@@ -79,6 +79,8 @@ vm.h
 /home/artem/unit/corewar/core_war/virtual_machine/vm_lfork.c
 vm.h
 /home/artem/unit/corewar/core_war/virtual_machine/vm.h
+vm.h
+/home/artem/unit/corewar/core_war/virtual_machine/vm.h
 
 /home/artem/unit/corewar/core_war/virtual_machine/vm_live.c
 vm.h
