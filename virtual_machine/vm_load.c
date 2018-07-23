@@ -35,6 +35,9 @@ static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
 		vm->arena[index + memory_index].acb = 0xFF & champ.prog[index];
 		vm->arena[index + memory_index].rgb = 1 + num_pl % 4;
 		vm->arena[index + memory_index].asc_rgb = 1 + num_pl % 4;
+		if (index == 0)
+			vm->arena[index + memory_index].hit = 1;
+		vm->arena[index + memory_index].o_acb = 0xFF & champ.prog[index];
 		index++;
 	}
 }

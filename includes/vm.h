@@ -148,10 +148,9 @@ typedef struct		s_error
 typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
+	int				pl;
 	int				idx;
-	int				previdx;
 	int				rgb;
-	int				on;
 	int				off;
 	int				carry;
 	int				wait;
@@ -159,6 +158,8 @@ typedef struct 		s_cmd
 	int				flag;
 	int				life;	
 	int				nbr_process;
+	int				on;
+	int				previdx;
 	struct s_cmd	*next;
 	struct s_cmd	*prev;
 }					t_cmd;
@@ -182,6 +183,11 @@ typedef struct		s_proc
 typedef struct		s_arena
 {
 	char			acb;
+
+	char			o_acb;
+	int				hit;
+	int				pl;
+
 	int				rgb;//main color for chars on arena
 	int				asc_rgb;
 	int				flag;
@@ -289,5 +295,6 @@ void				vm_lfork(t_vm *vm, t_cmd **cmd);
 void				vm_aff(t_vm *vm, t_cmd *cmd);
 int 				get_reg(t_vm *vm, int *i);
 int 				is_reg(int value);
+int					vm_getpl(t_vm *vm, int place);
 
 #endif

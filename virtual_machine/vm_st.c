@@ -39,7 +39,7 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 		ft_printf("|P\t%d| st |r%d| value |%d|\n", cmd->nbr_process, reg1, two_val);
 	//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 5;
 	//ft_printf("st_ri|%d| ", (short)two % IDX_MOD);
-	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+	vm_next_step(vm, cmd, 5);
 }
 
 void	vm_st(t_vm *vm, t_cmd *cmd)

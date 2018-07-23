@@ -72,7 +72,7 @@ void	vm_load_ncurses(void)
 	noecho();
 	start_color();
 	//init_color(COLOR_RED, 68, 0, 0);
-	init_pair(0, COLOR_WHITE, COLOR_BLACK);
+	//init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
@@ -272,6 +272,9 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].asc_rgb = 11;
 		vm->arena[i].flag = 0;
 		//vm->arena[i].bold = 0;
+		vm->arena[i].o_acb = 0;
+		vm->arena[i].hit = 0;
+		vm->arena[i].pl = -666;
 		i++;
 	}
 }
@@ -304,10 +307,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
     // attron(COLOR_PAIR(11));
     // printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
     // refresh();
-    // if (cmd->on == 0)
-    //     cmd->previdx = vm->arena[cmd->idx].acb & 0xFF;
-    // if (cmd->on == 1)
-  // cmd->previdx = vm->arena[cmd->idx].acb & 0xFF;
+   // vm->arena[cmd->idx].pl = cmd->pl;
     vm->arena[cmd->idx].flag++;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
 	if (vm->arena[tm].flag == 0)
@@ -493,20 +493,35 @@ int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
 int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 {
 	int		i;
+	int		a;
+	int 	b;
 
-	i = -1;
+
 	// 	i = (vm->arena[mdx(cmd->previdx)].acb) - 1;
  //    if (cmd->on == 0)
-		i = (vm->arena[mdx(cmd->idx)].acb) - 1;
+	////vm->arena[cmd->idx].pl = cmd->pl;
+	i = 0;
+	a = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	b = vm->arena[mdx(cmd->idx)].o_acb & 0xFF;
+	if (vm->arena[mdx(cmd->idx)].hit == 1)
+	{
+		if (a != b)
+        {
+            if ((b - 1 >= 0 && b - 1 < 16) && (vm->arena[cmd->idx].pl != cmd->pl))
+			    vm->arena[mdx(cmd->idx)].acb = vm->arena[mdx(cmd->idx)].o_acb;
+        }
+	}
+		i = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
 	//ft_printf("i %d ", i);
 	//printw("i %d ", i);
 	//refresh();
 	if (i < 0 || i > 16)
 		return (0);
-	else
-	{		
-		return (1);
-	}
+	//if (vm->arena[cmd->idx].hit == 1)
+	//	vm->arena[cmd->idx].pl = cmd->pl;
+		
+	return (1);
+	
 }
 
 int		vm_its_cmd2(t_vm *vm, t_cmd *cmd)
@@ -589,23 +604,11 @@ void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	//int		i;
 	//i = vm->arena[mdx(cmd->idx)].acb & 0xFF;	
 	if (vm_its_cmd(vm, cmd))
-	{	
-		// cmd->on = 1;
-		// if (i != cmd->previdx && cmd->on == 1)
-		// {
-		// 	cmd->wait = op_tab[cmd->previdx - 1].cycles - 2;
-		// }
-		// else
-			cmd->wait = op_tab[vm->arena[mdx(cmd->idx)].acb - 1].cycles - 2;
-		/*if (cmd->on == 1)
-			cmd->wait = op_tab[vm->arena[mdx(cmd->idx)].acb - 1].cycles - 2;
-		if (cmd->on == 0)
-		{
-			//cmd->previdx = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-			cmd->on = 1;
-			//cmd->idx = cmd->previdx;
-			cmd->wait = op_tab[vm->arena[mdx(cmd->idx)].acb - 1].cycles - 2;
-		}*/
+	{
+		vm->arena[cmd->idx].hit = 1;
+		vm->arena[cmd->idx].pl = cmd->pl;
+
+		cmd->wait = op_tab[vm->arena[mdx(cmd->idx)].acb - 1].cycles - 2;
 		cmd->playing = 1;		
 		//ft_printf("ok %d\n", cmd->wait);
 		//vm_next_step(vm, cmd, 1);
@@ -667,19 +670,12 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	//int		pos;
 	int		hex;
 
-	//if (cmd->on == 1)
-	// 	cmd->idx = cmd->previdx;
 	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	//if (hex != cmd->previdx)
-	//	cmd->idx = cmd->previdx;
 	if (cmd->wait == 0)
 	{
 		//if (vm_has_cmd(vm, cmd))
 		if (vm_its_cmd2(vm, cmd))
 		{
-			//cmd->on = 1;
-			//if (pos == 2)
-			//	hex = cmd->previdx;
 			vm_cmd_triger(vm, cmd, hex);
 		}
 		/*else
@@ -802,7 +798,7 @@ void	vm_load_arena(t_vm *vm)
 			}
 			c = c->next;
 		}
-		//usleep(10000);
+		//usleep(20000);
 	}
 	if (!vm->debug)
 	{
@@ -879,7 +875,8 @@ t_cmd		*add_list(t_vm *vm, int i)
 	{
 		lst->reg[0] = (vm->tab_champ[i].id * -1);
 		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
-		lst->previdx = (vm->arena[lst->idx].acb) & 0xFF;
+		lst->pl = (vm->tab_champ[i].id * -1);
+		lst->previdx = (vm->arena[lst->idx].acb) & 0xFF;//del?
 		lst->rgb = 5 + (i % 4);//цвет каретки		
 		lst->playing = 0;
 		lst->wait = 0;
