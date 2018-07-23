@@ -116,6 +116,7 @@ void	vm_game_stat(t_vm *vm)
 // # # ### #
 // }
 
+
 void	draw_pl_heart(int j)
 {
 	attron(COLOR_PAIR(1));
@@ -555,17 +556,36 @@ void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd)
 	{
-		if (!cmd->life)	
+		if (!cmd->life && !cmd->off)
 		{
 			cmd->off = 1;
 		}
 		cmd->life = 0;
+		cmd->on = 0;
+		cmd = cmd->next;
+	}
+}
+
+void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
+{
+	int		id;
+
+	id = -1;
+	while (cmd)
+	{
+		if (!cmd->on)
+		{
+			id = cmd->pl * -1;
+			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
+				vm->tab_champ[id].nbr_process -= 1;
+		}
 		cmd = cmd->next;
 	}
 }
 
 void	vm_cycler_todie(t_vm *vm, int *i)
 {
+	vm_rev_pc(vm, vm->cmd);
 	vm_curet_next(vm->cmd);
 	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 0)
 		*i = 0;
@@ -691,23 +711,6 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 		cmd->wait -= 1;
 }
 
-/*void	vm_list_reverse(t_cmd **cmd)
-{
-	t_cmd		*list;
-	t_cmd		*tmp;
-	t_cmd		*tmp2;
-
-	list = *cmd;
-	tmp2 = NULL;
-	while (list)
-	{
-		tmp = list->next;
-		list->next = tmp2;
-		tmp2 = list;
-		list = tmp;
-	}
-	*cmd = tmp2;
-}*/
 
 /*void	vm_load_arena(t_vm *vm)
 {
@@ -763,6 +766,24 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	}
 }*/
 
+/*void	vm_list_reverse(t_cmd **cmd)
+{
+	t_cmd		*list;
+	t_cmd		*tmp;
+	t_cmd		*tmp2;
+
+	list = *cmd;
+	tmp2 = NULL;
+	while (list)
+	{
+		tmp = list->next;
+		list->next = tmp2;
+		tmp2 = list;
+		list = tmp;
+	}
+	*cmd = tmp2;
+}*/
+
 void	vm_load_arena(t_vm *vm)
 {
 	int		i;
@@ -775,7 +796,7 @@ void	vm_load_arena(t_vm *vm)
 		vm_load_ncurses();
 	//while (++i < 2)
 	//	vm_play_arena(vm);
-	//j = 1;
+	//j = 1;	
 	while (i)
 	{	
 		c = vm->cmd;

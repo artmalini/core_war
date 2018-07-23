@@ -46,6 +46,7 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 	//t_cmd	*base;
 	short	two;
 	int		two_val;
+	int		id;
 
 
 	cmd1 = NULL;
@@ -62,8 +63,10 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 		tmp = fork_add_list(vm, cmd1, vm->total_process + 1);
 		if (vm->debug)
 			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process, two_val, tmp->idx + two_val);
-		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 
+		id = vm_getpl(vm, cmd1->pl * -1);
+		if (id > -1)
+			vm->tab_champ[id].nbr_process += 1;
 		vm->total_process += 1;
 		// while (cmd1->next != NULL)
 		//  	cmd1 = cmd1->next;

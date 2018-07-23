@@ -30,7 +30,7 @@ t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
 		lst->wait = cmd1->wait;
 		lst->off = cmd1->off;
 		lst->carry = cmd1->carry;
-		lst->life = 0;
+		lst->life = cmd1->life;
 		lst->nbr_process = nb;
 		lst->flag = 0;
 		lst->on = 0;
@@ -47,6 +47,7 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 
 	//t_cmd	*base;
 	short	two;
+	int		id;
 	//int		two_val;
 
 
@@ -63,8 +64,10 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 		tmp = lfork_add_list(vm, cmd1, vm->total_process + 1);
 		if (vm->debug)
 			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process, two, tmp->idx + two);
-		//vm->tab_champ[cmd1->reg[0] - 1].nbr_process += 1;
 
+		id = vm_getpl(vm, cmd1->pl * -1);
+		if (id > -1)
+			vm->tab_champ[id].nbr_process += 1;
 		vm->total_process += 1;
 		// while (cmd1->next != NULL)
 		// 	cmd1 = cmd1->next;
