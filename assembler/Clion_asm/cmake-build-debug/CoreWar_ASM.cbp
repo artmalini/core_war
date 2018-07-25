@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CoreWar_ASM"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CoreWar_ASM">
+				<Option output="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CoreWar_ASM" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/includes"/>
+					<Add directory="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/libft/includes"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CoreWar_ASM"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CoreWar_ASM/fast">
+				<Option output="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CoreWar_ASM" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/includes"/>
+					<Add directory="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/libft/includes"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CoreWar_ASM/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check_args.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_cmd.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_fpos_opc.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_instr.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_errors.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_free_struct.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_init_and_free.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_label.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_main.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_name_cmt_valid.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_op.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_line.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_main.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_print.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_recalc_cmd_links.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_valid_main.c">
+			<Option target="CoreWar_ASM"/>
+		</Unit>
+		<Unit filename="/Users/vmakahon/CoreWar_Full/CoreWar_ASM/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
