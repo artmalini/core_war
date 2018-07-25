@@ -13,7 +13,6 @@
 NAME = compiling
 
 LIB_DIR = ./libft
-#ASM_DIR = ./assembler
 VM_DIR = ./virtual_machine
 
 RED		= \033[31m
@@ -25,20 +24,17 @@ all: $(NAME)
 
 $(NAME): 
 	@make -C $(LIB_DIR)
-	@make -C $(ASM_DIR)
 	@make -C $(VM_DIR)
 
 clean:
 	@make -C $(LIB_DIR) clean
-	@make -C $(ASM_DIR) clean
 	@make -C $(VM_DIR) clean
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean
-	@make -C $(ASM_DIR) fclean
 	@make -C $(VM_DIR) fclean
 	
 re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:	all clean fclean re
 	
