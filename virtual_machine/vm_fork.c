@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_fork.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/26 15:49:39 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/26 15:49:45 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -64,7 +75,7 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 		if (vm->debug)
 			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process, two_val, tmp->idx + two_val);
 
-		id = vm_getpl(vm, cmd1->pl * -1);
+		id = vm_getpl(vm, tmp->pl * -1);
 		if (id > -1)
 			vm->tab_champ[id].nbr_process += 1;
 		vm->total_process += 1;

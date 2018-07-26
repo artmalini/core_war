@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_live.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/26 15:51:28 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/26 15:51:35 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -39,8 +50,9 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 		vm->win = id;
 		vm->tab_champ[id].prev_live = vm->total_cycle;
 		vm->tab_champ[id].lives_in_period += 1;
+		//vm->tab_champ[id].prev_live = vm->tab_champ[id].lives_in_period;
 		cmd->life = 1;
-		cmd->on = 1;	
+		cmd->on = 1;
 		vm_next_step(vm, cmd, 5);
 	}
 	else

@@ -107,6 +107,37 @@ void	vm_game_stat(t_vm *vm)
 	printw("\nCycle : %d Cycles to die: %d \n\n", vm->cycle, vm->cycle_to_die);
 }
 
+void	vm_winner(t_vm *vm)
+{
+	int			i;
+	int			j;
+
+	i = -1;
+	j = 0;
+	while (++i < vm->nbr_next)
+	{
+		if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
+			j = i;
+	}
+	if (vm->debug)
+		ft_printf("Contestant %d, \"%s\", has won !\n", vm->tab_champ[j].id, vm->tab_champ[j].name);
+}
+
+int		vm_vis_winner(t_vm *vm)
+{
+	int			i;
+	int			j;
+
+	i = -1;
+	j = 0;
+	while (++i < vm->nbr_next)
+	{
+		if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
+			j = i;
+	}
+	return (j);
+}
+
 // void	draw_dead_pl(int j)
 // {
 // ##  ### ##  
@@ -116,20 +147,93 @@ void	vm_game_stat(t_vm *vm)
 // # # ### #
 // }
 
+void	draw_winner(int j, t_vm *vm)
+{
+// #     # ### #    # 
+// #  #  #  #  ##   # 
+// #  #  #  #  # #  # 
+// #  #  #  #  #  # # 
+//  ## ##  ### #   ## 
+	int		pl;
 
-void	draw_pl_heart(int j)
+	pl = vm_vis_winner(vm);
+	attron(COLOR_PAIR(1));
+	if (vm->cycle_to_die == 0 && vm->total_cycle != 0)
+	{
+		if (pl == 0)
+		{
+			if (j == 21)
+				printw("\t #     # ### #    #");
+			if (j == 22)
+				printw("\t #  #  #  #  ##   #");
+			if (j == 23)
+				printw("\t #  #  #  #  # #  #");
+			if (j == 24)
+				printw("\t #  #  #  #  #  # #");
+			if (j == 25)
+				printw("\t  ## ##  ### #   ##");
+		}
+		if (pl == 1)
+		{
+			if (j == 27)
+				printw("\t #     # ### #    #");
+			if (j == 28)
+				printw("\t #  #  #  #  ##   #");
+			if (j == 29)
+				printw("\t #  #  #  #  # #  #");
+			if (j == 30)
+				printw("\t #  #  #  #  #  # #");
+			if (j == 31)
+				printw("\t  ## ##  ### #   ##");
+		}
+		if (pl == 2)
+		{
+			if (j == 33)
+				printw("\t #     # ### #    #");
+			if (j == 34)
+				printw("\t #  #  #  #  ##   #");
+			if (j == 35)
+				printw("\t #  #  #  #  # #  #");
+			if (j == 36)
+				printw("\t #  #  #  #  #  # #");
+			if (j == 37)
+				printw("\t  ## ##  ### #   ##");
+		}
+		if (pl == 3)
+		{
+			if (j == 39)
+				printw("\t #     # ### #    #");
+			if (j == 40)
+				printw("\t #  #  #  #  ##   #");
+			if (j == 41)
+				printw("\t #  #  #  #  # #  #");
+			if (j == 42)
+				printw("\t #  #  #  #  #  # #");
+			if (j == 43)
+				printw("\t  ## ##  ### #   ##");
+		}
+	}
+}
+
+
+void	draw_pl_heart(int j, t_vm *vm)
 {
 	attron(COLOR_PAIR(1));
-	if (j == 21 || j == 27 || j == 33 || j == 39)
-		printw("\t ###    ###");
-	if (j == 22 || j == 28 || j == 34 || j == 40)
-		printw("\t#####  #####");
-	if (j == 23 || j == 29 || j == 35 || j == 41)
-		printw("\t ##########");
-	if (j == 24 || j == 30 || j == 36 || j == 42)
-		printw("\t   ######");
-	if (j == 25 || j == 31 || j == 37 || j == 43)
-		printw("\t     ##");
+	if (vm->cycle_to_die > 0)
+	{
+		if (j == 21 || j == 27 || j == 33 || j == 39)
+			printw("\t ###    ###");
+		if (j == 22 || j == 28 || j == 34 || j == 40)
+			printw("\t#####  #####");
+		if (j == 23 || j == 29 || j == 35 || j == 41)
+			printw("\t ##########");
+		if (j == 24 || j == 30 || j == 36 || j == 42)
+			printw("\t   ######");
+		if (j == 25 || j == 31 || j == 37 || j == 43)
+			printw("\t     ##");
+	}
+	else
+		draw_winner(j, vm);
 }
 
 void	print_header2(int j, t_vm *vm)
@@ -149,7 +253,7 @@ void	print_header2(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[0].rgb));
 			printw("%.16s", vm->tab_champ[0].name);
 		}
-		draw_pl_heart(j);
+		draw_pl_heart(j, vm);
 	}
 	if (j >= 26 && j <= 31 && vm->nbr_next >= 2)
 	{
@@ -158,7 +262,7 @@ void	print_header2(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[1].rgb));
 			printw("%.16s", vm->tab_champ[1].name);
 		}
-		draw_pl_heart(j);
+		draw_pl_heart(j, vm);
 	}
 	if (j >= 32 && j <= 37 && vm->nbr_next >= 3)
 	{
@@ -167,7 +271,7 @@ void	print_header2(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[2].rgb));
 			printw("%.16s", vm->tab_champ[2].name);
 		}
-		draw_pl_heart(j);
+		draw_pl_heart(j, vm);
 	}
 	if (j >= 38 && j <= 43 && vm->nbr_next == 4)
 	{
@@ -176,7 +280,7 @@ void	print_header2(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[3].rgb));
 			printw("%.16s", vm->tab_champ[3].name);
 		}
-		draw_pl_heart(j);
+		draw_pl_heart(j, vm);
 	}
 }
 
@@ -494,24 +598,24 @@ int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
 int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
 {
 	int		i;
-	int		a;
-	int 	b;
+	// int		a;
+	// int 	b;
 
 
 	// 	i = (vm->arena[mdx(cmd->previdx)].acb) - 1;
  //    if (cmd->on == 0)
 	////vm->arena[cmd->idx].pl = cmd->pl;
 	i = 0;
-	a = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	b = vm->arena[mdx(cmd->idx)].o_acb & 0xFF;
-	if (vm->arena[mdx(cmd->idx)].hit == 1)
-	{
-		if (a != b)
-        {
-            if ((b - 1 >= 0 && b - 1 < 16) && (vm->arena[cmd->idx].pl != cmd->pl))
-			    vm->arena[mdx(cmd->idx)].acb = vm->arena[mdx(cmd->idx)].o_acb;
-        }
-	}
+	// a = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	// b = vm->arena[mdx(cmd->idx)].o_acb & 0xFF;
+	// if (vm->arena[mdx(cmd->idx)].hit == 1)
+	// {
+	// 	if (a != b)
+ //        {
+ //            if ((b - 1 >= 0 && b - 1 < 16) && (vm->arena[cmd->idx].pl != cmd->pl))
+	// 		    vm->arena[mdx(cmd->idx)].acb = vm->arena[mdx(cmd->idx)].o_acb;
+ //        }
+	// }
 		i = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
 	//ft_printf("i %d ", i);
 	//printw("i %d ", i);
@@ -587,8 +691,11 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 {
 	vm_rev_pc(vm, vm->cmd);
 	vm_curet_next(vm->cmd);
-	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 0)
+	if (vm->lifes == 0 || (vm->cycle_to_die) <= 0)
+	{
 		*i = 0;
+		vm->cycle_to_die = 0;
+	}
 	if (vm->last_check == MAX_CHECKS || vm->lifes > NBR_LIVE)
 	{
 		vm->cycle_to_die -= CYCLE_DELTA;
@@ -606,7 +713,6 @@ void	vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle >= vm->cycle_to_die)
 	{
-		//cmd->flag = 0;
 		vm_cycler_todie(vm, i);
 	}
 	else
@@ -784,6 +890,8 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	*cmd = tmp2;
 }*/
 
+
+
 void	vm_load_arena(t_vm *vm)
 {
 	int		i;
@@ -800,8 +908,6 @@ void	vm_load_arena(t_vm *vm)
 	while (i)
 	{	
 		c = vm->cmd;
-		if (!vm->debug)
-			vm_play_arena(vm);
 		while (c)
 		{
 			if (!c->off)
@@ -819,8 +925,10 @@ void	vm_load_arena(t_vm *vm)
 			}
 			c = c->next;
 		}
-		//usleep(20000);
-	}
+		if (!vm->debug)
+			vm_play_arena(vm);
+		//usleep(30000);
+	}	
 	if (!vm->debug)
 	{
 		getch();
@@ -966,7 +1074,7 @@ int			main(int argc, char **argv)
 	vm_load_lists(&vm->cmd, vm);
 	vm_glow_cur(vm, vm->cmd);
 	//нужно дописать функцию самой игры и реализовать функции
-	vm_load_arena(vm);
+	vm_load_arena(vm);	
 	//ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);
 	free_vm(vm);
 	return (0);
