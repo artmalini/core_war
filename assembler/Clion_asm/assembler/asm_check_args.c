@@ -15,20 +15,19 @@
 int			check_arg_label(t_core *file, t_cmd *c, const char *arg)
 {
 	int		i;
+	int 	end;
 
 	i = 0;
-	if (!file || !c || !arg)
+	if (!file || !c || !arg || !(end = (int)ft_strlen(arg)))
 		return (ft_error_int(file, ERROR_FT_ARG));
-	while (arg[i] && ft_strchr(SPACES_CHARS, arg[i]))
-		i++;
+	while (end >= 1 && ft_strchr(SPACES_CHARS, arg[end - 1]))
+		end--;
 	if (arg[i] == LABEL_CHAR)
-	{
 		i++;
-		while (arg[i] && ft_strchr(LABEL_CHARS, arg[i]))
-			i++;
-		if (arg[i] == '\0')
-			return (OKAY);
-	}
+	while (arg[i] && ft_strchr(LABEL_CHARS, arg[i]))
+		i++;
+	if (i == end)
+		return (OKAY);
 	return (ERROR);
 }
 

@@ -28,8 +28,18 @@
           <file leaf-file-name="asm_check.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/assembler/asm_check.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+                <state relative-caret-position="300">
+                  <caret line="20" column="59" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="59" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="asm_valid_main.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assembler/asm_valid_main.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="715">
+                  <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -38,8 +48,18 @@
           <file leaf-file-name="asm_check_args.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/assembler/asm_check_args.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="711">
-                  <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+                <state relative-caret-position="439">
+                  <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="asm_errors.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assembler/asm_errors.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1245">
+                  <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -59,21 +79,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Explosive_Kitty.s" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Explosive_Kitty.s">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="761">
-                  <caret line="143" column="28" lean-forward="false" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
+                <state relative-caret-position="195">
+                  <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -82,8 +92,8 @@
           <file leaf-file-name="asm.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/includes/asm.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3075">
-                  <caret line="205" column="33" lean-forward="false" selection-start-line="205" selection-start-column="33" selection-end-line="205" selection-end-column="33" />
+                <state relative-caret-position="2985">
+                  <caret line="199" column="33" lean-forward="false" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
                   <folding />
                 </state>
               </provider>
@@ -140,9 +150,9 @@
         <option value="$PROJECT_DIR$/assembler/asm_create_cor_fpos_opc.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/assembler/asm_check.c" />
-        <option value="$PROJECT_DIR$/assembler/asm_check_args.c" />
         <option value="$PROJECT_DIR$/overwatch.s" />
         <option value="$PROJECT_DIR$/Explosive_Kitty.s" />
+        <option value="$PROJECT_DIR$/assembler/asm_check_args.c" />
       </list>
     </option>
   </component>
@@ -226,7 +236,7 @@
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Clion_asm" RUN_TARGET_NAME="CoreWar_ASM" EXPLICIT_BUILD_TARGET_NAME="all">
       <envs />
     </configuration>
-    <configuration name="Clion_asm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Explosive_Kitty.s" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Clion_asm" TARGET_NAME="Clion_asm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Clion_asm" RUN_TARGET_NAME="Clion_asm">
+    <configuration name="Clion_asm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="run_Kitty_RUN.s" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Clion_asm" TARGET_NAME="Clion_asm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Clion_asm" RUN_TARGET_NAME="Clion_asm">
       <envs />
     </configuration>
     <list size="2">
@@ -260,7 +270,7 @@
       <workItem from="1531856370322" duration="726000" />
       <workItem from="1532005461843" duration="13000" />
       <workItem from="1532546588433" duration="4355000" />
-      <workItem from="1532562881078" duration="2134000" />
+      <workItem from="1532562881078" duration="3202000" />
     </task>
     <task id="LOCAL-00001" summary="Clion push">
       <created>1530702653365</created>
@@ -399,7 +409,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67724000" />
+    <option name="totallyTimeSpent" value="68792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1338" extended-state="0" />
@@ -445,22 +455,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="96" />
+      <option name="time" value="102" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="args[FIRST]" language="ObjectiveC" />
-        <watch expression="args[SECOND]" language="ObjectiveC" />
-        <watch expression="args[THIRD]" language="ObjectiveC" />
-        <watch expression="args[nbr] + i" language="ObjectiveC" />
-        <watch expression="str_arg + i" language="ObjectiveC" />
-        <watch expression="arg[end - 1]" language="ObjectiveC" />
-        <watch expression="ft_strchr(SPACES_CHARS, arg[end - 1])" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>file-&gt;error-&gt;current_rows == 144</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>args[0] == &quot;%8&quot;</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -521,22 +526,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/asm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="238" column="35" lean-forward="false" selection-start-line="238" selection-start-column="35" selection-end-line="238" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assembler/asm_main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assembler/asm_errors.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -664,14 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assembler/asm_valid_main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="58" column="35" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assembler/asm_parse_main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -755,8 +736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/asm.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3075">
-          <caret line="205" column="33" lean-forward="false" selection-start-line="205" selection-start-column="33" selection-end-line="205" selection-end-column="33" />
+        <state relative-caret-position="2985">
+          <caret line="199" column="33" lean-forward="false" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -785,30 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assembler/asm_errors.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1629">
-          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assembler/asm_check.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assembler/asm_check_args.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/overwatch.s">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -817,18 +774,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/Explosive_Kitty.s">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="1084">
+          <caret line="143" column="28" lean-forward="false" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Explosive_Kitty.s">
+    <entry file="file://$PROJECT_DIR$/assembler/asm_errors.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="143" column="28" lean-forward="false" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
+        <state relative-caret-position="1245">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assembler/asm_valid_main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assembler/asm_check.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="59" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assembler/asm_check_args.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kittystrophic.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_Kitty_RUN.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
           <folding />
         </state>
       </provider>
