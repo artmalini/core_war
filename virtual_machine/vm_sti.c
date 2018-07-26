@@ -20,6 +20,20 @@
 ** 120 == (T_REG, T_IND, T_DIR)
 */
 
+void	vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
+{
+	if (cdg == 104)
+		vm_next_step(vm, cmd, 7);
+	else if (cdg == 84)
+		vm_next_step(vm, cmd, 5);
+	else if (cdg == 88)
+		vm_next_step(vm, cmd, 6);
+	else if (cdg == 120)
+		vm_next_step(vm, cmd, 9);
+	else if (cdg == 116)
+		vm_next_step(vm, cmd, 8);
+}
+
 void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 {
 	int		i;
@@ -173,7 +187,6 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 		else if (cdg == 116)
 			direct = vm_rir_sti(vm, cmd);
 		load_res(vm, cmd, (direct % IDX_MOD));
-		vm->arena[mdx(cmd->idx)].rgb = cmd->rgb - 5;
-		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+		vm_sti_step(vm, cmd, cdg);
 	}
 }
