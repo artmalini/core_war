@@ -15,7 +15,7 @@
 int			check_arg_label(t_core *file, t_cmd *c, const char *arg)
 {
 	int		i;
-	int 	end;
+	int		end;
 
 	i = 0;
 	if (!file || !c || !arg || !(end = (int)ft_strlen(arg)))
