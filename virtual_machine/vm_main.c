@@ -313,13 +313,13 @@ void	print_header(int j, t_vm *vm)
 	print_header2(j, vm);	
 }
 
-void	vm_play_arena(t_vm *vm)
+void	vm_vis_arena(t_vm *vm)
 {
-	erase();
 	int	i;
 	int	j;
 	int	k;
 
+	erase();
 	i = 0;
 	j = -1;
 	k = 0;
@@ -357,13 +357,22 @@ void	vm_play_arena(t_vm *vm)
 		i++;		
 	}
 	printw("\n");
-	refresh();	
+	refresh();
 }
 
-// void	vm_play_arena(void)
-// {
-// 	refresh();
-// }
+void	vm_play_arena(t_vm *vm)
+{
+	if (vm->dump_cycle > -1)
+	{
+		if (vm->total_cycle == vm->dump_cycle)
+			vm_dump_arena(vm);
+	}
+	else if (!vm->debug)
+	{
+		vm_vis_arena(vm);
+	}	
+}
+
 
 void	vm_create_arena(t_vm *vm)
 {
@@ -818,59 +827,6 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 }
 
 
-/*void	vm_load_arena(t_vm *vm)
-{
-	int		i;
-	//int		j;
-	t_cmd	*asc_c;
-	//t_cmd	*des_c;
-	t_cmd	*c;
-
-
-	i = 1;
-	if (!vm->debug)
-		vm_load_ncurses();
-	//while (++i < 2)
-	//	vm_play_arena(vm);
-		// tmp_c = vm->cmd;
-		// vm_list_reverse(&tmp_c);
-	while (i)
-	{
-		asc_c = vm->cmd;
-		while (asc_c)
-		{
-			c = asc_c;
-			asc_c = asc_c->next;
-		}
-		//c = vm->cmd;
-		//j = vm->total_cycle - 1;
-		if (!vm->debug)
-			vm_play_arena(vm);
-		while (c)
-		{
-			if (!c->off)
-			{
-				if (!c->playing)
-				{
-					vm_set_cycle_wait(vm, c);
-				}
-				else
-					vm_run_waiting_cycle(vm, c);
-			}
-			if (c->prev == NULL)
-			{
-				vm_cycler_to_die(vm, &i);
-			}
-			c = c->prev;
-		}
-		//usleep(10000);
-	}
-	if (!vm->debug)
-	{
-		getch();
-		endwin();		
-	}
-}*/
 
 /*void	vm_list_reverse(t_cmd **cmd)
 {
@@ -900,8 +856,10 @@ void	vm_load_arena(t_vm *vm)
 
 
 	i = 1;
-	if (!vm->debug)
+	if (!vm->debug && vm->dump_cycle == -1)
+	{
 		vm_load_ncurses();
+	}
 	//while (++i < 2)
 	//	vm_play_arena(vm);
 	//j = 1;	
@@ -925,11 +883,11 @@ void	vm_load_arena(t_vm *vm)
 			}
 			c = c->next;
 		}
-		if (!vm->debug)
-			vm_play_arena(vm);
+		//if (!vm->debug)
+		vm_play_arena(vm);
 		//usleep(30000);
 	}	
-	if (!vm->debug)
+	if (!vm->debug && vm->dump_cycle == -1)
 	{
 		getch();
 		endwin();		
