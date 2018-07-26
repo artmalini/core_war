@@ -34,29 +34,20 @@ int			check_arg_label(t_core *file, t_cmd *c, const char *arg)
 
 int			check_arg_reg(t_core *file, t_cmd *c, const char *arg)
 {
-	int		len;
-	int		hex;
-
 	if (!file || !c || !arg)
 		return (ft_error_int(file, ERROR_FT_ARG));
 	if (check_correct_end(file, c, arg) == ERROR)
 		return (ft_error_int(file, ERROR_NAME_ARG));
 	if (check_digital_arg(file, c, arg))
 		return (ft_error_int(file, ERROR_NAME_ARG));
-	len = (int)ft_strlen(arg);
-	if (len > 0 && ft_isdigit(*arg))
-	{
-		hex = ft_atoi(arg);
-		if (hex > 0 && hex <= REG_NUMBER)
-			return (OKAY);
-	}
+	if (ft_atoi(arg) > 0 && ft_atoi(arg) <= REG_NUMBER)
+		return (OKAY);
 	return (ERROR);
 }
 
 int			check_arg_dir(t_core *file, t_cmd *c, const char *arg)
 {
 	int		i;
-	int		nbr_arg;
 
 	i = 0;
 	if (!file || !c || !arg)
@@ -65,26 +56,21 @@ int			check_arg_dir(t_core *file, t_cmd *c, const char *arg)
 		return (check_arg_label(file, c, arg));
 	if (check_correct_end(file, c, arg) == ERROR)
 		return (ft_error_int(file, ERROR_NAME_ARG));
-	if (ft_isdigit(arg[i]) || (ft_strlen(arg + i) > 1 && arg[i] == '-' &&
-			ft_isdigit(arg[i + 1])))
+	if (check_digital_arg(file, c, arg) == ERROR)
+		return (ft_error_int(file, ERROR_NAME_ARG));
+	if (SIZE(CMD) == ON)
 	{
-		nbr_arg = ft_atoi(arg + i);
-		if (SIZE(CMD) == ON)
-		{
-			if (nbr_arg >= INT16_MIN && nbr_arg <= INT16_MAX)
-				return (OKAY);
-			else
-				return (ft_error_int(file, ERROR_T_DIR));
-		}
-		return (OKAY);
+		if (ft_atoi(arg) >= INT16_MIN && ft_atoi(arg) <= INT16_MAX)
+			return (OKAY);
+		else
+			return (ft_error_int(file, ERROR_T_DIR));
 	}
-	return (ERROR);
+	return (OKAY);
 }
 
 int			check_arg_ind(t_core *file, t_cmd *c, char *arg)
 {
 	int		i;
-	int		len;
 
 	i = 0;
 	if (!file || !c || !arg)
@@ -93,21 +79,9 @@ int			check_arg_ind(t_core *file, t_cmd *c, char *arg)
 		return (check_arg_label(file, c, arg));
 	if (check_correct_end(file, c, arg) == ERROR)
 		return (ft_error_int(file, ERROR_NAME_ARG));
-	len = (int)ft_strlen(arg);
-	while (i < len)
-	{
-		if (i == 0 && arg[i] == '-')
-			i++;
-		if (ft_strchr("01234567890", arg[i]))
-			i++;
-		else
-			return (ft_error_int(file, ERROR_T_IND));
-	}
-	i = 0;
-	if (ft_isdigit(arg[i]) || (ft_strlen(arg + i) > 1
-								&& arg[i] == '-' && ft_isdigit(arg[i + 1])))
-		return (OKAY);
-	return (ERROR);
+	if (check_digital_arg(file, c, arg) == ERROR)
+		return (ft_error_int(file, ERROR_NAME_ARG));
+	return (OKAY);
 }
 
 int			check_args_main(t_core *file, t_cmd *c, char **args)

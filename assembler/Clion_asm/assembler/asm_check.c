@@ -15,20 +15,20 @@
 int			check_digital_arg(t_core *file, t_cmd *c, const char *arg)
 {
 	int		i;
-	int		len;
+	int		end;
 
 	i = 0;
-	if (!file || !c || !arg)
+	if (!file || !c || !arg || !(end = (int)ft_strlen(arg)))
 		return (ft_error_int(file, ERROR_FT_ARG));
-	len = (int)ft_strlen(arg);
-//	while (ft_isdigit(arg[i]))
-//		i++;
-//	while (!ft_strchr(SPACES_CHARS, arg[i]))
-//		i++;
-// 	return (ERROR);
-//	if (len == i)
+	while (end >= 1 && ft_strchr(SPACES_CHARS, arg[end - 1]))
+		end--;
+	if (arg[i] == '-')
+		i++;
+	while (ft_isdigit(arg[i]))
+		i++;
+	if (i == end)
 		return (OKAY);
-
+	return (ERROR);
 }
 
 int			check_comma_args(t_core *file, t_cmd *c, const char *args)

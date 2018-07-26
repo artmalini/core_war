@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vmakahon/CoreWar_Full/CoreWar_ASM
+CMAKE_SOURCE_DIR = /Users/vmakahon/CoreWar_Full/assembler/Clion_asm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CoreWar_ASM
+# Target rules for targets named Clion_asm
 
 # Build rule for target.
-CoreWar_ASM: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 CoreWar_ASM
-.PHONY : CoreWar_ASM
+Clion_asm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Clion_asm
+.PHONY : Clion_asm
 
 # fast build rule for target.
-CoreWar_ASM/fast:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/build
-.PHONY : CoreWar_ASM/fast
+Clion_asm/fast:
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/build
+.PHONY : Clion_asm/fast
 
 assembler/asm_check.o: assembler/asm_check.c.o
 
@@ -129,7 +129,7 @@ assembler/asm_check.o: assembler/asm_check.c.o
 
 # target to build an object file
 assembler/asm_check.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check.c.o
 .PHONY : assembler/asm_check.c.o
 
 assembler/asm_check.i: assembler/asm_check.c.i
@@ -138,7 +138,7 @@ assembler/asm_check.i: assembler/asm_check.c.i
 
 # target to preprocess a source file
 assembler/asm_check.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check.c.i
 .PHONY : assembler/asm_check.c.i
 
 assembler/asm_check.s: assembler/asm_check.c.s
@@ -147,7 +147,7 @@ assembler/asm_check.s: assembler/asm_check.c.s
 
 # target to generate assembly for a file
 assembler/asm_check.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check.c.s
 .PHONY : assembler/asm_check.c.s
 
 assembler/asm_check_args.o: assembler/asm_check_args.c.o
@@ -156,7 +156,7 @@ assembler/asm_check_args.o: assembler/asm_check_args.c.o
 
 # target to build an object file
 assembler/asm_check_args.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check_args.c.o
 .PHONY : assembler/asm_check_args.c.o
 
 assembler/asm_check_args.i: assembler/asm_check_args.c.i
@@ -165,7 +165,7 @@ assembler/asm_check_args.i: assembler/asm_check_args.c.i
 
 # target to preprocess a source file
 assembler/asm_check_args.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check_args.c.i
 .PHONY : assembler/asm_check_args.c.i
 
 assembler/asm_check_args.s: assembler/asm_check_args.c.s
@@ -174,7 +174,7 @@ assembler/asm_check_args.s: assembler/asm_check_args.c.s
 
 # target to generate assembly for a file
 assembler/asm_check_args.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_check_args.c.s
 .PHONY : assembler/asm_check_args.c.s
 
 assembler/asm_cmd.o: assembler/asm_cmd.c.o
@@ -183,7 +183,7 @@ assembler/asm_cmd.o: assembler/asm_cmd.c.o
 
 # target to build an object file
 assembler/asm_cmd.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_cmd.c.o
 .PHONY : assembler/asm_cmd.c.o
 
 assembler/asm_cmd.i: assembler/asm_cmd.c.i
@@ -192,7 +192,7 @@ assembler/asm_cmd.i: assembler/asm_cmd.c.i
 
 # target to preprocess a source file
 assembler/asm_cmd.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_cmd.c.i
 .PHONY : assembler/asm_cmd.c.i
 
 assembler/asm_cmd.s: assembler/asm_cmd.c.s
@@ -201,7 +201,7 @@ assembler/asm_cmd.s: assembler/asm_cmd.c.s
 
 # target to generate assembly for a file
 assembler/asm_cmd.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_cmd.c.s
 .PHONY : assembler/asm_cmd.c.s
 
 assembler/asm_create_cor.o: assembler/asm_create_cor.c.o
@@ -210,7 +210,7 @@ assembler/asm_create_cor.o: assembler/asm_create_cor.c.o
 
 # target to build an object file
 assembler/asm_create_cor.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor.c.o
 .PHONY : assembler/asm_create_cor.c.o
 
 assembler/asm_create_cor.i: assembler/asm_create_cor.c.i
@@ -219,7 +219,7 @@ assembler/asm_create_cor.i: assembler/asm_create_cor.c.i
 
 # target to preprocess a source file
 assembler/asm_create_cor.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor.c.i
 .PHONY : assembler/asm_create_cor.c.i
 
 assembler/asm_create_cor.s: assembler/asm_create_cor.c.s
@@ -228,7 +228,7 @@ assembler/asm_create_cor.s: assembler/asm_create_cor.c.s
 
 # target to generate assembly for a file
 assembler/asm_create_cor.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor.c.s
 .PHONY : assembler/asm_create_cor.c.s
 
 assembler/asm_create_cor_fpos_opc.o: assembler/asm_create_cor_fpos_opc.c.o
@@ -237,7 +237,7 @@ assembler/asm_create_cor_fpos_opc.o: assembler/asm_create_cor_fpos_opc.c.o
 
 # target to build an object file
 assembler/asm_create_cor_fpos_opc.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_fpos_opc.c.o
 .PHONY : assembler/asm_create_cor_fpos_opc.c.o
 
 assembler/asm_create_cor_fpos_opc.i: assembler/asm_create_cor_fpos_opc.c.i
@@ -246,7 +246,7 @@ assembler/asm_create_cor_fpos_opc.i: assembler/asm_create_cor_fpos_opc.c.i
 
 # target to preprocess a source file
 assembler/asm_create_cor_fpos_opc.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_fpos_opc.c.i
 .PHONY : assembler/asm_create_cor_fpos_opc.c.i
 
 assembler/asm_create_cor_fpos_opc.s: assembler/asm_create_cor_fpos_opc.c.s
@@ -255,7 +255,7 @@ assembler/asm_create_cor_fpos_opc.s: assembler/asm_create_cor_fpos_opc.c.s
 
 # target to generate assembly for a file
 assembler/asm_create_cor_fpos_opc.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_fpos_opc.c.s
 .PHONY : assembler/asm_create_cor_fpos_opc.c.s
 
 assembler/asm_create_cor_instr.o: assembler/asm_create_cor_instr.c.o
@@ -264,7 +264,7 @@ assembler/asm_create_cor_instr.o: assembler/asm_create_cor_instr.c.o
 
 # target to build an object file
 assembler/asm_create_cor_instr.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_instr.c.o
 .PHONY : assembler/asm_create_cor_instr.c.o
 
 assembler/asm_create_cor_instr.i: assembler/asm_create_cor_instr.c.i
@@ -273,7 +273,7 @@ assembler/asm_create_cor_instr.i: assembler/asm_create_cor_instr.c.i
 
 # target to preprocess a source file
 assembler/asm_create_cor_instr.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_instr.c.i
 .PHONY : assembler/asm_create_cor_instr.c.i
 
 assembler/asm_create_cor_instr.s: assembler/asm_create_cor_instr.c.s
@@ -282,7 +282,7 @@ assembler/asm_create_cor_instr.s: assembler/asm_create_cor_instr.c.s
 
 # target to generate assembly for a file
 assembler/asm_create_cor_instr.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_create_cor_instr.c.s
 .PHONY : assembler/asm_create_cor_instr.c.s
 
 assembler/asm_errors.o: assembler/asm_errors.c.o
@@ -291,7 +291,7 @@ assembler/asm_errors.o: assembler/asm_errors.c.o
 
 # target to build an object file
 assembler/asm_errors.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_errors.c.o
 .PHONY : assembler/asm_errors.c.o
 
 assembler/asm_errors.i: assembler/asm_errors.c.i
@@ -300,7 +300,7 @@ assembler/asm_errors.i: assembler/asm_errors.c.i
 
 # target to preprocess a source file
 assembler/asm_errors.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_errors.c.i
 .PHONY : assembler/asm_errors.c.i
 
 assembler/asm_errors.s: assembler/asm_errors.c.s
@@ -309,7 +309,7 @@ assembler/asm_errors.s: assembler/asm_errors.c.s
 
 # target to generate assembly for a file
 assembler/asm_errors.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_errors.c.s
 .PHONY : assembler/asm_errors.c.s
 
 assembler/asm_free_struct.o: assembler/asm_free_struct.c.o
@@ -318,7 +318,7 @@ assembler/asm_free_struct.o: assembler/asm_free_struct.c.o
 
 # target to build an object file
 assembler/asm_free_struct.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_free_struct.c.o
 .PHONY : assembler/asm_free_struct.c.o
 
 assembler/asm_free_struct.i: assembler/asm_free_struct.c.i
@@ -327,7 +327,7 @@ assembler/asm_free_struct.i: assembler/asm_free_struct.c.i
 
 # target to preprocess a source file
 assembler/asm_free_struct.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_free_struct.c.i
 .PHONY : assembler/asm_free_struct.c.i
 
 assembler/asm_free_struct.s: assembler/asm_free_struct.c.s
@@ -336,7 +336,7 @@ assembler/asm_free_struct.s: assembler/asm_free_struct.c.s
 
 # target to generate assembly for a file
 assembler/asm_free_struct.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_free_struct.c.s
 .PHONY : assembler/asm_free_struct.c.s
 
 assembler/asm_init_and_free.o: assembler/asm_init_and_free.c.o
@@ -345,7 +345,7 @@ assembler/asm_init_and_free.o: assembler/asm_init_and_free.c.o
 
 # target to build an object file
 assembler/asm_init_and_free.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_init_and_free.c.o
 .PHONY : assembler/asm_init_and_free.c.o
 
 assembler/asm_init_and_free.i: assembler/asm_init_and_free.c.i
@@ -354,7 +354,7 @@ assembler/asm_init_and_free.i: assembler/asm_init_and_free.c.i
 
 # target to preprocess a source file
 assembler/asm_init_and_free.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_init_and_free.c.i
 .PHONY : assembler/asm_init_and_free.c.i
 
 assembler/asm_init_and_free.s: assembler/asm_init_and_free.c.s
@@ -363,7 +363,7 @@ assembler/asm_init_and_free.s: assembler/asm_init_and_free.c.s
 
 # target to generate assembly for a file
 assembler/asm_init_and_free.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_init_and_free.c.s
 .PHONY : assembler/asm_init_and_free.c.s
 
 assembler/asm_label.o: assembler/asm_label.c.o
@@ -372,7 +372,7 @@ assembler/asm_label.o: assembler/asm_label.c.o
 
 # target to build an object file
 assembler/asm_label.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_label.c.o
 .PHONY : assembler/asm_label.c.o
 
 assembler/asm_label.i: assembler/asm_label.c.i
@@ -381,7 +381,7 @@ assembler/asm_label.i: assembler/asm_label.c.i
 
 # target to preprocess a source file
 assembler/asm_label.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_label.c.i
 .PHONY : assembler/asm_label.c.i
 
 assembler/asm_label.s: assembler/asm_label.c.s
@@ -390,7 +390,7 @@ assembler/asm_label.s: assembler/asm_label.c.s
 
 # target to generate assembly for a file
 assembler/asm_label.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_label.c.s
 .PHONY : assembler/asm_label.c.s
 
 assembler/asm_main.o: assembler/asm_main.c.o
@@ -399,7 +399,7 @@ assembler/asm_main.o: assembler/asm_main.c.o
 
 # target to build an object file
 assembler/asm_main.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_main.c.o
 .PHONY : assembler/asm_main.c.o
 
 assembler/asm_main.i: assembler/asm_main.c.i
@@ -408,7 +408,7 @@ assembler/asm_main.i: assembler/asm_main.c.i
 
 # target to preprocess a source file
 assembler/asm_main.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_main.c.i
 .PHONY : assembler/asm_main.c.i
 
 assembler/asm_main.s: assembler/asm_main.c.s
@@ -417,7 +417,7 @@ assembler/asm_main.s: assembler/asm_main.c.s
 
 # target to generate assembly for a file
 assembler/asm_main.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_main.c.s
 .PHONY : assembler/asm_main.c.s
 
 assembler/asm_name_cmt_valid.o: assembler/asm_name_cmt_valid.c.o
@@ -426,7 +426,7 @@ assembler/asm_name_cmt_valid.o: assembler/asm_name_cmt_valid.c.o
 
 # target to build an object file
 assembler/asm_name_cmt_valid.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_name_cmt_valid.c.o
 .PHONY : assembler/asm_name_cmt_valid.c.o
 
 assembler/asm_name_cmt_valid.i: assembler/asm_name_cmt_valid.c.i
@@ -435,7 +435,7 @@ assembler/asm_name_cmt_valid.i: assembler/asm_name_cmt_valid.c.i
 
 # target to preprocess a source file
 assembler/asm_name_cmt_valid.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_name_cmt_valid.c.i
 .PHONY : assembler/asm_name_cmt_valid.c.i
 
 assembler/asm_name_cmt_valid.s: assembler/asm_name_cmt_valid.c.s
@@ -444,7 +444,7 @@ assembler/asm_name_cmt_valid.s: assembler/asm_name_cmt_valid.c.s
 
 # target to generate assembly for a file
 assembler/asm_name_cmt_valid.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_name_cmt_valid.c.s
 .PHONY : assembler/asm_name_cmt_valid.c.s
 
 assembler/asm_op.o: assembler/asm_op.c.o
@@ -453,7 +453,7 @@ assembler/asm_op.o: assembler/asm_op.c.o
 
 # target to build an object file
 assembler/asm_op.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_op.c.o
 .PHONY : assembler/asm_op.c.o
 
 assembler/asm_op.i: assembler/asm_op.c.i
@@ -462,7 +462,7 @@ assembler/asm_op.i: assembler/asm_op.c.i
 
 # target to preprocess a source file
 assembler/asm_op.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_op.c.i
 .PHONY : assembler/asm_op.c.i
 
 assembler/asm_op.s: assembler/asm_op.c.s
@@ -471,7 +471,7 @@ assembler/asm_op.s: assembler/asm_op.c.s
 
 # target to generate assembly for a file
 assembler/asm_op.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_op.c.s
 .PHONY : assembler/asm_op.c.s
 
 assembler/asm_parse_line.o: assembler/asm_parse_line.c.o
@@ -480,7 +480,7 @@ assembler/asm_parse_line.o: assembler/asm_parse_line.c.o
 
 # target to build an object file
 assembler/asm_parse_line.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_line.c.o
 .PHONY : assembler/asm_parse_line.c.o
 
 assembler/asm_parse_line.i: assembler/asm_parse_line.c.i
@@ -489,7 +489,7 @@ assembler/asm_parse_line.i: assembler/asm_parse_line.c.i
 
 # target to preprocess a source file
 assembler/asm_parse_line.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_line.c.i
 .PHONY : assembler/asm_parse_line.c.i
 
 assembler/asm_parse_line.s: assembler/asm_parse_line.c.s
@@ -498,7 +498,7 @@ assembler/asm_parse_line.s: assembler/asm_parse_line.c.s
 
 # target to generate assembly for a file
 assembler/asm_parse_line.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_line.c.s
 .PHONY : assembler/asm_parse_line.c.s
 
 assembler/asm_parse_main.o: assembler/asm_parse_main.c.o
@@ -507,7 +507,7 @@ assembler/asm_parse_main.o: assembler/asm_parse_main.c.o
 
 # target to build an object file
 assembler/asm_parse_main.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_main.c.o
 .PHONY : assembler/asm_parse_main.c.o
 
 assembler/asm_parse_main.i: assembler/asm_parse_main.c.i
@@ -516,7 +516,7 @@ assembler/asm_parse_main.i: assembler/asm_parse_main.c.i
 
 # target to preprocess a source file
 assembler/asm_parse_main.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_main.c.i
 .PHONY : assembler/asm_parse_main.c.i
 
 assembler/asm_parse_main.s: assembler/asm_parse_main.c.s
@@ -525,7 +525,7 @@ assembler/asm_parse_main.s: assembler/asm_parse_main.c.s
 
 # target to generate assembly for a file
 assembler/asm_parse_main.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_parse_main.c.s
 .PHONY : assembler/asm_parse_main.c.s
 
 assembler/asm_print.o: assembler/asm_print.c.o
@@ -534,7 +534,7 @@ assembler/asm_print.o: assembler/asm_print.c.o
 
 # target to build an object file
 assembler/asm_print.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_print.c.o
 .PHONY : assembler/asm_print.c.o
 
 assembler/asm_print.i: assembler/asm_print.c.i
@@ -543,7 +543,7 @@ assembler/asm_print.i: assembler/asm_print.c.i
 
 # target to preprocess a source file
 assembler/asm_print.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_print.c.i
 .PHONY : assembler/asm_print.c.i
 
 assembler/asm_print.s: assembler/asm_print.c.s
@@ -552,7 +552,7 @@ assembler/asm_print.s: assembler/asm_print.c.s
 
 # target to generate assembly for a file
 assembler/asm_print.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_print.c.s
 .PHONY : assembler/asm_print.c.s
 
 assembler/asm_recalc_cmd_links.o: assembler/asm_recalc_cmd_links.c.o
@@ -561,7 +561,7 @@ assembler/asm_recalc_cmd_links.o: assembler/asm_recalc_cmd_links.c.o
 
 # target to build an object file
 assembler/asm_recalc_cmd_links.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_recalc_cmd_links.c.o
 .PHONY : assembler/asm_recalc_cmd_links.c.o
 
 assembler/asm_recalc_cmd_links.i: assembler/asm_recalc_cmd_links.c.i
@@ -570,7 +570,7 @@ assembler/asm_recalc_cmd_links.i: assembler/asm_recalc_cmd_links.c.i
 
 # target to preprocess a source file
 assembler/asm_recalc_cmd_links.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_recalc_cmd_links.c.i
 .PHONY : assembler/asm_recalc_cmd_links.c.i
 
 assembler/asm_recalc_cmd_links.s: assembler/asm_recalc_cmd_links.c.s
@@ -579,7 +579,7 @@ assembler/asm_recalc_cmd_links.s: assembler/asm_recalc_cmd_links.c.s
 
 # target to generate assembly for a file
 assembler/asm_recalc_cmd_links.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_recalc_cmd_links.c.s
 .PHONY : assembler/asm_recalc_cmd_links.c.s
 
 assembler/asm_valid_main.o: assembler/asm_valid_main.c.o
@@ -588,7 +588,7 @@ assembler/asm_valid_main.o: assembler/asm_valid_main.c.o
 
 # target to build an object file
 assembler/asm_valid_main.c.o:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_valid_main.c.o
 .PHONY : assembler/asm_valid_main.c.o
 
 assembler/asm_valid_main.i: assembler/asm_valid_main.c.i
@@ -597,7 +597,7 @@ assembler/asm_valid_main.i: assembler/asm_valid_main.c.i
 
 # target to preprocess a source file
 assembler/asm_valid_main.c.i:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.i
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_valid_main.c.i
 .PHONY : assembler/asm_valid_main.c.i
 
 assembler/asm_valid_main.s: assembler/asm_valid_main.c.s
@@ -606,7 +606,7 @@ assembler/asm_valid_main.s: assembler/asm_valid_main.c.s
 
 # target to generate assembly for a file
 assembler/asm_valid_main.c.s:
-	$(MAKE) -f CMakeFiles/CoreWar_ASM.dir/build.make CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.s
+	$(MAKE) -f CMakeFiles/Clion_asm.dir/build.make CMakeFiles/Clion_asm.dir/assembler/asm_valid_main.c.s
 .PHONY : assembler/asm_valid_main.c.s
 
 # Help Target
@@ -617,7 +617,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... CoreWar_ASM"
+	@echo "... Clion_asm"
 	@echo "... assembler/asm_check.o"
 	@echo "... assembler/asm_check.i"
 	@echo "... assembler/asm_check.s"

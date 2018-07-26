@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vmakahon/CoreWar_Full/CoreWar_ASM
+CMAKE_SOURCE_DIR = /Users/vmakahon/CoreWar_Full/assembler/Clion_asm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/CoreWar_ASM.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/CoreWar_ASM.dir/flags.make
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o: ../assembler/asm_check.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_check.c.o.provides.build: CMakeFiles/Co
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o: ../assembler/asm_check_args.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check_args.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check_args.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check_args.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check_args.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_check_args.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_check_args.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_check_args.c.o.provides.build: CMakeFil
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o: ../assembler/asm_cmd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_cmd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_cmd.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_cmd.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_cmd.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_cmd.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_cmd.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_cmd.c.o.provides.build: CMakeFiles/Core
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o: ../assembler/asm_create_cor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor.c.o.provides.build: CMakeFil
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o: ../assembler/asm_create_cor_fpos_opc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_fpos_opc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_fpos_opc.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_fpos_opc.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_fpos_opc.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_fpos_opc.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_fpos_opc.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_fpos_opc.c.o.provides.build:
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o: ../assembler/asm_create_cor_instr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_instr.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_instr.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_instr.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_instr.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_create_cor_instr.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_create_cor_instr.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_create_cor_instr.c.o.provides.build: CM
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o: ../assembler/asm_errors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_errors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_errors.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_errors.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_errors.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_errors.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_errors.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_errors.c.o.provides.build: CMakeFiles/C
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o: ../assembler/asm_free_struct.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_free_struct.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_free_struct.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_free_struct.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_free_struct.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_free_struct.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_free_struct.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_free_struct.c.o.provides.build: CMakeFi
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o: ../assembler/asm_label.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_label.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_label.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_label.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_label.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_label.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_label.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_label.c.o.provides.build: CMakeFiles/Co
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o: ../assembler/asm_name_cmt_valid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_name_cmt_valid.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_name_cmt_valid.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_name_cmt_valid.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_name_cmt_valid.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_name_cmt_valid.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_name_cmt_valid.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_name_cmt_valid.c.o.provides.build: CMak
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o: ../assembler/asm_parse_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_line.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_line.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_line.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_line.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_line.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_line.c.o.provides.build: CMakeFil
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o: ../assembler/asm_parse_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_main.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_parse_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_parse_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o.requires:
 
@@ -347,16 +347,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_parse_main.c.o.provides.build: CMakeFil
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o: ../assembler/asm_recalc_cmd_links.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_recalc_cmd_links.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_recalc_cmd_links.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_recalc_cmd_links.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_recalc_cmd_links.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_recalc_cmd_links.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_recalc_cmd_links.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o.requires:
 
@@ -371,16 +371,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_recalc_cmd_links.c.o.provides.build: CM
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o: ../assembler/asm_valid_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_valid_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_valid_main.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_valid_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_valid_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_valid_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_valid_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o.requires:
 
@@ -395,16 +395,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_valid_main.c.o.provides.build: CMakeFil
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o: ../assembler/asm_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_main.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_main.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_main.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o.requires:
 
@@ -419,16 +419,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_main.c.o.provides.build: CMakeFiles/Cor
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o: ../assembler/asm_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_print.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_print.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_print.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_print.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_print.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o.requires:
 
@@ -443,16 +443,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_print.c.o.provides.build: CMakeFiles/Co
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o: ../assembler/asm_init_and_free.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_init_and_free.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_init_and_free.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_init_and_free.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_init_and_free.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_init_and_free.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_init_and_free.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o.requires:
 
@@ -467,16 +467,16 @@ CMakeFiles/CoreWar_ASM.dir/assembler/asm_init_and_free.c.o.provides.build: CMake
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o: CMakeFiles/CoreWar_ASM.dir/flags.make
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o: ../assembler/asm_op.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o   -c /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_op.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o   -c /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_op.c
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_op.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_op.c > CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.i
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/CoreWar_ASM/assembler/asm_op.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/assembler/asm_op.c -o CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.s
 
 CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o.requires:
 
@@ -534,7 +534,7 @@ CoreWar_ASM: CMakeFiles/CoreWar_ASM.dir/assembler/asm_op.c.o
 CoreWar_ASM: CMakeFiles/CoreWar_ASM.dir/build.make
 CoreWar_ASM: ../libft/libft.a
 CoreWar_ASM: CMakeFiles/CoreWar_ASM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking C executable CoreWar_ASM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking C executable CoreWar_ASM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CoreWar_ASM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -568,6 +568,6 @@ CMakeFiles/CoreWar_ASM.dir/clean:
 .PHONY : CMakeFiles/CoreWar_ASM.dir/clean
 
 CMakeFiles/CoreWar_ASM.dir/depend:
-	cd /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/vmakahon/CoreWar_Full/CoreWar_ASM /Users/vmakahon/CoreWar_Full/CoreWar_ASM /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug /Users/vmakahon/CoreWar_Full/CoreWar_ASM/cmake-build-debug/CMakeFiles/CoreWar_ASM.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/vmakahon/CoreWar_Full/assembler/Clion_asm /Users/vmakahon/CoreWar_Full/assembler/Clion_asm /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug /Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles/CoreWar_ASM.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/CoreWar_ASM.dir/depend
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(CoreWar_ASM)
+project(Clion_asm)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -30,6 +30,6 @@ set(SOURCE_FILES
 		assembler/asm_init_and_free.c
 		assembler/asm_op.c)
 
-add_executable(CoreWar_ASM ${SOURCE_FILES})
+add_executable(Clion_asm ${SOURCE_FILES})
 
-target_link_libraries(CoreWar_ASM ${LIBFT})
+target_link_libraries(Clion_asm ${LIBFT})
