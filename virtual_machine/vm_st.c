@@ -22,7 +22,7 @@ void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 	if (vm->debug)
 		ft_printf("|P\t%d| st |r%d| |%d|\n", cmd->nbr_process, reg1, reg2);
 	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1];
-	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+	vm_next_step(vm, cmd, 4);
 }
 
 void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)

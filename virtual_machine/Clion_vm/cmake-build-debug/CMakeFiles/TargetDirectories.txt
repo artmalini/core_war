@@ -1,3 +1,0 @@
-/home/artem/unit/corewar/core_war/CoreWar_VM/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/artem/unit/corewar/core_war/CoreWar_VM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/artem/unit/corewar/core_war/CoreWar_VM/cmake-build-debug/CMakeFiles/CoreWar_VM.dir

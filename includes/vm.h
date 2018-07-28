@@ -160,6 +160,8 @@ typedef struct 		s_cmd
 	int				nbr_process;
 	int				on;
 	int				previdx;
+	int				str_cycle;
+	int				lnew;
 	struct s_cmd	*next;
 	struct s_cmd	*prev;
 }					t_cmd;

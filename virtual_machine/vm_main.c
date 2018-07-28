@@ -94,6 +94,7 @@ void	vm_pl_stats(t_vm *vm, int i)
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
 	printw("\nLives for %.20s	%d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
 	printw(" Lives in current period: %d", vm->tab_champ[i].lives_in_period);
+	printw("\t\t Total cycles: %d", vm->total_cycle);
 }
 
 void	vm_game_stat(t_vm *vm)
@@ -393,368 +394,6 @@ void	vm_create_arena(t_vm *vm)
 	}
 }
 
-
-
-
-
-
-
-
-
-
-void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
-{
-	int		i;
-	int		tm;
-
-	if (vm->arena[cmd->idx].flag > 0)
-		vm->arena[cmd->idx].flag--;
-	tm = cmd->idx;
- 	i = cmd->idx + pos;
-    //ft_printf("cmd->idx |%d|\n ", i);
-    //if (cmd->on == 0)
-    cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
-    //ft_printf("cmd->idx |%d| ", cmd->idx);
-    //ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
-    //refresh();
-    // erase();
-    // attron(COLOR_PAIR(11));
-    // printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
-    // refresh();
-   // vm->arena[cmd->idx].pl = cmd->pl;
-    vm->arena[cmd->idx].flag++;
-	vm->arena[cmd->idx].rgb = cmd->rgb;
-	if (vm->arena[tm].flag == 0)
-		vm->arena[tm].rgb = vm->arena[tm].asc_rgb;
-	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*void	vm_curet_next(t_cmd *cmd)
-{
-	while (cmd && !cmd->flag)
-	{
-		if (!cmd->life)
-		{
-			cmd->off = 1;
-			cmd->flag = 1;
-		}
-		cmd->life = 0;
-			//printw("cmd->reg[0] %d\n", cmd->reg[0]);
-			//refresh();
-		cmd = cmd->next;
-	}
-}
-
-void	vm_cycler_todie(t_vm *vm, t_cmd *cmd, int *i)
-{
-	vm_curet_next(cmd);
-	if (vm->lifes == 0 || (vm->cycle_to_die - CYCLE_DELTA) < 1)
-		*i = 0;
-	if (vm->lifes < NBR_LIVE)
-		vm->last_check += 1;
-	if (vm->last_check == MAX_CHECKS || vm->lifes >= NBR_LIVE)
-	{
-		vm->cycle_to_die -= CYCLE_DELTA;
-		if (vm->cycle_to_die < 0)
-		{
-			//vm_curet_next(cmd);
-			vm->cycle_to_die = 0;
-		}
-		vm->lifes = 0;
-		vm->last_check = 0;
-	}
-	vm->cycle = 0;
-	//vm->lives = 0;
-}*/
-
-void	pl_period_live(t_vm *vm)
-{
-	int i;
-
-	i = -1;
-	while (++i < vm->nbr_next)
-		vm->tab_champ[i].lives_in_period = 0;
-}
-
-/*void	vm_curet_next(t_cmd *cmd)
-{
-	while (cmd)
-	{
-		if (!cmd->life)
-		{
-			//cmd->nbr_process--;
-			cmd->off = 1;
-			//cmd->flag = 1;
-		}
-		cmd->life = 0;
-		cmd = cmd->next;
-	}
-}*/
-
-
-
-/*int		vm_step_shift(int type, int label_size)
-{
-	if (type == REG_CODE)
-		return (1);
-	else if (type == DIR_CODE)
-		return (2 + 2 * (1 - label_size));
-	else if (type == IND_CODE)
-		return (2);
-	else
-		return (0);
-}
-
-int		vm_calc_steps(int hex, int pos)
-{
-	int		param;
-	int		ret;
-
-	ret = 0;
-	param = 0;
-	hex = 0;
-	if (hex >= 0 && hex < 17)
-		param = op_tab[hex].nbr_args;
-	//else
-	//	return (1);
-			//printw("param |%d|\n", param);
-			//refresh();
-	if (hex < 0 || hex > 17)
-		return (1);
-	ret = vm_step_shift((pos >> 6) & 3, op_tab[hex].size);	
-	if (param > 1)
-		ret += vm_step_shift((pos >> 4) & 3, op_tab[hex].size);
-	if (param > 2)
-		ret += vm_step_shift((pos >> 2) & 3, op_tab[hex].size);
-			//printw("ret |%d|\n", ret);
-			//refresh();	
-	return (ret + 2);
-}*/
-
-/*int	vm_check(t_vm *vm, t_cmd *cmd, int args)
-{
-	int		i;
-	int		chk;
-	int	acb;
-
-	chk = (vm->arena[mdx(cmd->idx)].acb) - 1;
-	acb = (vm->arena[mdx(cmd->idx + 1)].acb);
-	//if (acb <= 0)
-	//	return (0);
-	i = 0;
-	while (i < args)//op_tab[chk].type_params
-	{
-		if ((acb >> (6 - i * 2) & 0x3) == REG_CODE &&
-				(op_tab[chk].type_params[i] & T_REG) == T_REG)
-			;
-		else if ((acb >> (6 - i * 2) & 0x3) == DIR_CODE &&
-				(op_tab[chk].type_params[i] & T_DIR) == T_DIR)
-			;
-		else if ((acb >> (6 - i * 2) & 0x3) == IND_CODE &&
-				(op_tab[chk].type_params[i] & T_IND) == T_IND)
-			;
-		else
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int		vm_has_cmd(t_vm *vm, t_cmd *cmd)
-{
-	int i;
-	//int	cdg;
-
-	i = (vm->arena[mdx(cmd->idx)].acb) - 1;
-	//cdg = vm->arena[mdx(cmd->idx + 1)].acb & 0xFF;
-	//i -= 1;
-	// erase();
-	// attron(COLOR_PAIR(11));
-	//printw("vm_has_cmd |%d|\n", i);
-	//refresh();
-	if (i < 0 || i > 16)
-		return (0);
-	else if (i == 0 || i == 9 || i == 12 || i == 15)
-	 	return (1);
-	else if (vm_check(vm, cmd, op_tab[i].nbr_args))
-	 	return (1);
-	else
-		return (0);
-}*/
-
-int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
-{
-	int		i;
-	// int		a;
-	// int 	b;
-
-
-	// 	i = (vm->arena[mdx(cmd->previdx)].acb) - 1;
- //    if (cmd->on == 0)
-	////vm->arena[cmd->idx].pl = cmd->pl;
-	i = 0;
-	// a = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	// b = vm->arena[mdx(cmd->idx)].o_acb & 0xFF;
-	// if (vm->arena[mdx(cmd->idx)].hit == 1)
-	// {
-	// 	if (a != b)
- //        {
- //            if ((b - 1 >= 0 && b - 1 < 16) && (vm->arena[cmd->idx].pl != cmd->pl))
-	// 		    vm->arena[mdx(cmd->idx)].acb = vm->arena[mdx(cmd->idx)].o_acb;
- //        }
-	// }
-		i = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
-	//ft_printf("i %d ", i);
-	//printw("i %d ", i);
-	//refresh();
-	if (i < 0 || i > 16)
-		return (0);
-	//if (vm->arena[cmd->idx].hit == 1)
-	//	vm->arena[cmd->idx].pl = cmd->pl;
-		
-	return (1);
-	
-}
-
-int		vm_its_cmd2(t_vm *vm, t_cmd *cmd)
-{
-	int		i;
-
-	i = -1;
-
-
-	// if (cmd->on == 1)
-	// {
-	// 	i = (vm->arena[mdx(cmd->previdx)].acb) - 1;
-	// 	if (i < 0 || i > 16)
-	// 		return (0);
-	// 	else
-	// 		return (2);
-	// }
-	// if (cmd->on == 0)
-		i = (vm->arena[mdx(cmd->idx)].acb) - 1;
-	//ft_printf("i %d ", i);
-	//printw("i %d ", i);
-	//refresh();
-	if (i < 0 || i > 16)
-		return (0);
-	else
-		return (1);
-}
-
-
-void	vm_curet_next(t_cmd *cmd)
-{
-	while (cmd)
-	{
-		if (!cmd->life && !cmd->off)
-		{
-			cmd->off = 1;
-		}
-		cmd->life = 0;
-		cmd->on = 0;
-		cmd = cmd->next;
-	}
-}
-
-void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
-{
-	int		id;
-
-	id = -1;
-	while (cmd)
-	{
-		if (!cmd->on)
-		{
-			id = cmd->pl * -1;
-			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
-				vm->tab_champ[id].nbr_process -= 1;
-		}
-		cmd = cmd->next;
-	}
-}
-
-void	vm_cycler_todie(t_vm *vm, int *i)
-{
-	vm_rev_pc(vm, vm->cmd);
-	vm_curet_next(vm->cmd);
-	if (vm->lifes == 0 || (vm->cycle_to_die) <= 0)
-	{
-		*i = 0;
-		vm->cycle_to_die = 0;
-	}
-	if (vm->last_check == MAX_CHECKS || vm->lifes > NBR_LIVE)
-	{
-		vm->cycle_to_die -= CYCLE_DELTA;
-		if (vm->cycle_to_die < 0)
-			vm->cycle_to_die = 0;		
-		vm->last_check = 0;
-	}
-	vm->last_check++;
-	pl_period_live(vm);
-	vm->cycle = 0;
-	vm->lifes = 0;
-}
-
-void	vm_cycler_to_die(t_vm *vm, int *i)
-{
-	if (vm->cycle >= vm->cycle_to_die)
-	{
-		vm_cycler_todie(vm, i);
-	}
-	else
-	{
-		vm->cycle++;
-		vm->total_cycle++;
-	}
-}
-
-void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
-{
-	//if (cmd->on == 1)
-	//	cmd->idx = cmd->previdx;
-	//ft_printf("ok\n");
-	//int		i;
-	//i = vm->arena[mdx(cmd->idx)].acb & 0xFF;	
-	if (vm_its_cmd(vm, cmd))
-	{
-		vm->arena[cmd->idx].hit = 1;
-		vm->arena[cmd->idx].pl = cmd->pl;
-
-		cmd->wait = op_tab[vm->arena[mdx(cmd->idx)].acb - 1].cycles - 2;
-		cmd->playing = 1;		
-		//ft_printf("ok %d\n", cmd->wait);
-		//vm_next_step(vm, cmd, 1);
-		//
-		//printw("%s %d\n", op_tab[i].name, op_tab[i].cycles);
-		//refresh();
-	}
-	else
-		vm_next_step(vm, cmd, 1);
-}
-
 void	vm_cmd_triger2(t_vm *vm, t_cmd *cmd, int hex)
 {
 	if (hex == 12)
@@ -800,30 +439,299 @@ void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 }
 
 
-void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
+
+
+
+
+
+
+void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 {
-	//int		pos;
+	int		i;
+	int		tm;
+
+	if (vm->arena[cmd->idx].flag > 0)
+		vm->arena[cmd->idx].flag--;
+	tm = cmd->idx;
+	i = cmd->idx + pos;
+	//ft_printf("cmd->idx |%d|\n ", i);
+	//if (cmd->on == 0)
+	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
+	//ft_printf("cmd->idx |%d| ", cmd->idx);
+	//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
+	//refresh();
+	// erase();
+	// attron(COLOR_PAIR(11));
+	// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
+	// refresh();
+   // vm->arena[cmd->idx].pl = cmd->pl;
+	vm->arena[cmd->idx].flag++;
+	vm->arena[cmd->idx].rgb = cmd->rgb;
+	if (vm->arena[tm].flag == 0)
+		vm->arena[tm].rgb = vm->arena[tm].asc_rgb;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void	pl_period_live(t_vm *vm)
+{
+	int i;
+
+	i = -1;
+	while (++i < vm->nbr_next)
+		vm->tab_champ[i].lives_in_period = 0;
+}
+
+
+
+
+/*int		vm_its_cmd(t_vm *vm, t_cmd *cmd)
+{
+	int		i;
+	// int		a;
+	// int 	b;
+
+
+	////vm->arena[cmd->idx].pl = cmd->pl;
+	i = 0;
+	// if (vm->arena[mdx(cmd->idx)].hit == 1)
+	// {
+	// 	if (a != b)
+ //        {
+ //            if ((b - 1 >= 0 && b - 1 < 16) && (vm->arena[cmd->idx].pl != cmd->pl))
+	// 		    vm->arena[mdx(cmd->idx)].acb = vm->arena[mdx(cmd->idx)].o_acb;
+ //        }
+	// }
+		i = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
+	if (i < 0 || i > 16)
+		return (0);
+	else		
+		return (1);	
+}*/
+
+int		vm_its_cmd2(t_vm *vm, t_cmd *cmd)
+{
+	int		i;
+
+	i = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
+	if (i < 0 || i > 16)
+		return (0);
+	else
+		return (1);
+}
+
+
+void	vm_curet_next(t_cmd *cmd)
+{
+	while (cmd)
+	{
+		if (!cmd->life && !cmd->off)
+		{
+			cmd->off = 1;
+		}
+		cmd->life = 0;
+		cmd->on = 0;
+		cmd = cmd->next;
+	}
+}
+
+void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
+{
+	int		id;
+
+	id = -1;
+	while (cmd)
+	{
+		if (!cmd->on)
+		{
+			id = cmd->pl * -1;
+			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
+				vm->tab_champ[id].nbr_process -= 1;
+		}
+		cmd = cmd->next;
+	}
+}
+
+
+void	vm_cycler_todie(t_vm *vm, int *i)
+{
+	vm_rev_pc(vm, vm->cmd);
+	vm_curet_next(vm->cmd);
+	if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
+	{
+		*i = 0;
+		vm->cycle_to_die = 0;
+	}
+	vm->last_check++;
+	if (vm->last_check == MAX_CHECKS || vm->lifes >= NBR_LIVE)
+	{
+		vm->cycle_to_die -= CYCLE_DELTA;
+		if (vm->cycle_to_die < 0)
+			vm->cycle_to_die = 0;
+		vm->last_check = 0;
+	}
+	pl_period_live(vm);
+	vm->cycle = 0;
+	vm->lifes = 0;
+}
+
+/*void	vm_cycler_to_die(t_vm *vm, int *i)
+{
+	if (vm->cycle >= vm->cycle_to_die)
+	{
+		vm_cycler_todie(vm, i);
+	}
+	else
+	{
+		vm->cycle++;
+		vm->total_cycle++;
+	}
+}*/
+
+void	vm_cycler_to_die(t_vm *vm, int *i)
+{
+	// int		yes;
+	// t_cmd	*cmd;
+
+	// yes = 0;
+	// cmd = vm->cmd;
+	if (vm->cycle >= vm->cycle_to_die)
+	{
+		vm_cycler_todie(vm, i);
+	}
+	// else
+	// {
+	// 	while (cmd)
+	// 	{
+	// 		if (cmd->lnew)
+	// 			yes = 1;
+	// 		//cmd->lnew = 0;
+	// 		cmd = cmd->next;
+	// 	}
+	// 	if (!yes)
+	// 	{
+	// 		vm->cycle++;
+	// 		vm->total_cycle++;
+	// 	}
+	// }
+}
+
+void	vm_count(t_vm *vm, t_cmd *cmd)
+{
+	 int		yes;
+
+	 yes = 0;
+	 	while (cmd)
+	 	{
+	 		if (cmd->lnew)
+	 			yes = 1;
+	 		cmd = cmd->next;
+	 	}
+	 	if (!yes)
+	 	{
+			vm->cycle++;
+			vm->total_cycle++;
+		}
+}
+
+int		vm_cout(t_cmd *cmd)
+{
+	 int		yes;
+
+	 yes = 0;
+	 	while (cmd)
+	 	{
+	 		if (cmd->lnew)
+	 			yes++;
+	 		cmd = cmd->next;
+	 	}
+	 return (yes);
+}
+
+void	vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
+{
+	int		acb;
+
+	acb = vm->arena[mdx(cmd->idx)].acb - 1;
+	if (vm_its_cmd2(vm, cmd))
+	{
+		vm->arena[cmd->idx].hit = 1;
+		vm->arena[cmd->idx].pl = cmd->pl;
+
+		// if (cmd->lnew)
+		// {
+		// 	cmd->wait = op_tab[acb].cycles;// - (vm->total_cycle - cmd->str_cycle);
+		// }
+		// else
+			cmd->wait = op_tab[acb].cycles + (cmd->wait == -1 ? cmd->wait * - 1 : 0);
+		/*if (vm->total_cycle == 0)
+			cmd->str_cycle = vm->total_cycle;
+		if (cmd->lnew)
+		{
+			cmd->str_cycle = vm->total_cycle - 1;
+		}
+		else
+			cmd->str_cycle = cmd->str_cycle;*/
+
+		//cmd->wait = op_tab[acb].cycles - 2;
+		//cmd->lnew = 0;
+		cmd->playing = 1;
+	}
+	else
+		vm_next_step(vm, cmd, 1);
+}
+
+/*void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
+{
+	int		pos;
 	int		hex;
 
 	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	if (cmd->wait == 0)
+	pos = vm->total_cycle - cmd->str_cycle;
+	//cmd->wait--;
+	if (pos == cmd->wait)
 	{
-		//if (vm_has_cmd(vm, cmd))
+		if (vm_its_cmd2(vm, cmd))
+		{
+			cmd->str_cycle = vm->total_cycle;
+			vm_cmd_triger(vm, cmd, hex);
+			cmd->wait = 0;
+			cmd->playing = 0;
+		}
+	}
+	//else
+	//	cmd->wait--;
+}*/
+
+
+void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
+{
+	int		hex;
+
+	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+    //cmd->wait -= 1;
+	if (cmd->wait == 1)
+	{
 		if (vm_its_cmd2(vm, cmd))
 		{
 			vm_cmd_triger(vm, cmd, hex);
 		}
-		/*else
-		{
-			//cmd->off = 1;
-			vm_next_step(vm, cmd, 1);
-			//pos = vm->arena[mdx(cmd->idx + 1)].acb;
-			//vm_next_step(vm, cmd, vm_calc_steps(hex, pos));
-		}*/
 		cmd->playing = 0;
 	}
-	else
-		cmd->wait -= 1;
+	//else
+	//	cmd->wait -= 1;
 }
 
 
@@ -846,52 +754,65 @@ void	vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	*cmd = tmp2;
 }*/
 
-
+void    vm_decr(t_vm *vm, t_cmd *cmd)
+{
+	//if (vm->cycle > 0)
+	if (cmd)
+	{
+	    while (cmd)
+	    {
+	    	if (cmd->playing)
+	        	cmd->wait -= 1;
+	        cmd = cmd->next;
+	    }		
+	}
+    vm->cycle++;
+    vm->total_cycle++;
+}
 
 void	vm_load_arena(t_vm *vm)
 {
 	int		i;
-	//int		j;
 	t_cmd	*c;
-
+	//t_cmd	*tc;
 
 	i = 1;
 	if (!vm->debug && vm->dump_cycle == -1)
 	{
 		vm_load_ncurses();
 	}
-	//while (++i < 2)
-	//	vm_play_arena(vm);
-	//j = 1;	
 	while (i)
 	{	
 		c = vm->cmd;
+        vm_decr(vm, vm->cmd);
 		while (c)
 		{
-			if (!c->off)
+            if (!c->off)
 			{
-				if (!c->playing)
+                if (!c->playing)
 				{
-					vm_set_cycle_wait(vm, c);
-				}
-				else
-					vm_run_waiting_cycle(vm, c);
-			}
-			if (c->next == NULL)
+                    vm_set_cycle_wait(vm, c);
+                }
+                else
+                {
+                    vm_run_waiting_cycle(vm, c);
+                }
+            }
+            if (c->next == NULL)
 			{
-				vm_cycler_to_die(vm, &i);
-			}
-			c = c->next;
-		}
-		//if (!vm->debug)
-		vm_play_arena(vm);
-		//usleep(30000);
-	}	
-	if (!vm->debug && vm->dump_cycle == -1)
+                vm_cycler_to_die(vm, &i);
+            }
+            c = c->next;
+        }
+        //if (!vm->debug)
+        vm_play_arena(vm);
+        //usleep(20000);
+    }
+    if (!vm->debug && vm->dump_cycle == -1)
 	{
-		getch();
-		endwin();		
-	}
+        getch();
+        endwin();
+    }
 }
 
 static void	free_vm(t_vm *vm)
@@ -973,6 +894,8 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->nbr_process = 1;
 		lst->flag = 0;		
 		lst->on = 0;
+		lst->str_cycle = 0;
+		lst->lnew = 0;
 		lst->next = NULL;
 		lst->prev = NULL;
 		//ft_printf("lst->idx |%d\n|", lst->idx);

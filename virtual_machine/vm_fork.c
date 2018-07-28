@@ -35,13 +35,15 @@ t_cmd		*fork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
 		lst->previdx = cmd1->previdx;
 		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
-		lst->wait = cmd1->wait;
+		lst->wait = 0;
 		lst->off = cmd1->off;
 		lst->carry = cmd1->carry;
 		lst->life = cmd1->life;
 		lst->nbr_process = nb;
 		lst->on = 0;
+		lst->str_cycle = cmd1->str_cycle + op_tab[vm->arena[mdx(cmd1->idx)].acb - 1].cycles;
 		lst->flag = 0;
+		lst->lnew = 1;
 		lst->next = NULL;
 		lst->prev = NULL;
 	}	
@@ -80,7 +82,9 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 			vm->tab_champ[id].nbr_process += 1;
 		vm->total_process += 1;
 		// while (cmd1->next != NULL)
-		//  	cmd1 = cmd1->next;
+		// 	cmd1 = cmd1->next;
+		// cmd1->next = tmp;
+
 		tmp->next = vm->cmd;
 		vm->cmd = tmp;
 
