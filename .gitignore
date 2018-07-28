@@ -4,3 +4,5 @@
 *.a
 asm
 corewar
+cmake-build-debug
+.idea

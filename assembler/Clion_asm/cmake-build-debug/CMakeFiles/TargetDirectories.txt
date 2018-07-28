@@ -1,3 +1,0 @@
-/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/vmakahon/CoreWar_Full/assembler/Clion_asm/cmake-build-debug/CMakeFiles/Clion_asm.dir
