@@ -47,7 +47,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 	if (id > -1)
 	{
 		vm->lifes += 1;
-		vm->win = id;
+		//vm->win = id;
 		vm->tab_champ[id].prev_live = vm->total_cycle;
 		vm->tab_champ[id].lives_in_period += 1;
 		//vm->tab_champ[id].prev_live = vm->tab_champ[id].lives_in_period;

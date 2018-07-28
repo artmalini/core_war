@@ -58,7 +58,6 @@ static void			cpy_prog(t_vm *vm, char *prog, int num_player)
 	index = 0;
 	while (index < vm->tab_champ[num_player].weight)
 	{
-		//ft_printf("cpy_prog %d\n", prog[index]);
 		vm->tab_champ[num_player].prog[index] = prog[index];
 		index++;
 	}
@@ -85,14 +84,11 @@ void				vm_read_champ(t_vm *vm, int nbr_player)
 	read(vm->fd, comment, COMMENT_LENGTH);
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
 	ft_bzero(comment, COMMENT_LENGTH);
-	read(vm->fd, str, 4);//added
+	read(vm->fd, str, 4);
 	if (!(ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight)))
 		return ;
 	cpy_prog(vm, comment, nbr_player);
 	if (vm->tab_champ[nbr_player].id == -1)
 		vm->tab_champ[nbr_player].id = vm->nbr_next + 1;
 	vm->nbr_next++;
-	ft_printf("vm_read_champ %d\n", nbr_player);
-	ft_printf("vm_read_champ vm->tab_champ[nbr_player].name |%s|\n", vm->tab_champ[nbr_player].name);
-	ft_printf("vm_read_champ vm->tab_champ[nbr_player].comment |%s|\n", vm->tab_champ[nbr_player].comment);
 }

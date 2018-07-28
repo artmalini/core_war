@@ -233,6 +233,7 @@ typedef struct		s_vm
 	int				total_cycle;
 	int				win;
 	int				debug;
+	int				visual;
 }					t_vm;
 
 typedef struct		s_op
@@ -251,12 +252,13 @@ extern t_op			op_tab[17];
 
 int					vm_usage(int argc, char **argv);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
-int					ft_isnumber(char *str);
+int					vm_isnumber(char *str);
 int					vm_get_param(char **av, t_vm *vm, int ac);
 void				vm_dump_arena(t_vm *vm);
 void				vm_create_arena(t_vm *vm);
 void				vm_load_champs(t_vm *vm);
 void				vm_read_champ(t_vm *vm, int number_player);
+void				vm_exit(t_vm *vm);
 
 
 void				ft_print_error(t_error *e);

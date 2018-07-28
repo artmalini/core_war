@@ -12,33 +12,7 @@
 
 #include "vm.h"
 
-int			vm_param_n(t_vm *vm, char **av, int *i, int ac)
-{
-	int		id;
-
-	if (ac > (*i) + 1)
-	{
-		(*i)++;
-		if (ft_isnumber(av[*i]))
-		{
-			id = ft_atoi(av[*i]);
-			(*i)++;
-			return (id);
-		}
-		else
-		{
-			ft_printf("No number after the -n. ");			
-		}
-	}
-	else
-	{
-		ft_printf("No champion after the number requested. ");
-		
-	}
-	return (vm->nbr_next);
-}
-
-int			ft_isnumber(char *str)
+int				vm_isnumber(char *str)
 {
 	int		i;
 
@@ -51,7 +25,36 @@ int			ft_isnumber(char *str)
 	return (1);
 }
 
-static void	champs(t_vm *vm, char *arg)
+int				vm_param_n(t_vm *vm, char **av, int *i, int ac)
+{
+	int		id;
+
+	if (ac > (*i) + 1)
+	{
+		(*i)++;
+		if (vm_isnumber(av[*i]))
+		{
+			id = ft_atoi(av[*i]);
+			(*i)++;
+			return (id);
+		}
+		else
+		{
+			ft_printf("No number after the -n. ");
+			vm_exit(vm);	
+		}
+	}
+	else
+	{
+		ft_printf("No champion after the number requested. ");
+		vm_exit(vm);
+		
+	}
+	return (vm->nbr_next);
+}
+
+
+void			vm_champs(t_vm *vm, char *arg)
 {
 	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 	{
@@ -61,36 +64,46 @@ static void	champs(t_vm *vm, char *arg)
 	else if (vm->nbr_next >= 4)
 	{
 		ft_printf("Number of champion too high.\n");
-		exit(1);
+		vm_exit(vm);
 	}
 		
 }
 
-int			vm_get_param(char **av, t_vm *vm, int ac)
+void			vm_parse_params(t_vm *vm, int *i, char **av, int ac)
+{
+	if (((ft_strcmp(av[*i], "-n") == 0) || ft_strcmp(av[*i], "-dump") == 0))
+	{
+		if (ft_strcmp(av[*i], "-dump") == 0 && vm->dump_cycle == -1
+				&& ac > *i + 2 && vm_isnumber(av[*i + 1]))
+		{
+			(*i)++;
+			vm->dump_cycle = ft_atoi(av[*i]);
+			(*i)++;
+		}
+		if (ft_strcmp(av[*i], "-n") == 0)
+			vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, i, ac);
+	}
+	if (!ft_strcmp(av[*i], "-d"))
+	{
+		vm->debug = 1;
+		(*i)++;
+	}
+	if (!ft_strcmp(av[*i], "-v"))
+	{
+		vm->visual = 1;
+		(*i)++;
+	}
+}
+
+int				vm_get_param(char **av, t_vm *vm, int ac)
 {
 	int		i;
 
 	i = 0;
 	while (++i < ac)
 	{
-		if (((ft_strcmp(av[i], "-n") == 0) || ft_strcmp(av[i], "-dump") == 0))
-		{
-			if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1
-					&& ac > i + 2 && ft_isnumber(av[i + 1]))
-			{
-				i++;
-				vm->dump_cycle = ft_atoi(av[i]);
-				i++;
-			}
-			if (ft_strcmp(av[i], "-n") == 0)
-				vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, &i, ac);
-		}
-		if (!ft_strcmp(av[i], "-d"))
-		{
-			vm->debug = 1;
-			i++;
-		}
-		champs(vm, av[i]);
+		vm_parse_params(vm, &i, av, ac);
+		vm_champs(vm, av[i]);
 	}
 	if (vm->nbr_next == 0)
 	{

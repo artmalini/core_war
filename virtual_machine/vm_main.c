@@ -64,6 +64,7 @@ void	vm_dump_arena(t_vm *vm)
 		i++;
 	}
 	ft_printf("\n");
+	//exit(1);
 }
 
 void	vm_load_ncurses(void)
@@ -115,13 +116,16 @@ void	vm_winner(t_vm *vm)
 
 	i = -1;
 	j = 0;
-	while (++i < vm->nbr_next)
+	if (vm->win)
 	{
-		if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
-			j = i;
+		while (++i < vm->nbr_next)
+		{
+			if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
+				j = i;
+		}
+		if (!vm->visual)
+			ft_printf("Contestant %d, \"%s\", has won !\n", vm->tab_champ[j].id, vm->tab_champ[j].name);
 	}
-	if (vm->debug)
-		ft_printf("Contestant %d, \"%s\", has won !\n", vm->tab_champ[j].id, vm->tab_champ[j].name);
 }
 
 int		vm_vis_winner(t_vm *vm)
@@ -130,7 +134,7 @@ int		vm_vis_winner(t_vm *vm)
 	int			j;
 
 	i = -1;
-	j = 0;
+	j = 0;	
 	while (++i < vm->nbr_next)
 	{
 		if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
@@ -365,10 +369,10 @@ void	vm_play_arena(t_vm *vm)
 {
 	if (vm->dump_cycle > -1)
 	{
-		if (vm->total_cycle == vm->dump_cycle)
+		if (vm->total_cycle >= vm->dump_cycle)
 			vm_dump_arena(vm);
 	}
-	else if (!vm->debug)
+	else if (vm->visual)
 	{
 		vm_vis_arena(vm);
 	}	
@@ -572,6 +576,7 @@ void	vm_cycler_todie(t_vm *vm, int *i)
 	if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
 	{
 		*i = 0;
+		vm->win = 1;
 		vm->cycle_to_die = 0;
 	}
 	vm->last_check++;
@@ -777,7 +782,7 @@ void	vm_load_arena(t_vm *vm)
 	//t_cmd	*tc;
 
 	i = 1;
-	if (!vm->debug && vm->dump_cycle == -1)
+	if (vm->visual && vm->dump_cycle == -1)
 	{
 		vm_load_ncurses();
 	}
@@ -804,11 +809,12 @@ void	vm_load_arena(t_vm *vm)
             }
             c = c->next;
         }
-        //if (!vm->debug)
         vm_play_arena(vm);
+        if (vm->dump_cycle > -1)
+        	i = 0;
         //usleep(20000);
     }
-    if (!vm->debug && vm->dump_cycle == -1)
+    if (vm->visual && vm->dump_cycle == -1)
 	{
         getch();
         endwin();
@@ -859,13 +865,14 @@ static void	init(t_vm *vm)
 	}
 	vm->fd = 0;
 	vm->dump_cycle = -1;
+	vm->visual = 0;
 	vm->nbr_next = 0;
 	vm->last_check = 0;
 	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
 	vm->lifes = 0;
-	vm->win = -1;
+	vm->win = 0;
 	vm->total_process = 1;
 	vm->cycle = 0;
 	vm->total_cycle = 0;
@@ -929,13 +936,17 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 				tmp = tmp->next;
 			tmp->next = add_list(vm, i);
 			tmp->next->prev = *(cmd);
-			//tmp->next->flag = 1;
 		}
 		else
 			*cmd = add_list(vm, i);
-		ft_printf("@@@ %d %d\n", vm->tab_champ[i].id, vm->tab_champ[i].idx);
 	}
-	//vm_glow_cur(vm, *cmd);
+}
+
+void		vm_exit(t_vm *vm)
+{
+	if (vm)
+		free(vm);
+	exit(1);
 }
 
 int			main(int argc, char **argv)
@@ -950,12 +961,13 @@ int			main(int argc, char **argv)
 	init(vm);
 	vm_create_arena(vm);
 	if (vm_get_param(argv, vm, argc) == 0)
-		vm_usage(argc, argv);
+		vm_exit(vm);
 	vm_load_champs(vm);
 	vm_load_lists(&vm->cmd, vm);
 	vm_glow_cur(vm, vm->cmd);
 	//нужно дописать функцию самой игры и реализовать функции
-	vm_load_arena(vm);	
+	vm_load_arena(vm);
+	vm_winner(vm);
 	//ft_printf("main vm->tab_champ[0].weight %d\n", vm->tab_champ[0].weight);
 	free_vm(vm);
 	return (0);
