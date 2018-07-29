@@ -41,7 +41,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 	//id = vm_getpl(vm);
 	id = vm_getpl(vm, place * -1);
 	if (vm->debug)
-		ft_printf("|P\t%d| live id %d place|%d|\n", cmd->nbr_process, id, place);
+		ft_printf("|P\t%d| live |%d|\n",  cmd->nbr_process, place);
 	//id = vm->tab_champ[place];
 	//id = 0;
 	if (id > -1)

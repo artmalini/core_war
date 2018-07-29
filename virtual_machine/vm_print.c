@@ -47,7 +47,7 @@ int			vm_usage(int argc, char **argv)
 						"[[-n number] champion1.cor] ...\n");
 	ft_printf("\t    -dump nbr_cycles	: Dumps memory after "
 						"nbr_cycles then exits\n");
-	ft_printf("\t    -d\t\t	: Debug mode, show operations\n");
+	ft_printf("\t    -debug\t\t: Debug mode, show operations\n");
 	ft_printf("\t    -v\t\t	: Visual mode\n");
 	exit(1);
 	return (0);

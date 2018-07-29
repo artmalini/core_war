@@ -37,7 +37,11 @@ void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	one += 0xFF & vm->arena[mdx(val1 + 3)].acb;
 	a = 0xFF & vm->arena[mdx(cmd->idx)].acb;
 	if (vm_v_cmd(a - 1, a - 1, a - 1))
+	{
 		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
+		if (vm->debug)
+			ft_printf("|P\t%d| lldi |r%d| |%d|\n", a, one);
+	}
 }
 
 void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)

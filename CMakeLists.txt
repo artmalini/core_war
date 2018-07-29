@@ -13,13 +13,27 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wall -Wextra -Werror ")
 set(SOURCE_FILES
 		virtual_machine/op.c
 		virtual_machine/vm_load.c
+		virtual_machine/vm_m_cmd_triger.c
+		virtual_machine/vm_m_cycler_to_die.c
+		virtual_machine/vm_m_dump_arena.c
+		virtual_machine/vm_m_free.c
+		virtual_machine/vm_m_init.c
+		virtual_machine/vm_m_load_arena.c
 		virtual_machine/vm_main.c
 		virtual_machine/vm_params.c
-		virtual_machine/vm_read.c virtual_machine/vm_ncurses.c virtual_machine/vm_errors.c virtual_machine/vm_print.c
+		virtual_machine/vm_read.c
+		virtual_machine/vm_errors.c
+		virtual_machine/vm_print.c
 		virtual_machine/vm_sti.c
+		virtual_machine/vm_sti_mng.c
 		virtual_machine/vm_mng_bit1.c
 		virtual_machine/vm_mng_bit2.c
 		virtual_machine/vm_mng_func.c
+		virtual_machine/vm_mng_func1.c
+		virtual_machine/vm_n.c
+		virtual_machine/vm_n_draw_win.c
+		virtual_machine/vm_n_heart_win.c
+		virtual_machine/vm_n_logo.c
 		virtual_machine/vm_aff.c
 		virtual_machine/vm_and.c
 		virtual_machine/vm_or.c

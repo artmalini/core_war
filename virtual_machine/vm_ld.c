@@ -26,7 +26,6 @@ void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
-	//ft_printf("pos |%d|", vm_pos_curs(vm, cmd));
 	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 

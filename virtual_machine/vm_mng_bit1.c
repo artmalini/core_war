@@ -15,25 +15,49 @@
 void	vm_rdr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
 	if (let == 1)
+	{
 		cmd->reg[arg[1] - 1] = cmd->reg[arg[0] - 1] & vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[1]);
+	}
 	if (let == 2)
+	{
 		cmd->reg[arg[1] - 1] = cmd->reg[arg[0] - 1] | vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| or |r%d|\n", cmd->nbr_process, arg[1]);
+	}
 	if (let == 3)
+	{
 		cmd->reg[arg[1] - 1] = cmd->reg[arg[0] - 1] ^ vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| xor |r%d|\n", cmd->nbr_process, arg[1]);
+	}
 	if (cmd->reg[arg[1] - 1] == 0)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
 }
 
-void	vm_rrr_bit(t_cmd *cmd, int *arg, int let)
+void	vm_rrr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
 	if (let == 1)
+	{
 		cmd->reg[arg[2] - 1] = cmd->reg[arg[0] - 1] & cmd->reg[arg[1] - 1];
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[2]);
+	}
 	if (let == 2)
+	{
 		cmd->reg[arg[2] - 1] = cmd->reg[arg[0] - 1] | cmd->reg[arg[1] - 1];
+		if (vm->debug)
+			ft_printf("|P\t%d| or |r%d|\n", cmd->nbr_process, arg[2]);
+	}
 	if (let == 3)
+	{
 		cmd->reg[arg[2] - 1] = cmd->reg[arg[0] - 1] ^ cmd->reg[arg[1] - 1];
+		if (vm->debug)
+			ft_printf("|P\t%d| xor |r%d|\n", cmd->nbr_process, arg[2]);
+	}
 	if (cmd->reg[arg[2] - 1] == 0)
 		cmd->carry = 1;
 	else
@@ -43,11 +67,23 @@ void	vm_rrr_bit(t_cmd *cmd, int *arg, int let)
 void	vm_idr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
 	if (let == 1)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) & vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 2)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) | vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| or |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 3)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) ^ vm_direct(vm, cmd, arg);
+		if (vm->debug)
+			ft_printf("|P\t%d| xor |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (cmd->reg[arg[0] - 1] == 0)
 		cmd->carry = 1;
 	else
@@ -57,11 +93,23 @@ void	vm_idr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 void	vm_iir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
 	if (let == 1)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) & vm_indir(vm, cmd, 4);
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 2)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) | vm_indir(vm, cmd, 4);
+		if (vm->debug)
+			ft_printf("|P\t%d| or |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 3)
+	{
 		cmd->reg[arg[0] - 1] = vm_indir(vm, cmd, 2) ^ vm_indir(vm, cmd, 4);
+		if (vm->debug)
+			ft_printf("|P\t%d| xor |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (cmd->reg[arg[0] - 1] == 0)
 		cmd->carry = 1;
 	else
@@ -71,11 +119,23 @@ void	vm_iir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 void	vm_dir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let)
 {
 	if (let == 1)
+	{
 		cmd->reg[arg[0] - 1] = vm_direct(vm, cmd, arg) & vm_indir(vm, cmd, 6);
+		if (vm->debug)
+			ft_printf("|P\t%d| and |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 2)
+	{
 		cmd->reg[arg[0] - 1] = vm_direct(vm, cmd, arg) | vm_indir(vm, cmd, 6);
+		if (vm->debug)
+			ft_printf("|P\t%d| or |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (let == 3)
+	{
 		cmd->reg[arg[0] - 1] = vm_direct(vm, cmd, arg) ^ vm_indir(vm, cmd, 6);
+		if (vm->debug)
+			ft_printf("|P\t%d| xor |r%d|\n", cmd->nbr_process, arg[0]);
+	}
 	if (cmd->reg[arg[0] - 1] == 0)
 		cmd->carry = 1;
 	else

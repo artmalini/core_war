@@ -254,26 +254,38 @@ int					vm_usage(int argc, char **argv);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
 int					vm_isnumber(char *str);
 int					vm_get_param(char **av, t_vm *vm, int ac);
+void				vm_init(t_vm *vm);
+void				vm_create_arena(t_vm *vm);
+void				vm_load_lists(t_cmd **cmd, t_vm *vm);
+void				vm_glow_cur(t_vm *vm, t_cmd *cmd);
 void				vm_dump_arena(t_vm *vm);
 void				vm_create_arena(t_vm *vm);
+void				vm_load_arena(t_vm *vm);
+void				vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_cycler_to_die(t_vm *vm, int *i);
+int					vm_its_cmd(t_vm *vm, t_cmd *cmd);
 void				vm_load_champs(t_vm *vm);
 void				vm_read_champ(t_vm *vm, int number_player);
+void				vm_dump_arena(t_vm *vm);
 void				vm_exit(t_vm *vm);
 
 
 void				ft_print_error(t_error *e);
 char				*vm_str_error(int error);
+void				free_vm(t_vm *vm);
+void				vm_exit(t_vm *vm);
 
 int					mdx(int nbr);
 int					vm_pos_curs(t_vm *vm, t_cmd *cmd);
 void				vm_next_step(t_vm *vm, t_cmd *cmd, int pos);
+void				vm_winner(t_vm *vm);
 
 int					vm_v_cmd(int a, int b, int c);
 int					vm_direct(t_vm *vm, t_cmd *cmd, int *arg);
 int					vm_indir(t_vm *vm, t_cmd *cmd, int nb);
 int					get_indir_arg(t_vm *vm, t_cmd *cmd, int nb);
 void				vm_rdr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
-void				vm_rrr_bit(t_cmd *cmd, int *arg, int let);
+void				vm_rrr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
 void				vm_idr_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
 void				vm_iir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
 void				vm_dir_bit(t_vm *vm, t_cmd *cmd, int *arg, int let);
@@ -291,6 +303,11 @@ void				vm_or(t_vm *vm, t_cmd *cmd);
 void				vm_xor(t_vm *vm, t_cmd *cmd);
 void				vm_zjmp(t_vm *vm, t_cmd *cmd);
 void				vm_ldi(t_vm *vm, t_cmd *cmd);
+int					vm_rid_sti(t_vm *vm, t_cmd *cmd);
+int					vm_rrr_sti(t_vm *vm, t_cmd *cmd);
+int					vm_rrd_sti(t_vm *vm, t_cmd *cmd);
+int					vm_rir_sti(t_vm *vm, t_cmd *cmd);
+int					vm_rdd_sti(t_vm *vm, t_cmd *cmd);
 void				vm_sti(t_vm *vm, t_cmd *cmd);
 void				vm_fork(t_vm *vm, t_cmd **cmd);
 void				vm_lld(t_vm *vm, t_cmd *cmd);
@@ -300,5 +317,12 @@ void				vm_aff(t_vm *vm, t_cmd *cmd);
 int 				get_reg(t_vm *vm, int *i);
 int 				is_reg(int value);
 int					vm_getpl(t_vm *vm, int place);
+
+void				vm_load_ncurses(void);
+void				vm_vis_arena(t_vm *vm);
+void				print_logo(int j, t_vm *vm);
+void				vm_n_draw_win(int j, int pl);
+void				draw_pl_heart(int j, t_vm *vm);
+int					vm_vis_winner(t_vm *vm);
 
 #endif

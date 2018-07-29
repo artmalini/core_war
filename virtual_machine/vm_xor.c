@@ -142,7 +142,7 @@ void	vm_xor(t_vm *vm, t_cmd *cmd)
 		arg[1] = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 		arg[2] = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 		if (vm_v_cmd(arg[0] - 1, arg[1] - 1, arg[2] - 1))
-			vm_rrr_bit(cmd, arg, 3);
+			vm_rrr_bit(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));		
 	}
 	else

@@ -83,7 +83,7 @@ void			vm_parse_params(t_vm *vm, int *i, char **av, int ac)
 		if (ft_strcmp(av[*i], "-n") == 0)
 			vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, i, ac);
 	}
-	if (!ft_strcmp(av[*i], "-d"))
+	if (!ft_strcmp(av[*i], "-debug"))
 	{
 		vm->debug = 1;
 		(*i)++;
