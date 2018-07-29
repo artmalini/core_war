@@ -6,14 +6,18 @@ void	vm_load_ncurses(void)
 	initscr();
 	noecho();
 	start_color();
+	//init_color(COLOR_RED, 68, 0, 0);
+	//init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+
 	init_pair(5, COLOR_WHITE, COLOR_RED);
 	init_pair(6, COLOR_WHITE, COLOR_YELLOW);
 	init_pair(7, COLOR_WHITE, COLOR_GREEN);
 	init_pair(8, COLOR_WHITE, COLOR_CYAN);
+
 	init_pair(9, COLOR_BLUE, COLOR_BLACK);
 	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
 	init_pair(11, COLOR_WHITE, COLOR_BLACK);
@@ -23,12 +27,12 @@ void	vm_load_ncurses(void)
 void	vm_pl_stats(t_vm *vm, int i)
 {
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
-	printw(" Lives for %.18s \t\t%d \t\tProcess: %d", vm->tab_champ[i].name,
-		vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
-	printw("\t\tLives in current period: %d\n", vm->tab_champ[i].lives_in_period);
+	printw("\nLives for %.20s	%d Process: %d", vm->tab_champ[i].name, vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
+	printw(" Lives in current period: %d", vm->tab_champ[i].lives_in_period);
+	printw("\t\t Total cycles: %d", vm->total_cycle);
 }
 
-void	vm_game_stat(t_vm *vm, int j)
+void	vm_game_stat(t_vm *vm)
 {
 	int		i;
 
@@ -36,14 +40,7 @@ void	vm_game_stat(t_vm *vm, int j)
 	while (++i < vm->nbr_next)
 		vm_pl_stats(vm, i);
 	attron(COLOR_PAIR(10));
-	printw(" Cycle: %d\t\t\tCycles to die:\t%d\n", vm->cycle, vm->cycle_to_die);		
-	if (!vm->win)
-	{
-		printw(" Total cycles:\t\t\t%d\n", vm->total_cycle);
-	}
-	if (vm->cycle_to_die == 0 && vm->total_cycle != 0 && j != 0)
-		printw(" Congratulations: %.20s!!! \tPress any key to exit.",
-			vm->tab_champ[vm_vis_winner(vm)].name);
+	printw("\nCycle : %d Cycles to die: %d \n\n", vm->cycle, vm->cycle_to_die);
 }
 
 
@@ -65,8 +62,7 @@ void	vm_vis_arena(t_vm *vm)
 		k = 3;
 	else
 		k = 4;
-	vm_game_stat(vm, j);
-	printw("\n\n");
+	vm_game_stat(vm);
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
