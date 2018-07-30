@@ -33,8 +33,12 @@ SRCS_VM	=	vm_errors.c \
 			op.c \
 			vm_m_init.c \
 			vm_m_free.c \
+			vm_m_load_arena.c \
 			vm_m_cmd_triger.c \
+			vm_m_cycler_to_die.c \
+			vm_m_dump_arena.c \
 			vm_mng_func.c \
+			vm_mng_func1.c \
 			vm_mng_bit1.c \
 			vm_mng_bit2.c \
 			vm_sti_mng.c \

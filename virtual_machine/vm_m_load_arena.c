@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_m_load_arena.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/30 12:17:31 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/30 12:17:34 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -38,7 +49,13 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		cmd->playing = 1;
 	}
 	else
+	{
+		// if (vm->arena[mdx(cmd->idx + 1)].acb == 0)
+		// {
+		// 	cmd->rgb = 11;
+		// }
 		vm_next_step(vm, cmd, 1);
+	}
 }
 
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
@@ -71,13 +88,36 @@ void    	vm_decr(t_vm *vm, t_cmd *cmd)
     vm->total_cycle++;
 }
 
+void		vm_sleep(t_vm *vm)
+{
+	int		nb;
+	int		ch;
+
+	nb = 20000;
+	//ch = getch();
+	ch = 0;
+	if (vm->visual)
+	{
+		while ((ch = getch()) != ERR)
+		{
+			if (ch == KEY_DOWN)
+				nb *= 10;
+		}
+		usleep(nb);
+		//else
+		//	usleep(nb);
+	}
+}
+
 void		vm_load_arena(t_vm *vm)
 {
 	int		i;
 	t_cmd	*c;
+	//int		j;
 	//t_cmd	*tc;
 
 	i = 1;
+	//j = 0;
 	while (i)
 	{
 		c = vm->cmd;
@@ -102,6 +142,7 @@ void		vm_load_arena(t_vm *vm)
         vm_play_arena(vm);
         if (vm->dump_cycle > -1 && (vm->dump_cycle == vm->total_cycle))
 			i = 0;
-		//usleep(30000);
+		//vm_sleep(vm);
+		//usleep(10000);
 	}
 }

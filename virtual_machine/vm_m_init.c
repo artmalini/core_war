@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_m_init.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/30 12:17:10 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/30 12:17:15 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -12,10 +23,10 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].rgb = 11;
 		vm->arena[i].asc_rgb = 11;
 		vm->arena[i].flag = 0;
-		//vm->arena[i].bold = 0;
 		vm->arena[i].o_acb = 0;
 		vm->arena[i].hit = 0;
 		vm->arena[i].pl = -666;
+		vm->arena[i].bold = 0;
 		i++;
 	}
 }
@@ -47,6 +58,7 @@ void	vm_init(t_vm *vm)
 	vm->lifes = 0;
 	vm->win = 0;
 	vm->total_process = 1;
+	vm->aff = 0;
 	vm->cycle = 0;
 	vm->total_cycle = 0;
 	vm->debug = 0;
@@ -73,7 +85,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->life = 0;
 		lst->nbr_process = 1;
 		lst->flag = 0;		
-		lst->on = 0;
+		lst->on = 1;
 		lst->str_cycle = 0;
 		lst->lnew = 0;
 		lst->next = NULL;
@@ -86,6 +98,7 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 {
 	int		i;
 	t_cmd	*tmp;
+	//t_cmd	*tmp1;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -100,6 +113,14 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 		}
 		else
 			*cmd = add_list(vm, i);
+		// if (tmp)
+		// {
+		// 	tmp1 = add_list(vm, i);
+		// 	tmp1->next = vm->cmd;
+		// 	vm->cmd = tmp1;
+		// }
+		// else
+		// 	*cmd = add_list(vm, i);
 	}
 }
 

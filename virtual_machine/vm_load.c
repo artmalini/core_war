@@ -29,6 +29,25 @@ static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index, int num_pl)
 	}
 }
 
+void		vm_check_n_uniq(t_vm *vm)
+{
+	int		i;
+	int		nbr;
+
+	i = -1;
+	nbr = -1;
+	while (++i < vm->nbr_next)
+	{
+		if (vm->tab_champ[i].id == nbr)
+		{
+			ft_printf("Error: You need write different player number after -n argument\n");
+			free_vm(vm);
+			exit(1);
+		}
+		nbr = vm->tab_champ[i].id;		
+	}
+}
+
 void		vm_load_champs(t_vm *vm)
 {
 	int	space_bt_champs;
@@ -40,6 +59,7 @@ void		vm_load_champs(t_vm *vm)
 	if (vm->nbr_next == 1)
 		space_bt_champs = 0;
 	space = 0;
+	vm_check_n_uniq(vm);
 	ft_printf("Introducing contestants...\n");
 	while (i < vm->nbr_next)
 	{

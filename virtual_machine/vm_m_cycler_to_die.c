@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_m_cycler_to_die.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/30 12:16:12 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/30 12:16:17 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -23,32 +34,16 @@ void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd)
 	{
-		if (!cmd->life && !cmd->off)
+		if (!cmd->life && !cmd->off && cmd->on)
 		{
 			cmd->off = 1;
+			cmd->on = 0;
 		}
 		cmd->life = 0;
-		cmd->on = 0;
 		cmd = cmd->next;
 	}
 }
 
-/*void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
-{
-	int		id;
-
-	id = -1;
-	while (cmd)
-	{
-		if (!cmd->on)
-		{
-			id = cmd->pl * -1;
-			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
-				vm->tab_champ[id].nbr_process -= 1;
-		}
-		cmd = cmd->next;
-	}
-}*/
 
 void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
 {
@@ -57,13 +52,14 @@ void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
 	id = -1;
 	while (cmd)
 	{
-		if (cmd->off)
+		if (cmd->off && !cmd->on)
 		{
 			id = vm_getpl(vm, cmd->pl * -1);///////////////////////////////////////////////
 			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
 			{
 				vm->tab_champ[id].nbr_process--;
 				cmd->nbr_process--;
+				cmd->on = 1;
 			}
 		}
 		cmd = cmd->next;
@@ -75,8 +71,8 @@ void	vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle >= vm->cycle_to_die)
 	{
-		vm_rev_pc(vm, vm->cmd);
 		vm_curet_next(vm->cmd);
+		//vm_rev_pc(vm, vm->cmd);
 		if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
 		{
 			*i = 0;

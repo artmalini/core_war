@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_mng_func1.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/30 12:17:49 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/30 12:17:53 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -48,35 +59,6 @@ int			vm_pos_curs(t_vm *vm, t_cmd *cmd)
 	return (vm_pos_curs_cdg(vm, cmd, l, bitln));
 }
 
-/*int		vm_pos_curs(t_vm *vm, t_cmd *cmd)
-{
-	int		i;
-	int		bitln;
-	int		l_size;
-
-	bitln = 1;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].size == 0)
-		l_size = 4;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].size == 1)
-		l_size = 2;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].codage != 0)
-		bitln += 1;
-	i = 6;
-	while (i > 0)
-	{
-		if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == REG_CODE)
-			bitln += 1;
-		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == DIR_CODE && l_size == 4)
-			bitln += 4;
-		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == DIR_CODE && l_size == 2)
-			bitln += 2;
-		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3) == IND_CODE)
-			bitln += 2;
-		i -= 2;
-	}
-	return (bitln);
-}
-*/
 void		vm_winner(t_vm *vm)
 {
 	int		i;
@@ -90,6 +72,11 @@ void		vm_winner(t_vm *vm)
 		{
 			if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
 				j = i;
+		}
+		if (vm->total_cycle > 1)
+		{
+			if (vm->total_cycle - vm->tab_champ[j].prev_live == 1)
+				vm->total_cycle--;
 		}
 		if (!vm->visual)
 			ft_printf("Contestant %d, \"%s\", has won !\n",

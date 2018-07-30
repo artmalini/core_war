@@ -35,20 +35,25 @@ int				vm_param_n(t_vm *vm, char **av, int *i, int ac)
 		if (vm_isnumber(av[*i]))
 		{
 			id = ft_atoi(av[*i]);
+			if (id <= 0)
+			{
+				ft_printf("Error: Please write number above 0 or "
+					"you write invalid number after -n\n");
+				vm_exit(vm);
+			}
 			(*i)++;
 			return (id);
 		}
 		else
 		{
-			ft_printf("No number after the -n. ");
-			vm_exit(vm);	
+			ft_printf("Error: No number after the -n.\n");
+			vm_exit(vm);
 		}
 	}
 	else
 	{
-		ft_printf("No champion after the number requested. ");
-		vm_exit(vm);
-		
+		ft_printf("Error: No champion after the number requested.\n");
+		vm_exit(vm);		
 	}
 	return (vm->nbr_next);
 }
@@ -63,7 +68,7 @@ void			vm_champs(t_vm *vm, char *arg)
 	}
 	else if (vm->nbr_next >= 4)
 	{
-		ft_printf("Number of champion too high.\n");
+		ft_printf("Error: Number of champion too high.\n");
 		vm_exit(vm);
 	}
 		
@@ -71,6 +76,7 @@ void			vm_champs(t_vm *vm, char *arg)
 
 void			vm_parse_params(t_vm *vm, int *i, char **av, int ac)
 {
+
 	if (((ft_strcmp(av[*i], "-n") == 0) || ft_strcmp(av[*i], "-dump") == 0))
 	{
 		if (ft_strcmp(av[*i], "-dump") == 0 && vm->dump_cycle == -1
@@ -102,12 +108,22 @@ int				vm_get_param(char **av, t_vm *vm, int ac)
 	i = 0;
 	while (++i < ac)
 	{
+		if (!ft_strcmp(av[i], "-a"))
+		{
+			vm->aff = 1;
+			i++;
+		}
 		vm_parse_params(vm, &i, av, ac);
+		if (av[i][0] == '-')
+		{
+			ft_printf("Error: Can't read source file %s\n", av[i]);
+			return (0);	
+		}
 		vm_champs(vm, av[i]);
 	}
 	if (vm->nbr_next == 0)
 	{
-		ft_printf("No .cor champion in the arena.\n");
+		ft_printf("Error: No .cor champion in the arena.\n");
 		return (0);
 	}
 	return (1);

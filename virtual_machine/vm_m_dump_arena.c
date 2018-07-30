@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_m_free.c                                        :+:      :+:    :+:   */
+/*   vm_m_dump_arena.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/30 12:16:52 by amakhiny          #+#    #+#             */
-/*   Updated: 2018/07/30 12:16:56 by amakhiny         ###   ########.fr       */
+/*   Created: 2018/07/30 12:16:33 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/07/30 12:16:38 by amakhiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		free_vm(t_vm *vm)
+void	vm_dump_arena(t_vm *vm)
 {
-	t_cmd	*tmp;
-	t_cmd	*tmp1;
-	int		i;
+	int	i;
+	int	mem;
 
-	i = -1;
-	if (vm)
+	mem = 64;
+	i = 0;
+	ft_printf("0x0000 : ");
+	while (i < MEM_SIZE)
 	{
-		while (++i < vm->nbr_next)
-		{
-			free(vm->tab_champ[i].name);
-			free(vm->tab_champ[i].prog);
-		}
-		if (vm->cmd)
-		{
-			tmp = vm->cmd;
-			while (tmp)
+		ft_printf("%02x ", 0xFF & vm->arena[i].acb);
+		if ((i + 1) % 64 == 0)
+		{ 
+			if (i + 1 < MEM_SIZE)
 			{
-				tmp1 = tmp;
-				tmp = tmp->next;
-				free(tmp1);
+				ft_printf("\n");
+				ft_printf("%#06x : ", mem);
 			}
+			mem += 64;
 		}
-		free(vm);
+		i++;
 	}
-}
-
-void		vm_exit(t_vm *vm)
-{
-	if (vm)
-		free(vm);
-	exit(1);
+	ft_printf("\n");
 }

@@ -24,31 +24,30 @@ void		display_header(void)
 	ft_putstr("   ><<<<     ><<    ><<      ><<><<<<<<<<\n\n");
 }
 
-void		param_error(char *arg)
-{
-	ft_putstr(arg);
-	ft_putchar(' ');
-}
+// void		param_error(char *arg)
+// {
+// 	ft_putstr(arg);
+// 	ft_putchar(' ');
+// }
 
-int			vm_usage(int argc, char **argv)
+int			vm_usage(void)
 {
-	int		i;
-
-	i = 1;
 	display_header();
-	ft_putstr("ERROR: Argument ");
-	while (--argc)
-		param_error(argv[i++]);
-	ft_putstr("is invalid!\n");
+	ft_putstr("Argument is EMPTY\n");
+	//while (--argc)
+	//	param_error(argv[i++]);
+	//ft_putstr("is invalid!\n");
 	ft_putstr("\033[33m ");
-	ft_putstr(argv[0]);
-	ft_printf(" usage :\n");
-	ft_printf(" ./corewar [-dump nbr_cycles -d -v] "
+	//ft_putstr(argv[0]);
+	ft_printf(" Usage :\n");
+	ft_printf(" ./corewar [-a -dump nbr_cycles -d -v] "
 						"[[-n number] champion1.cor] ...\n");
-	ft_printf("\t    -dump nbr_cycles	: Dumps memory after "
+	ft_printf("\t\t\t\t\t -n number : You may write positive integer value instead this 'number'\n");
+	ft_printf("\t\t-a\t\t: Prints output from 'aff' (Default is to hide it)\n");
+	ft_printf("\t\t-dump nbr_cycles: Dumps memory after "
 						"nbr_cycles then exits\n");
-	ft_printf("\t    -debug\t\t: Debug mode, show operations\n");
-	ft_printf("\t    -v\t\t	: Visual mode\n");
+	ft_printf("\t\t-debug\t\t: Debug mode, show operations\n");
+	ft_printf("\t\t-v\t\t: Visual mode\n");
 	exit(1);
 	return (0);
 }

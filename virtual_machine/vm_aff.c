@@ -27,7 +27,7 @@ void	vm_aff(t_vm *vm, t_cmd *cmd)
 	arg1 = cmd->reg[arg1 - 1];
 	if (vm->visual)
 		printw("%C\n", arg1 % 256);
-	//if (vm->dump_cycle > -1)
-	//	ft_printf("%C\n", arg1 % 256);
+	if (vm->aff)
+		ft_printf("Aff: %C\n", arg1 % 256);
 	vm_next_step(vm, cmd, 3);
 }

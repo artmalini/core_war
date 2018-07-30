@@ -193,7 +193,7 @@ typedef struct		s_arena
 	int				rgb;//main color for chars on arena
 	int				asc_rgb;
 	int				flag;
-	//int				bold;	
+	int				bold;	
 }					t_arena;
 
 typedef struct		s_champ
@@ -232,6 +232,7 @@ typedef struct		s_vm
 	int				total_process;
 	int				total_cycle;
 	int				win;
+	int				aff;
 	int				debug;
 	int				visual;
 }					t_vm;
@@ -250,7 +251,7 @@ typedef struct		s_op
 
 extern t_op			op_tab[17];
 
-int					vm_usage(int argc, char **argv);
+int					vm_usage(void);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
 int					vm_isnumber(char *str);
 int					vm_get_param(char **av, t_vm *vm, int ac);

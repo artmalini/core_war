@@ -20,7 +20,8 @@
 void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 {
 	if (vm->debug)
-		ft_printf("|P\t%d| st |r%d| |%d|\n", cmd->nbr_process, reg1, reg2);
+		ft_printf("|P\t%d| st |r%d| |%d|\n",
+			cmd->nbr_process, reg1, reg2);
 	cmd->reg[reg2 - 1] = cmd->reg[reg1 - 1];
 	vm_next_step(vm, cmd, 4);
 }
@@ -36,20 +37,17 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	two_val = two % IDX_MOD;
-	//two_val = two;
-	//printf("%d", two % IDX_MOD);
 	while (++i <= 3)
 	{
 		vm->arena[mdx(cmd->idx + two_val + i)].acb =
 			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;
-		//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].bold = 50;
+		vm->arena[mdx(cmd->idx + two_val + i)].bold = 5;
 	}
 	if (vm->debug)
-		ft_printf("|P\t%d| st |r%d| value |%d|\n", cmd->nbr_process, reg1, two_val);
-	//vm->arena[mdx(cmd->idx + (two % IDX_MOD) + i)].rgb = cmd->rgb - 5;
-	//ft_printf("st_ri|%d| ", (short)two % IDX_MOD);
+		ft_printf("|P\t%d| st |r%d| value |%d|\n",
+			cmd->nbr_process, reg1, two_val);
 	vm_next_step(vm, cmd, 5);
 }
 
@@ -57,7 +55,6 @@ void	vm_st(t_vm *vm, t_cmd *cmd)
 {
 	int	reg1;
 	int	reg2;
-	//ft_printf("vm_st");
 	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;	
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
 	{		
@@ -67,7 +64,6 @@ void	vm_st(t_vm *vm, t_cmd *cmd)
 	}
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 112)
 	{
-		//ft_printf("tt");
 		if (vm_v_cmd(reg1 - 1, reg1 - 1, reg1 - 1))
 			vm_st_ri(vm, cmd, reg1);
 	}
