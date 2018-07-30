@@ -12,6 +12,12 @@
 
 #include "asm.h"
 
+void		param_error(char *arg)
+{
+	ft_putstr(arg);
+	ft_putchar(' ');
+}
+
 void		display_header(void)
 {
 	ft_putstr("\033[31m");
@@ -27,12 +33,6 @@ void		display_header(void)
 	ft_putstr("    /:/  /       \\::/  /        /:/  /      \n");
 	ft_putstr("    \\/__/         \\/__/         \\/__/       \n\n");
 	ft_putstr("\033[0m");
-}
-
-void		param_error(char *arg)
-{
-	ft_putstr(arg);
-	ft_putchar(' ');
 }
 
 void		err_parser(int argc, char **argv)

@@ -12,6 +12,18 @@
 
 #include "asm.h"
 
+void		cmd_lst_free(t_cmd *c)
+{
+	t_cmd	*tmp;
+
+	while (c)
+	{
+		tmp = c;
+		c = c->next;
+		free(tmp);
+	}
+}
+
 void		cmd_free(t_cmd *c)
 {
 	while (c)
@@ -22,18 +34,6 @@ void		cmd_free(t_cmd *c)
 		ft_strdel(&c->args[SECOND]);
 		ft_strdel(&c->args[THIRD]);
 		c = c->next;
-	}
-}
-
-void		cmd_lst_free(t_cmd *c)
-{
-	t_cmd	*tmp;
-
-	while (c)
-	{
-		tmp = c;
-		c = c->next;
-		free(tmp);
 	}
 }
 
