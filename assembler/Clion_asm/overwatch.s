@@ -25,13 +25,13 @@ mei:
 pharah:
 	st		r1, 6
 	live	%0
-	fork	%:symmetra
+	fork    %:symmetra
 	st		r1, 6
 	live	%0
 	ld		%589824, r13				# r13 = 0x00090000 (0x00 zjmp %0)
 	ld		%8, r14
 	ld		%-511, r15
-	ld		%0, r16
+	ld      %0, r16
 	zjmp	%:payload
 payload:
 	ld		%190057742, r11				# r11 = 0x0b540d0e (sti r13 r14 ..)

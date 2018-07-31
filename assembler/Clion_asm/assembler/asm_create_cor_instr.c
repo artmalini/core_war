@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int			find_nbr_bytes(char *str, int size)
+int			find_nbr_bytes(const char *str, int size)
 {
 	int		nbr;
 
@@ -26,9 +26,9 @@ int			find_nbr_bytes(char *str, int size)
 	return (nbr);
 }
 
-int			negative_nbr(int nb, int size, t_core *file)
+long		negative_nbr(t_core *file, int nb, int size)
 {
-	int		nbr;
+	long	nbr;
 
 	nbr = 0;
 	if (size == 2)
@@ -38,7 +38,12 @@ int			negative_nbr(int nb, int size, t_core *file)
 		nbr = 65536 + nb;
 	}
 	if (size == 4)
-		nbr = 2147483648 + nb;
+	{
+		if (nb >= 0)
+			nbr = 2147483648 + nb;
+		else
+			nbr = 4294967296 + nb;
+	}
 	return (nbr);
 }
 
@@ -63,7 +68,7 @@ void		set_bytes_zero_alignment(int fd, int size, int nb, int nbr)
 
 void		set_bytes(int fd, char *str, t_core *file, t_cmd *c)
 {
-	int		nb;
+	long	nb;
 	int		nbr;
 	int		size;
 
@@ -80,8 +85,8 @@ void		set_bytes(int fd, char *str, t_core *file, t_cmd *c)
 	else if (str[0] == '%' && str[1] != ':')
 		nb = ft_atoi(str + 1);
 	if (nb < 0)
-		nb = negative_nbr(nb, size, file);
-	nbr = nb;
+		nb = negative_nbr(file, nb, size);
+	nbr = (int)nb;
 	set_bytes_zero_alignment(fd, size, nb, nbr);
 	asm_hexa_fd(nb, fd);
 }

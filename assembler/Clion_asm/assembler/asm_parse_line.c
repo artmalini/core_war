@@ -89,7 +89,7 @@ void		line_handler(t_core *file, char *line, char *lowstr)
 	{
 		if (!file->inst)
 			push_laybel(file, &file->inst, NULL);
-		push_cmd(file, &file->inst->cmd, lowstr, str + (ft_strlen(lowstr) + 1));
+		push_cmd(file, &file->inst->cmd, lowstr, str + (ft_strlen(lowstr)));
 	}
 	else
 		return (ft_error(file, ERROR_CMD));
