@@ -20,14 +20,14 @@
 ** 228 == (T_IND, T_DIR, T_REG)
 ** 164 == (T_DIR, T_DIR, T_REG)
 */
-
+//		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)\n", cmd->nbr_process, direct, reg1, cmd->idx + direct);
 void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;
 	int		val1;
 	char	a;
 
-	val1 = cmd->idx - val + i;
+	val1 = (cmd->idx - val) + i;
 	one = 0xFF & vm->arena[mdx(val1)].acb;
 	one <<= 8;
 	one += 0xFF & vm->arena[mdx(val1 + 1)].acb;
@@ -38,9 +38,10 @@ void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	a = 0xFF & vm->arena[mdx(cmd->idx)].acb;
 	if (vm_v_cmd(a - 1, a - 1, a - 1))
 	{
-		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
+		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = val;
 		if (vm->debug)
-			ft_printf("|P\t%d| ldi |r%d| |%d|\n", a, one);
+			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t (with pc and mod %d)\n",
+				cmd->nbr_process, i, a, (cmd->idx - val) + i);
 	}
 }
 

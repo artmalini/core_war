@@ -26,7 +26,7 @@ void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
-	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+	vm_next_step(vm, cmd, 7);
 }
 
 void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
@@ -56,7 +56,7 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	{
 		cmd->reg[hex - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
-		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+		vm_next_step(vm, cmd, 5);
 	}
 }
 

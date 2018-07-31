@@ -109,7 +109,7 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 			while (tmp->next != NULL)
 				tmp = tmp->next;
 			tmp->next = add_list(vm, i);
-			tmp->next->prev = *(cmd);
+			//tmp->next->prev = *(cmd);
 		}
 		else
 			*cmd = add_list(vm, i);

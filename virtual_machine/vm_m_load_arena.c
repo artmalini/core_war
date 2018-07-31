@@ -143,6 +143,6 @@ void		vm_load_arena(t_vm *vm)
         if (vm->dump_cycle > -1 && (vm->dump_cycle == vm->total_cycle))
 			i = 0;
 		//vm_sleep(vm);
-		//usleep(10000);
+		//usleep(20000);
 	}
 }

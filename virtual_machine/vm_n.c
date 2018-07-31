@@ -41,11 +41,9 @@ void	vm_pl_stats(t_vm *vm, int i)
 
 void	vm_win_recalc(t_vm *vm)
 {
-	int		nb;
 	int		win;
 
 	win = 0;
-	nb = 0;
 	if (vm->total_cycle > 1)
 	{
 		win = vm_vis_winner(vm);
@@ -95,7 +93,7 @@ void	vm_vis_arena(t_vm *vm)
 	else
 		k = 4;
 	vm_game_stat(vm, j);
-	printw("\n\n");
+	printw("\n\n ");
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");

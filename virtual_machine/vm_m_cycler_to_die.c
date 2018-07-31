@@ -18,7 +18,7 @@ void	pl_res_all_proces(t_vm *vm)
 
 	i = -1;
 	while (++i < vm->nbr_next)
-		vm->tab_champ[i].nbr_process= 0;
+		vm->tab_champ[i].nbr_process = 0;
 }
 
 void	pl_period_live(t_vm *vm)
@@ -34,7 +34,8 @@ void	vm_curet_next(t_cmd *cmd)
 {
 	while (cmd)
 	{
-		if (!cmd->life && !cmd->off && cmd->on)
+		//if (!cmd->life && !cmd->off && cmd->on)
+		if (!cmd->life && cmd->playing)
 		{
 			cmd->off = 1;
 			cmd->on = 0;
