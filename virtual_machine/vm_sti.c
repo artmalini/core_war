@@ -15,18 +15,19 @@
 /*
 ** 84  == (T_REG, T_REG, T_REG)
 ** 88  == (T_REG, T_REG, T_DIR)
+** 100 == (T_REG, T_DIR, T_REG)
 ** 104 == (T_REG, T_DIR, T_DIR)
 ** 116 == (T_REG, T_IND, T_REG)
 ** 120 == (T_REG, T_IND, T_DIR)
 */
 
 void	vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
-{
+{ 
 	if (cdg == 104)
 		vm_next_step(vm, cmd, 7);
 	else if (cdg == 84)
 		vm_next_step(vm, cmd, 5);
-	else if (cdg == 88)
+	else if (cdg == 88 || cdg == 100)
 		vm_next_step(vm, cmd, 6);
 	else if (cdg == 120)
 		vm_next_step(vm, cmd, 9);
@@ -58,6 +59,22 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	}
 }
 
+int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
+{
+	int		res;
+	int		arg1;
+	short	arg2;
+	
+	res = 0;
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	arg1 <<= 8;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;	
+	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
+	if (vm_v_cmd(arg2 - 1, arg2 - 1, arg2 - 1))
+		res = (arg1 + cmd->reg[arg2 - 1]);
+	return (res);
+}
+
 void	vm_sti(t_vm *vm, t_cmd *cmd)
 {
 	int		cdg;
@@ -65,14 +82,17 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 
 	direct = 0;
 	cdg = (0xFF & vm->arena[mdx(cmd->idx + 1)].acb);
-	if (cdg == 104 || cdg == 84 || cdg == 88 || cdg == 120 || cdg == 116)
+	if (cdg == 100 || cdg == 104 || cdg == 84 ||
+		cdg == 88 || cdg == 120 || cdg == 116)
 	{
-		if (cdg == 104)
-			direct = vm_rdd_sti(vm, cmd);
+		if (cdg == 88)
+			direct = vm_rrd_sti(vm, cmd);
 		else if (cdg == 84)
 			direct = vm_rrr_sti(vm, cmd);
-		else if (cdg == 88)
-			direct = vm_rrd_sti(vm, cmd);
+		else if (cdg == 100)
+			direct = vm_rdr_sti(vm, cmd);
+		else if (cdg == 104)
+			direct = vm_rdd_sti(vm, cmd);
 		else if (cdg == 120)
 			direct = vm_rid_sti(vm, cmd);
 		else if (cdg == 116)

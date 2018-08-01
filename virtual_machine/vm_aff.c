@@ -28,6 +28,6 @@ void	vm_aff(t_vm *vm, t_cmd *cmd)
 	if (vm->visual)
 		printw("%C\n", arg1 % 256);
 	if (vm->aff)
-		ft_printf("Aff: %C\n", arg1 % 256);
+		ft_printf("Aff: %c\n", (char)(arg1 % 256));
 	vm_next_step(vm, cmd, 3);
 }

@@ -50,10 +50,10 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	pos <<= 8;
 	pos += 0xFF & vm->arena[mdx(val + 3)].acb;
 	hex = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	if (vm->debug)
-		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);
 	if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
 	{
+		if (vm->debug)
+			ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);
 		cmd->reg[hex - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
 		vm_next_step(vm, cmd, 5);

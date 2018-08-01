@@ -30,13 +30,22 @@ void	pl_period_live(t_vm *vm)
 		vm->tab_champ[i].lives_in_period = 0;
 }
 
-void	vm_curet_next(t_cmd *cmd)
+void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 {
+    int     id;
+	//(void)vm;
 	while (cmd)
 	{
 		//if (!cmd->life && !cmd->off && cmd->on)
-		if (!cmd->life && cmd->playing)
+        if (!cmd->life && cmd->on)
+        {
+            id = vm_getpl(vm, cmd->pl * -1);
+            if (id > -1 && vm->tab_champ[id].nbr_process > 0)
+                vm->tab_champ[id].nbr_process--;
+        }
+		if (!cmd->life)
 		{
+			//ft_printf("|%d|", vm->cycle);
 			cmd->off = 1;
 			cmd->on = 0;
 		}
@@ -72,7 +81,7 @@ void	vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle >= vm->cycle_to_die)
 	{
-		vm_curet_next(vm->cmd);
+		vm_curet_next(vm, vm->cmd);
 		//vm_rev_pc(vm, vm->cmd);
 		if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
 		{

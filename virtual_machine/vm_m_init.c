@@ -57,7 +57,7 @@ void	vm_init(t_vm *vm)
 	vm->cycle_before_checking = CYCLE_TO_DIE;
 	vm->lifes = 0;
 	vm->win = 0;
-	vm->total_process = 1;
+	vm->total_process = 0;
 	vm->aff = 0;
 	vm->cycle = 0;
 	vm->total_cycle = 0;
@@ -83,13 +83,14 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->off = 0;
 		lst->carry = 0;
 		lst->life = 0;
-		lst->nbr_process = 1;
+		lst->nbr_process = vm->total_process + 1;
 		lst->flag = 0;		
 		lst->on = 1;
 		lst->str_cycle = 0;
 		lst->lnew = 0;
 		lst->next = NULL;
 		lst->prev = NULL;
+		vm->total_process = lst->nbr_process;
 	}	
 	return (lst);
 }

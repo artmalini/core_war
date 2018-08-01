@@ -44,14 +44,10 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 		id = vm_getpl(vm, place * -1);
 		if (vm->debug)
 			ft_printf("|P\t%d| live |%d|\n",  cmd->nbr_process, place);
-		//id = vm->tab_champ[place];
-		//id = 0;
-		//vm->lifes += 1;
-		//cmd->last_live_cycle = vm->cycle;
 
-			cmd->life = 1;
-			cmd->on = 1;
-			vm->lifes += 1;
+		cmd->life = 1;
+		cmd->on = 1;
+		vm->lifes += 1;
 		if (id > -1)
 		{
 			//vm->win = id;
@@ -60,7 +56,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 			//vm->tab_champ[id].prev_live = vm->tab_champ[id].lives_in_period;
 
 			// vm->lifes += 1;
-			//cmd->life = 1;
+			// cmd->life = 1;
 			// cmd->on = 1;
 			vm_next_step(vm, cmd, 5);
 		}

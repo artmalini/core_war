@@ -62,7 +62,7 @@ int			vm_rrd_sti(t_vm *vm, t_cmd *cmd)
 	short	arg2;
 	
 	res = 0;
-	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
+	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;	
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
@@ -97,10 +97,7 @@ int			vm_rid_sti(t_vm *vm, t_cmd *cmd)
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;
 	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
-	dir = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
-	dir <<= 8;
-	dir += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
-	dir1 = (dir % IDX_MOD);
+	dir1 = (arg1 % IDX_MOD);	
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + dir1)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 1)].acb;
@@ -108,6 +105,9 @@ int			vm_rid_sti(t_vm *vm, t_cmd *cmd)
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 2)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + dir1 + 3)].acb;
-	res = (arg1 + arg2);
+	dir = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
+	dir <<= 8;
+	dir += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
+	res = (arg2 + dir);
 	return (res);
 }

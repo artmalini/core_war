@@ -38,7 +38,7 @@ void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	a = 0xFF & vm->arena[mdx(cmd->idx)].acb;
 	if (vm_v_cmd(a - 1, a - 1, a - 1))
 	{
-		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = val;
+		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
 		if (vm->debug)
 			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t (with pc and mod %d)\n",
 				cmd->nbr_process, i, a, (cmd->idx - val) + i);

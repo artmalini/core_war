@@ -16,8 +16,8 @@ int			mdx(int nbr)
 {
 	int		ret;
 
-	ret = (nbr % MEM_SIZE < 0) ? (nbr % MEM_SIZE + MEM_SIZE) : nbr % MEM_SIZE;
-	return (ret);
+	ret = (nbr < 0) ? ((MEM_SIZE + nbr) % MEM_SIZE) : nbr;
+	return (ret % MEM_SIZE);
 }
 
 int			vm_pos_curs_cdg(t_vm *vm, t_cmd *cmd, int l, int bitln)
@@ -93,9 +93,11 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
 	i = cmd->idx + pos;
-	//ft_printf("cmd->idx |%d|\n ", i);
+	//ft_printf("cmd->idx |%d|\n ", i); (nbr < 0) ? ((MEM_SIZE + nbr) % MEM_SIZE) : nbr
 	//if (cmd->on == 0)
-	cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
+	//cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
+	cmd->idx = mdx(i);
+
 	//ft_printf("cmd->idx |%d| ", cmd->idx);
 	//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
 	//refresh();
