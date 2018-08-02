@@ -69,13 +69,28 @@ int			vm_its_cmd(t_vm *vm, t_cmd *cmd)
 void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		acb;
+	int		cell;
+	//int		id;
 
+	cell = 0;
 	acb = vm->arena[mdx(cmd->idx)].acb - 1;
 	if (vm_its_cmd(vm, cmd))
 	{
+		// if (vm->total_cycle == 1 && vm->nbr_next > 1)
+		// {
+		// 	id = vm_getpl(vm, cmd->pl * -1);
+		// 	if (id > -1 && vm->nbr_next == 2)
+		// 	{
+		// 		if (id == 0)
+		// 		{
+		// 			cmd->playing = 0;
+		// 			return ;
+		// 		}
+		// 	}
+		// }
 		vm->arena[cmd->idx].hit = 1;
 		vm->arena[cmd->idx].pl = cmd->pl;
-		cmd->wait = op_tab[acb].cycles + (cmd->wait == -1 ? cmd->wait * -1 : 0);
+		cmd->wait = op_tab[acb].cycles + cell;// + (cmd->wait == -1 ? cmd->wait * -1 : 0);
 		cmd->playing = 1;
 	}
 	else

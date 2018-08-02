@@ -20,7 +20,7 @@ int		vm_getpl(t_vm *vm, int place)
 	while (++i < vm->nbr_next)
 	{
 		if (vm->tab_champ[i].id == place)
-			return (i);		
+			return (i);
 	}
 	return (-1);
 }
