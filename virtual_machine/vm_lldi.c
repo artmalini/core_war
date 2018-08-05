@@ -39,6 +39,7 @@ void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	if (vm_v_cmd(a - 1, a - 1, a - 1))
 	{
 		cmd->reg[vm->arena[mdx(cmd->idx)].acb - 1] = one;
+		cmd->carry = (one == 0) ? 1 : 0;
 		if (vm->debug)
 			ft_printf("|P\t%d| lldi |r%d| |%d|\n", a, one);
 	}

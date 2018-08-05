@@ -45,7 +45,8 @@ void	vm_init(t_vm *vm)
 		vm->tab_champ[i].alive = 0;
 		vm->tab_champ[i].old_check = 0;
 		vm->tab_champ[i].prev_live = 0;
-		vm->tab_champ[i].lives_in_period = 0;		
+		vm->tab_champ[i].lives_in_period = 0;
+		vm->tab_champ[i].ready = 0;	
 	}
 	vm->fd = 0;
 	vm->dump_cycle = -1;
@@ -87,7 +88,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->flag = 0;		
 		lst->on = 1;
 		lst->str_cycle = 0;
-		lst->lnew = 0;
+		lst->lnew = 0;		
 		lst->next = NULL;
 		lst->prev = NULL;
 		vm->total_process = lst->nbr_process;

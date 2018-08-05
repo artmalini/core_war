@@ -166,22 +166,6 @@ typedef struct 		s_cmd
 	struct s_cmd	*prev;
 }					t_cmd;
 
-// tvertohr and
-typedef struct		s_proc
-{
-	int				carry;
-	int				pc;
-	int				reg[REG_NUMBER];
-	int				instruction;
-	int				cycle_to_wait;
-	int				live_period;
-	int				id;
-	int				parametres_types[3];
-	int				save_pc;
-	int				alive;
-	struct s_proc	*next;
-}					t_proc;
-
 typedef struct		s_arena
 {
 	char			acb;
@@ -204,6 +188,7 @@ typedef struct		s_champ
 	int				magic_number;
 	int				weight;
 	int				rgb;
+	int				ready;
 
 	int				idx;
 	//int			life;

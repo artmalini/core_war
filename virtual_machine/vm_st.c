@@ -31,16 +31,22 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	int		i;
 	short	two;
 	int		two_val;
+	//int		hit;
 
 	i = -1;
 	two = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	two_val = two % IDX_MOD;
+	//hit = 1;
 	while (++i <= 3)
 	{
 		vm->arena[mdx(cmd->idx + two_val + i)].acb =
 			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
+		vm->arena[mdx(cmd->idx + two_val + i)].o_acb =
+			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
+		//vm->arena[mdx(cmd->idx + two_val + i)].hit =
+		//	((hit) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + two_val + i)].bold = 5;

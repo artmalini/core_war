@@ -40,22 +40,26 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	int		i;
 	int		reg1;
 	int		dat;
+	//int		hit;
 
 	i = -1;
 	reg1 =  0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	if (!(reg1 > 0 && reg1 < 16))
 		return ;
 	dat = cmd->reg[reg1 - 1];
+	//hit = 1;
 	while (++i <= 3)
 	{
 		vm->arena[mdx(cmd->idx + direct + i)].acb = ((dat) >> ((3 - i) * 8)) & 0xFF;
+		//vm->arena[mdx(cmd->idx + direct + i)].o_acb = ((dat) >> ((3 - i) * 8)) & 0xFF;
+		//vm->arena[mdx(cmd->idx + direct + i)].hit = ((hit) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + direct + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 4;
 	}
 	if (vm->debug)
 	{
-		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)\n",
-			cmd->nbr_process, direct, reg1, cmd->idx + direct);
+		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)total_cycle|%d|\n",
+			cmd->nbr_process, direct, reg1, cmd->idx + direct, vm->total_cycle);
 	}
 }
 

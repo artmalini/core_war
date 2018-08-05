@@ -66,31 +66,45 @@ int			vm_its_cmd(t_vm *vm, t_cmd *cmd)
 		return (0);
 }
 
+int			vm_its_cmd_old(t_vm *vm, t_cmd *cmd)
+{
+	int		chk;
+
+	chk = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF) - 1;
+	if (chk < 0 || chk > 16)
+		return (-2);
+	if (chk == 0 || chk == 8 || chk == 11 || chk == 14)
+		return (chk);
+	else if (vm_check_big(vm, cmd, chk))
+		return (chk);
+	else
+		return (-2);
+}
+
 void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		acb;
 	int		cell;
-	//int		id;
+	int		id;
 
 	cell = 0;
 	acb = vm->arena[mdx(cmd->idx)].acb - 1;
 	if (vm_its_cmd(vm, cmd))
 	{
-		// if (vm->total_cycle == 1 && vm->nbr_next > 1)
-		// {
-		// 	id = vm_getpl(vm, cmd->pl * -1);
-		// 	if (id > -1 && vm->nbr_next == 2)
-		// 	{
-		// 		if (id == 0)
-		// 		{
-		// 			cmd->playing = 0;
-		// 			return ;
-		// 		}
-		// 	}
-		// }
-		vm->arena[cmd->idx].hit = 1;
-		vm->arena[cmd->idx].pl = cmd->pl;
-		cmd->wait = op_tab[acb].cycles + cell;// + (cmd->wait == -1 ? cmd->wait * -1 : 0);
+		if (vm->total_cycle != 4)
+		{
+			id = vm_getpl(vm, cmd->pl * -1);
+			if (id > -1 && vm->tab_champ[id].ready != 0)
+			{
+				vm->tab_champ[id].ready--;
+				cmd->playing = 0;
+					return ;
+			}
+		}
+		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
+		//vm->arena[mdx(cmd->idx)].hit = cmd->idx;
+		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
+		cmd->wait = op_tab[acb].cycles + cell;// + (cmd->wait == -1 ? cmd->wait * -1 : 0);		
 		cmd->playing = 1;
 	}
 	else
@@ -100,14 +114,29 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
+	int		o_hex;
+	int		hit;
+	int		prev;
 
 	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
+	//hit = (vm->arena[mdx(cmd->idx)].hit);
+	prev = 0;
 	if (cmd->wait == 1)
 	{
-		if (vm_its_cmd(vm, cmd))
+		if (hex != o_hex)
 		{
-			vm_cmd_triger(vm, cmd, hex);
+			hit = (vm_its_cmd_old(vm, cmd)) + 1;
+			if (hit == o_hex)
+			{
+				vm_cmd_triger(vm, cmd, hit);
+				prev = 1;
+			}
+			else
+				vm_cmd_triger(vm, cmd, hex);
 		}
+		else if (vm_its_cmd(vm, cmd) && !prev)
+			vm_cmd_triger(vm, cmd, hex);
 		cmd->playing = 0;
 	}
 }
@@ -159,7 +188,6 @@ void		vm_load_arena(t_vm *vm)
 	t_cmd	*c;
 	int		pause;
 	int		nb;
-	//t_cmd	*tc;
 
 	nb = 50000;
 	i = 1;
