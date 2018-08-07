@@ -106,9 +106,50 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
 		cmd->wait = op_tab[acb].cycles + cell;// + (cmd->wait == -1 ? cmd->wait * -1 : 0);		
 		cmd->playing = 1;
+		cmd->lnew = 0;
 	}
 	else
-		vm_next_step(vm, cmd, 1);
+	{
+		if (acb > 0 && acb < 16)
+		{
+			cmd->wait = op_tab[acb].cycles;
+			cmd->playing = 1;
+			cmd->lnew = 1;
+		}
+		else
+			vm_next_step(vm, cmd, 1);
+	}
+}
+
+int			vm_new_step(t_vm *vm, t_cmd *cmd)
+{
+	int		chk;
+	int		acb;
+	int		i;
+	int		len;
+
+	len = 1;
+	chk = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
+	acb = vm->arena[mdx(cmd->idx + 1)].acb & 0xFF;
+	i = op_tab[chk].nbr_args - 1;
+	if (op_tab[chk].codage)
+		len++;
+	while (i >= 0)
+	{
+		if ((acb >> (6 - i * 2) & 0x3) == REG_CODE)
+			len += 1;
+		else if ((acb >> (6 - i * 2) & 0x3) == DIR_CODE)
+		{
+			if (op_tab[chk].size)
+				len += 2;
+			else
+				len += 4;		
+		}
+		else if ((acb >> (6 - i * 2) & 0x3) == IND_CODE)
+			len += 2;
+		i--;
+	}
+	return (len);
 }
 
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
@@ -124,7 +165,7 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	prev = 0;
 	if (cmd->wait == 1)
 	{
-		if (hex != o_hex)
+		if (hex != o_hex && !cmd->lnew)
 		{
 			hit = (vm_its_cmd_old(vm, cmd)) + 1;
 			if (hit == o_hex)
@@ -135,8 +176,14 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 			else
 				vm_cmd_triger(vm, cmd, hex);
 		}
-		else if (vm_its_cmd(vm, cmd) && !prev)
+		else if (vm_its_cmd(vm, cmd) && !prev && !cmd->lnew)
 			vm_cmd_triger(vm, cmd, hex);
+		//need recalc next step for wrong command
+		else if (cmd->lnew)
+		{
+			vm_next_step(vm, cmd, vm_new_step(vm, cmd));
+			//cmd->lnew = 0;
+		}
 		cmd->playing = 0;
 	}
 }
