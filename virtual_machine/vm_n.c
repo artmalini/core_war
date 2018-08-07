@@ -92,8 +92,8 @@ void	vm_vis_arena(t_vm *vm)
 		k = 3;
 	else
 		k = 4;
-	//vm_game_stat(vm, j);
-	//printw("\n\n ");
+	vm_game_stat(vm, j);
+	printw("\n\n ");
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
