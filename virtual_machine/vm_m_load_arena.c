@@ -84,33 +84,42 @@ int			vm_its_cmd_old(t_vm *vm, t_cmd *cmd)
 void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		acb;
-	int		cell;
-	int		id;
+	//int		cell;
+	//int		id;
 
-	cell = 0;
+	//cell = 0;
 	acb = vm->arena[mdx(cmd->idx)].acb - 1;
 	if (vm_its_cmd(vm, cmd))
 	{
-		if (vm->total_cycle != 4)
-		{
-			id = vm_getpl(vm, cmd->pl * -1);
-			if (id > -1 && vm->tab_champ[id].ready != 0)
-			{
-				vm->tab_champ[id].ready--;
-				cmd->playing = 0;
-					return ;
-			}
-		}
+		// if (vm->total_cycle != 4)
+		// {
+		// 	id = vm_getpl(vm, cmd->pl * -1);
+		// 	if (id > -1 && vm->tab_champ[id].ready != 0)
+		// 	{
+		// 		vm->tab_champ[id].ready--;
+		// 		cmd->playing = 0;
+		// 			return ;
+		// 	}
+		// }
 		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
 		//vm->arena[mdx(cmd->idx)].hit = cmd->idx;
 		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
-		cmd->wait = op_tab[acb].cycles + cell;// + (cmd->wait == -1 ? cmd->wait * -1 : 0);		
+		cmd->wait = op_tab[acb].cycles;// + cell + (cmd->wait == -1 ? cmd->wait * -1 : 0);6540
+		//6507
+		//6571
+		//6572
+
+
+		//4760
+		//4771 - до первой перезаписи
+		//4840
+		//4860	
 		cmd->playing = 1;
 		cmd->lnew = 0;
 	}
 	else
 	{
-		if (acb > 0 && acb < 16)
+		if (acb >= 0 && acb < 16)
 		{
 			cmd->wait = op_tab[acb].cycles;
 			cmd->playing = 1;
@@ -180,9 +189,9 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 			vm_cmd_triger(vm, cmd, hex);
 		//need recalc next step for wrong command
 		else if (cmd->lnew)
-		{
+		{			
+			cmd->lnew = 0;
 			vm_next_step(vm, cmd, vm_new_step(vm, cmd));
-			//cmd->lnew = 0;
 		}
 		cmd->playing = 0;
 	}
@@ -212,10 +221,10 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb)
 		entry = getch();
 		if (entry == 32)
 		{
-			if (*nb == 50000)
-				*nb /= 1000;
+			if (*nb == 150000)
+				*nb = 150;
 			else
-				*nb = 50000;
+				*nb = 150000;
 		}
 		if (entry == 'z')
 		{
@@ -236,7 +245,7 @@ void		vm_load_arena(t_vm *vm)
 	int		pause;
 	int		nb;
 
-	nb = 50000;
+	nb = 150000;
 	i = 1;
 	pause = 1;
 	while (i)

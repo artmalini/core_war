@@ -35,7 +35,7 @@ t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
 		lst->previdx = cmd1->previdx;
 		lst->rgb = cmd1->rgb;
 		lst->playing = 0;
-		lst->wait = 1;
+		lst->wait = 0;
 		lst->off = cmd1->off;
 		lst->carry = cmd1->carry;
 		lst->life = cmd1->life;
