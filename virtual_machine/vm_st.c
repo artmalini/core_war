@@ -45,10 +45,22 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + two_val + i)].o_acb =
 			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
-		//vm->arena[mdx(cmd->idx + two_val + i)].hit =
-		//	((hit) >> ((3 - i) * 8)) & 0xFF;
-		vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
-		vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;
+		//vm->arena[mdx(cmd->idx + two_val + i)].zero = reg1;
+		if (cmd->reg[reg1 - 1] == 0)
+		{
+			vm->arena[mdx(cmd->idx + two_val + i)].zero =
+				(4294967295 >> ((3 - i) * 8)) & 0xFF;
+		}
+		//if (vm->arena[mdx(cmd->idx + two_val + i)].hit != 0)
+		vm->arena[mdx(cmd->idx + two_val + i)].overlap = 1;
+		vm->arena[mdx(cmd->idx + two_val + i)].o_args =
+			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;	
+
+		//if (vm->arena[mdx(cmd->idx + two_val + i)].rgb - 4 != cmd->rgb - 4)
+		//{
+			vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
+			vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;			
+		//}
 		vm->arena[mdx(cmd->idx + two_val + i)].bold = 5;
 	}
 	if (vm->debug)

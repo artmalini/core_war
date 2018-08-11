@@ -41,9 +41,11 @@ t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
 		lst->life = cmd1->life;
 		lst->nbr_process = nb;
 		lst->on = 1;
+		lst->overlap = cmd1->overlap;
 		lst->str_cycle = cmd1->str_cycle;// + op_tab[vm->arena[mdx(cmd1->idx)].acb - 1].cycles;
 		lst->flag = 0;
 		lst->lnew = 1;
+		lst->zero = 0;
 		lst->next = NULL;
 		lst->prev = NULL;
 	}	

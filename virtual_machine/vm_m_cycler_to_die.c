@@ -45,6 +45,8 @@ void	vm_curet_next(t_vm *vm, t_cmd *cmd)
         }
 		if (!cmd->life)
 		{
+			//if (vm->arena[mdx(cmd->idx)].rgb - 4 == cmd->rgb - 4)
+			//	vm->arena[mdx(cmd->idx)].rgb -= 4;
 			//ft_printf("|%d|", vm->cycle);
 			cmd->off = 1;
 			cmd->on = 0;

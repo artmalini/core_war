@@ -14,7 +14,7 @@
 
 int		vm_v_cmd(int a, int b, int c)
 {
-	if (a < 0 || a >= REG_NUMBER ||	
+	if (a < 0 || a >= REG_NUMBER ||
 		b < 0 || b >= REG_NUMBER ||
 		c < 0 || c >= REG_NUMBER)
 		return (0);

@@ -25,8 +25,12 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].flag = 0;
 		vm->arena[i].o_acb = 0;
 		vm->arena[i].hit = 0;
+		vm->arena[i].overlap = 0;
 		vm->arena[i].pl = -666;
 		vm->arena[i].bold = 0;
+		vm->arena[i].zero = 0;
+		vm->arena[i].o_hex = 0;
+		vm->arena[i].o_args = 0;
 		i++;
 	}
 }
@@ -61,7 +65,7 @@ void	vm_init(t_vm *vm)
 	vm->total_process = 0;
 	vm->aff = 0;
 	vm->cycle = 0;
-	vm->total_cycle = 0;
+	vm->total_cycle = 0;	
 	vm->debug = 0;
 	vm->cmd = NULL;
 }
@@ -88,7 +92,9 @@ t_cmd		*add_list(t_vm *vm, int i)
 		lst->flag = 0;		
 		lst->on = 1;
 		lst->str_cycle = 0;
-		lst->lnew = 0;		
+		lst->lnew = 0;
+		lst->zero = 0;
+		lst->overlap = 0;
 		lst->next = NULL;
 		lst->prev = NULL;
 		vm->total_process = lst->nbr_process;
@@ -100,7 +106,7 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 {
 	int		i;
 	t_cmd	*tmp;
-	//t_cmd	*tmp1;
+	t_cmd	*tmp1;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -108,21 +114,16 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 		tmp = *cmd;
 		if (tmp)
 		{
-			while (tmp->next != NULL)
-				tmp = tmp->next;
-			tmp->next = add_list(vm, i);
+			//while (tmp->next != NULL)
+			//	tmp = tmp->next;
+			//tmp->next = add_list(vm, i);
+			tmp1 = add_list(vm, i);
+			tmp1->next = *cmd;
+			*cmd = tmp1;
 			//tmp->next->prev = *(cmd);
 		}
 		else
 			*cmd = add_list(vm, i);
-		// if (tmp)
-		// {
-		// 	tmp1 = add_list(vm, i);
-		// 	tmp1->next = vm->cmd;
-		// 	vm->cmd = tmp1;
-		// }
-		// else
-		// 	*cmd = add_list(vm, i);
 	}
 }
 

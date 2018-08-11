@@ -43,7 +43,7 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 		//id = vm_getpl(vm);
 		id = vm_getpl(vm, place * -1);
 		if (vm->debug)
-			ft_printf("|P\t%d| live |%d| cmd->lnew|%d|\n",  cmd->nbr_process, place, cmd->lnew);
+			ft_printf("|P\t%d| live |%d|\n",  cmd->nbr_process, place);
 
 		cmd->life = 1;
 		cmd->on = 1;

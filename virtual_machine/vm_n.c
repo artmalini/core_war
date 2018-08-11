@@ -34,9 +34,12 @@ void	vm_load_ncurses(void)
 void	vm_pl_stats(t_vm *vm, int i)
 {
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
-	printw(" Lives for %.18s \t\t%d \t\tProcess: %d", vm->tab_champ[i].name,
+	//printw(" Lives for %.18s \t\t%d \t\tProcess: %d", vm->tab_champ[i].name,
+	//	vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
+	//printw("\t\tLives in current period: %d\n", vm->tab_champ[i].lives_in_period);
+	printw(" Lives for %.18s %dProcess: %d", vm->tab_champ[i].name,
 		vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
-	printw("\t\tLives in current period: %d\n", vm->tab_champ[i].lives_in_period);
+	printw(" Lives period: %d\n", vm->tab_champ[i].lives_in_period);
 }
 
 void	vm_win_recalc(t_vm *vm)
@@ -60,10 +63,12 @@ void	vm_game_stat(t_vm *vm, int j)
 	while (++i < vm->nbr_next)
 		vm_pl_stats(vm, i);
 	attron(COLOR_PAIR(10));
-	printw(" Cycle: %d\t\t\tCycles to die:\t%d\n", vm->cycle, vm->cycle_to_die);		
+	//printw(" Cycle: %d\t\t\tCycles to die:\t%d\n", vm->cycle, vm->cycle_to_die);
+	printw(" Cycle: %d Cycles to die:%d", vm->cycle, vm->cycle_to_die);		
 	if (vm->win)
 		vm_win_recalc(vm);	
-	printw(" Total cycles:\t\t\t%d\t\t\t['Z' key for pause game] ['SPACE' for slow/fast game]\n", vm->total_cycle);	
+	//printw(" Total cycles:\t\t\t%d\t\t\t['Z' key for pause game] ['SPACE' for slow/fast game]\n", vm->total_cycle);
+	printw(" Total cycles:%d\n", vm->total_cycle);
 	if (vm->cycle_to_die == 0 && vm->total_cycle != 0 && j != 0)
 	{		
 		attron(COLOR_PAIR(vm->tab_champ[vm_vis_winner(vm)].rgb));
@@ -92,8 +97,8 @@ void	vm_vis_arena(t_vm *vm)
 		k = 3;
 	else
 		k = 4;
-	vm_game_stat(vm, j);
-	printw("\n\n ");
+	//vm_game_stat(vm, j);
+	//printw("\n\n ");
 	while (i < MEM_SIZE)
 	{
 		//printw(" ");
@@ -118,6 +123,7 @@ void	vm_vis_arena(t_vm *vm)
 		}		
 		i++;		
 	}
+	vm_game_stat(vm, j);
 	printw("\n");
 	refresh();
 }

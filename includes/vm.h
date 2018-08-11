@@ -17,7 +17,6 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include <fcntl.h>
-//# include <ncurses.h>
 # include "curses.h"
 /*
 **					[Macros for ERROR MANAGER]
@@ -54,8 +53,8 @@
 
 #define MAX_ARGS_NUMBER 4
 #define MAX_PLAYERS 4
-#define MEM_SIZE (4 * 1024)//4096
-#define IDX_MOD (MEM_SIZE / 8)//512
+#define MEM_SIZE (4 * 1024)
+#define IDX_MOD (MEM_SIZE / 8)
 #define CHAMP_MAX_SIZE (MEM_SIZE / 6)
 
 #define COMMENT_CHAR '#'
@@ -98,53 +97,6 @@ typedef struct		s_error
 
 }					t_error;
 
-// typedef struct		s_header
-// {
-// 	unsigned int	magic;
-// 	char			prog_name [PROG_NAME_LENGTH + 1];
-// 	unsigned int	prog_size;
-// 	char			how [COMMENT_LENGTH + 1];
-// }					t_header;
-
-
-
-// typedef struct		s_player
-// {
-// 	// char			magic[8];
-// 	char			*magic;
-// 	// char			bot_name[PROG_NAME_LENGTH];
-// 	char			*bot_name;
-// 	int				size_exec;
-// 	// char			comment[COMMENT_LENGTH];
-// 	char			*comment;
-// 	// char			ex_code[size_exec];
-// 	char			*ex_code;
-// 	unsigned char		memory[MEM_SIZE];
-// 	unsigned int		nb_player;
-// 	unsigned long		cycle;
-// 	unsigned long		nbr_live;
-// 	unsigned long		old_nbr_live;
-// 	unsigned long		nb_process;
-// 	int					mem_mov;
-	
-// } 					t_player;
-
-
-//  для команд
-// typedef struct		s_proc
-// {
-// 	int				carry;
-// 	int				pc;
-// 	int				reg[REG_NUMBER];
-// 	int				instruction;
-// 	int				cycle_to_wait;
-// 	int				live_period;
-// 	int				id;
-// 	int				parametres_types[5];
-// 	int				save_pc;
-// 	int				alive;
-// 	struct s_proc	*next;
-// }					t_proc;
 typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
@@ -162,6 +114,8 @@ typedef struct 		s_cmd
 	int				previdx;
 	int				str_cycle;
 	int				lnew;
+	int				zero;
+	int				overlap;
 	struct s_cmd	*next;
 	struct s_cmd	*prev;
 }					t_cmd;
@@ -171,13 +125,17 @@ typedef struct		s_arena
 	char			acb;
 
 	char			o_acb;
+	char			o_hex;
+	char			o_args;////
 	int				hit;
+	int				overlap;
 	int				pl;
 
-	int				rgb;//main color for chars on arena
+	int				rgb;
 	int				asc_rgb;
 	int				flag;
-	int				bold;	
+	int				bold;
+	int				zero;	
 }					t_arena;
 
 typedef struct		s_champ
@@ -188,7 +146,7 @@ typedef struct		s_champ
 	int				magic_number;
 	int				weight;
 	int				rgb;
-	int				ready;
+	int				ready;//not need
 
 	int				idx;
 	//int			life;
@@ -303,6 +261,7 @@ void				vm_aff(t_vm *vm, t_cmd *cmd);
 int 				get_reg(t_vm *vm, int *i);
 int 				is_reg(int value);
 int					vm_getpl(t_vm *vm, int place);
+int					vm_new_step(t_vm *vm, t_cmd *cmd, int run);
 
 void				vm_load_ncurses(void);
 void				vm_vis_arena(t_vm *vm);
