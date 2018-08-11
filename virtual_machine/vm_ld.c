@@ -56,8 +56,8 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 			ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);
 		cmd->reg[hex - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
-		vm_next_step(vm, cmd, 5);
 	}
+	vm_next_step(vm, cmd, 5);
 }
 
 void	vm_ld(t_vm *vm, t_cmd *cmd)
@@ -76,7 +76,9 @@ void	vm_ld(t_vm *vm, t_cmd *cmd)
 		one += 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 		hex = 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 		if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
-			vm_ld_dr(vm, cmd, one, hex);
+			vm_ld_dr(vm, cmd, one, hex);		
+		else
+			vm_next_step(vm, cmd, 7);
 	}
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
 		vm_ld_ir(vm, cmd);

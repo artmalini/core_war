@@ -137,6 +137,8 @@ void	vm_lldi(t_vm *vm, t_cmd *cmd)
 			vm_next_step(vm, cmd, 4);
 			vm_lldi_write(vm, cmd, 4, res);
 		}
+		else
+			vm_next_step(vm, cmd, 4);
 	}
 	if (hex == 228 || hex == 164)
 		lldi_idr_ddr(vm, cmd, hex);

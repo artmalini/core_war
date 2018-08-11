@@ -61,9 +61,9 @@ void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
 		cmd->reg[vm->arena[mdx(cmd->idx + 4)].acb - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
 		if (vm->debug)
-			lld_ir_debug(hex, pos);		
-		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+			lld_ir_debug(hex, pos);
 	}
+	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 }
 
 void	vm_lld(t_vm *vm, t_cmd *cmd)

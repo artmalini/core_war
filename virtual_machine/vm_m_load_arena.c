@@ -38,6 +38,7 @@ int			vm_new_step(t_vm *vm, t_cmd *cmd, int run)
 	int		acb;
 	int		i;
 	int		len;
+	(void)run;
 
 	len = 1;
 	i = -2;
@@ -64,8 +65,8 @@ int			vm_new_step(t_vm *vm, t_cmd *cmd, int run)
 			i--;
 		}
 	}
-	if (i == -2 && run == 1)
-		len++;
+	//if (i == -2 && run == 1)
+	//	len++;
 	return (len);
 }
 
@@ -264,13 +265,13 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	int		hit;
 	int		prev;
 	int		run;
-    int     zero;
+   // int     zero;
    // int		c_tmp[7];
    // int		tmp[7];
 
 	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
-    zero = vm->arena[mdx(cmd->idx)].zero & 0xFF;
+    //zero = vm->arena[mdx(cmd->idx)].zero & 0xFF;
    // (void)zero;
 	//hit = (vm->arena[mdx(cmd->idx)].hit);
 	prev = 0;
@@ -288,7 +289,7 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 			else if (hit == -1 && hex == 255 && dia(o_hex - 1))
 				vm_next_step(vm, cmd, vm_old_step(vm, cmd));
 			else if (hit == -1 && hex == 0 && o_hex != 0)
-				vm_next_step(vm, cmd, 2);
+				vm_next_step(vm, cmd, vm_new_step(vm, cmd, run));
 			else
 				vm_cmd_triger(vm, cmd, hex);
 		}
@@ -309,8 +310,8 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 		else if (cmd->lnew)
 		{			
 			cmd->lnew = 0;
-			if (o_hex == 0 && hex != 0 && (cmd->zero == 1 && zero == 1))
-				run = 1;
+			//if (o_hex == 0 && hex != 0 && (cmd->zero == 1 && zero == 1))
+			//	run = 1;
 			cmd->zero = 0;
 			vm_next_step(vm, cmd, vm_new_step(vm, cmd, run));
 		}
@@ -348,7 +349,7 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb)
 		if (entry == 32)
 		{
 			if (*nb == 150000)
-				*nb = 150;
+				*nb = 100;
 			else
 				*nb = 150000;
 		}
