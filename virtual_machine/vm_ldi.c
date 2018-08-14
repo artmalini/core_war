@@ -119,7 +119,7 @@ void	vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_ldi(t_vm *vm, t_cmd *cmd)
+void	vm_ldi(t_vm *vm, t_cmd *cmd, int x)
 {
 	char	a;
 	char	b;
@@ -148,5 +148,5 @@ void	vm_ldi(t_vm *vm, t_cmd *cmd)
 		vm_ldi_rdr(vm, cmd, hex);
 	}
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 }

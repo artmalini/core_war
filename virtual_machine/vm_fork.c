@@ -23,6 +23,7 @@ void		fork_update_reg(int *dest, int *host)
 
 t_cmd		*fork_add_list(t_vm *vm, t_cmd *cmd1, int nb, int v)
 {
+	(void)v;
 	t_cmd	*lst;
 
 	lst = NULL;
@@ -43,7 +44,7 @@ t_cmd		*fork_add_list(t_vm *vm, t_cmd *cmd1, int nb, int v)
 		lst->on = 1;
 		lst->overlap = cmd1->overlap;
 		lst->str_cycle = cmd1->str_cycle;// + op_tab[vm->arena[mdx(cmd1->idx)].acb - 1].cycles;
-		lst->flag = vm->arena[mdx(cmd1->idx + v)].acb & 0xFF;
+		lst->flag = 0;
 		lst->lnew = 1;
 		lst->zero = 0;
 		lst->next = NULL;
@@ -96,9 +97,6 @@ void	vm_fork(t_vm *vm, t_cmd **cmd)
 		// tmp->next = vm->cmd;
 		// vm->cmd = tmp;
 	}
-	// if (vm->arena[mdx(cmd1->idx + 1)].acb == 0)
-	//	vm_next_step(vm, *cmd, vm_new_step(vm, *cmd, 0));
-	// else
-		vm_next_step(vm, *cmd, 3);
+	vm_next_step(vm, *cmd, 3);
 	vm_next_step(vm, tmp, two_val);
 }

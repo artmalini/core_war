@@ -17,13 +17,13 @@ void	vm_cmd_triger2(t_vm *vm, t_cmd *cmd, int hex)
 	if (hex == 12)
 		vm_fork(vm, &cmd);
 	else if (hex == 13)
-		vm_lld(vm, cmd);
+		vm_lld(vm, cmd, hex - 1);
 	else if (hex == 14)
-		vm_lldi(vm, cmd);
+		vm_lldi(vm, cmd, hex - 1);
 	else if (hex == 15)
 		vm_lfork(vm, &cmd);
 	else if (hex == 16)
-		vm_aff(vm, cmd);
+		vm_aff(vm, cmd, hex - 1);
 	else
 		return ;
 }
@@ -33,25 +33,25 @@ void	vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex)
 	if (hex == 1)
 		vm_live(vm, cmd);
 	else if (hex == 2)
-		vm_ld(vm, cmd);
+		vm_ld(vm, cmd, hex - 1);
 	else if (hex == 3)
-		vm_st(vm, cmd);
+		vm_st(vm, cmd, hex - 1);
 	else if (hex == 4)
-		vm_add(vm, cmd);
+		vm_add(vm, cmd, hex - 1);
 	else if (hex == 5)
-		vm_sub(vm, cmd);
+		vm_sub(vm, cmd, hex - 1);
 	else if (hex == 6)
-		vm_and(vm, cmd);
+		vm_and(vm, cmd, hex - 1);
 	else if (hex == 7)
-		vm_or(vm, cmd);
+		vm_or(vm, cmd, hex - 1);
 	else if (hex == 8)
-		vm_xor(vm, cmd);
+		vm_xor(vm, cmd, hex - 1);
 	else if (hex == 9)
 		vm_zjmp(vm, cmd);
 	else if (hex == 10)
-		vm_ldi(vm, cmd);
+		vm_ldi(vm, cmd, hex - 1);
 	else if (hex == 11)
-		vm_sti(vm, cmd);
+		vm_sti(vm, cmd, hex - 1);
 	else
 		vm_cmd_triger2(vm, cmd, hex);
 }

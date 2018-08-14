@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-void	vm_sub(t_vm *vm, t_cmd *cmd)
+void	vm_sub(t_vm *vm, t_cmd *cmd, int x)
 {
 	int		a;
 	int		b;
@@ -30,5 +30,5 @@ void	vm_sub(t_vm *vm, t_cmd *cmd)
 		vm_next_step(vm, cmd, 5);
 	}
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 }

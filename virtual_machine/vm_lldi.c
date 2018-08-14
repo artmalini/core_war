@@ -25,7 +25,7 @@ void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;
 	int		val1;
-	char	a;
+	int		a;
 
 	val1 = cmd->idx - val + i;
 	one = 0xFF & vm->arena[mdx(val1)].acb;
@@ -74,7 +74,7 @@ void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 
 void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
-	char	a;
+	int		a;
 	int		res;
 	int		arg[5];
 
@@ -102,7 +102,7 @@ void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 
 void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
-	char	a;
+	int		a;
 	int		res;
 	int		arg[5];
 
@@ -120,10 +120,10 @@ void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_lldi(t_vm *vm, t_cmd *cmd)
+void	vm_lldi(t_vm *vm, t_cmd *cmd, int x)
 {
-	char	a;
-	char	b;
+	int		a;
+	int		b;
 	int		res;
 	int		hex;
 
@@ -149,6 +149,6 @@ void	vm_lldi(t_vm *vm, t_cmd *cmd)
 		vm_lldi_rdr(vm, cmd, hex);
 	}
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 	//vm_next_step(vm, cmd, 1);
 }

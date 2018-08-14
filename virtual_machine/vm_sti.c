@@ -90,7 +90,7 @@ int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
 	return (res);
 }
 
-void	vm_sti(t_vm *vm, t_cmd *cmd)
+void	vm_sti(t_vm *vm, t_cmd *cmd, int x)
 {
 	int		cdg;
 	int		direct;
@@ -117,5 +117,5 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 		vm_sti_step(vm, cmd, cdg);
 	}
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 }

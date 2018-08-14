@@ -69,10 +69,11 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	vm_next_step(vm, cmd, 5);
 }
 
-void	vm_st(t_vm *vm, t_cmd *cmd)
+void	vm_st(t_vm *vm, t_cmd *cmd, int x)
 {
 	int	reg1;
 	int	reg2;
+	
 	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;	
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
 	{		
@@ -90,5 +91,5 @@ void	vm_st(t_vm *vm, t_cmd *cmd)
 			vm_next_step(vm, cmd, 5);
 	}
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 }

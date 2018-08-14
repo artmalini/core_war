@@ -34,6 +34,7 @@ int			dia(int nb)
 
 int			vm_len_step(t_vm *vm, t_cmd *cmd, int idx)
 {
+	//сюда от каждой ф-ции
 	//int		chk;
 	int		acb;
 	int		i;
@@ -81,7 +82,7 @@ int			vm_new_step(t_vm *vm, t_cmd *cmd, int run)
 	if (dia(chk))
 	{
 		i = op_tab[chk].nbr_args - 1;
-		if ((op_tab[chk].codage || acb == 0))
+		if ((op_tab[chk].codage))
 			len++;
 		while (i >= 0)
 		{
@@ -440,7 +441,7 @@ int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
 		return (0);
 	if (chk == 0 || chk == 8 || chk == 11 || chk == 14)
 		return (1);
-	else if (vm_check_big(vm, cmd, chk))
+	else if (vm_big(vm, cmd, chk))
 		return (1);
 	else
 		return (0);
@@ -462,33 +463,41 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 	//int		o_hex;
 	int		hit;
     int     zero;
-    int     run;
-
-   // int     run;
+    //int     run;
 
     hit = -1;
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
 	//o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
     zero = cmd->zero;
-	//run = 0;
 	if (cmd->wait == 1)
 	{
-		run = vm_len_step(vm, cmd, zero - 1);
-		if (dia(zero - 1) && hit == -1 && (run > 1 || vm_c(zero)))
+		if (dia(zero - 1))
 		{
 			hit = 1;
 			vm_cmd_triger(vm, cmd, zero);
-			cmd->zero = vm->arena[mdx(cmd->idx)].acb;
+			//cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 		}
-		run = vm_len_step(vm, cmd, hex - 1);
-		if (dia(hex - 1) && hit == -1 && (run > 1 || vm_c(hex)))
+		if ((vm_cmd(vm, cmd, hex - 1) && hit == -1))
 		{
 			hit = 1;
 			vm_cmd_triger(vm, cmd, hex);
-			cmd->zero = vm->arena[mdx(cmd->idx)].acb;
+			//cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 		}
+
+		// run = vm_len_step(vm, cmd, zero - 1);
+		// if (dia(zero - 1) && (run > 1 || vm_c(zero - 1)))
+		// {
+		// 	hit = 1;
+		// 	vm_cmd_triger(vm, cmd, zero);
+		// }
+		// run = vm_len_step(vm, cmd, hex - 1);
+		// if ((dia(hex - 1) && hit == -1) && (run > 1 || vm_c(zero - 1)))
+		// {
+		// 	hit = 1;
+		// 	vm_cmd_triger(vm, cmd, hex);
+		// }
 		if (hit == -1)
-			vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+			vm_next_step(vm, cmd, 1);
 		//cmd->zero = 0;	
 		cmd->playing = 0;
 	}

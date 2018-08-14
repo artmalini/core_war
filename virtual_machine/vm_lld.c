@@ -66,7 +66,7 @@ void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
 	vm_next_step(vm, cmd,5);
 }
 
-void	vm_lld(t_vm *vm, t_cmd *cmd)
+void	vm_lld(t_vm *vm, t_cmd *cmd, int x)
 {
 	int		hex;
 	int		one;
@@ -89,5 +89,5 @@ void	vm_lld(t_vm *vm, t_cmd *cmd)
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
 		vm_lld_ir(vm, cmd);
 	else
-		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
+		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
 }
