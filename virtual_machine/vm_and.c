@@ -37,6 +37,8 @@ void	vm_and_5(t_vm *vm, t_cmd *cmd, int *arg)
 			vm_irr(vm, cmd, arg, 1);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
+	else
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }
 
 void	vm_and_4(t_vm *vm, t_cmd *cmd, int *arg)

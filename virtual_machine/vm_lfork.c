@@ -21,7 +21,7 @@ void		lfork_update_reg(int *dest, int *host)
 		dest[i] = host[i];
 }
 
-t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
+t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb, int v)
 {
 	t_cmd	*lst;
 
@@ -45,7 +45,7 @@ t_cmd		*lfork_add_list(t_vm *vm, t_cmd *cmd1, int nb)
 		lst->str_cycle = cmd1->str_cycle;// + op_tab[vm->arena[mdx(cmd1->idx)].acb - 1].cycles;
 		lst->flag = 0;
 		lst->lnew = 1;
-		lst->zero = 0;
+		lst->zero = vm->arena[mdx(cmd1->idx + v)].acb & 0xFF;
 		lst->next = NULL;
 		lst->prev = NULL;
 	}	
@@ -73,7 +73,7 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	//base = vm->cmd;
 	if (cmd1)
 	{
-		tmp = lfork_add_list(vm, cmd1, vm->total_process + 1);
+		tmp = lfork_add_list(vm, cmd1, vm->total_process + 1, two);
 		if (vm->debug)
 			ft_printf("|P\t%d| lfork |%d| (%d)\n", cmd1->nbr_process, two, tmp->idx + two);
 
@@ -96,5 +96,6 @@ void	vm_lfork(t_vm *vm, t_cmd **cmd)
 	}
 
 	vm_next_step(vm, *cmd, 3);
+	//vm_next_step(vm, *cmd, vm_new_step(vm, *cmd, 0));
 	vm_next_step(vm, tmp, two);
 }

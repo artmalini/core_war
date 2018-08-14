@@ -30,5 +30,5 @@ void	vm_sub(t_vm *vm, t_cmd *cmd)
 		vm_next_step(vm, cmd, 5);
 	}
 	else
-		vm_next_step(vm, cmd, 5);
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }

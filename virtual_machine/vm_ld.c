@@ -20,7 +20,7 @@
 void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 {
 	if (vm->debug)
-		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, one, hex);
+		ft_printf("|P\t%d| ld |%d| |r%d| vm->total_cycle|%d|\n", cmd->nbr_process, one, hex, vm->total_cycle);
 	cmd->reg[hex - 1] = one;
 	if (one == 0)
 		cmd->carry = 1;
@@ -53,7 +53,7 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
 	{
 		if (vm->debug)
-			ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);
+			ft_printf("|P\t%d| ld |%d| |r%d| vm->total_cycle|%d|\n", cmd->nbr_process, pos, hex, vm->total_cycle);
 		cmd->reg[hex - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
 	}
@@ -80,6 +80,8 @@ void	vm_ld(t_vm *vm, t_cmd *cmd)
 		else
 			vm_next_step(vm, cmd, 7);
 	}
-	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
+	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
 		vm_ld_ir(vm, cmd);
+	else
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }

@@ -30,9 +30,9 @@ void	vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
 	else if (cdg == 88 || cdg == 100)
 		vm_next_step(vm, cmd, 6);
 	else if (cdg == 120)
-		vm_next_step(vm, cmd, 9);
+		vm_next_step(vm, cmd, 7);
 	else if (cdg == 116)
-		vm_next_step(vm, cmd, 8);
+		vm_next_step(vm, cmd, 6);
 }
 
 void	load_res(t_vm *vm, t_cmd *cmd, int direct)
@@ -43,10 +43,10 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	//int		hit;
 
 	i = -1;
-	reg1 =  0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
-	if (!(reg1 > 0 && reg1 < 16))
+	reg1 = (0xFF & vm->arena[mdx(cmd->idx + 2)].acb) - 1;
+	if (reg1 < 0 || reg1 >= 16)
 		return ;
-	dat = cmd->reg[reg1 - 1];
+	dat = cmd->reg[reg1];
 	//hit = 1;
 	while (++i <= 3)
 	{
@@ -70,15 +70,15 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 	if (vm->debug)
 	{
 		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)total_cycle|%d|\n",
-			cmd->nbr_process, direct, reg1, cmd->idx + direct, vm->total_cycle);
+			cmd->nbr_process, direct, reg1 + 1, cmd->idx + direct, vm->total_cycle);
 	}
 }
 
 int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
 {
 	int		res;
-	int		arg1;
-	short	arg2;
+	short	arg1;
+	int		arg2;
 	
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
@@ -113,6 +113,9 @@ void	vm_sti(t_vm *vm, t_cmd *cmd)
 		else if (cdg == 116)
 			direct = vm_rir_sti(vm, cmd);
 		load_res(vm, cmd, (direct % IDX_MOD));
+		//vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 		vm_sti_step(vm, cmd, cdg);
 	}
+	else
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }

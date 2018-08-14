@@ -88,6 +88,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 {
 	int		i;
 	int		tm;
+	//int		acb;
 	
 	if (vm->arena[cmd->idx].flag > 0)
 		vm->arena[cmd->idx].flag--;
@@ -106,6 +107,9 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
 	// refresh();
    // vm->arena[cmd->idx].pl = cmd->pl;
+	//acb = vm->arena[mdx(cmd->idx)].acb;
+	//if (cmd->zero == 0 && (acb > 0 && acb < 17))
+	//	cmd->zero = acb;
 	vm->arena[cmd->idx].flag++;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
 	if (vm->arena[tm].flag == 0)

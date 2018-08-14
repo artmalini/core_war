@@ -21,7 +21,7 @@ int			vm_rdd_sti(t_vm *vm, t_cmd *cmd)
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;
-	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;	
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	arg2 <<= 8;
 	arg2 += 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
@@ -33,7 +33,7 @@ int			vm_rir_sti(t_vm *vm, t_cmd *cmd)
 {
 	int		res;
 	int		arg1;
-	short	arg2;
+	int		arg2;
 	short	dir;
 	int		dir1;
 	

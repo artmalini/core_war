@@ -70,6 +70,15 @@ void	vm_init(t_vm *vm)
 	vm->cmd = NULL;
 }
 
+void		vm_zero_reg(int *dest)
+{
+	int i;
+
+	i = -1;
+	while (++i < REG_NUMBER)
+		dest[i] = 0;
+}
+
 t_cmd		*add_list(t_vm *vm, int i)
 {
 	t_cmd	*lst;
@@ -78,6 +87,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 	lst = (t_cmd *)malloc(sizeof(t_cmd));
 	if (lst)
 	{
+		vm_zero_reg(lst->reg);
 		lst->reg[0] = (vm->tab_champ[i].id * -1);
 		lst->idx = vm->tab_champ[i].idx;//индекс первой  позиции курсора
 		lst->pl = (vm->tab_champ[i].id * -1);

@@ -37,6 +37,8 @@ void	vm_xor_5(t_vm *vm, t_cmd *cmd, int *arg)
 			vm_irr(vm, cmd, arg, 3);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
+	else
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }
 
 void	vm_xor_4(t_vm *vm, t_cmd *cmd, int *arg)

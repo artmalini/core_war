@@ -34,7 +34,7 @@ void	vm_lld_dr(t_vm *vm, t_cmd *cmd, int one)
 		cmd->carry = 1;
 	else
 		cmd->carry = 0;
-	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+	vm_next_step(vm, cmd, 7);
 }
 
 void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
@@ -63,7 +63,7 @@ void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
 		if (vm->debug)
 			lld_ir_debug(hex, pos);
 	}
-	vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
+	vm_next_step(vm, cmd,5);
 }
 
 void	vm_lld(t_vm *vm, t_cmd *cmd)
@@ -83,7 +83,11 @@ void	vm_lld(t_vm *vm, t_cmd *cmd)
 		hex = 0xFF & vm->arena[mdx(cmd->idx + 6)].acb;
 		if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
 			vm_lld_dr(vm, cmd, one);
+		else
+			vm_next_step(vm, cmd, 7);
 	}
-	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
+	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 208)
 		vm_lld_ir(vm, cmd);
+	else
+		vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 }
