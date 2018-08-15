@@ -195,174 +195,6 @@ int			vm_its_cmd_old(t_vm *vm, t_cmd *cmd)
 		return (-2);
 }
 
-/*void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
-{
-	int		acb;
-	//int		o_hex;
-	//int		cell;
-	//int		id;
-
-	//cell = 0;
-	acb = vm->arena[mdx(cmd->idx)].acb - 1;
-	//o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
-	if (vm_its_cmd(vm, cmd))
-	{
-		//if (vm->total_cycle < 2)
-		//	return ;
-		// if (vm->total_cycle != 4)
-		// {
-		// 	id = vm_getpl(vm, cmd->pl * -1);
-		// 	if (id > -1 && vm->tab_champ[id].ready != 0)
-		// 	{
-		// 		vm->tab_champ[id].ready--;
-		// 		cmd->playing = 0;
-		// 			return ;
-		// 	}
-		// }
-		if (vm->arena[mdx(cmd->idx)].overlap == 1)
-		    cmd->overlap = 1;
-		//vm->arena[mdx(cmd->idx)].overlap = 0;
-		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-		vm->arena[mdx(cmd->idx)].o_hex = vm->arena[mdx(cmd->idx + 1)].acb;
-		vm->arena[mdx(cmd->idx)].hit = cmd->idx;
-		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
-		cmd->wait = op_tab[acb].cycles;// + cell + (cmd->wait == -1 ? cmd->wait * -1 : 0);
-		cmd->playing = 1;
-		cmd->lnew = 0;
-	}
-	else
-	{
-		//if (acb == -1 && o_hex != 0)
-		if (acb >= 0 && acb < 16)
-		{
-			if (vm->arena[mdx(cmd->idx)].zero == 0)
-				cmd->zero = 1;				
-			cmd->wait = op_tab[acb].cycles;
-			cmd->playing = 1;
-			cmd->lnew = 1;
-			vm->arena[mdx(cmd->idx)].overlap = 0;
-		}
-		else
-			vm_next_step(vm, cmd, 1);
-	}
-}
-
-void		vm_store_args(t_vm *vm, t_cmd *cmd, int *c_tmp)
-{
-	int		i;
-
-	i = -1;
-	while (++i < 7)
-		c_tmp[i] = 0;
-	i = -1;
-	while (++i < 7)
-		c_tmp[i] = vm->arena[mdx(cmd->idx + i)].acb;
-}
-
-void		vm_old_args(t_vm *vm, t_cmd *cmd, int *tmp)
-{
-	int		i;
-
-	i = -1;
-	while (++i < 7)
-		tmp[i] = 0;
-	i = -1;
-	while (++i < 7)
-	{
-		if (vm->arena[mdx(cmd->idx + i)].overlap == 1)
-			tmp[i] = vm->arena[mdx(cmd->idx + i)].o_args;
-	}
-	i = -1;
-	while (++i < 7)
-	{
-		if (tmp[i] != 0)
-			vm->arena[mdx(cmd->idx + i)].acb = tmp[i];
-	}
-}
-
-void		vm_put_cur_arg(t_vm *vm, t_cmd *cmd, int *c_tmp, int *tmp)
-{
-	int		i;
-
-	i = -1;
-	while (++i < 7)
-	{
-		if (tmp[i] != 0 && vm->arena[mdx(cmd->idx + i)].o_acb == c_tmp[i])
-			vm->arena[mdx(cmd->idx + i)].acb = c_tmp[i];
-	}
-}
-
-
-void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
-{
-	int		hex;
-	int		o_hex;
-	int		hit;
-	int		prev;
-	int		run;
-    int     zero;
-   // int		c_tmp[7];
-   // int		tmp[7];
-
-	hex = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
-    zero = vm->arena[mdx(cmd->idx)].zero & 0xFF;
-   // (void)zero;
-	//hit = (vm->arena[mdx(cmd->idx)].hit);
-	prev = 0;
-	run = 0;
-	if (cmd->wait == 1)
-	{
-		if (hex != o_hex && !cmd->lnew)
-		{
-			hit = (vm_its_cmd_old(vm, cmd)) + 1;
-			if (hit == o_hex && !cmd->zero)
-			{
-				vm_cmd_triger(vm, cmd, hit);
-				prev = 1;
-			}
-			else if (hit == -1 && hex == 255 && dia(o_hex - 1))
-				vm_next_step(vm, cmd, vm_old_step(vm, cmd));
-			else if (hit == -1 && hex == 0 && o_hex != 0)
-				vm_next_step(vm, cmd, vm_old_step(vm, cmd));//vm_next_step(vm, cmd, 2);
-			else
-				vm_cmd_triger(vm, cmd, hex);
-		}
-		else if ((hex == o_hex) && vm->arena[mdx(cmd->idx)].overlap == 1 && cmd->overlap == 0 && !cmd->lnew)
-		{
-			vm_cmd_triger(vm, cmd, cmd->previdx + 1);
-			//if (vm->arena[mdx(cmd->idx)].hit == 1)
-				//vm->arena[mdx(cmd->idx)].overlap = 0;
-		}
-		else if (vm_its_cmd(vm, cmd) && !prev && !cmd->lnew)
-		{
-			//needed for old args
-			//vm_store_args(vm, cmd, c_tmp);
-			//vm_old_args(vm, cmd, tmp);
-			vm_cmd_triger(vm, cmd, hex);
-			//vm_put_cur_arg(vm, cmd, c_tmp, tmp);
-		}
-		else if (cmd->lnew && vm_its_cmd(vm, cmd))
-            vm_cmd_triger(vm, cmd, hex);
-		else if (cmd->lnew)
-		{
-			cmd->lnew = 0;
-			if (o_hex == 0 && hex != 0 && (cmd->zero == 1 && zero == 1))
-				run = 1;
-			cmd->zero = 0;
-			vm_next_step(vm, cmd, vm_new_step(vm, cmd, run));
-		}
-		else
-			vm_next_step(vm, cmd, 1);
-		//cmd->overlap = 0;
-		//if (vm->arena[mdx(cmd->idx)].hit != 0)
-		//	vm->arena[mdx(cmd->idx)].hit = 0;
-		//vm->arena[mdx(cmd->idx)].zero = 0;
-		//vm->arena[mdx(cmd->idx)].overlap = 0;
-		cmd->playing = 0;
-	}
-}*/
-
 void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		acb;
@@ -381,6 +213,9 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		cmd->wait = op_tab[acb].cycles;
 		cmd->playing = 1;
 		cmd->lnew = 0;
+		if (cmd->overlap == 1)
+			cmd->zero = acb + 1;
+		//cmd->overlap = 0;
 		// if (cmd->zero == 0)
 		// {
 		// 	cmd->zero = acb + 1;
@@ -396,10 +231,13 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 			// {
 			// 	cmd->zero = acb + 1;
 			// }
+			//cmd->overlap = 0;
+			if (cmd->overlap == 1)
+				cmd->zero = acb + 1;
 			cmd->wait = op_tab[acb].cycles;
 			cmd->playing = 1;
 			cmd->lnew = 1;
-			vm->arena[mdx(cmd->idx)].overlap = 0;
+			vm->arena[mdx(cmd->idx)].overlap = 0;			
 		}
 		else
 			vm_next_step(vm, cmd, 1);
@@ -447,16 +285,6 @@ int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
 		return (0);
 }
 
-int			vm_c(int chk)
-{
-	int		nb;
-
-	nb = chk - 1;
-	if (nb == 0 || nb == 8 || nb == 11 || nb == 14)
-		return (1);
-	return (0);
-}
-
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
@@ -475,30 +303,15 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 		{
 			hit = 1;
 			vm_cmd_triger(vm, cmd, zero);
-			//cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 		}
-		if ((vm_cmd(vm, cmd, hex - 1) && hit == -1))
+		else if ((vm_cmd(vm, cmd, hex - 1) && hit == -1))
 		{
 			hit = 1;
+			cmd->overlap = 0;
 			vm_cmd_triger(vm, cmd, hex);
-			//cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 		}
-
-		// run = vm_len_step(vm, cmd, zero - 1);
-		// if (dia(zero - 1) && (run > 1 || vm_c(zero - 1)))
-		// {
-		// 	hit = 1;
-		// 	vm_cmd_triger(vm, cmd, zero);
-		// }
-		// run = vm_len_step(vm, cmd, hex - 1);
-		// if ((dia(hex - 1) && hit == -1) && (run > 1 || vm_c(zero - 1)))
-		// {
-		// 	hit = 1;
-		// 	vm_cmd_triger(vm, cmd, hex);
-		// }
 		if (hit == -1)
-			vm_next_step(vm, cmd, 1);
-		//cmd->zero = 0;	
+			vm_next_step(vm, cmd, 1);	
 		cmd->playing = 0;
 	}
 }

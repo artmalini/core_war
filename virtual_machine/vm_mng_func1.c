@@ -88,18 +88,14 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 {
 	int		i;
 	int		tm;
-	//int		acb;
+	int		acb;
 	
 	//acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if (vm->arena[cmd->idx].flag > 0)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
 	i = cmd->idx + pos;
-	//ft_printf("cmd->idx |%d|\n ", i); (nbr < 0) ? ((MEM_SIZE + nbr) % MEM_SIZE) : nbr
-	//if (cmd->on == 0)
-	//cmd->idx = (i % MEM_SIZE < 0) ? (i % MEM_SIZE + MEM_SIZE) : i % MEM_SIZE;
 	cmd->idx = mdx(i);
-
 	//ft_printf("cmd->idx |%d| ", cmd->idx);
 	//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
 	//refresh();
@@ -107,12 +103,14 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	// attron(COLOR_PAIR(11));
 	// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
 	// refresh();
-   // vm->arena[cmd->idx].pl = cmd->pl;
-	//acb = vm->arena[mdx(cmd->idx)].acb;
-	//if (cmd->zero == 0 && (acb > 0 && acb < 17))
-	//	cmd->zero = acb;
-	//if (acb > 0 && acb < 17)
-	cmd->zero = vm->arena[mdx(cmd->idx)].acb;
+	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
+		cmd->zero = vm->arena[mdx(cmd->idx)].acb;
+	else
+	{
+		cmd->overlap = 1;
+		cmd->zero = 0;
+	}
 	vm->arena[cmd->idx].flag++;
 	vm->arena[cmd->idx].rgb = cmd->rgb;
 	if (vm->arena[tm].flag == 0)
