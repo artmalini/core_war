@@ -212,31 +212,23 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
 		cmd->wait = op_tab[acb].cycles;
 		cmd->playing = 1;
-		cmd->lnew = 0;
+		//cmd->lnew = 0;
 		if (cmd->overlap == 1)
 			cmd->zero = acb + 1;
-		//cmd->overlap = 0;
-		// if (cmd->zero == 0)
-		// {
-		// 	cmd->zero = acb + 1;
-		// }
+		// if (acb == 11 || acb == 14)
+		//cmd->lnew = acb + 1;
 	}
 	else
 	{
 		if (acb >= 0 && acb < 16)
 		{
-			//if (vm->arena[mdx(cmd->idx)].zero == 0)
-			//	cmd->zero = 1;
-			// if (cmd->zero == 0)
-			// {
-			// 	cmd->zero = acb + 1;
-			// }
-			//cmd->overlap = 0;
 			if (cmd->overlap == 1)
 				cmd->zero = acb + 1;
+			// if (acb == 11 || acb == 14)
+			//cmd->lnew = acb + 1;
 			cmd->wait = op_tab[acb].cycles;
 			cmd->playing = 1;
-			cmd->lnew = 1;
+			//cmd->lnew = 1;
 			vm->arena[mdx(cmd->idx)].overlap = 0;			
 		}
 		else

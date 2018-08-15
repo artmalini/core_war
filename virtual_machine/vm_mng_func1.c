@@ -102,7 +102,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	// erase();
 	// attron(COLOR_PAIR(11));
 	// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
-	// refresh();
+	// refresh();	
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
 		cmd->zero = vm->arena[mdx(cmd->idx)].acb;
