@@ -96,14 +96,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
 	i = cmd->idx + pos;
-	cmd->idx = mdx(i);
-	//ft_printf("cmd->idx |%d| ", cmd->idx);
-	//ft_printf("cmd->idx %d ", vm->arena[cmd->idx]);
-	//refresh();
-	// erase();
-	// attron(COLOR_PAIR(11));
-	// printw("vm_next_step |%d|\n", vm->arena[cmd->idx].flag);
-	// refresh();	
+	cmd->idx = mdx(i);	
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
 		cmd->zero = vm->arena[mdx(cmd->idx)].acb;

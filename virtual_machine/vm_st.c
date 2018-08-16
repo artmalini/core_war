@@ -31,36 +31,18 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	int		i;
 	short	two;
 	int		two_val;
-	//int		hit;
 
 	i = -1;
 	two = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	two_val = two % IDX_MOD;
-	//hit = 1;
 	while (++i <= 3)
 	{
 		vm->arena[mdx(cmd->idx + two_val + i)].acb =
 			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
-		vm->arena[mdx(cmd->idx + two_val + i)].o_acb =
-			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;
-		//vm->arena[mdx(cmd->idx + two_val + i)].zero = reg1;
-		if (cmd->reg[reg1 - 1] == 0)
-		{
-			vm->arena[mdx(cmd->idx + two_val + i)].zero =
-				(4294967295 >> ((3 - i) * 8)) & 0xFF;
-		}
-		//if (vm->arena[mdx(cmd->idx + two_val + i)].hit != 0)
-		vm->arena[mdx(cmd->idx + two_val + i)].overlap = 1;
-		vm->arena[mdx(cmd->idx + two_val + i)].o_args =
-			((cmd->reg[reg1 - 1]) >> ((3 - i) * 8)) & 0xFF;	
-
-		//if (vm->arena[mdx(cmd->idx + two_val + i)].rgb - 4 != cmd->rgb - 4)
-		//{
-			vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
-			vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;			
-		//}
+		vm->arena[mdx(cmd->idx + two_val + i)].rgb = cmd->rgb - 4;
+		vm->arena[mdx(cmd->idx + two_val + i)].asc_rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + two_val + i)].bold = 5;
 	}
 	if (vm->debug)
@@ -74,7 +56,7 @@ void	vm_st(t_vm *vm, t_cmd *cmd, int x)
 	int	reg1;
 	int	reg2;
 	
-	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;	
+	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)
 	{		
 		reg2 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
