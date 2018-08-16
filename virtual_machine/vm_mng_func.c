@@ -25,13 +25,13 @@ int		get_indir_arg(t_vm *vm, t_cmd *cmd, int nb)
 {
 	unsigned int	one;
 
-	one = 0xFF & vm->arena[mdx(cmd->idx + nb)].acb;
+	one = 0xFF & (vm->arena[mdx(cmd->idx + nb)].acb);
 	one <<= 8;
-	one += 0xFF & vm->arena[mdx(cmd->idx + nb + 1)].acb;
+	one += 0xFF & (vm->arena[mdx(cmd->idx + nb + 1)].acb);
 	one <<= 8;
-	one += 0xFF & vm->arena[mdx(cmd->idx + nb + 2)].acb;
+	one += 0xFF & (vm->arena[mdx(cmd->idx + nb + 2)].acb);
 	one <<= 8;
-	one += 0xFF & vm->arena[mdx(cmd->idx + nb + 3)].acb;
+	one += 0xFF & (vm->arena[mdx(cmd->idx + nb + 3)].acb);
 	return ((int)one);
 }
 

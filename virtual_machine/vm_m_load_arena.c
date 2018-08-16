@@ -108,7 +108,7 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 {
 	int		acb;
 
-	acb = vm->arena[mdx(cmd->idx)].acb - 1;
+	acb = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
 	//o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
 	if (vm_its_cmd(vm, cmd))
 	{
@@ -118,9 +118,9 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		//vm->arena[mdx(cmd->idx)].overlap = 0;
 		//vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
 		vm->arena[mdx(cmd->idx)].o_acb = 1;
-		vm->arena[mdx(cmd->idx)].o_hex = vm->arena[mdx(cmd->idx + 1)].acb;
-		vm->arena[mdx(cmd->idx)].hit = cmd->idx;
-		vm->arena[mdx(cmd->idx)].pl = cmd->pl;
+		//vm->arena[mdx(cmd->idx)].o_hex = vm->arena[mdx(cmd->idx + 1)].acb;
+		//vm->arena[mdx(cmd->idx)].hit = cmd->idx;
+		//vm->arena[mdx(cmd->idx)].pl = cmd->pl;
 		cmd->wait = op_tab[acb].cycles;
 		cmd->playing = 1;
 		//cmd->lnew = 0;
@@ -232,8 +232,7 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb)
 	int entry;
 
 	if (vm->visual)
-	{
-		
+	{		
 		entry = 0;
 		nodelay(stdscr, 1);
 		entry = getch();
@@ -297,8 +296,7 @@ void		vm_load_arena(t_vm *vm)
 		{
 			vm_arena_cnt(vm, &i);
 			vm_play_arena(vm);
-			if (vm->dump_cycle > -1 &&
-				(vm->dump_cycle == vm->total_cycle))
+			if (vm->dump_cycle > -1 && (vm->dump_cycle == vm->total_cycle))
 				i = 0;
 		}
 	}	

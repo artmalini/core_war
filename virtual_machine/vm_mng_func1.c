@@ -16,8 +16,8 @@ int			mdx(int nbr)
 {
 	int		ret;
 
-	ret = (nbr < 0) ? ((MEM_SIZE + nbr) % MEM_SIZE) : nbr;
-	return (ret % MEM_SIZE);
+	ret = (nbr % MEM_SIZE < 0) ? nbr % MEM_SIZE + MEM_SIZE : nbr % MEM_SIZE;
+	return (ret);
 }
 
 int			vm_pos_curs_cdg(t_vm *vm, t_cmd *cmd, int l, int bitln)
@@ -90,8 +90,6 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	int		tm;
 	int		acb;
 	
-	//acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
-	//ft_printf("advancement|%d|\n", pos);
 	if (vm->arena[cmd->idx].flag > 0)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
@@ -99,7 +97,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	cmd->idx = mdx(i);	
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
-		cmd->zero = vm->arena[mdx(cmd->idx)].acb;
+		cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	else
 	{
 		cmd->overlap = 1;

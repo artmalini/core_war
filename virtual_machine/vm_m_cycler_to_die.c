@@ -33,11 +33,10 @@ void	pl_period_live(t_vm *vm)
 void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 {
 	int     id;
-	//(void)vm;
+
 	while (cmd)
 	{
-		//if (!cmd->life && !cmd->off && cmd->on)
-		if (!cmd->life && cmd->on)
+		if (!cmd->life && cmd->on == 0)
 		{
 			id = vm_getpl(vm, cmd->pl * -1);
 			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
@@ -45,9 +44,6 @@ void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 		}
 		if (!cmd->life)
 		{
-			//if (vm->arena[mdx(cmd->idx)].rgb - 4 == cmd->rgb - 4)
-			//	vm->arena[mdx(cmd->idx)].rgb -= 4;
-			//ft_printf("|%d|", vm->cycle);
 			cmd->off = 1;
 			cmd->on = 0;
 		}
@@ -84,34 +80,33 @@ void	vm_current_incr(t_cmd **cmd)
 }
 
 
-void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
-{
-	int		id;
+// void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
+// {
+// 	int		id;
 
-	id = -1;
-	while (cmd)
-	{
-		if (cmd->off && !cmd->on)
-		{
-			id = vm_getpl(vm, cmd->pl * -1);///////////////////////////////////////////////
-			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
-			{
-				vm->tab_champ[id].nbr_process--;
-				cmd->nbr_process--;
-				cmd->on = 1;
-			}
-		}
-		cmd = cmd->next;
-	}
-}
-
+// 	id = -1;
+// 	while (cmd)
+// 	{
+// 		if (cmd->off && !cmd->on)
+// 		{
+// 			id = vm_getpl(vm, cmd->pl * -1);
+// 			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
+// 			{
+// 				vm->tab_champ[id].nbr_process--;
+// 				cmd->nbr_process--;
+// 				cmd->on = 1;
+// 			}
+// 		}
+// 		cmd = cmd->next;
+// 	}
+// }
 
 void	vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle >= vm->cycle_to_die)
 	{
 		vm_curet_next(vm, vm->cmd);
-		vm_current_incr(&vm->cmd);//should be for the performance
+		//vm_current_incr(&vm->cmd);//should be for the performance
 		//vm_rev_pc(vm, vm->cmd);
 		if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
 		{

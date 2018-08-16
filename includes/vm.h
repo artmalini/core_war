@@ -103,21 +103,18 @@ typedef struct 		s_cmd
 	int				pl;
 	int				idx;
 	int				rgb;
+	int				playing;
+	int				wait;
 	int				off;
 	int				carry;
-	int				wait;
-	int				playing;
-	int				flag;
-	int				life;	
+	int				life;
 	int				nbr_process;
+	int				flag;
 	int				on;
-	int				previdx;
-	int				str_cycle;
 	int				lnew;
 	int				zero;
 	int				overlap;
 	struct s_cmd	*next;
-	struct s_cmd	*prev;
 }					t_cmd;
 
 typedef struct		s_arena
