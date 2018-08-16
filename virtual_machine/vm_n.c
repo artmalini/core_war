@@ -33,9 +33,16 @@ void	vm_load_ncurses(void)
 
 void	vm_pl_stats(t_vm *vm, int i)
 {
+	int		j;
+
+	j = ft_strlen(vm->tab_champ[i].name);
+	if (j > 18)
+		j = 18;
 	attron(COLOR_PAIR(vm->tab_champ[i].rgb));
-	printw(" Lives for %.18s \t\t\t%d \tProcess: %d", vm->tab_champ[i].name,
-		vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
+	printw(" Lives for %.18s", vm->tab_champ[i].name);
+	while (j++ < 21)
+		printw(" ");
+	printw("%d\t\tProcess: %d", vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);
 	printw("\t\tLives in current period: %d\n", vm->tab_champ[i].lives_in_period);
 	//printw(" Lives for %.18s %dProcess: %d", vm->tab_champ[i].name,
 	//	vm->tab_champ[i].prev_live, vm->tab_champ[i].nbr_process);

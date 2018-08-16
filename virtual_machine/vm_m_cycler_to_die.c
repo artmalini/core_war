@@ -36,13 +36,14 @@ void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 
 	while (cmd)
 	{
-		if (!cmd->life && cmd->on == 0)
+		if (!cmd->life && cmd->on == 1)
 		{
+			cmd->on = 1;
 			id = vm_getpl(vm, cmd->pl * -1);
 			if (id > -1 && vm->tab_champ[id].nbr_process > 0)
 				vm->tab_champ[id].nbr_process--;
 		}
-		if (!cmd->life)
+		if (!cmd->life && cmd->on == 1)
 		{
 			cmd->off = 1;
 			cmd->on = 0;
