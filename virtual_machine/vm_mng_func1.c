@@ -91,6 +91,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	int		acb;
 	
 	//acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	//ft_printf("advancement|%d|\n", pos);
 	if (vm->arena[cmd->idx].flag > 0)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;

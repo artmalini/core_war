@@ -215,8 +215,7 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		//cmd->lnew = 0;
 		if (cmd->overlap == 1)
 			cmd->zero = acb + 1;
-		// if (acb == 11 || acb == 14)
-		//cmd->lnew = acb + 1;
+		vm->arena[mdx(cmd->idx)].overlap = 0;
 	}
 	else
 	{

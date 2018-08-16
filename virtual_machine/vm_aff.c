@@ -29,5 +29,5 @@ void	vm_aff(t_vm *vm, t_cmd *cmd, int x)
 		printw("%C\n", arg1 % 256);
 	if (vm->aff)
 		ft_printf("Aff: %c\n", (char)(arg1 % 256));
-	vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
+	vm_next_step(vm, cmd, 3);
 }
