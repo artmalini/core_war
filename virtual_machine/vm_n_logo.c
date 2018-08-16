@@ -21,7 +21,8 @@ void	print_logo4(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[2].rgb));
 			printw("%.16s", vm->tab_champ[2].name);
 		}
-		draw_pl_heart(j, vm);
+		draw_pl_dead(2, j, vm);
+		draw_pl_heart(2, j, vm);
 	}
 	if (j >= 38 && j <= 43 && vm->nbr_next == 4)
 	{
@@ -30,7 +31,8 @@ void	print_logo4(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[3].rgb));
 			printw("%.16s", vm->tab_champ[3].name);
 		}
-		draw_pl_heart(j, vm);
+		draw_pl_dead(3, j, vm);
+		draw_pl_heart(3, j, vm);
 	}
 }
 
@@ -43,7 +45,8 @@ void	print_logo3(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[0].rgb));
 			printw("%.16s", vm->tab_champ[0].name);
 		}
-		draw_pl_heart(j, vm);
+		draw_pl_dead(0, j, vm);
+		draw_pl_heart(0, j, vm);
 	}
 	if (j >= 26 && j <= 31 && vm->nbr_next >= 2)
 	{
@@ -52,7 +55,8 @@ void	print_logo3(int j, t_vm *vm)
 			attron(COLOR_PAIR(vm->tab_champ[1].rgb));
 			printw("%.16s", vm->tab_champ[1].name);
 		}
-		draw_pl_heart(j, vm);
+		draw_pl_dead(1, j, vm);
+		draw_pl_heart(1, j, vm);
 	}
 	print_logo4(j, vm);
 }

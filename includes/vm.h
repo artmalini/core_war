@@ -268,7 +268,8 @@ void				vm_load_ncurses(void);
 void				vm_vis_arena(t_vm *vm);
 void				print_logo(int j, t_vm *vm);
 void				vm_n_draw_win(int j, int pl);
-void				draw_pl_heart(int j, t_vm *vm);
+void				draw_pl_heart(int pl, int j, t_vm *vm);
+void				draw_pl_dead(int pl, int j, t_vm *vm);
 int					vm_vis_winner(t_vm *vm);
 
 #endif

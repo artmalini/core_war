@@ -56,22 +56,32 @@ void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 	}
 }
 
-// void	vm_current_incr(t_vm *vm)
-// {
-// 	t_cmd	*tmp1;
-// 	t_cmd	*tmp2;
+void	vm_current_incr(t_cmd **cmd)
+{
+	t_cmd	*tmp1;
+	t_cmd	*prev;
 
-// 	tmp1 = vm->cmd;
-// 	while (tmp1 && tmp1->next != NULL)
-// 	{
-// 		if (tmp1->off == 1)
-// 		{
-// 			tmp2 = tmp1->next;
-// 			tmp1->next = tmp2->next;
-// 		}
-// 		tmp1 = tmp1->next;
-// 	}
-// }
+	tmp1 = *cmd;
+	while (tmp1 && tmp1->off == 1)
+	{
+		*cmd = tmp1->next;
+		free(tmp1);
+		tmp1 = *cmd;
+	} 
+	while (tmp1)
+	{
+		while (tmp1 && tmp1->off != 1)
+		{
+			prev = tmp1;
+			tmp1 = tmp1->next;
+		}
+		if (!tmp1)
+			return ;
+		prev->next = tmp1->next;
+		free(tmp1);
+		tmp1 = prev->next;
+	}
+}
 
 
 void	vm_rev_pc(t_vm *vm, t_cmd *cmd)
@@ -101,7 +111,7 @@ void	vm_cycler_to_die(t_vm *vm, int *i)
 	if (vm->cycle >= vm->cycle_to_die)
 	{
 		vm_curet_next(vm, vm->cmd);
-		//vm_current_incr(vm);
+		vm_current_incr(&vm->cmd);//should be for the performance
 		//vm_rev_pc(vm, vm->cmd);
 		if (vm->lifes == 0 || (vm->cycle_to_die) < 0)
 		{
