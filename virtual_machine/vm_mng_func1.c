@@ -98,6 +98,11 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
 	{
+		// if (vm->arena[mdx(cmd->idx)].pl == 0)
+		// {
+		// 	vm->arena[mdx(cmd->idx)].hit = 0;
+		// 	vm->arena[mdx(cmd->idx)].pl = 1;
+		// }
 		if (vm->arena[mdx(cmd->idx)].hit == 0)
 		{
 			vm->arena[mdx(cmd->idx)].o_acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;

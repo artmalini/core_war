@@ -113,13 +113,14 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	if (vm_its_cmd(vm, cmd))
 	{
 		cmd->overlap = 0;
-		//if (vm->arena[mdx(cmd->idx)].overlap == 1)
-		//    cmd->overlap = 1;
+		if (vm->arena[mdx(cmd->idx)].hit == -1)
+			vm->arena[mdx(cmd->idx)].hit = 0;
 		//vm->arena[mdx(cmd->idx)].overlap = 0;
 		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-		vm->arena[mdx(cmd->idx)].pl = acb + 1;
+		vm->arena[mdx(cmd->idx)].pl = 1;
+		//cmd->lnew = 0;
 		//vm->arena[mdx(cmd->idx)].hit = 0;
-		//vm->arena[mdx(cmd->idx)].o_acb = 1;
+		//vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
 		//vm->arena[mdx(cmd->idx)].pl = cmd->pl;
 		cmd->wait = g_op_tab[acb].cycles;
 		cmd->playing = 1;
@@ -133,15 +134,16 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		if (acb >= 0 && acb < 16)
 		{
 			cmd->overlap = 0;
-			//if (cmd->overlap == 1)
-				cmd->zero = acb + 1;
+			if (vm->arena[mdx(cmd->idx)].hit == -1)
+				vm->arena[mdx(cmd->idx)].hit = 0;
+			cmd->zero = acb + 1;
 			// if (acb == 11 || acb == 14)
 			//cmd->lnew = acb + 1;
 			cmd->wait = g_op_tab[acb].cycles;
 			cmd->playing = 1;
-			//cmd->lnew = 1;
+			//cmd->lnew = 0;
 			vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-			vm->arena[mdx(cmd->idx)].pl = acb + 1;
+			vm->arena[mdx(cmd->idx)].pl = 1;
 			//vm->arena[mdx(cmd->idx)].hit = 0;
 			//vm->arena[mdx(cmd->idx)].overlap = 0;			
 		}
@@ -191,12 +193,12 @@ int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
-    int     zero;
+   // int     zero;
     int		o_acb;
 
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
 	o_acb = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
-    zero = cmd->zero;
+    //zero = cmd->zero;
 	if (cmd->wait == 1)
 	{
 		//vm->arena[mdx(cmd->idx)].o_acb = 0;

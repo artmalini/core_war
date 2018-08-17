@@ -41,7 +41,7 @@ t_cmd		*lfork_add_list(t_cmd *cmd1, int nb)
 		lst->nbr_process = nb;
 		lst->flag = 0;
 		lst->on = 1;
-		lst->lnew = 0;
+		lst->lnew = cmd1->lnew;
 		lst->zero = 0;
 		lst->overlap = 0;
 		lst->next = NULL;

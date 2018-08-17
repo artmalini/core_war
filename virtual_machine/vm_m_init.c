@@ -24,7 +24,7 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].asc_rgb = 11;
 		vm->arena[i].flag = 0;
 		vm->arena[i].o_acb = 0;
-		vm->arena[i].hit = 0;
+		vm->arena[i].hit = -1;
 		vm->arena[i].overlap = 0;
 		vm->arena[i].pl = 0;
 		vm->arena[i].bold = 0;
