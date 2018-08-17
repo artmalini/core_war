@@ -175,6 +175,7 @@ typedef struct		s_vm
 	int				aff;
 	int				debug;
 	int				visual;
+	int				show_live;
 }					t_vm;
 
 typedef struct		s_op
@@ -189,7 +190,7 @@ typedef struct		s_op
 	int				size;
 }					t_op;
 
-extern t_op			op_tab[17];
+extern t_op			g_op_tab[17];
 
 int					vm_usage(void);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);

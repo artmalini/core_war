@@ -26,7 +26,7 @@ void	vm_create_arena(t_vm *vm)
 		vm->arena[i].o_acb = 0;
 		vm->arena[i].hit = 0;
 		vm->arena[i].overlap = 0;
-		vm->arena[i].pl = -666;
+		vm->arena[i].pl = 0;
 		vm->arena[i].bold = 0;
 		vm->arena[i].zero = 0;
 		vm->arena[i].o_hex = 0;
@@ -67,6 +67,7 @@ void	vm_init(t_vm *vm)
 	vm->cycle = 0;
 	vm->total_cycle = 0;	
 	vm->debug = 0;
+	vm->show_live = 0;
 	vm->cmd = NULL;
 }
 

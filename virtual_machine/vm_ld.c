@@ -20,7 +20,7 @@
 void	vm_ld_dr(t_vm *vm, t_cmd *cmd, int one, int hex)
 {
 	if (vm->debug)
-		ft_printf("|P\t%d| ld |%d| |r%d| vm->total_cycle|%d|\n", cmd->nbr_process, one, hex, vm->total_cycle);
+		ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, one, hex);
 	cmd->reg[hex - 1] = one;
 	if (one == 0)
 		cmd->carry = 1;
@@ -53,7 +53,7 @@ void	vm_ld_ir(t_vm *vm, t_cmd *cmd)
 	if (vm_v_cmd(hex - 1, hex - 1, hex - 1))
 	{
 		if (vm->debug)
-			ft_printf("|P\t%d| ld |%d| |r%d| vm->total_cycle|%d|\n", cmd->nbr_process, pos, hex, vm->total_cycle);
+			ft_printf("|P\t%d| ld |%d| |r%d|\n", cmd->nbr_process, pos, hex);
 		cmd->reg[hex - 1] = pos;
 		cmd->carry = (pos == 0) ? 1 : 0;
 	}

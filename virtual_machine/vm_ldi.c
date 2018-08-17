@@ -20,7 +20,7 @@
 ** 228 == (T_IND, T_DIR, T_REG)
 ** 164 == (T_DIR, T_DIR, T_REG)
 */
-//		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)\n", cmd->nbr_process, direct, reg1, cmd->idx + direct);
+
 void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;

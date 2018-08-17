@@ -43,7 +43,8 @@ void	draw_winner(int j, t_vm *vm)
 void	draw_pl_dead(int pl, int j, t_vm *vm)
 {
 	attron(COLOR_PAIR(11));
-	if (vm->cycle_to_die != 0 && vm->tab_champ[pl].nbr_process == 0)
+	if (vm->cycle_to_die > 0 && vm->tab_champ[pl].nbr_process == 0 
+		&& vm->tab_champ[pl].lives_in_period == 0)
 	{
 		if (j == 21 || j == 27 || j == 33 || j == 39)
 			printw("\t ##  ### ##");
@@ -61,7 +62,8 @@ void	draw_pl_dead(int pl, int j, t_vm *vm)
 void	draw_pl_heart(int pl, int j, t_vm *vm)
 {
 	attron(COLOR_PAIR(1));
-	if (vm->cycle_to_die > 0 && vm->tab_champ[pl].nbr_process != 0)
+	if (vm->cycle_to_die > 0 && (vm->tab_champ[pl].nbr_process != 0 ||
+		vm->tab_champ[pl].lives_in_period != 0))
 	{
 		if (j == 21 || j == 27 || j == 33 || j == 39)
 			printw("\t ###    ###");

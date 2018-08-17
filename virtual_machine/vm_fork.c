@@ -14,7 +14,7 @@
 
 void		fork_update_reg(int *dest, int *host)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	while (++i < REG_NUMBER)
@@ -49,49 +49,39 @@ t_cmd		*fork_add_list(t_cmd *cmd1, int nb)
 	return (lst);
 }
 
-void	vm_fork(t_vm *vm, t_cmd **cmd)
+int			vm_get_f_nbr(t_vm *vm, t_cmd *cmd1)
+{
+	short	two;
+
+	two = 0xFF & vm->arena[mdx(cmd1->idx + 1)].acb;
+	two <<= 8;
+	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
+	return (two % IDX_MOD);
+}
+
+void		vm_fork(t_vm *vm, t_cmd **cmd)
 {
 	t_cmd	*tmp;
 	t_cmd	*cmd1;
-	//t_cmd	*res;
-
-	//t_cmd	*base;
-	short	two;
 	int		two_val;
 	int		id;
-
 
 	cmd1 = NULL;
 	tmp = NULL;
 	cmd1 = *cmd;
-	two = 0xFF & vm->arena[mdx(cmd1->idx + 1)].acb;
-	two <<= 8;
-	two += 0xFF & vm->arena[mdx(cmd1->idx + 2)].acb;
-	two_val = (two % IDX_MOD);
-	//res = *cmd;
-	//base = vm->cmd;
+	two_val = vm_get_f_nbr(vm, cmd1);
 	if (cmd1)
 	{
 		tmp = fork_add_list(cmd1, vm->total_process + 1);
 		if (vm->debug)
-			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process, two_val, tmp->idx + two_val);
-
+			ft_printf("|P\t%d| fork |%d| (%d)\n", cmd1->nbr_process,
+				two_val, tmp->idx + two_val);
 		id = vm_getpl(vm, tmp->pl * -1);
 		if (id > -1)
 			vm->tab_champ[id].nbr_process += 1;
 		vm->total_process += 1;
-		// while (cmd1->next != NULL)
-		// 	cmd1 = cmd1->next;
-		// cmd1->next = tmp;
-
 		tmp->next = vm->cmd;
 		vm->cmd = tmp;
-
-		// tmp->prev = cmd1;
-		// if (base != NULL)
-		// 	base->prev = tmp;
-		// tmp->next = vm->cmd;
-		// vm->cmd = tmp;
 	}
 	vm_next_step(vm, *cmd, 3);
 	vm_next_step(vm, tmp, two_val);

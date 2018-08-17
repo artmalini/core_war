@@ -31,7 +31,6 @@ void	vm_zjmp(t_vm *vm, t_cmd *cmd)
 	{
 		if (vm->debug)
 			ft_printf("|P\t%d| zjmp FAILED\n", cmd->nbr_process);
-		//vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 		vm_next_step(vm, cmd, 3);
 	}
 }

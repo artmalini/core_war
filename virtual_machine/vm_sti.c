@@ -53,10 +53,8 @@ void	load_res(t_vm *vm, t_cmd *cmd, int direct)
 		vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 4;
 	}
 	if (vm->debug)
-	{
-		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)total_cycle|%d|\n",
-			cmd->nbr_process, direct, reg1 + 1, cmd->idx + direct, vm->total_cycle);
-	}
+		ft_printf("|P\t%d| sti |%d| |r%d|\n\t\t (with pc and mod %d)\n",
+			cmd->nbr_process, direct, reg1 + 1, cmd->idx + direct);
 }
 
 int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
@@ -98,7 +96,6 @@ void	vm_sti(t_vm *vm, t_cmd *cmd, int x)
 		else if (cdg == 116)
 			direct = vm_rir_sti(vm, cmd);
 		load_res(vm, cmd, (direct % IDX_MOD));
-		//vm_next_step(vm, cmd, vm_new_step(vm, cmd, 0));
 		vm_sti_step(vm, cmd, cdg);
 	}
 	else

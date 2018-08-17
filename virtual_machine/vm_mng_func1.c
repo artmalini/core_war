@@ -20,7 +20,7 @@ int			mdx(int nbr)
 	return (ret);
 }
 
-int			vm_pos_curs_cdg(t_vm *vm, t_cmd *cmd, int l, int bitln)
+int			vm_pos_lcurs_cdg(t_vm *vm, t_cmd *cmd, int l, int bitln)
 {
 	int		i;
 
@@ -50,13 +50,13 @@ int			vm_pos_curs(t_vm *vm, t_cmd *cmd)
 	int		l;
 
 	bitln = 1;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].size == 0)
+	if (g_op_tab[vm->arena[cmd->idx].acb - 1].size == 0)
 		l = 4;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].size == 1)
+	if (g_op_tab[vm->arena[cmd->idx].acb - 1].size == 1)
 		l = 2;
-	if (op_tab[vm->arena[cmd->idx].acb - 1].codage != 0)
+	if (g_op_tab[vm->arena[cmd->idx].acb - 1].codage != 0)
 		bitln += 1;
-	return (vm_pos_curs_cdg(vm, cmd, l, bitln));
+	return (vm_pos_lcurs_cdg(vm, cmd, l, bitln));
 }
 
 void		vm_winner(t_vm *vm)
@@ -78,8 +78,8 @@ void		vm_winner(t_vm *vm)
 			if (vm->total_cycle - vm->tab_champ[j].prev_live == 1)
 				vm->total_cycle--;
 		}
-		if (!vm->visual)
-			ft_printf("Contestant %d, \"%s\", has won !\n",
+		if (!vm->visual && vm->tab_champ[j].prev_live > 0)
+			ft_printf("Player %d (%s) won\n",
 				vm->tab_champ[j].id, vm->tab_champ[j].name);
 	}
 }
@@ -97,7 +97,16 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	cmd->idx = mdx(i);	
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
+	{
+		if (vm->arena[mdx(cmd->idx)].hit == 0)
+		{
+			vm->arena[mdx(cmd->idx)].o_acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+			vm->arena[mdx(cmd->idx)].hit++;
+		}
+		else
+			vm->arena[mdx(cmd->idx)].hit--;
 		cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+	}
 	else
 	{
 		cmd->overlap = 1;

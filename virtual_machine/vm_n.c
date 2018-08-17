@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-void	vm_load_ncurses(void)
+void		vm_load_ncurses(void)
 {
 	initscr();
 	noecho();
@@ -31,7 +31,7 @@ void	vm_load_ncurses(void)
 	curs_set(FALSE);
 }
 
-void	vm_pl_stats(t_vm *vm, int i)
+void		vm_pl_stats(t_vm *vm, int i)
 {
 	int		j;
 
@@ -49,7 +49,7 @@ void	vm_pl_stats(t_vm *vm, int i)
 	//printw(" Lives period: %d\n", vm->tab_champ[i].lives_in_period);
 }
 
-void	vm_win_recalc(t_vm *vm)
+void		vm_win_recalc(t_vm *vm)
 {
 	int		win;
 
@@ -62,7 +62,7 @@ void	vm_win_recalc(t_vm *vm)
 	}
 }
 
-void	vm_game_stat(t_vm *vm, int j)
+void		vm_game_stat(t_vm *vm, int j)
 {
 	int		i;
 
@@ -85,7 +85,7 @@ void	vm_game_stat(t_vm *vm, int j)
 	}
 }
 
-int		vm_k_cycle(t_vm *vm)
+int			vm_k_cycle(t_vm *vm)
 {
 	int		k;
 
@@ -101,7 +101,7 @@ int		vm_k_cycle(t_vm *vm)
 	return (k);
 }
 
-void	vm_style_arena(t_vm *vm, int i)
+void		vm_style_arena(t_vm *vm, int i)
 {
 	if (vm->arena[i].bold > 0)
 		attron(A_BOLD);
@@ -116,7 +116,7 @@ void	vm_style_arena(t_vm *vm, int i)
 	}
 }
 
-void	vm_vis_arena(t_vm *vm)
+void		vm_vis_arena(t_vm *vm)
 {
 	int	i;
 	int	j;
@@ -130,19 +130,15 @@ void	vm_vis_arena(t_vm *vm)
 	printw("\n\n ");
 	while (i < MEM_SIZE)
 	{
-		//printw(" ");
 		vm_style_arena(vm, i);
 		if ((i + 1) % 64 == 0)
 		{ 
-			//mem += 64;
-			//if (i + 1 < MEM_SIZE)
 			attron(COLOR_PAIR(k));
 			print_logo(++j, vm);
 				printw("\n ");
-		}		
-		i++;		
+		}
+		i++;
 	}
-	//vm_game_stat(vm, j);
 	printw("\n");
 	refresh();
 }

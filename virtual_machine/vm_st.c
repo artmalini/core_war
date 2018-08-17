@@ -46,7 +46,7 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 		vm->arena[mdx(cmd->idx + two_val + i)].bold = 5;
 	}
 	if (vm->debug)
-		ft_printf("|P\t%d| st |r%d| value |%d|\n",
+		ft_printf("|P\t%d| st |r%d| |%d|\n",
 			cmd->nbr_process, reg1, two_val);
 	vm_next_step(vm, cmd, 5);
 }

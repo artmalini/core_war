@@ -99,6 +99,11 @@ void			vm_parse_params(t_vm *vm, int *i, char **av, int ac)
 		vm->visual = 1;
 		(*i)++;
 	}
+	if (!ft_strcmp(av[*i], "-lives"))
+	{
+		vm->show_live = 1;
+		(*i)++;
+	}
 }
 
 int				vm_get_param(char **av, t_vm *vm, int ac)

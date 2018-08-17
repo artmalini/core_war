@@ -42,8 +42,8 @@ int			vm_len_step(t_vm *vm, t_cmd *cmd, int idx)
 	acb = vm->arena[mdx(cmd->idx + 1)].acb & 0xFF;
 	if (!dia(idx))
 		return (1);
-	i = op_tab[idx].nbr_args - 1;
-	if (op_tab[idx].codage)
+	i = g_op_tab[idx].nbr_args - 1;
+	if (g_op_tab[idx].codage)
 		len++;
 	while (i >= 0)
 	{
@@ -51,7 +51,7 @@ int			vm_len_step(t_vm *vm, t_cmd *cmd, int idx)
 			len += 1;
 		else if ((acb >> (6 - i * 2) & 0x3) == DIR_CODE)
 		{
-			if (op_tab[idx].size)
+			if (g_op_tab[idx].size)
 				len += 2;
 			else
 				len += 4;
@@ -69,19 +69,19 @@ int			vm_check_big(t_vm *vm, t_cmd *cmd, int chk)
 	int		acb;
 	int		arg;
 
-	arg = op_tab[chk].nbr_args;
+	arg = g_op_tab[chk].nbr_args;
 	acb = vm->arena[mdx(cmd->idx + 1)].acb & 0xFF;
 	i = -1;
 	while (++i < arg)
 	{
 		if ((acb >> (6 - i * 2) & 0x3) == REG_CODE &&
-				(op_tab[chk].type_params[i] & T_REG) == T_REG)
+				(g_op_tab[chk].type_params[i] & T_REG) == T_REG)
 			;
 		else if ((acb >> (6 - i * 2) & 0x3) == DIR_CODE &&
-				(op_tab[chk].type_params[i] & T_DIR) == T_DIR)
+				(g_op_tab[chk].type_params[i] & T_DIR) == T_DIR)
 			;
 		else if ((acb >> (6 - i * 2) & 0x3) == IND_CODE &&
-				(op_tab[chk].type_params[i] & T_IND) == T_IND)
+				(g_op_tab[chk].type_params[i] & T_IND) == T_IND)
 			;
 		else
 			return (0);
@@ -116,12 +116,12 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		//if (vm->arena[mdx(cmd->idx)].overlap == 1)
 		//    cmd->overlap = 1;
 		//vm->arena[mdx(cmd->idx)].overlap = 0;
-		//vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-		vm->arena[mdx(cmd->idx)].o_acb = 1;
-		//vm->arena[mdx(cmd->idx)].o_hex = vm->arena[mdx(cmd->idx + 1)].acb;
-		//vm->arena[mdx(cmd->idx)].hit = cmd->idx;
+		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
+		vm->arena[mdx(cmd->idx)].pl = acb + 1;
+		//vm->arena[mdx(cmd->idx)].hit = 0;
+		//vm->arena[mdx(cmd->idx)].o_acb = 1;
 		//vm->arena[mdx(cmd->idx)].pl = cmd->pl;
-		cmd->wait = op_tab[acb].cycles;
+		cmd->wait = g_op_tab[acb].cycles;
 		cmd->playing = 1;
 		//cmd->lnew = 0;
 		//if (cmd->overlap == 1)
@@ -137,10 +137,12 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 				cmd->zero = acb + 1;
 			// if (acb == 11 || acb == 14)
 			//cmd->lnew = acb + 1;
-			cmd->wait = op_tab[acb].cycles;
+			cmd->wait = g_op_tab[acb].cycles;
 			cmd->playing = 1;
 			//cmd->lnew = 1;
-			vm->arena[mdx(cmd->idx)].o_acb = 1;
+			vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
+			vm->arena[mdx(cmd->idx)].pl = acb + 1;
+			//vm->arena[mdx(cmd->idx)].hit = 0;
 			//vm->arena[mdx(cmd->idx)].overlap = 0;			
 		}
 		else
@@ -154,19 +156,19 @@ int			vm_big(t_vm *vm, t_cmd *cmd, int chk)
 	int		acb;
 	int		arg;
 
-	arg = op_tab[chk].nbr_args;
+	arg = g_op_tab[chk].nbr_args;
 	acb = vm->arena[mdx(cmd->idx + 1)].acb & 0xFF;
 	i = -1;
 	while (++i < arg)
 	{
 		if ((acb >> (6 - i * 2) & 0x3) == REG_CODE &&
-				(op_tab[chk].type_params[i] & T_REG) == T_REG)
+				(g_op_tab[chk].type_params[i] & T_REG) == T_REG)
 			;
 		else if ((acb >> (6 - i * 2) & 0x3) == DIR_CODE &&
-				(op_tab[chk].type_params[i] & T_DIR) == T_DIR)
+				(g_op_tab[chk].type_params[i] & T_DIR) == T_DIR)
 			;
 		else if ((acb >> (6 - i * 2) & 0x3) == IND_CODE &&
-				(op_tab[chk].type_params[i] & T_IND) == T_IND)
+				(g_op_tab[chk].type_params[i] & T_IND) == T_IND)
 			;
 		else
 			return (0);
@@ -189,27 +191,25 @@ int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
-	int		hit;
     int     zero;
+    int		o_acb;
 
-    hit = -1;
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
+	o_acb = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
     zero = cmd->zero;
 	if (cmd->wait == 1)
 	{
-		vm->arena[mdx(cmd->idx)].o_acb = 0;
-		if (dia(zero - 1) && cmd->overlap == 0)
-		{
-			hit = 1;
-			vm_cmd_triger(vm, cmd, zero);
-		}
+		//vm->arena[mdx(cmd->idx)].o_acb = 0;
+		if (dia(o_acb - 1) && cmd->overlap == 0)
+			vm_cmd_triger(vm, cmd, o_acb);
+		//else if (dia(zero - 1) && cmd->overlap == 0)
+		//	vm_cmd_triger(vm, cmd, zero);
 		else if (vm_cmd(vm, cmd, hex - 1))
 		{
-			hit = 1;
 			cmd->overlap = 0;
 			vm_cmd_triger(vm, cmd, hex);
 		}
-		if (hit == -1)
+		else
 			vm_next_step(vm, cmd, 1);
 		cmd->playing = 0;
 	}
@@ -232,7 +232,7 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb)
 	int entry;
 
 	if (vm->visual)
-	{		
+	{
 		entry = 0;
 		nodelay(stdscr, 1);
 		entry = getch();

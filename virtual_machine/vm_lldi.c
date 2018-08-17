@@ -150,5 +150,4 @@ void	vm_lldi(t_vm *vm, t_cmd *cmd, int x)
 	}
 	else
 		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
-	//vm_next_step(vm, cmd, 1);
 }
