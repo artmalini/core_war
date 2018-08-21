@@ -6,3 +6,4 @@ corewar
 cmake-build-debug
 .idea
 *.txt
+test

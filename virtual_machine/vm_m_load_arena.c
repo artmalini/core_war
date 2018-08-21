@@ -109,24 +109,13 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 	int		acb;
 
 	acb = (vm->arena[mdx(cmd->idx)].acb & 0xFF) - 1;
-	//o_hex = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
 	if (vm_its_cmd(vm, cmd))
 	{
 		cmd->overlap = 0;
-		if (vm->arena[mdx(cmd->idx)].hit == -1)
-			vm->arena[mdx(cmd->idx)].hit = 0;
-		//vm->arena[mdx(cmd->idx)].overlap = 0;
-		vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-		vm->arena[mdx(cmd->idx)].pl = 1;
-		//cmd->lnew = 0;
-		//vm->arena[mdx(cmd->idx)].hit = 0;
-		//vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-		//vm->arena[mdx(cmd->idx)].pl = cmd->pl;
+		vm->arena[mdx(cmd->idx)].o_acb = 1;
 		cmd->wait = g_op_tab[acb].cycles;
 		cmd->playing = 1;
-		//cmd->lnew = 0;
-		//if (cmd->overlap == 1)
-			cmd->zero = acb + 1;
+		cmd->zero = acb + 1;
 		vm->arena[mdx(cmd->idx)].overlap = 0;
 	}
 	else
@@ -134,18 +123,10 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 		if (acb >= 0 && acb < 16)
 		{
 			cmd->overlap = 0;
-			if (vm->arena[mdx(cmd->idx)].hit == -1)
-				vm->arena[mdx(cmd->idx)].hit = 0;
 			cmd->zero = acb + 1;
-			// if (acb == 11 || acb == 14)
-			//cmd->lnew = acb + 1;
 			cmd->wait = g_op_tab[acb].cycles;
 			cmd->playing = 1;
-			//cmd->lnew = 0;
-			vm->arena[mdx(cmd->idx)].o_acb = acb + 1;
-			vm->arena[mdx(cmd->idx)].pl = 1;
-			//vm->arena[mdx(cmd->idx)].hit = 0;
-			//vm->arena[mdx(cmd->idx)].overlap = 0;			
+			vm->arena[mdx(cmd->idx)].o_acb = 1;
 		}
 		else
 			vm_next_step(vm, cmd, 1);
@@ -193,25 +174,27 @@ int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
-   // int     zero;
-    int		o_acb;
+	int		hit;
+    int     zero;
 
+    hit = -1;
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
-	o_acb = (vm->arena[mdx(cmd->idx)].o_acb & 0xFF);
-    //zero = cmd->zero;
+    zero = cmd->zero;
 	if (cmd->wait == 1)
 	{
-		//vm->arena[mdx(cmd->idx)].o_acb = 0;
-		if (dia(o_acb - 1) && cmd->overlap == 0)
-			vm_cmd_triger(vm, cmd, o_acb);
-		//else if (dia(zero - 1) && cmd->overlap == 0)
-		//	vm_cmd_triger(vm, cmd, zero);
+		vm->arena[mdx(cmd->idx)].o_acb = 0;
+		if (dia(zero - 1) && cmd->overlap == 0)
+		{
+			hit = 1;
+			vm_cmd_triger(vm, cmd, zero);
+		}
 		else if (vm_cmd(vm, cmd, hex - 1))
 		{
+			hit = 1;
 			cmd->overlap = 0;
 			vm_cmd_triger(vm, cmd, hex);
 		}
-		else
+		if (hit == -1)
 			vm_next_step(vm, cmd, 1);
 		cmd->playing = 0;
 	}
@@ -291,6 +274,8 @@ void		vm_load_arena(t_vm *vm)
 	nb = 150000;
 	i = 1;
 	pause = 1;
+	if (vm->visual)
+		system("afplay ./resourses/Heroes.mp3&");
 	while (i)
 	{
 		vm_sleep(vm, &pause, &nb);
@@ -301,5 +286,7 @@ void		vm_load_arena(t_vm *vm)
 			if (vm->dump_cycle > -1 && (vm->dump_cycle == vm->total_cycle))
 				i = 0;
 		}
-	}	
+	}
+	if (vm->visual)
+		system("killall afplay");
 }

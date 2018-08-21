@@ -17,6 +17,12 @@ int				vm_isnumber(char *str)
 	int		i;
 
 	i = -1;
+	if (str[0] == '-')
+    {
+		i++;
+        if (str[1] == '\0')
+            return (0);
+    }
 	while (str[++i])
 	{
 		if (ft_isdigit(str[i]) == 0)
@@ -32,29 +38,19 @@ int				vm_param_n(t_vm *vm, char **av, int *i, int ac)
 	if (ac > (*i) + 1)
 	{
 		(*i)++;
-		if (vm_isnumber(av[*i]))
+		if (av[*i] && vm_isnumber(av[*i]))
 		{
 			id = ft_atoi(av[*i]);
 			if (id <= 0)
-			{
-				ft_printf("Error: Please write number above 0 or "
-					"you write invalid number after -n\n");
-				vm_exit(vm);
-			}
+				vm_err_exit(vm, ERR_NBR_INV);
 			(*i)++;
 			return (id);
 		}
 		else
-		{
-			ft_printf("Error: No number after the -n.\n");
-			vm_exit(vm);
-		}
+			vm_err_exit(vm, ERR_NO_NBR);
 	}
 	else
-	{
-		ft_printf("Error: No champion after the number requested.\n");
-		vm_exit(vm);		
-	}
+		vm_err_exit(vm, ERR_NO_CHMP);
 	return (vm->nbr_next);
 }
 
@@ -67,43 +63,93 @@ void			vm_champs(t_vm *vm, char *arg)
 		close(vm->fd);
 	}
 	else if (vm->nbr_next >= 4)
-	{
-		ft_printf("Error: Number of champion too high.\n");
-		vm_exit(vm);
-	}
+		vm_err_exit(vm, ERR_NBR_CHMP);
 		
+}
+
+void			vm_parse_params1(t_vm *vm, int *i, char **av)
+{
+	if (av[*i] && !ft_strcmp(av[*i], "-a"))
+	{
+		vm->aff = 1;
+		(*i)++;
+	}
+	if (av[*i] && !ft_strcmp(av[*i], "-v"))
+	{
+		vm->visual = 1;
+		vm->on = 1;
+		(*i)++;
+	}
+	if (av[*i] && !ft_strcmp(av[*i], "-lives") && vm->on == 0)
+	{
+		vm->show_live = 1;
+		vm->on = 1;
+		(*i)++;
+	}
 }
 
 void			vm_parse_params(t_vm *vm, int *i, char **av, int ac)
 {
-
-	if (((ft_strcmp(av[*i], "-n") == 0) || ft_strcmp(av[*i], "-dump") == 0))
+	vm_parse_params1(vm, i, av);
+	if (av[*i] && ((ft_strcmp(av[*i], "-n") == 0) ||
+		ft_strcmp(av[*i], "-dump") == 0))
 	{
-		if (ft_strcmp(av[*i], "-dump") == 0 && vm->dump_cycle == -1
-				&& ac > *i + 2 && vm_isnumber(av[*i + 1]))
+		if (av[*i] && ft_strcmp(av[*i], "-dump") == 0 && vm->dump_cycle == -1
+				&& ac > *i + 2 && vm_isnumber(av[*i + 1]) && vm->on == 0)
 		{
 			(*i)++;
 			vm->dump_cycle = ft_atoi(av[*i]);
+			if (vm->dump_cycle == 0)
+				vm->dump_cycle = 1;
 			(*i)++;
 		}
-		if (ft_strcmp(av[*i], "-n") == 0)
+		if (av[*i] && ft_strcmp(av[*i], "-n") == 0)
 			vm->tab_champ[vm->nbr_next].id = vm_param_n(vm, av, i, ac);
 	}
-	if (!ft_strcmp(av[*i], "-debug"))
+	if (av[*i] && !ft_strcmp(av[*i], "-debug")
+		&& vm->on == 0 && vm->aff == 0)
 	{
 		vm->debug = 1;
 		(*i)++;
 	}
-	if (!ft_strcmp(av[*i], "-v"))
+}
+
+int				vm_c_champ(char *str)
+{
+	int		j;
+	int		dot;
+
+	j = -1;
+	dot = 0;
+	while (str && str[++j])
 	{
-		vm->visual = 1;
-		(*i)++;
+		if ((str[j] >= 9 && str[j] <= 13) || str[j] == 32)		
+			return (0);
+		if (str[j] == '.')
+        {
+			dot++;
+		    break ;
+        }
 	}
-	if (!ft_strcmp(av[*i], "-lives"))
-	{
-		vm->show_live = 1;
-		(*i)++;
-	}
+	if (dot != 1)
+		return (0);
+	if (str)
+    {
+        if (!ft_strcmp(str + j, ".cor"))
+            return (1);
+        else
+            return (0);
+    }
+    return (0);
+}
+
+void			vm_simpl_err(char *str)
+{
+	display_header();
+	if (!str)
+		ft_printf("Error: No .cor champion in the arena.\n");
+	else
+		ft_printf("Error: Can't read source file %s\n", str);
 }
 
 int				vm_get_param(char **av, t_vm *vm, int ac)
@@ -113,22 +159,22 @@ int				vm_get_param(char **av, t_vm *vm, int ac)
 	i = 0;
 	while (++i < ac)
 	{
-		if (!ft_strcmp(av[i], "-a"))
+		vm_parse_params(vm, &i, av, ac);		
+		if (av[i] != NULL && av[i][0] == '-')
 		{
-			vm->aff = 1;
-			i++;
-		}
-		vm_parse_params(vm, &i, av, ac);
-		if (av[i][0] == '-')
-		{
-			ft_printf("Error: Can't read source file %s\n", av[i]);
+			vm_simpl_err(av[i]);
 			return (0);	
+		}
+		if(!vm_c_champ(av[i]))
+		{
+			vm_simpl_err(av[i]);
+			return (0);
 		}
 		vm_champs(vm, av[i]);
 	}
 	if (vm->nbr_next == 0)
 	{
-		ft_printf("Error: No .cor champion in the arena.\n");
+		vm_simpl_err(NULL);
 		return (0);
 	}
 	return (1);

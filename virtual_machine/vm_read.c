@@ -22,6 +22,7 @@ static void			check_magic(const char *str)
 	magic[3] = str[0];
 	if (magic[0] != -13 || magic[1] != -125 || magic[2] != -22 || magic[3] != 0)
 	{
+		display_header();
 		ft_printf("The header of a player is incorrect.\n");
 		exit(1);
 	}
@@ -35,6 +36,7 @@ static void			check_size(t_vm *vm, int size, int nb_player, char *str)
 	real_size = size - (PROG_NAME_LENGTH + COMMENT_LENGTH + 16);
 	if (real_size > CHAMP_MAX_SIZE)
 	{
+		display_header();
 		ft_printf("Champion too heavy.\n");
 		exit(1);
 	}

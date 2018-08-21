@@ -66,7 +66,7 @@ int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;
-	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;	
+	arg1 += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 5)].acb;
 	if (vm_v_cmd(arg2 - 1, arg2 - 1, arg2 - 1))
 		res = (arg1 + cmd->reg[arg2 - 1]);

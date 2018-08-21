@@ -24,6 +24,23 @@ void		display_header(void)
 	ft_putstr("   ><<<<     ><<    ><<      ><<><<<<<<<<\n\n");
 }
 
+void		vm_err_exit(t_vm *vm, int error)
+{
+	display_header();
+	if (error == ERR_NBR_INV)
+		ft_printf("Error: Please write number above 0 or "
+			"you write invalid number after -n\n");
+	if (error == ERR_NO_NBR)
+		ft_printf("Error: No number after the -n.\n");
+	if (error == ERR_NO_CHMP)
+		ft_printf("Error: No champion after the number requested.\n");
+	if (error == ERR_NBR_CHMP)
+		ft_printf("Error: Number of champion too high.\n");
+	if (error == ERR_CMP_CHMP)
+		ft_printf("Error: You need write different player number after -n argument\n");
+	vm_exit(vm);
+}
+
 int			vm_usage(void)
 {
 	display_header();

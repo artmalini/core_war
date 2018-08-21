@@ -40,6 +40,12 @@
 # define ERROR_3		15
 # define ERROR_4		16
 
+# define ERR_NBR_INV	0
+# define ERR_NO_NBR		1
+# define ERR_NO_CHMP	2
+# define ERR_NBR_CHMP	3
+# define ERR_CMP_CHMP	4
+
 
 #define IND_SIZE 2
 #define REG_SIZE 4
@@ -176,6 +182,7 @@ typedef struct		s_vm
 	int				debug;
 	int				visual;
 	int				show_live;
+	int				on;
 }					t_vm;
 
 typedef struct		s_op
@@ -211,7 +218,8 @@ void				vm_read_champ(t_vm *vm, int number_player);
 void				vm_dump_arena(t_vm *vm);
 void				vm_exit(t_vm *vm);
 
-
+void				display_header(void);
+void				vm_err_exit(t_vm *vm, int error);
 void				ft_print_error(t_error *e);
 char				*vm_str_error(int error);
 void				free_vm(t_vm *vm);
@@ -267,7 +275,6 @@ void				vm_vis_arena(t_vm *vm);
 void				print_logo(int j, t_vm *vm);
 void				vm_n_draw_win(int j, int pl);
 void				draw_pl_heart(int pl, int j, t_vm *vm);
-void				draw_pl_dead(int pl, int j, t_vm *vm);
 int					vm_vis_winner(t_vm *vm);
 
 #endif

@@ -68,6 +68,7 @@ void	vm_init(t_vm *vm)
 	vm->total_cycle = 0;	
 	vm->debug = 0;
 	vm->show_live = 0;
+	vm->on = 0;
 	vm->cmd = NULL;
 }
 

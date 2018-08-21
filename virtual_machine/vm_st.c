@@ -63,7 +63,7 @@ void	vm_st(t_vm *vm, t_cmd *cmd, int x)
 		if (vm_v_cmd(reg1 - 1, reg2 - 1, reg2 - 1))
 			vm_st_rr(vm, cmd, reg1, reg2);
 		else
-			vm_next_step(vm, cmd, 4);		
+			vm_next_step(vm, cmd, 4);
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 112)
 	{
