@@ -21,7 +21,7 @@
 ** 164 == (T_DIR, T_DIR, T_REG)
 */
 
-void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
+void		vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;
 	int		val1;
@@ -40,12 +40,13 @@ void	vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	{
 		cmd->reg[a - 1] = one;
 		if (vm->debug)
-			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t (with pc and mod %d)\n", cmd->nbr_process, i, a, val1);
+			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t",
+				" (with pc and mod %d)\n", cmd->nbr_process, i, a, val1);
 	}
 	vm_next_step(vm, cmd, 1);
 }
 
-void	vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		res;
 	int		arg[5];
@@ -71,7 +72,7 @@ void	vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	char	a;
 	int		res;
@@ -99,7 +100,7 @@ void	vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	char	a;
 	int		res;
@@ -119,7 +120,7 @@ void	vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_ldi(t_vm *vm, t_cmd *cmd, int x)
+void		vm_ldi(t_vm *vm, t_cmd *cmd, int x)
 {
 	char	a;
 	char	b;
@@ -138,15 +139,8 @@ void	vm_ldi(t_vm *vm, t_cmd *cmd, int x)
 			vm_ldi_write(vm, cmd, 4, (res % IDX_MOD));
 		}
 		else
-			vm_next_step(vm, cmd, 4);
-	}
-	else if (hex == 228 || hex == 164)
-		vm_idr_ddr(vm, cmd, hex);
-	else if (hex == 212 || hex == 148 || hex == 100)
-	{
-		vm_irr_drr(vm, cmd, hex);
-		vm_ldi_rdr(vm, cmd, hex);
+			vm_next_step(vm, cmd, 4);		
 	}
 	else
-		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
+		vm_ldi_next(vm, cmd, x, hex);
 }

@@ -21,7 +21,7 @@
 ** 120 == (T_REG, T_IND, T_DIR)
 */
 
-void	vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
+void		vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
 { 
 	if (cdg == 104)
 		vm_next_step(vm, cmd, 7);
@@ -35,7 +35,7 @@ void	vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
 		vm_next_step(vm, cmd, 6);
 }
 
-void	load_res(t_vm *vm, t_cmd *cmd, int direct)
+void		load_res(t_vm *vm, t_cmd *cmd, int direct)
 {
 	int		i;
 	int		reg1;
@@ -73,7 +73,7 @@ int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
 	return (res);
 }
 
-void	vm_sti(t_vm *vm, t_cmd *cmd, int x)
+void		vm_sti(t_vm *vm, t_cmd *cmd, int x)
 {
 	int		cdg;
 	int		direct;

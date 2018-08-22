@@ -12,27 +12,27 @@
 
 #include "vm.h"
 
-void	pl_res_all_proces(t_vm *vm)
+void		pl_res_all_proces(t_vm *vm)
 {
-	int i;
+	int 	i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
 		vm->tab_champ[i].nbr_process = 0;
 }
 
-void	pl_period_live(t_vm *vm)
+void		pl_period_live(t_vm *vm)
 {
-	int i;
+	int 	i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
 		vm->tab_champ[i].lives_in_period = 0;
 }
 
-void	vm_curet_next(t_vm *vm, t_cmd *cmd)
+void		vm_curet_next(t_vm *vm, t_cmd *cmd)
 {
-	int     id;
+	int		id;
 
 	while (cmd)
 	{
@@ -50,33 +50,6 @@ void	vm_curet_next(t_vm *vm, t_cmd *cmd)
 		}
 		cmd->life = 0;
 		cmd = cmd->next;
-	}
-}
-
-void	vm_current_incr(t_cmd **cmd)
-{
-	t_cmd	*tmp1;
-	t_cmd	*prev;
-
-	tmp1 = *cmd;
-	while (tmp1 && tmp1->off == 1)
-	{
-		*cmd = tmp1->next;
-		free(tmp1);
-		tmp1 = *cmd;
-	} 
-	while (tmp1)
-	{
-		while (tmp1 && tmp1->off != 1)
-		{
-			prev = tmp1;
-			tmp1 = tmp1->next;
-		}
-		if (!tmp1)
-			return ;
-		prev->next = tmp1->next;
-		free(tmp1);
-		tmp1 = prev->next;
 	}
 }
 

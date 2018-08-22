@@ -13,32 +13,35 @@
 NAME		= ../corewar
 FLAGS		= -Wall -Wextra -Werror
 CC			= gcc
-#LD			= -lncurses
 
 HEADERS		= ../includes
 HEADERS_L	= ../libft/includes
 LIBFT		= -L ../libft -lft -lcurses
 LIBFT_PATH	= ../libft
 
-SRCS_VM	=	vm_errors.c \
-			vm_load.c \
+SRCS_VM	=	vm_load.c \
 			vm_main.c \
 			vm_n.c \
+			vm_n_vis_arena.c \
 			vm_n_logo.c \
 			vm_n_heart_win.c \
 			vm_n_draw_win.c \
 			vm_params.c \
+			vm_params1.c \
 			vm_print.c \
 			vm_read.c \
 			op.c \
 			vm_m_init.c \
+			vm_m_init1.c \
 			vm_m_free.c \
 			vm_m_load_arena.c \
+			vm_m_setrun_cycle.c \
 			vm_m_cmd_triger.c \
 			vm_m_cycler_to_die.c \
 			vm_m_dump_arena.c \
 			vm_mng_func.c \
 			vm_mng_func1.c \
+			vm_mng_func_check.c \
 			vm_mng_bit1.c \
 			vm_mng_bit2.c \
 			vm_sti_mng.c \
@@ -53,9 +56,11 @@ SRCS_VM	=	vm_errors.c \
 			vm_add.c \
 			vm_sub.c \
 			vm_ldi.c \
+			vm_ldi1.c \
 			vm_fork.c \
 			vm_lld.c \
 			vm_lldi.c \
+			vm_lldi1.c \
 			vm_lfork.c \
 			vm_aff.c \
 

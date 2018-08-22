@@ -24,7 +24,7 @@ void	vm_dump_arena(t_vm *vm)
 	{
 		ft_printf("%02x ", 0xFF & vm->arena[i].acb);
 		if ((i + 1) % 32 == 0)
-		{ 
+		{
 			if (i + 1 < MEM_SIZE)
 			{
 				ft_printf("\n");

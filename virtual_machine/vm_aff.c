@@ -17,7 +17,7 @@ void	vm_aff(t_vm *vm, t_cmd *cmd, int x)
 	int	arg1;
 	int	cdg;
 
-	cdg = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;	
+	cdg = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	if (cdg != 64 || (arg1 < 0 || arg1 > 16))
 	{

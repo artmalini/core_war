@@ -72,10 +72,10 @@
 */
 
 # define CMD			(c->opcode -1)
-# define OP(CMD)		(op_tab[CMD])
-# define SIZE(CMD)		(op_tab[CMD].size)
-# define NBR_ARGS(CMD)	(op_tab[CMD].nbr_args)
-# define TYPE_ARG(nbr)	(op_tab[CMD].type_params[nbr])
+# define OP(CMD)		(g_op_tab[CMD])
+# define SIZE(CMD)		(g_op_tab[CMD].size)
+# define NBR_ARGS(CMD)	(g_op_tab[CMD].nbr_args)
+# define TYPE_ARG(nbr)	(g_op_tab[CMD].type_params[nbr])
 
 # define ER_FILE		(file->error->asm_arg)
 # define ER_CMD			(file->error->current_cmd)

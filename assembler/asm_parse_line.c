@@ -33,7 +33,7 @@ int			check_command(t_core *file, char *lowstr)
 	file->error->current_cmd = lowstr;
 	while (++i < 16)
 	{
-		if (!ft_strcmp(op_tab[i].name, lowstr))
+		if (!ft_strcmp(g_op_tab[i].name, lowstr))
 		{
 			file->inst_pos = i;
 			return (OKAY);

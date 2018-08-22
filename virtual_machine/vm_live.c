@@ -25,11 +25,10 @@ int		vm_getpl(t_vm *vm, int place)
 	return (-1);
 }
 
-void	vm_live(t_vm *vm, t_cmd *cmd)
+int		vm_live_place(t_vm *vm, t_cmd *cmd)
 {
 	int	place;
-	int	id;
-
+	
 	place = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	place <<= 8;
 	place += 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
@@ -37,10 +36,17 @@ void	vm_live(t_vm *vm, t_cmd *cmd)
 	place += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	place <<= 8;
 	place += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
+	return (place);
+}
+void	vm_live(t_vm *vm, t_cmd *cmd)
+{
+	int	place;
+	int	id;
+
+	place = vm_live_place(vm, cmd);
 	id = vm_getpl(vm, place * -1);
 	if (vm->debug)
 		ft_printf("|P\t%d| live |%d|\n",  cmd->nbr_process, place);
-
 	cmd->life = 1;
 	cmd->on = 1;
 	vm->lifes += 1;

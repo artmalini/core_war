@@ -21,41 +21,19 @@
 /*
 **					[Macros for ERROR MANAGER]
 */
-
-# define OKAY			0
-# define ERROR			1
-# define ERROR_OPEN		2
-# define ERROR_READ		3
-# define ERROR_CLOSE	4
-# define ERROR_MAGIC	5
-# define ERROR_NAME		6
-# define ERROR_SIZE		7
-# define ERROR_PLAYER	8
-# define ERROR_DUP		9
-# define ERROR_COMMENT	10
-# define ERROR_FILE		11
-# define ERROR_SFILE	12
-# define ERROR_1		13
-# define ERROR_2		14
-# define ERROR_3		15
-# define ERROR_4		16
-
 # define ERR_NBR_INV	0
 # define ERR_NO_NBR		1
 # define ERR_NO_CHMP	2
 # define ERR_NBR_CHMP	3
 # define ERR_CMP_CHMP	4
 
-
 #define IND_SIZE 2
 #define REG_SIZE 4
 #define DIR_SIZE REG_SIZE
 
-
 #define REG_CODE 1
 #define DIR_CODE 2
 #define IND_CODE 3
-
 
 #define MAX_ARGS_NUMBER 4
 #define MAX_PLAYERS 4
@@ -68,9 +46,6 @@
 #define LABEL_CHAR ':'
 #define DIRECT_CHAR '%'
 #define SEPARATOR_CHAR ','
-
-#define HEADER_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789! '()-+*&<>=/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
 
 #define NAME_CMD_STRING ".name"
 #define COMMENT_CMD_STRING ".comment"
@@ -96,13 +71,6 @@ typedef char t_arg_type;
 
 # define BUF_SIZE (5)
 
-typedef struct		s_error
-{
-	int				id;
-	char			*name;
-
-}					t_error;
-
 typedef struct 		s_cmd
 {
 	int				reg[REG_NUMBER];
@@ -126,19 +94,12 @@ typedef struct 		s_cmd
 typedef struct		s_arena
 {
 	char			acb;
-
-	char			o_acb;
-	char			o_hex;
-	char			o_args;////
-	int				hit;
 	int				overlap;
 	int				pl;
-
 	int				rgb;
 	int				asc_rgb;
 	int				flag;
-	int				bold;
-	int				zero;	
+	int				bold;	
 }					t_arena;
 
 typedef struct		s_champ
@@ -149,13 +110,8 @@ typedef struct		s_champ
 	int				magic_number;
 	int				weight;
 	int				rgb;
-	int				ready;//not need
-
 	int				idx;
-	//int			life;
 	int				nbr_process;
-	int				alive;
-	int				old_check;
 	int				prev_live;
 	int				lives_in_period;	
 	char			*prog;
@@ -172,8 +128,6 @@ typedef struct		s_vm
 	int				last_check;
 	int				cycle;
 	int				cycle_to_die;
-	int				cycle_before_checking;
-	int				total_lives_period;
 	int				lifes;
 	int				total_process;
 	int				total_cycle;
@@ -203,6 +157,7 @@ int					vm_usage(void);
 int					vm_param_n(t_vm *vm, char **av, int *i, int ac);
 int					vm_isnumber(char *str);
 int					vm_get_param(char **av, t_vm *vm, int ac);
+void				vm_champs(t_vm *vm, char *arg);
 void				vm_init(t_vm *vm);
 void				vm_create_arena(t_vm *vm);
 void				vm_load_lists(t_cmd **cmd, t_vm *vm);
@@ -212,6 +167,10 @@ void				vm_create_arena(t_vm *vm);
 void				vm_load_arena(t_vm *vm);
 void				vm_cmd_triger(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_cycler_to_die(t_vm *vm, int *i);
+void				vm_set_cycle_wait(t_vm *vm, t_cmd *cmd);
+void				vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd);
+int					vm_cmd(t_vm *vm, t_cmd *cmd, int chk);
+int					vm_dia(int nb);
 int					vm_its_cmd(t_vm *vm, t_cmd *cmd);
 void				vm_load_champs(t_vm *vm);
 void				vm_read_champ(t_vm *vm, int number_player);
@@ -220,7 +179,6 @@ void				vm_exit(t_vm *vm);
 
 void				display_header(void);
 void				vm_err_exit(t_vm *vm, int error);
-void				ft_print_error(t_error *e);
 char				*vm_str_error(int error);
 void				free_vm(t_vm *vm);
 void				vm_exit(t_vm *vm);
@@ -253,6 +211,10 @@ void				vm_or(t_vm *vm, t_cmd *cmd, int x);
 void				vm_xor(t_vm *vm, t_cmd *cmd, int x);
 void				vm_zjmp(t_vm *vm, t_cmd *cmd);
 void				vm_ldi(t_vm *vm, t_cmd *cmd, int x);
+void				vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_ldi_next(t_vm *vm, t_cmd *cmd, int x, int hex);
 int					vm_rid_sti(t_vm *vm, t_cmd *cmd);
 int					vm_rrr_sti(t_vm *vm, t_cmd *cmd);
 int					vm_rrd_sti(t_vm *vm, t_cmd *cmd);
@@ -262,6 +224,10 @@ void				vm_sti(t_vm *vm, t_cmd *cmd, int x);
 void				vm_fork(t_vm *vm, t_cmd **cmd);
 void				vm_lld(t_vm *vm, t_cmd *cmd, int x);
 void				vm_lldi(t_vm *vm, t_cmd *cmd, int x);
+void				lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex);
+void				lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex);
+void				vm_lldi_next(t_vm *vm, t_cmd *cmd, int x, int hex);
 void				vm_lfork(t_vm *vm, t_cmd **cmd);
 void				vm_aff(t_vm *vm, t_cmd *cmd, int x);
 int 				get_reg(t_vm *vm, int *i);
@@ -272,6 +238,7 @@ int					vm_len_step(t_vm *vm, t_cmd *cmd, int idx);
 
 void				vm_load_ncurses(void);
 void				vm_vis_arena(t_vm *vm);
+void				vm_game_stat(t_vm *vm, int j);
 void				print_logo(int j, t_vm *vm);
 void				vm_n_draw_win(int j, int pl);
 void				draw_pl_heart(int pl, int j, t_vm *vm);

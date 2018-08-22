@@ -12,7 +12,7 @@
 
 #include "vm.h"
 
-int		vm_v_cmd(int a, int b, int c)
+int					vm_v_cmd(int a, int b, int c)
 {
 	if (a < 0 || a >= REG_NUMBER ||
 		b < 0 || b >= REG_NUMBER ||
@@ -21,7 +21,7 @@ int		vm_v_cmd(int a, int b, int c)
 	return (1);
 }
 
-int		get_indir_arg(t_vm *vm, t_cmd *cmd, int nb)
+int					get_indir_arg(t_vm *vm, t_cmd *cmd, int nb)
 {
 	unsigned int	one;
 
@@ -35,7 +35,7 @@ int		get_indir_arg(t_vm *vm, t_cmd *cmd, int nb)
 	return ((int)one);
 }
 
-int		vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
+int					vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	unsigned int	one;
 	unsigned short	two;
@@ -62,7 +62,7 @@ int		vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
 	return (one);
 }
 
-int		vm_indir(t_vm *vm, t_cmd *cmd, int nb)
+int					vm_indir(t_vm *vm, t_cmd *cmd, int nb)
 {
 	int				ret;
 	unsigned short	two;

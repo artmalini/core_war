@@ -94,7 +94,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
 	i = cmd->idx + pos;
-	cmd->idx = mdx(i);	
+	cmd->idx = mdx(i);
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
 		cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;

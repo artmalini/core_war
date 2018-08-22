@@ -145,7 +145,7 @@ void	vm_and(t_vm *vm, t_cmd *cmd, int x)
 		arg[2] = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 		if (vm_v_cmd(arg[0] - 1, arg[1] - 1, arg[2] - 1))
 			vm_rrr_bit(vm, cmd, arg, 1);
-		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));		
+		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else
 		vm_and_2(vm, cmd, arg, x);

@@ -17,7 +17,7 @@
 ** 112 == (T_REG, T_IND)
 */
 
-void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
+void		vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 {
 	if (vm->debug)
 		ft_printf("|P\t%d| st |r%d| |%d|\n",
@@ -26,7 +26,7 @@ void	vm_st_rr(t_vm *vm, t_cmd *cmd, int reg1, int reg2)
 	vm_next_step(vm, cmd, 4);
 }
 
-void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
+void		vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 {
 	int		i;
 	short	two;
@@ -51,10 +51,10 @@ void	vm_st_ri(t_vm *vm, t_cmd *cmd, int reg1)
 	vm_next_step(vm, cmd, 5);
 }
 
-void	vm_st(t_vm *vm, t_cmd *cmd, int x)
+void		vm_st(t_vm *vm, t_cmd *cmd, int x)
 {
-	int	reg1;
-	int	reg2;
+	int		reg1;
+	int		reg2;
 	
 	reg1 = 0xFF &  vm->arena[mdx(cmd->idx + 2)].acb;
 	if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 80)

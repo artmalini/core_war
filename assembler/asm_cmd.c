@@ -19,11 +19,11 @@ int			count_cmd_size(t_core *file, t_cmd *c, int l_size)
 
 	i = -1;
 	len = 1;
-	if (op_tab[file->inst_pos].size == 0)
+	if (g_op_tab[file->inst_pos].size == 0)
 		l_size = 4;
-	if (op_tab[file->inst_pos].size == 1)
+	if (g_op_tab[file->inst_pos].size == 1)
 		l_size = 2;
-	if (op_tab[file->inst_pos].codage != 0)
+	if (g_op_tab[file->inst_pos].codage != 0)
 		len++;
 	while (c->args[++i] && c->args[i][0])
 	{
@@ -49,7 +49,7 @@ t_cmd		*add_cmd(t_core *file, char *cmd, char *str_args)
 	{
 		lst->nbr_args = NBR_ARGS(file->inst_pos);
 		lst->command = cmd ? ft_strdup(cmd) : NULL;
-		lst->opcode = op_tab[file->inst_pos].opcode;
+		lst->opcode = g_op_tab[file->inst_pos].opcode;
 		valid_args_main(file, lst, str_args);
 		insert_args_lst(file, lst);
 		lst->cmd_size = count_cmd_size(file, lst, 0);

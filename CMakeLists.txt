@@ -18,11 +18,13 @@ set(SOURCE_FILES
 		virtual_machine/vm_m_dump_arena.c
 		virtual_machine/vm_m_free.c
 		virtual_machine/vm_m_init.c
+		virtual_machine/vm_m_init1.c
 		virtual_machine/vm_m_load_arena.c
+		virtual_machine/vm_m_setrun_cycle.c
 		virtual_machine/vm_main.c
 		virtual_machine/vm_params.c
+		virtual_machine/vm_params1.c
 		virtual_machine/vm_read.c
-		virtual_machine/vm_errors.c
 		virtual_machine/vm_print.c
 		virtual_machine/vm_sti.c
 		virtual_machine/vm_sti_mng.c
@@ -30,7 +32,9 @@ set(SOURCE_FILES
 		virtual_machine/vm_mng_bit2.c
 		virtual_machine/vm_mng_func.c
 		virtual_machine/vm_mng_func1.c
+		virtual_machine/vm_mng_func_check.c
 		virtual_machine/vm_n.c
+		virtual_machine/vm_n_vis_arena.c
 		virtual_machine/vm_n_draw_win.c
 		virtual_machine/vm_n_heart_win.c
 		virtual_machine/vm_n_logo.c
@@ -46,7 +50,9 @@ set(SOURCE_FILES
 		virtual_machine/vm_sub.c
 		virtual_machine/vm_lld.c
 		virtual_machine/vm_lldi.c
+		virtual_machine/vm_lldi1.c
 		virtual_machine/vm_ldi.c
+		virtual_machine/vm_ldi1.c
 		virtual_machine/vm_lfork.c
 		virtual_machine/vm_fork.c )
 

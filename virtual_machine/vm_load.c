@@ -46,26 +46,22 @@ void		vm_load_champs(t_vm *vm)
 	int		space_bt_champs;
 	int		i;
 	int		space;
-	int		nbr;
 
 	i = -1;
 	space_bt_champs = MEM_SIZE / vm->nbr_next;
 	if (vm->nbr_next == 1)
 		space_bt_champs = 0;
 	space = 0;
-	nbr = vm->nbr_next - 1;
 	vm_check_n_uniq(vm);
 	ft_printf("Introducing contestants...\n");
 	while (++i < vm->nbr_next)
 	{
 		
 		vm->tab_champ[i].idx = space;
-		vm->tab_champ[i].ready = nbr;
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 			vm->tab_champ[i].id, vm->tab_champ[i].weight,
 			vm->tab_champ[i].name, vm->tab_champ[i].comment);
 		load_champ_to(vm, vm->tab_champ[i], space, i);
 		space += space_bt_champs;
-		nbr--;
 	}
 }

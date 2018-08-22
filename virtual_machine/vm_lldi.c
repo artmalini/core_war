@@ -21,7 +21,7 @@
 ** 164 == (T_DIR, T_DIR, T_REG)
 */
 
-void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
+void		vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 {
 	int		one;
 	int		val1;
@@ -46,7 +46,7 @@ void	vm_lldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	vm_next_step(vm, cmd, 1);
 }
 
-void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
+void		lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		res;
 	int		arg[5];
@@ -72,7 +72,7 @@ void	lldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
+void		lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		a;
 	int		res;
@@ -100,7 +100,7 @@ void	lldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		a;
 	int		res;
@@ -120,7 +120,7 @@ void	vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void	vm_lldi(t_vm *vm, t_cmd *cmd, int x)
+void		vm_lldi(t_vm *vm, t_cmd *cmd, int x)
 {
 	int		a;
 	int		b;
@@ -141,13 +141,6 @@ void	vm_lldi(t_vm *vm, t_cmd *cmd, int x)
 		else
 			vm_next_step(vm, cmd, 4);
 	}
-	else if (hex == 228 || hex == 164)
-		lldi_idr_ddr(vm, cmd, hex);
-	else if (hex == 212 || hex == 148 || hex == 100)
-	{
-		lldi_irr_drr(vm, cmd, hex);
-		vm_lldi_rdr(vm, cmd, hex);
-	}
 	else
-		vm_next_step(vm, cmd, vm_len_step(vm, cmd, x));
+		vm_lldi_next(vm, cmd, x, hex);
 }

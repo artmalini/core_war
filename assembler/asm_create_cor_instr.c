@@ -73,7 +73,7 @@ void		set_bytes(int fd, char *str, t_core *file, t_cmd *c)
 	int		size;
 
 	nb = 0;
-	size = find_nbr_bytes(str, op_tab[file->inst_pos].size);
+	size = find_nbr_bytes(str, g_op_tab[file->inst_pos].size);
 	if ((str[0] >= '0' && str[0] <= '9') || str[0] == '-')
 		nb = ft_atoi(str);
 	else if (str[0] == 'r')
@@ -101,16 +101,16 @@ void		set_instruction(t_core *file, t_cmd *c, int fd)
 	{
 		asm_hexa_fd(cmd->opcode, fd);
 		check_command(file, cmd->command);
-		if (op_tab[file->inst_pos].codage)
+		if (g_op_tab[file->inst_pos].codage)
 			asm_hexa_fd(count_opcode(cmd->str), fd);
 		i = -1;
-		while (++i < op_tab[file->inst_pos].nbr_args)
+		while (++i < g_op_tab[file->inst_pos].nbr_args)
 		{
 			if (i == 0)
 				set_bytes(fd, cmd->args[FIRST], file, cmd);
-			if (i == 1 && op_tab[file->inst_pos].nbr_args > 1)
+			if (i == 1 && g_op_tab[file->inst_pos].nbr_args > 1)
 				set_bytes(fd, cmd->args[SECOND], file, cmd);
-			if (i == 2 && op_tab[file->inst_pos].nbr_args > 2)
+			if (i == 2 && g_op_tab[file->inst_pos].nbr_args > 2)
 				set_bytes(fd, cmd->args[THIRD], file, cmd);
 		}
 		cmd = cmd->next;
