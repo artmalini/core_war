@@ -20,7 +20,7 @@ void		ft_init(t_core *file, char *argument)
 		ft_error(file, ERROR_MEMORY);
 	ft_bzero(file, sizeof(t_core));
 	file->error = new;
-	file->error->asm_arg = argument;
+	file->error->asm_arg = ft_strdup(argument);
 	file->error->current_rows = 1;
 }
 

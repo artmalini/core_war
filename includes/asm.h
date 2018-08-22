@@ -93,9 +93,9 @@ typedef struct		s_error
 {
 	char			*asm_arg;
 	int				current_rows;
-	char			*current_cmd;
-	char			*current_arg;
-	char			*current_label;
+	char			*current_cmd;//
+	char			*current_arg;//
+	char			*current_label;//
 }					t_error;
 
 typedef struct		s_header

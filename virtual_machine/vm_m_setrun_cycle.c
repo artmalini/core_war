@@ -79,26 +79,20 @@ void		vm_set_cycle_wait(t_vm *vm, t_cmd *cmd)
 void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
-	int		hit;
 	int		zero;
 
-	hit = -1;
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
 	zero = cmd->zero;
 	if (cmd->wait == 1)
 	{
 		if (vm_dia(zero - 1) && cmd->overlap == 0)
-		{
-			hit = 1;
 			vm_cmd_triger(vm, cmd, zero);
-		}
 		else if (vm_cmd(vm, cmd, hex - 1))
 		{
-			hit = 1;
 			cmd->overlap = 0;
 			vm_cmd_triger(vm, cmd, hex);
 		}
-		if (hit == -1)
+		else
 			vm_next_step(vm, cmd, 1);
 		cmd->playing = 0;
 	}

@@ -40,13 +40,13 @@ void		vm_ldi_write(t_vm *vm, t_cmd *cmd, int val, int i)
 	{
 		cmd->reg[a - 1] = one;
 		if (vm->debug)
-			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t",
-				" (with pc and mod %d)\n", cmd->nbr_process, i, a, val1);
+			ft_printf("|P\t%d| ldi |%d| |r%d|\n\t\t with pc and mod %d)\n",
+				cmd->nbr_process, i, a, val1);
 	}
 	vm_next_step(vm, cmd, 1);
 }
 
-void		vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_ldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	int		res;
 	int		arg[5];
@@ -72,7 +72,7 @@ void		vm_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	}
 }
 
-void		vm_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
+void		vm_ldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 {
 	char	a;
 	int		res;
