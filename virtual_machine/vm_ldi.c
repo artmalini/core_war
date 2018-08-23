@@ -56,7 +56,7 @@ void		vm_ldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 	{
 		arg[3] = 4;
 		arg[4] = 2;
-		res = vm_indir(vm, cmd, 2) + vm_direct(vm, cmd, arg);
+		res = vm_indir(vm, cmd, 2) + vm_ffdir(vm, cmd, arg);
 		vm_next_step(vm, cmd, 6);
 		vm_ldi_write(vm, cmd, 6, (res % IDX_MOD));
 	}
@@ -66,7 +66,7 @@ void		vm_ldi_idr_ddr(t_vm *vm, t_cmd *cmd, int hex)
 		arg[4] = 2;
 		tmp[3] = 4;
 		tmp[4] = 2;
-		res = vm_direct(vm, cmd, arg) + vm_direct(vm, cmd, tmp);
+		res = vm_ffdir(vm, cmd, arg) + vm_ffdir(vm, cmd, tmp);
 		vm_next_step(vm, cmd, 6);
 		vm_ldi_write(vm, cmd, 6, (res % IDX_MOD));
 	}
@@ -86,7 +86,7 @@ void		vm_ldi_irr_drr(t_vm *vm, t_cmd *cmd, int hex)
 		arg[4] = 2;
 		a = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 		if (vm_v_cmd(a - 1, a - 1, a - 1))
-			res = vm_direct(vm, cmd, arg) + cmd->reg[a - 1];
+			res = vm_ffdir(vm, cmd, arg) + cmd->reg[a - 1];
 		vm_next_step(vm, cmd, 5);
 		vm_ldi_write(vm, cmd, 5, (res % IDX_MOD));
 	}
@@ -114,7 +114,7 @@ void		vm_ldi_rdr(t_vm *vm, t_cmd *cmd, int hex)
 		arg[4] = 2;
 		a = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 		if (vm_v_cmd(a - 1, a - 1, a - 1))
-			res = cmd->reg[a - 1] + vm_direct(vm, cmd, arg);
+			res = cmd->reg[a - 1] + vm_ffdir(vm, cmd, arg);
 		vm_next_step(vm, cmd, 5);
 		vm_ldi_write(vm, cmd, 5, (res % IDX_MOD));
 	}
@@ -139,7 +139,7 @@ void		vm_ldi(t_vm *vm, t_cmd *cmd, int x)
 			vm_ldi_write(vm, cmd, 4, (res % IDX_MOD));
 		}
 		else
-			vm_next_step(vm, cmd, 4);		
+			vm_next_step(vm, cmd, 4);
 	}
 	else
 		vm_ldi_next(vm, cmd, x, hex);

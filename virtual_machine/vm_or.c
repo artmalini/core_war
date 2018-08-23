@@ -34,7 +34,7 @@ void	vm_or_5(t_vm *vm, t_cmd *cmd, int *arg, int x)
 		arg[3] = 0;
 		arg[4] = 0;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_irr(vm, cmd, arg, 2);
+			vm_irr_bit(vm, cmd, arg, 2);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else
@@ -51,7 +51,7 @@ void	vm_or_4(t_vm *vm, t_cmd *cmd, int *arg, int x)
 		arg[3] = 2;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[1] - 1))
-			vm_drr(vm, cmd, arg, 2);
+			vm_drr_bit(vm, cmd, arg, 2);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	else if (((0xFF & vm->arena[mdx(cmd->idx + 1)].acb)) == 116)
@@ -62,7 +62,7 @@ void	vm_or_4(t_vm *vm, t_cmd *cmd, int *arg, int x)
 		arg[3] = 0;
 		arg[4] = 0;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[1] - 1))
-			vm_rir(vm, cmd, arg, 2);
+			vm_rir_bit(vm, cmd, arg, 2);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	vm_or_5(vm, cmd, arg, x);
@@ -89,7 +89,7 @@ void	vm_or_3(t_vm *vm, t_cmd *cmd, int *arg, int x)
 		arg[3] = 2;
 		arg[4] = 4;
 		if (vm_v_cmd(arg[0] - 1, arg[0] - 1, arg[0] - 1))
-			vm_ddr(vm, cmd, arg, 2);
+			vm_ddr_bit(vm, cmd, arg, 2);
 		vm_next_step(vm, cmd, vm_pos_curs(vm, cmd));
 	}
 	vm_or_4(vm, cmd, arg, x);

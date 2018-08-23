@@ -18,7 +18,7 @@ int		vm_vis_winner(t_vm *vm)
 	int			j;
 
 	i = -1;
-	j = 0;	
+	j = 0;
 	while (++i < vm->nbr_next)
 	{
 		if (vm->tab_champ[i].prev_live >
@@ -37,7 +37,7 @@ void	draw_winner(int j, t_vm *vm)
 	pl = vm_vis_winner(vm);
 	attron(COLOR_PAIR(1));
 	if (vm->total_cycle > 0 && vm->tab_champ[pl].prev_live != 0)
-		vm_n_draw_win(j, pl);	
+		vm_n_draw_win(j, pl);
 }
 
 void	draw_pl_heart(int pl, int j, t_vm *vm)

@@ -47,7 +47,7 @@ long			negative_nbr(int nb, int size, t_core *file)
 	return (nbr);
 }
 
-void		set_bytes_zero_alignment(int fd, int size, int nb, int nbr)
+void		set_bytes_zero_alignment(int fd, int size, long nb, long nbr)
 {
 	int		j;
 
@@ -69,7 +69,7 @@ void		set_bytes_zero_alignment(int fd, int size, int nb, int nbr)
 void		set_bytes(int fd, char *str, t_core *file, t_cmd *c)
 {
 	long	nb;
-	int		nbr;
+	long	nbr;
 	int		size;
 
 	nb = 0;

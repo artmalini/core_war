@@ -17,7 +17,7 @@ int			vm_rdd_sti(t_vm *vm, t_cmd *cmd)
 	int		res;
 	short	arg1;
 	short	arg2;
-	
+
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;
@@ -36,7 +36,7 @@ int			vm_rir_sti(t_vm *vm, t_cmd *cmd)
 	int		arg2;
 	short	dir;
 	int		dir1;
-	
+
 	res = 0;
 	dir = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	dir <<= 8;
@@ -60,7 +60,7 @@ int			vm_rrd_sti(t_vm *vm, t_cmd *cmd)
 	int		res;
 	int		arg1;
 	short	arg2;
-	
+
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
@@ -76,7 +76,7 @@ int			vm_rrr_sti(t_vm *vm, t_cmd *cmd)
 	int		res;
 	int		arg1;
 	int		arg2;
-	
+
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg2 = 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
@@ -92,7 +92,7 @@ int			vm_rid_sti(t_vm *vm, t_cmd *cmd)
 	short	dir;
 	int		arg2;
 	int		dir1;
-	
+
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;

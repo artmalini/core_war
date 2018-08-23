@@ -65,14 +65,12 @@ static void			cpy_prog(t_vm *vm, char *prog, int num_player)
 	}
 }
 
-void				vm_read_champ(t_vm *vm, int nbr_player)
+void				vm_read_champ(t_vm *vm, int nbr_player, int size)
 {
 	char			str[PROG_NAME_LENGTH];
-	int				size;
 	char			comment[COMMENT_LENGTH];
 	int				ret;
 
-	size = 0;
 	size = lseek(vm->fd, 0, SEEK_END);
 	lseek(vm->fd, 0, SEEK_SET);
 	ft_bzero(str, 4);

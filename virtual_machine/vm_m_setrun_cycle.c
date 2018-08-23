@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_m_setrun_cycle.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/23 12:04:08 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/08/23 12:04:12 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -10,9 +21,6 @@ int			vm_dia(int nb)
 
 int			vm_len_len(int i, int acb, int idx, int len)
 {
-	int		nbr;
-
-	nbr = 0;
 	while (i >= 0)
 	{
 		if ((acb >> (6 - i * 2) & 0x3) == REG_CODE)
@@ -28,8 +36,7 @@ int			vm_len_len(int i, int acb, int idx, int len)
 			len += 2;
 		i--;
 	}
-	nbr = len;
-	return (nbr);
+	return (len);
 }
 
 int			vm_len_step(t_vm *vm, t_cmd *cmd, int idx)
@@ -80,19 +87,25 @@ void		vm_run_waiting_cycle(t_vm *vm, t_cmd *cmd)
 {
 	int		hex;
 	int		zero;
+	int		hit;
 
 	hex = (vm->arena[mdx(cmd->idx)].acb & 0xFF);
 	zero = cmd->zero;
+	hit = -1;
 	if (cmd->wait == 1)
 	{
 		if (vm_dia(zero - 1) && cmd->overlap == 0)
+		{
+			hit = 1;
 			vm_cmd_triger(vm, cmd, zero);
+		}
 		else if (vm_cmd(vm, cmd, hex - 1))
 		{
+			hit = 1;
 			cmd->overlap = 0;
 			vm_cmd_triger(vm, cmd, hex);
 		}
-		else
+		if (hit == -1)
 			vm_next_step(vm, cmd, 1);
 		cmd->playing = 0;
 	}

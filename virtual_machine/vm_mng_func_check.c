@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_mng_func_check.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/23 12:06:02 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/08/23 12:06:08 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -42,7 +53,6 @@ int			vm_its_cmd(t_vm *vm, t_cmd *cmd)
 		return (0);
 }
 
-
 int			vm_big(t_vm *vm, t_cmd *cmd, int chk)
 {
 	int		i;
@@ -70,7 +80,7 @@ int			vm_big(t_vm *vm, t_cmd *cmd, int chk)
 }
 
 int			vm_cmd(t_vm *vm, t_cmd *cmd, int chk)
-{	
+{
 	if (chk < 0 || chk > 16)
 		return (0);
 	if (chk == 0 || chk == 8 || chk == 11 || chk == 14)

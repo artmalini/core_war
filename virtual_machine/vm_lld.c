@@ -63,7 +63,7 @@ void	vm_lld_ir(t_vm *vm, t_cmd *cmd)
 		if (vm->debug)
 			lld_ir_debug(hex, pos);
 	}
-	vm_next_step(vm, cmd,5);
+	vm_next_step(vm, cmd, 5);
 }
 
 void	vm_lld(t_vm *vm, t_cmd *cmd, int x)

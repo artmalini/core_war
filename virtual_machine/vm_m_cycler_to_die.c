@@ -14,7 +14,7 @@
 
 void		pl_res_all_proces(t_vm *vm)
 {
-	int 	i;
+	int		i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -23,7 +23,7 @@ void		pl_res_all_proces(t_vm *vm)
 
 void		pl_period_live(t_vm *vm)
 {
-	int 	i;
+	int		i;
 
 	i = -1;
 	while (++i < vm->nbr_next)
@@ -53,7 +53,7 @@ void		vm_curet_next(t_vm *vm, t_cmd *cmd)
 	}
 }
 
-void	vm_cycler_to_die(t_vm *vm, int *i)
+void		vm_cycler_to_die(t_vm *vm, int *i)
 {
 	if (vm->cycle >= vm->cycle_to_die)
 	{

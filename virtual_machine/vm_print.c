@@ -37,7 +37,8 @@ void		vm_err_exit(t_vm *vm, int error)
 	if (error == ERR_NBR_CHMP)
 		ft_printf("Error: Number of champion too high.\n");
 	if (error == ERR_CMP_CHMP)
-		ft_printf("Error: You need write different player number after -n argument\n");
+		ft_printf("Error: You need write different "\
+			"player number after -n argument\n");
 	vm_exit(vm);
 }
 
@@ -46,9 +47,10 @@ int			vm_usage(void)
 	display_header();
 	ft_putstr("Argument is EMPTY\n");
 	ft_putstr("\033[33m");
-	ft_printf("Usage: ./corewar [-a -dump nbr_cycles -d -v] "
+	ft_printf("Usage: ./corewar [-a -dump nbr_cycles -d -v] "\
 						"[[-n number] champion1.cor] ...\n");
-	ft_printf("\t-n number\t: You should write positive integer value instead this 'number'\n");
+	ft_printf("\t-n number\t: You should write positive"\
+		" integer value instead this 'number'\n");
 	ft_printf("\t-lives\t\t: Show lives\n");
 	ft_printf("\t-a\t\t: Prints output from 'aff' (Default is to hide it)\n");
 	ft_printf("\t-dump nbr_cycles: Dumps memory after "

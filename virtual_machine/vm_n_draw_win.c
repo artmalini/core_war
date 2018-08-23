@@ -24,7 +24,7 @@ void		vm_n_draw_win3(int j)
 		printw("\t #  #  #  #  #  # #");
 	if (j == 43)
 		printw("\t  ## ##  ### #   ##");
-	}
+}
 
 void		vm_n_draw_win2(int j)
 {

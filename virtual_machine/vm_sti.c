@@ -22,7 +22,7 @@
 */
 
 void		vm_sti_step(t_vm *vm, t_cmd *cmd, int cdg)
-{ 
+{
 	if (cdg == 104)
 		vm_next_step(vm, cmd, 7);
 	else if (cdg == 84)
@@ -48,7 +48,8 @@ void		load_res(t_vm *vm, t_cmd *cmd, int direct)
 	dat = cmd->reg[reg1];
 	while (++i <= 3)
 	{
-		vm->arena[mdx(cmd->idx + direct + i)].acb = (dat >> ((3 - i) * 8)) & 0xFF;
+		vm->arena[mdx(cmd->idx + direct + i)].acb =
+			(dat >> ((3 - i) * 8)) & 0xFF;
 		vm->arena[mdx(cmd->idx + direct + i)].rgb = cmd->rgb - 4;
 		vm->arena[mdx(cmd->idx + direct + i)].asc_rgb = cmd->rgb - 4;
 	}
@@ -62,7 +63,7 @@ int			vm_rdr_sti(t_vm *vm, t_cmd *cmd)
 	int		res;
 	short	arg1;
 	int		arg2;
-	
+
 	res = 0;
 	arg1 = 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
 	arg1 <<= 8;

@@ -56,7 +56,6 @@ void		vm_load_champs(t_vm *vm)
 	ft_printf("Introducing contestants...\n");
 	while (++i < vm->nbr_next)
 	{
-		
 		vm->tab_champ[i].idx = space;
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 			vm->tab_champ[i].id, vm->tab_champ[i].weight,

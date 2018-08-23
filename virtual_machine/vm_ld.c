@@ -33,7 +33,7 @@ int			vm_ld_pos(t_vm *vm, t_cmd *cmd)
 {
 	short	two;
 	int		two_val;
-	
+
 	two = 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	two <<= 8;
 	two += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;

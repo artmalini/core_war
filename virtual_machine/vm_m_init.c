@@ -48,7 +48,7 @@ t_cmd		*add_list(t_vm *vm, int i)
 	return (lst);
 }
 
-void	vm_load_lists(t_cmd **cmd, t_vm *vm)
+void		vm_load_lists(t_cmd **cmd, t_vm *vm)
 {
 	int		i;
 	t_cmd	*tmp;
@@ -69,7 +69,7 @@ void	vm_load_lists(t_cmd **cmd, t_vm *vm)
 	}
 }
 
-void	vm_glow_cur(t_vm *vm, t_cmd *cmd)
+void		vm_glow_cur(t_vm *vm, t_cmd *cmd)
 {
 	while (cmd)
 	{

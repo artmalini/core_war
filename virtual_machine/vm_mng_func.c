@@ -35,7 +35,7 @@ int					get_indir_arg(t_vm *vm, t_cmd *cmd, int nb)
 	return ((int)one);
 }
 
-int					vm_direct(t_vm *vm, t_cmd *cmd, int *arg)
+int					vm_ffdir(t_vm *vm, t_cmd *cmd, int *arg)
 {
 	unsigned int	one;
 	unsigned short	two;

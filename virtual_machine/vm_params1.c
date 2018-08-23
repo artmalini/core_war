@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_params1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakhiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/23 12:07:07 by amakhiny          #+#    #+#             */
+/*   Updated: 2018/08/23 12:07:11 by amakhiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "vm.h"
 
@@ -47,10 +58,9 @@ void		vm_champs(t_vm *vm, char *arg)
 {
 	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 	{
-		vm_read_champ(vm, vm->nbr_next);
+		vm_read_champ(vm, vm->nbr_next, 0);
 		close(vm->fd);
 	}
 	else if (vm->nbr_next >= 4)
 		vm_err_exit(vm, ERR_NBR_CHMP);
-		
 }

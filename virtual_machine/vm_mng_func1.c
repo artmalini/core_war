@@ -39,13 +39,13 @@ int			vm_pos_lcurs_cdg(t_vm *vm, t_cmd *cmd, int l, int bitln)
 		else if (((vm->arena[cmd->idx + 1].acb >> i) & 3)
 			== IND_CODE)
 			bitln += 2;
-		i -= 2;		
+		i -= 2;
 	}
 	return (bitln);
 }
 
 int			vm_pos_curs(t_vm *vm, t_cmd *cmd)
-{	
+{
 	int		bitln;
 	int		l;
 
@@ -84,12 +84,12 @@ void		vm_winner(t_vm *vm)
 	}
 }
 
-void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
+void		vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 {
 	int		i;
 	int		tm;
 	int		acb;
-	
+
 	if (vm->arena[cmd->idx].flag > 0)
 		vm->arena[cmd->idx].flag--;
 	tm = cmd->idx;
@@ -97,7 +97,7 @@ void	vm_next_step(t_vm *vm, t_cmd *cmd, int pos)
 	cmd->idx = mdx(i);
 	acb = vm->arena[mdx(cmd->idx)].acb & 0xFF;
 	if ((acb > 0 && acb < 17) && cmd->overlap == 0)
-		cmd->zero = vm->arena[mdx(cmd->idx)].acb & 0xFF;
+		cmd->zero = acb;
 	else
 	{
 		cmd->overlap = 1;

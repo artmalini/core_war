@@ -48,19 +48,6 @@ void		vm_pl_stats(t_vm *vm, int i)
 		vm->tab_champ[i].lives_in_period);
 }
 
-void		vm_win_recalc(t_vm *vm)
-{
-	int		win;
-
-	win = 0;
-	if (vm->total_cycle > 1)
-	{
-		win = vm_vis_winner(vm);
-		if (vm->total_cycle - vm->tab_champ[win].prev_live == 1)
-			vm->total_cycle--;
-	}
-}
-
 void		vm_game_stat(t_vm *vm, int j)
 {
 	int		i;
@@ -70,16 +57,14 @@ void		vm_game_stat(t_vm *vm, int j)
 		vm_pl_stats(vm, i);
 	attron(COLOR_PAIR(10));
 	printw(" Cycle: %d\t\t\tCycles to die:\t%d\n", vm->cycle, vm->cycle_to_die);
-	if (vm->win)
-		vm_win_recalc(vm);
 	printw(" Total cycles:\t\t\t%d\t\t\t['Z' key for pause game]"
 		" ['SPACE' for slow/fast game]\n", vm->total_cycle);
 	if (vm->cycle_to_die == 0 && vm->total_cycle != 0 && j != 0 &&
 		vm->tab_champ[vm_vis_winner(vm)].prev_live != 0)
-	{		
+	{
 		attron(COLOR_PAIR(vm->tab_champ[vm_vis_winner(vm)].rgb));
-		printw("\t\t\t\t\t\t Congratulations: %.20s!!! \tPress any key to exit.",
-			vm->tab_champ[vm_vis_winner(vm)].name);
+		printw("\t\t\t\t\t\t Congratulations: %.20s!!!"
+			" \tPress any key to exit.", vm->tab_champ[vm_vis_winner(vm)].name);
 		attroff(COLOR_PAIR(vm->tab_champ[vm_vis_winner(vm)].rgb));
 	}
 }

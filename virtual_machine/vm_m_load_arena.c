@@ -35,13 +35,10 @@ void		vm_decr(t_vm *vm, t_cmd *cmd)
 	vm->total_cycle++;
 }
 
-void		vm_sleep(t_vm *vm, int *pause, int *nb)
+void		vm_sleep(t_vm *vm, int *pause, int *nb, int entry)
 {
-	int 	entry;
-
 	if (vm->visual)
 	{
-		entry = 0;
 		nodelay(stdscr, 1);
 		entry = getch();
 		if (entry && vm->win)
@@ -75,17 +72,13 @@ void		vm_arena_cnt(t_vm *vm, int *i)
 	{
 		if (!c->off)
 		{
-			if (!c->playing) {
+			if (!c->playing)
 				vm_set_cycle_wait(vm, c);
-			}
-			else {
+			else
 				vm_run_waiting_cycle(vm, c);
-			}
 		}
 		if (c->next == NULL)
-		{
 			vm_cycler_to_die(vm, i);
-		}
 		c = c->next;
 	}
 }
@@ -104,7 +97,7 @@ void		vm_load_arena(t_vm *vm)
 			system("afplay ./resourses/Heroes.mp3&");
 	while (i)
 	{
-		vm_sleep(vm, &pause, &nb);
+		vm_sleep(vm, &pause, &nb, 0);
 		if (pause)
 		{
 			vm_arena_cnt(vm, &i);

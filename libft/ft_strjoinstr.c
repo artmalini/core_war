@@ -14,11 +14,12 @@
 
 char	*ft_strjoinstr(char *str1, char *str2)
 {
-	char 	*str3;
+	char	*str3;
 
 	if (!str1 || !str2)
 		return (NULL);
-	str3 = (char *)malloc(sizeof(str3) * ((ft_strlen(str1)) + (ft_strlen(str2))) + 1);
+	str3 = (char *)malloc(sizeof(str3) * \
+		((ft_strlen(str1)) + (ft_strlen(str2))) + 1);
 	if (!str3)
 		return (NULL);
 	*str3 = 0;

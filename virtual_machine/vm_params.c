@@ -68,24 +68,24 @@ int			vm_c_champ(char *str)
 	dot = 0;
 	while (str && str[++j])
 	{
-		if ((str[j] >= 9 && str[j] <= 13) || str[j] == 32)		
+		if ((str[j] >= 9 && str[j] <= 13) || str[j] == 32)
 			return (0);
 		if (str[j] == '.')
-        {
+		{
 			dot++;
-		    break ;
-        }
+			break ;
+		}
 	}
 	if (dot != 1)
 		return (0);
 	if (str)
-    {
-        if (!ft_strcmp(str + j, ".cor"))
-            return (1);
-        else
-            return (0);
-    }
-    return (0);
+	{
+		if (!ft_strcmp(str + j, ".cor"))
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
 }
 
 void		vm_simpl_err(char *str)
@@ -108,9 +108,9 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 		if (av[i] != NULL && av[i][0] == '-')
 		{
 			vm_simpl_err(av[i]);
-			return (0);	
+			return (0);
 		}
-		if(!vm_c_champ(av[i]))
+		if (!vm_c_champ(av[i]))
 		{
 			vm_simpl_err(av[i]);
 			return (0);
@@ -124,4 +124,3 @@ int			vm_get_param(char **av, t_vm *vm, int ac)
 	}
 	return (1);
 }
-
