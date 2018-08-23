@@ -26,9 +26,9 @@ int			find_nbr_bytes(char *str, int size)
 	return (nbr);
 }
 
-long			negative_nbr(int nb, int size, t_core *file)
+long		negative_nbr(int nb, int size, t_core *file)
 {
-	long		nbr;
+	long	nbr;
 
 	nbr = 0;
 	if (size == 2)

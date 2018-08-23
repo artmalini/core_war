@@ -58,15 +58,6 @@ void		inst_free(t_inst *first)
 	}
 }
 
-void		asm_free_error(t_error *err)
-{
-	ft_strdel(&err->asm_arg);
-	//ft_strdel(&err->current_cmd);
-	//ft_strdel(&err->current_arg);
-	//ft_strdel(&err->current_label);
-	free(err);
-}
-
 void		free_struct_tcore(t_core *file)
 {
 	if (file)
@@ -88,6 +79,9 @@ void		free_struct_tcore(t_core *file)
 			inst_free(file->inst);
 		}
 		if (file->error)
-			asm_free_error(file->error);
+		{
+			ft_strdel(&file->error->asm_arg);
+			free(file->error);
+		}
 	}
 }
