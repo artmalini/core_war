@@ -41,16 +41,16 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb, int entry)
 	{
 		nodelay(stdscr, 1);
 		entry = getch();
-		if (entry && vm->win)
-			vm->win = 0;
-		else if (entry == 32)
+		if (entry && vm->win == 1)
+			vm->win = -1;
+		else if (entry == 66)
 		{
 			if (*nb == 150000)
 				*nb = 150;
 			else
 				*nb = 150000;
 		}
-		else if (entry == 'z')
+		else if (entry == 32)
 		{
 			if (*pause == 1)
 				*pause = 0;
@@ -97,7 +97,6 @@ void		vm_load_arena(t_vm *vm)
 			system("afplay ./resourses/Heroes.mp3&");
 	while (i)
 	{
-		vm_sleep(vm, &pause, &nb, 0);
 		if (pause)
 		{
 			vm_arena_cnt(vm, &i);
@@ -105,8 +104,6 @@ void		vm_load_arena(t_vm *vm)
 			if (vm->dump_cycle > -1 && (vm->dump_cycle == vm->total_cycle))
 				i = 0;
 		}
+		vm_sleep(vm, &pause, &nb, 0);
 	}
-	if (vm->visual && vm->win == 0)
-		if (system("pgrep -x afplay") != -1)
-			system("killall afplay");
 }

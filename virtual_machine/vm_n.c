@@ -57,8 +57,8 @@ void		vm_game_stat(t_vm *vm, int j)
 		vm_pl_stats(vm, i);
 	attron(COLOR_PAIR(10));
 	printw(" Cycle: %d\t\t\tCycles to die:\t%d\n", vm->cycle, vm->cycle_to_die);
-	printw(" Total cycles:\t\t\t%d\t\t\t['Z' key for pause game]"
-		" ['SPACE' for slow/fast game]\n", vm->total_cycle);
+	printw(" Total cycles:\t\t\t%d\t\t\t['SPACE' key for pause game]"
+		" ['KEY Down' for slow/fast game]\n", vm->total_cycle);
 	if (vm->cycle_to_die == 0 && vm->total_cycle != 0 && j != 0 &&
 		vm->tab_champ[vm_vis_winner(vm)].prev_live != 0)
 	{

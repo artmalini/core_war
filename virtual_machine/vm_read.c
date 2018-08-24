@@ -12,15 +12,29 @@
 
 #include "vm.h"
 
+int					vm_len_magic(unsigned char *str, int nbr)
+{
+	unsigned int	nb;
+	unsigned int	val;
+
+	nb = 0;
+	while (nbr > 0)
+	{
+		nb <<= 8;
+		val = (unsigned int)(*str);
+		nb = nb | val;
+		str++;
+		nbr--;
+	}
+	return (nb);
+}
+
 static void			check_magic(const char *str)
 {
-	int				magic[4];
+	unsigned int	magic;
 
-	magic[0] = str[3];
-	magic[1] = str[2];
-	magic[2] = str[1];
-	magic[3] = str[0];
-	if (magic[0] != -13 || magic[1] != -125 || magic[2] != -22 || magic[3] != 0)
+	magic = vm_len_magic((unsigned char*)str, 4);
+	if (magic != COREWAR_EXEC_MAGIC)
 	{
 		display_header();
 		ft_printf("The header of a player is incorrect.\n");
