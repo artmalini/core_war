@@ -187,7 +187,8 @@ int					result_opcode(char c, int code, int get_bin);
 long				negative_nbr(int nb, int size, t_core *file);
 void				set_instruction(t_core *file, t_cmd *c, int fd);
 void				set_bytes(int fd, char *str, t_core *file, t_cmd *c);
-void				set_bytes_zero_alignment(int fd, int size, long nb, long nbr);
+void				set_bytes_zero_alignment(int fd, int size,
+						long nb, long nbr);
 int					find_pos_cmd(t_core *file, t_inst *inst, char *str,
 																int cmd_size);
 

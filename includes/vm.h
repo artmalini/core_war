@@ -18,6 +18,7 @@
 # include "ft_printf.h"
 # include <fcntl.h>
 # include "curses.h"
+
 /*
 **					[Macros for ERROR MANAGER]
 */
@@ -27,51 +28,50 @@
 # define ERR_NBR_CHMP	3
 # define ERR_CMP_CHMP	4
 
-#define IND_SIZE 2
-#define REG_SIZE 4
-#define DIR_SIZE REG_SIZE
+# define IND_SIZE		2
+# define REG_SIZE		4
+# define DIR_SIZE		REG_SIZE
 
-#define REG_CODE 1
-#define DIR_CODE 2
-#define IND_CODE 3
+# define REG_CODE		1
+# define DIR_CODE		2
+# define IND_CODE		3
 
-#define MAX_ARGS_NUMBER 4
-#define MAX_PLAYERS 4
-#define MEM_SIZE (4 * 1024)
-#define IDX_MOD (MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE (MEM_SIZE / 6)
+# define MAX_ARGS_NUMBER 4
+# define MAX_PLAYERS		4
+# define MEM_SIZE		(4 * 1024)
+# define IDX_MOD			(MEM_SIZE / 8)
+# define CHAMP_MAX_SIZE	(MEM_SIZE / 6)
 
-#define COMMENT_CHAR '#'
-#define COMMENT_CHAR2 ';'
-#define LABEL_CHAR ':'
-#define DIRECT_CHAR '%'
-#define SEPARATOR_CHAR ','
+# define COMMENT_CHAR '#'
+# define COMMENT_CHAR2 ';'
+# define LABEL_CHAR ':'
+# define DIRECT_CHAR '%'
+# define SEPARATOR_CHAR ','
 
-#define NAME_CMD_STRING ".name"
-#define COMMENT_CMD_STRING ".comment"
+# define NAME_CMD_STRING ".name"
+# define COMMENT_CMD_STRING ".comment"
 
-#define REG_NUMBER 16
+# define REG_NUMBER 16
 
-#define CYCLE_TO_DIE 1536
-#define CYCLE_DELTA 50
-#define NBR_LIVE 21
-#define MAX_CHECKS 10
+# define CYCLE_TO_DIE 1536
+# define CYCLE_DELTA 50
+# define NBR_LIVE 21
+# define MAX_CHECKS 10
 
-typedef char t_arg_type;
+typedef char			t_arg_type;
 
-#define T_REG 1
-#define T_DIR 2
-#define T_IND 4
-#define T_LAB 8
+# define T_REG 1
+# define T_DIR 2
+# define T_IND 4
+# define T_LAB 8
 
-
-#define PROG_NAME_LENGTH (128)
-#define COMMENT_LENGTH (2048)
-#define COREWAR_EXEC_MAGIC 0xea83f3
+# define PROG_NAME_LENGTH (128)
+# define COMMENT_LENGTH (2048)
+# define COREWAR_EXEC_MAGIC 0xea83f3
 
 # define BUF_SIZE (5)
 
-typedef struct 		s_cmd
+typedef struct		s_cmd
 {
 	int				reg[REG_NUMBER];
 	int				pl;
@@ -99,7 +99,7 @@ typedef struct		s_arena
 	int				rgb;
 	int				asc_rgb;
 	int				flag;
-	int				bold;	
+	int				bold;
 }					t_arena;
 
 typedef struct		s_champ
@@ -113,7 +113,7 @@ typedef struct		s_champ
 	int				idx;
 	int				nbr_process;
 	int				prev_live;
-	int				lives_in_period;	
+	int				lives_in_period;
 	char			*prog;
 }					t_champ;
 
@@ -230,8 +230,8 @@ void				vm_lldi_rdr(t_vm *vm, t_cmd *cmd, int hex);
 void				vm_lldi_next(t_vm *vm, t_cmd *cmd, int x, int hex);
 void				vm_lfork(t_vm *vm, t_cmd **cmd);
 void				vm_aff(t_vm *vm, t_cmd *cmd, int x);
-int 				get_reg(t_vm *vm, int *i);
-int 				is_reg(int value);
+int					get_reg(t_vm *vm, int *i);
+int					is_reg(int value);
 int					vm_getpl(t_vm *vm, int place);
 int					vm_new_step(t_vm *vm, t_cmd *cmd, int run);
 int					vm_len_step(t_vm *vm, t_cmd *cmd, int idx);
