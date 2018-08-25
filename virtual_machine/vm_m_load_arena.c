@@ -43,20 +43,17 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb, int entry)
 		entry = getch();
 		if (entry && vm->win == 1)
 			vm->win = -1;
-		else if (entry == 66)
-		{
-			if (*nb == 150000)
-				*nb = 150;
-			else
-				*nb = 150000;
-		}
-		else if (entry == 32)
-		{
-			if (*pause == 1)
-				*pause = 0;
-			else
-				*pause = 1;
-		}
+		else if (entry == KEY_PLUS)
+			*nb = 1000;
+		else if (entry == KEY_MINUS)
+			*nb = 50000;
+		else if (entry == KEY_SPACE)
+			*pause = (*pause == 1) ? 0 : 1;
+		else if (entry == KEY_MUSIC && vm->visual &&
+					system("pgrep -x afplay") != -1)
+			system("afplay ./resourses/Heroes.mp3&");
+		else if (entry == KEY_ESC)
+			system("pkill afplay");
 		nodelay(stdscr, 0);
 		usleep(*nb);
 	}
@@ -86,15 +83,17 @@ void		vm_arena_cnt(t_vm *vm, int *i)
 void		vm_load_arena(t_vm *vm)
 {
 	int		i;
-	int		pause;
 	int		nb;
+	int		pause;
 
-	nb = 150000;
 	i = 1;
 	pause = 1;
+	nb = 50000;
 	if (vm->visual)
-		if (system("pgrep -x afplay") != -1)
-			system("afplay ./resourses/Heroes.mp3&");
+	{
+		vm_vis_arena(vm);
+		pause = 0;
+	}
 	while (i)
 	{
 		if (pause)

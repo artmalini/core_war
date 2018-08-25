@@ -51,7 +51,7 @@
 # define ERROR_SYNTAX	12
 
 # define ERROR_LABEL	13
-# define ERROR_ID_LABEL	14
+# define ERROR_ID_LABEL	23
 
 # define ERROR_CMD		15
 # define ERROR_ARG		16

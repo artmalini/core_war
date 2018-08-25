@@ -78,7 +78,7 @@ void		vm_winner(t_vm *vm)
 			if (vm->total_cycle - vm->tab_champ[j].prev_live == 1)
 				vm->total_cycle--;
 		}
-		if (!vm->visual && vm->tab_champ[j].prev_live > 0)
+		if (!vm->visual)
 			ft_printf("Player %d (%s) won\n",
 				vm->tab_champ[j].id, vm->tab_champ[j].name);
 	}

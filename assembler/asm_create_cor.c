@@ -76,6 +76,8 @@ void		set_cor_nbr_comment(t_core *file, int fd)
 
 void		create_cor(t_core *file, int fd)
 {
+	if (!file || !file->inst)
+		return (ft_error(file, ERROR_SYNTAX));
 	if (!(fd = open(file->filename, O_RDWR | O_CREAT, 0666)))
 		ft_error(file, ERROR_OPEN);
 	set_cor_magic(fd);

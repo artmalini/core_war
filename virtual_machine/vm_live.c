@@ -29,13 +29,13 @@ int		vm_live_place(t_vm *vm, t_cmd *cmd)
 {
 	int	place;
 
-	place = 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
+	place = 0xFF & vm->arena[mdx(cmd->idx)].acb;
+	place <<= 8;
+	place += 0xFF & vm->arena[mdx(cmd->idx + 1)].acb;
 	place <<= 8;
 	place += 0xFF & vm->arena[mdx(cmd->idx + 2)].acb;
 	place <<= 8;
 	place += 0xFF & vm->arena[mdx(cmd->idx + 3)].acb;
-	place <<= 8;
-	place += 0xFF & vm->arena[mdx(cmd->idx + 4)].acb;
 	return (place);
 }
 

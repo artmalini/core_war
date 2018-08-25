@@ -21,7 +21,7 @@ int		vm_vis_winner(t_vm *vm)
 	j = 0;
 	while (++i < vm->nbr_next)
 	{
-		if (vm->tab_champ[i].prev_live >
+		if (vm->tab_champ[i].prev_live >=
 			vm->tab_champ[j].prev_live)
 		{
 			j = i;

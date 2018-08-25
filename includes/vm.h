@@ -19,9 +19,16 @@
 # include <fcntl.h>
 # include "curses.h"
 
+# define KEY_PLUS		43
+# define KEY_MINUS		45
+# define KEY_SPACE		32
+# define KEY_ESC		27
+# define KEY_MUSIC		109
+
 /*
 **					[Macros for ERROR MANAGER]
 */
+
 # define ERR_NBR_INV	0
 # define ERR_NO_NBR		1
 # define ERR_NO_CHMP	2

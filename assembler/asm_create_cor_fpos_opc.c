@@ -19,6 +19,7 @@ int			find_pos_cmd(t_core *file, t_inst *inst, char *str, int cmd_size)
 
 	tmp = inst;
 	i = -1;
+	ER_ARG = str;
 	while (++i < 2)
 	{
 		while (tmp)
@@ -32,9 +33,7 @@ int			find_pos_cmd(t_core *file, t_inst *inst, char *str, int cmd_size)
 		}
 		tmp = inst;
 	}
-	if (i == 1)
-		return (ft_error_int(file, ERROR_ID_LABEL));
-	return (OKAY);
+	return (ft_error_int(file, ERROR_ID_LABEL));
 }
 
 int			get_binary_code(char c)

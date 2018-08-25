@@ -84,13 +84,13 @@ int			ft_error_int(t_core *file, int id)
 	if (id >= 1 && id <= 12)
 		ft_printf("%s%s ---> %s[%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_FILE, ER_ROWS, RESET);
-	if (id >= 13 && id <= 14)
+	if (id >= 13 && id <= 13)
 		ft_printf("%s%s ---> %s[%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_LABEL, ER_ROWS, RESET);
 	if (id >= 15 && id <= 17)
 		ft_printf("%s%s ---> %s[%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_CMD, ER_ROWS, RESET);
-	if (id >= 18 && id <= 22)
+	if (id >= 18 && id <= 25)
 		ft_printf("%s%s ---> %s[%s][%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_CMD, ER_ARG, ER_ROWS, RESET);
 	if (id >= 30)
@@ -114,7 +114,7 @@ void		ft_error(t_core *file, int id)
 	if (id >= 15 && id <= 17)
 		ft_printf("%s%s ---> %s[%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_CMD, ER_ROWS, RESET);
-	if (id >= 18 && id <= 21)
+	if (id >= 18 && id <= 23)
 		ft_printf("%s%s ---> %s[%s][%s]:[%d]%s\n",
 				RED, ft_str_asma(id), BLUE, ER_CMD, ER_ARG, ER_ROWS, RESET);
 	if (id >= 30)
