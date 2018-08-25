@@ -144,6 +144,7 @@ typedef struct		s_vm
 	int				visual;
 	int				show_live;
 	int				on;
+	int				mus;
 }					t_vm;
 
 typedef struct		s_op
@@ -247,6 +248,7 @@ void				vm_load_ncurses(void);
 void				vm_vis_arena(t_vm *vm);
 void				vm_game_stat(t_vm *vm, int j);
 void				print_logo(int j, t_vm *vm);
+void				vm_play_arena(t_vm *vm);
 void				vm_n_draw_win(int j, int pl);
 void				draw_pl_heart(int pl, int j, t_vm *vm);
 int					vm_vis_winner(t_vm *vm);

@@ -12,17 +12,6 @@
 
 #include "vm.h"
 
-void		vm_play_arena(t_vm *vm)
-{
-	if (vm->dump_cycle > -1)
-	{
-		if (vm->total_cycle == vm->dump_cycle)
-			vm_dump_arena(vm);
-	}
-	else if (vm->visual)
-		vm_vis_arena(vm);
-}
-
 void		vm_decr(t_vm *vm, t_cmd *cmd)
 {
 	while (cmd)
@@ -35,6 +24,23 @@ void		vm_decr(t_vm *vm, t_cmd *cmd)
 	vm->total_cycle++;
 }
 
+void		vm_sleep_m(t_vm *vm, int entry)
+{
+	if (entry == KEY_MUSIC && vm->visual &&
+		vm->mus == 0)
+	{
+		vm->mus = 1;
+		system("afplay ./resourses/Heroes.mp3&");
+	}
+	else if (entry == KEY_ESC && vm->mus == 1)
+	{
+		system("pkill afplay");
+		vm->mus = 0;
+	}
+	else
+		return ;
+}
+
 void		vm_sleep(t_vm *vm, int *pause, int *nb, int entry)
 {
 	if (vm->visual)
@@ -44,16 +50,13 @@ void		vm_sleep(t_vm *vm, int *pause, int *nb, int entry)
 		if (entry && vm->win == 1)
 			vm->win = -1;
 		else if (entry == KEY_PLUS)
-			*nb = 1000;
+			*nb = 500;
 		else if (entry == KEY_MINUS)
 			*nb = 50000;
 		else if (entry == KEY_SPACE)
 			*pause = (*pause == 1) ? 0 : 1;
-		else if (entry == KEY_MUSIC && vm->visual &&
-					system("pgrep -x afplay") != -1)
-			system("afplay ./resourses/Heroes.mp3&");
-		else if (entry == KEY_ESC)
-			system("pkill afplay");
+		else
+			vm_sleep_m(vm, entry);
 		nodelay(stdscr, 0);
 		usleep(*nb);
 	}

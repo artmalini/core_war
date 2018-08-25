@@ -36,7 +36,7 @@ void	draw_winner(int j, t_vm *vm)
 
 	pl = vm_vis_winner(vm);
 	attron(COLOR_PAIR(1));
-	if (vm->total_cycle > 0 && vm->tab_champ[pl].prev_live != 0)
+	if (vm->total_cycle > 0)
 		vm_n_draw_win(j, pl);
 }
 

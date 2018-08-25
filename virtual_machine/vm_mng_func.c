@@ -12,6 +12,17 @@
 
 #include "vm.h"
 
+void				vm_play_arena(t_vm *vm)
+{
+	if (vm->dump_cycle > -1)
+	{
+		if (vm->total_cycle == vm->dump_cycle)
+			vm_dump_arena(vm);
+	}
+	else if (vm->visual)
+		vm_vis_arena(vm);
+}
+
 int					vm_v_cmd(int a, int b, int c)
 {
 	if (a < 0 || a >= REG_NUMBER ||

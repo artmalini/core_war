@@ -70,7 +70,7 @@ void		vm_winner(t_vm *vm)
 	{
 		while (++i < vm->nbr_next)
 		{
-			if (vm->tab_champ[i].prev_live > vm->tab_champ[j].prev_live)
+			if (vm->tab_champ[i].prev_live >= vm->tab_champ[j].prev_live)
 				j = i;
 		}
 		if (vm->total_cycle > 1)

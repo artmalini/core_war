@@ -53,11 +53,13 @@ void		vm_load_champs(t_vm *vm)
 		space_bt_champs = 0;
 	space = 0;
 	vm_check_n_uniq(vm);
-	ft_printf("Introducing contestants...\n");
+	if (!vm->visual)
+		ft_printf("Introducing contestants...\n");
 	while (++i < vm->nbr_next)
 	{
 		vm->tab_champ[i].idx = space;
-		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+		if (!vm->visual)
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 			vm->tab_champ[i].id, vm->tab_champ[i].weight,
 			vm->tab_champ[i].name, vm->tab_champ[i].comment);
 		load_champ_to(vm, vm->tab_champ[i], space, i);

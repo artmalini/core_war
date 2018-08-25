@@ -64,5 +64,6 @@ void	vm_init(t_vm *vm)
 	vm->debug = 0;
 	vm->show_live = 0;
 	vm->on = 0;
+	vm->mus = 0;
 	vm->cmd = NULL;
 }
