@@ -38,7 +38,7 @@ $ make
    Compile of Core War programs you  can add max 4 Warriors in one battle and also you can add 4 times this Warrior and there will be start fight against one each other:
 
 ```
-$ ./asm resourses/Gagnant.s.s 
+$ ./asm resourses/Gagnant.s
 ```
 	
    and another one, or other whatever you like in that folder:
@@ -47,11 +47,12 @@ $ ./asm resourses/Gagnant.s.s
 $ ./asm resourses/zork.s
 ```
 
-There some keyboard events for game process,SPACE to start/stop game, +/- keys in right side of keyboard, CTRL+C to exit game if
-you not like wait to end of the game. It's IMPORTANT open terminal on full screen for run visual mode! So execute command:
+There some keyboard events for game process,SPACE to start/stop game, +/- keys in the right side of keyboard, CTRL+C to exit 
+game if you not like wait to end of the game. It's IMPORTANT open terminal on full screen for run visual mode! So, execute
+command:
 
 ```
-$ ./corewar -v resourses/Gagnant.s.cor resourses/zork.cor
+$ ./corewar -v resourses/Gagnant.cor resourses/zork.cor
 ```
 
 There some commands for arguments
