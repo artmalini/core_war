@@ -29,8 +29,11 @@ void		vm_sleep_m(t_vm *vm, int entry)
 	if (entry == KEY_MUSIC && vm->visual &&
 		vm->mus == 0)
 	{
-		vm->mus = 1;
-		system("afplay ./resourses/Heroes.mp3&");
+		if (system("pgrep -x afplay") != -1)
+		{
+			vm->mus = 1;
+			system("afplay ./resourses/Heroes.mp3&");
+		}
 	}
 	else if (entry == KEY_ESC && vm->mus == 1)
 	{
@@ -108,4 +111,6 @@ void		vm_load_arena(t_vm *vm)
 		}
 		vm_sleep(vm, &pause, &nb, 0);
 	}
+	if (vm->mus == 1)
+		system("pkill afplay");
 }
