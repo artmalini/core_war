@@ -1,8 +1,8 @@
 ## About
 Core Wars is a programming game in which two or more programs run in a simulated virtual machine with the goal of terminating 
-every other program and surviving as long as possible. Corewar is project of alghorithm branch at Unit Factory school same as
+every other program and surviving as long as possible. Corewar is project of algorithmic branch at Unit Factory school same as
 42 school. More about corewar game at (https://en.wikipedia.org/wiki/Core_War)
-Known as Warriors,these programs are written in an assembly language, some of them are located in "resourses" folder to run
+Known as Warriors, these programs are written in an assembly language, some of them are located in "resourses" folder to run
 these things now.
 
 ## Implementation
@@ -29,26 +29,26 @@ There main rules to determines who wins:
 ## Build
 This will be work on Linux or MacOs terminal:
 
-	Release build:
+   Release build:
 
 ```
 $ make
 ```
 	
-	Compile of Core War programs you  can add max 4 Warriors in one battle and also you can add 4 times this Warrior and there will be start fight against one each other:
+   Compile of Core War programs you  can add max 4 Warriors in one battle and also you can add 4 times this Warrior and there will be start fight against one each other:
 
 ```
 $ ./asm resourses/Gagnant.s.s 
 ```
 	
-	and another one, or other whatever you like in that folder:
+   and another one, or other whatever you like in that folder:
 
 ```
 $ ./asm resourses/zork.s
 ```
 
 There some keyboard events for game process,SPACE to start/stop game, +/- keys in right side of keyboard, CTRL+C to exit game if
-you not like wait to end of the game. Open terminal on FULL screen for run visual mode and execute command:
+you not like wait to end of the game. It's IMPORTANT open terminal on full screen for run visual mode! So execute command:
 
 ```
 $ ./corewar -v resourses/Gagnant.s.cor resourses/zork.cor
