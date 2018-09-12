@@ -53,8 +53,8 @@ void		vm_vis_arena(t_vm *vm)
 	i = 0;
 	j = -1;
 	k = vm_k_cycle(vm);
-	//vm_game_stat(vm, j);
-	printw("\n ");
+	vm_game_stat(vm, j);
+	printw("\n\n ");
 	while (i < MEM_SIZE)
 	{
 		vm_style_arena(vm, i);
